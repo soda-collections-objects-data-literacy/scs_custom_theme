@@ -1,6 +1,6 @@
 name: SCS Custom Theme
 type: theme
-'description': 'A minimal Drupal starter theme based on the structure of the lescustom WordPress base theme.'
+'description': 'A minimal Drupal starter theme.'
 core_version_requirement: ^10 || ^11
 base theme: stable9
 libraries:
