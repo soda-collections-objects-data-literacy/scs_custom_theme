@@ -1,0 +1,70 @@
+@use 'vars' as *;
+
+*,
+div,
+ :after,
+ :before {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    position: relative;
+    background-color: $color-white;
+    &.no-scroll {
+        height: 100%;
+        max-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+figure,
+img {
+    position: relative;
+    line-height: 0;
+    width: 100%;
+    height: auto;
+}
+
+.inner {
+    max-width: $content-max-width;
+    margin: auto;
+    padding: 0 $spacing-s;
+    position: relative;
+}
+
+::selection {
+    background: $color-black;
+    color: $color-white;
+}
+
+::-moz-selection {
+    background: $color-black;
+    color: $color-white;
+}
+
+body.menu-open {
+    // "Freeze" when menu is opened
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+#primary {
+    min-height: 75vh;
+}
+
+@media screen and (min-width: $breakpoint-l-width) {
+    .inner {
+        padding: 0 $spacing-l;
+    }
+}

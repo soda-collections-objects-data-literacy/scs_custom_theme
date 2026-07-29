@@ -1,0 +1,15 @@
+name: SCS Custom Theme
+type: theme
+'description': 'A minimal Drupal starter theme based on the structure of the lescustom WordPress base theme.'
+core_version_requirement: ^10 || ^11
+base theme: stable9
+libraries:
+  - scs_custom_theme/global-styling
+  - scs_custom_theme/global-scripts
+regions:
+  header: Header
+  primary_menu: Primary menu
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: Sidebar first
+  footer: Footer

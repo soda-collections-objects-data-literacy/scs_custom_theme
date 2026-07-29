@@ -1,0 +1,28 @@
+@use 'vars' as *;
+
+.text-white,
+.text-white:before {
+    color: $color-white;
+}
+
+.text-black,
+.text-black:before {
+    color: $color-black;
+}
+
+.text-grey,
+.text-grey:before {
+    color: $color-black;
+}
+
+.bg-white {
+    background-color: $color-white;
+}
+
+.bg-black {
+    background-color: $color-black;
+}
+
+.bg-grey {
+    background-color: $color-grey;
+}

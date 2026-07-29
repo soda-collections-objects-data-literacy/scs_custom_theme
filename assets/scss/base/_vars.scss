@@ -1,0 +1,62 @@
+// break points
+$breakpoint-s-width: 375px;
+$breakpoint-sm-width: 560px;
+$breakpoint-m-width: 768px;
+$breakpoint-l-width: 1200px;
+$breakpoint-xl-width: 1920px;
+$breakpoints-max-diff: $breakpoint-xl-width - $breakpoint-s-width;
+// spacing
+$spacing-xs: 10px;
+$spacing-mobile: 16px;
+$spacing-s: 21px;
+$spacing-m: 30px;
+$spacing-l: 50px;
+// dimensions
+$wrapper-x-padding: 24px;
+$radius-left: 10px 0px 0px 10px;
+$radius-right:0px 10px 10px 0px;
+$radius: 10px 10px 10px 10px;
+$content-max-width: 1514px;
+$content-text-max-width: 1128px;
+$max-container-width-xl: 2000px;
+// colors
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-grey: #E4E9F4;
+// font-size and line-height
+$text-font-size: 2.2rem;
+$text-mt: 1em;
+$text-mb: 1em;
+$bigger-text-font-size: 3.5rem;
+$bigger-text-mt: 3.6em;
+$bigger-text-mb: 1.4em;
+$super-text-font-size: 9rem;
+$super-text-mt: 3em;
+$super-text-mb: 3em;
+$h1-font-size: 9rem;
+$h1-mt: 0;
+$h1-mb: 0.28em;
+$h2-font-size: 7rem;
+$h2-mt: 1.85em;
+$h2-mb: 0.7em;
+$h3-font-size: 5rem;
+$h3-mt: 1.85em;
+$h3-mb: 0.7em;
+$h4-font-size: 3.5rem;
+$h4-mt: 1.85em;
+$h4-mb: 0.7em;
+$h5-font-size: 2.8rem;
+$h5-mt: 1.85em;
+$h5-mb: 0.7em;
+$h6-font-size: 2.2rem;
+$h6-mt: 1.85em;
+$h6-mb: 0.7em;
+$hero-font-size: 28rem;
+$hero-mt: 0;
+$hero-mb: 0;
+$hero-small-font-size: 20rem;
+$hero-small-mt: 0;
+$hero-small-mb: 0;
+$hero-mini-font-size: 14rem;
+$hero-mini-mt: 0.7em;
+$hero-mini-mb: 0.7em;

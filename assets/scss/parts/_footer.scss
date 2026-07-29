@@ -1,0 +1,52 @@
+@use '../base/vars' as *;
+
+#site-footer {
+    padding-top: $spacing-l;
+    padding-bottom: $spacing-l;
+    .footer-wrapper {
+        width: 100%;
+        grid-template-columns: 20% auto;
+        grid-template-areas: "logo nav" "logo text";
+        gap: $spacing-s;
+        .footer__site-branding {
+            grid-area: logo;
+        }
+        #footer__navigation {
+            grid-area: nav;
+            margin: 0;
+            padding: 0;
+            #footer-menu {
+                margin: 0;
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    li {
+                        display: inline-block;
+                        padding-right: $spacing-s;
+                        &:last-child {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .footer__text {
+            grid-area: text;
+        }
+    }
+}
+
+// Tablet down
+@media screen and (max-width: $breakpoint-m-width) {
+    #site-footer {
+        padding-top: $spacing-m;
+        padding-bottom: $spacing-m;
+        .footer-wrapper {
+            display: block;
+            .footer__site-branding {
+                margin-bottom: $spacing-s;
+            }
+        }
+    }
+}

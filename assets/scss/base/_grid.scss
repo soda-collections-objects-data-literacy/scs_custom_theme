@@ -1,0 +1,17 @@
+@use 'vars' as *;
+
+.grid {
+    display: grid;
+    &--50-50 {
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-s;
+    }
+}
+
+// Tablet down
+@media screen and (max-width: $breakpoint-m-width) {
+    .grid--50-50 {
+        grid-template-columns: 1fr;
+        gap: $spacing-s;
+    }
+}

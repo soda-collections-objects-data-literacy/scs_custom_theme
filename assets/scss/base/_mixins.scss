@@ -1,0 +1,172 @@
+@use 'vars' as *;
+
+@mixin transition-all($duration: 0.2s) {
+    -webkit-transition-duration: $duration;
+    -moz-transition-duration: $duration;
+    -o-transition-duration: $duration;
+    transition-duration: $duration;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+}
+
+@mixin transition($property, $duration: 0.2s) {
+    -webkit-transition-duration: $duration;
+    -moz-transition-duration: $duration;
+    -o-transition-duration: $duration;
+    transition-duration: $duration;
+    -webkit-transition-property: $property;
+    -moz-transition-property: $property;
+    -o-transition-property: $property;
+    transition-property: $property;
+}
+
+@mixin text-regular() {
+    font-size: $text-font-size;
+    margin-top: $text-mt;
+    margin-bottom: $text-mb;
+}
+
+@mixin text-bigger() {
+    font-size: $bigger-text-font-size;
+    margin-top: $bigger-text-mt;
+    margin-bottom: $bigger-text-mb;
+}
+
+@mixin text-super() {
+    font-size: $super-text-font-size;
+    margin-top: $super-text-mt;
+    margin-bottom: $super-text-mb;
+}
+
+@mixin text-h1() {
+    font-size: $h1-font-size;
+    margin-top: $h1-mt;
+    margin-bottom: $h1-mb;
+}
+
+@mixin text-h2() {
+    font-size: $h2-font-size;
+    margin-top: $h2-mt;
+    margin-bottom: $h2-mb;
+}
+
+@mixin text-h3() {
+    font-size: $h3-font-size;
+    margin-top: $h3-mt;
+    margin-bottom: $h3-mb;
+}
+
+@mixin text-h4() {
+    font-size: $h4-font-size;
+    margin-top: $h4-mt;
+    margin-bottom: $h4-mb;
+}
+
+@mixin text-h5() {
+    font-size: $h5-font-size;
+    margin-top: $h5-mt;
+    margin-bottom: $h5-mb;
+}
+
+@mixin text-h6() {
+    font-size: $h6-font-size;
+    margin-top: $h6-mt;
+    margin-bottom: $h6-mb;
+}
+
+@mixin text-hero() {
+    font-size: $hero-font-size;
+    line-height: 1;
+    margin-top: $hero-mt;
+    margin-bottom: $hero-mb;
+}
+
+@mixin text-hero-small() {
+    font-size: $hero-small-font-size;
+    line-height: 1;
+    margin-top: $hero-small-mt;
+    margin-bottom: $hero-small-mb;
+}
+
+@mixin text-hero-mini() {
+    font-size: $hero-mini-font-size;
+    line-height: 1;
+    margin-top: $hero-mini-mt;
+    margin-bottom: $hero-mini-mb;
+}
+
+@mixin border-radius() {
+    border-radius: 26px;
+    @media screen and (min-width: $breakpoint-s-width) {
+        border-radius: calc(26px + 40 * ((100vw - #{$breakpoint-s-width}) / #{strip-unit($breakpoints-max-diff)}));
+    }
+    @media screen and (min-width: $breakpoint-xl-width) {
+        border-radius: 66px;
+    }
+}
+
+@mixin font-text-regular() {
+    font-family: ">>FONT NAME<<", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin font-text-emotional() {
+    font-family: "TT Travels", Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin font-text-bold() {
+    font-family: ">>FONT NAME<<", Arial, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+@mixin font-icon() {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-variant: normal;
+    text-rendering: auto;
+    font-weight: 900;
+}
+
+@mixin text-icon-regular() {
+    font-size: 14px;
+    line-height: 1;
+}
+
+@mixin text-icon-bigger() {
+    font-size: 20px;
+    line-height: 1;
+}
+
+@mixin text-overflow-ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin styled-scrollbars() {
+    /* width */
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    /* Handle
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-black;
+    }
+    */
+    /* Handle on hover 
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $color-grey;
+    }
+    */
+}

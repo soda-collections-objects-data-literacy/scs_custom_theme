@@ -1,0 +1,41 @@
+{#
+  Minimal page template for the SCS Custom Theme.
+#}
+<div class="layout-container">
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <div class="site-branding">
+        {{ page.header }}
+      </div>
+      {% if page.primary_menu %}
+        <nav class="site-nav" aria-label="{{ 'Primary menu'|t }}">
+          {{ page.primary_menu }}
+        </nav>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.highlighted %}
+    <div class="highlighted">
+      {{ page.highlighted }}
+    </div>
+  {% endif %}
+
+  <main id="main-content" class="main-content" tabindex="-1">
+    {% if page.sidebar_first %}
+      <aside class="sidebar" role="complementary">
+        {{ page.sidebar_first }}
+      </aside>
+    {% endif %}
+
+    <div class="content-region">
+      {{ page.content }}
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      {{ page.footer }}
+    </div>
+  </footer>
+</div>

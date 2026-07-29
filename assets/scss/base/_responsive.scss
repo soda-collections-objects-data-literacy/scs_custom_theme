@@ -1,0 +1,41 @@
+@use 'vars' as *;
+
+.hide-for {
+    &-desktop {
+        @media screen and (min-width: $breakpoint-l-width) {
+            display: none;
+        }
+    }
+
+    &-mobile {
+        @media screen and (max-width: $breakpoint-s-width) {
+            display: none;
+        }
+    }
+
+    &-tablet-down {
+        @media screen and (max-width: $breakpoint-m-width) {
+            display: none;
+        }
+    }
+
+    &-desktop-down {
+        @media screen and (max-width: $breakpoint-l-width) {
+            display: none;
+        }
+    }
+}
+
+.show-for {
+    &-desktop {
+        @media screen and (min-width: $breakpoint-m-width) {
+            display: block;
+        }
+    }
+
+    &-mobile {
+        @media screen and (max-width: $breakpoint-s-width) {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      assets/css/styles.css: { preprocess: false }
+global-scripts:
+  version: 1.x
+  js:
+    assets/js/navigation.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

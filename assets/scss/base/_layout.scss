@@ -1,0 +1,50 @@
+@use 'vars' as *;
+
+#page.site {
+    width: 100vw;
+}
+
+.site-main {
+    overflow-x: hidden;
+    &.no-overflow {
+        overflow: unset;
+    }
+}
+
+@media screen and (max-width: $breakpoint-sm-width) {
+    body {
+        overflow-x: hidden;
+    }
+}
+
+.content-container {
+    max-width: $max-container-width-xl;
+    margin: 0 auto;
+    padding: 0 $spacing-l;
+    @media screen and (max-width: $breakpoint-l-width) {
+        padding: 0 $spacing-m;
+    }
+    @media screen and (max-width: $breakpoint-m-width) {
+        padding: 0 $spacing-s;
+    }
+    @media screen and (max-width: $breakpoint-s-width) {
+        padding: 0 $spacing-mobile;
+    }
+}
+
+.top-bottom-container {
+    padding-top: $spacing-m;
+    padding-bottom: $spacing-l;
+    @media screen and (max-width: $breakpoint-l-width) {
+        padding-top: $spacing-l;
+        padding-bottom: $spacing-l;
+    }
+    @media screen and (max-width: $breakpoint-m-width) {
+        padding-top: $spacing-m;
+        padding-bottom: $spacing-m;
+    }
+    @media screen and (max-width: $breakpoint-s-width) {
+        padding-top: $spacing-s;
+        padding-bottom: $spacing-s;
+    }
+}

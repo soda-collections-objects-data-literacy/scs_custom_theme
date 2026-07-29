@@ -1,0 +1,12 @@
+// Sass configuration
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Sass Compile",
+      "type": "shell",
+      "command": "sass assets/scss/styles.scss assets/css/styles.css",
+      "group": "build"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+@use '../base/vars' as *;
+@use '../base/mixins' as *;
+
+header {
+    .site-header__container {
+        width: 100%;
+        padding-top: $spacing-s;
+        padding-bottom: $spacing-s;
+        grid-template-columns: 20% auto 45px;
+        grid-template-areas: "logo space nav";
+        gap: $spacing-s;
+        align-items: center;
+        .site-branding {
+            grid-area: logo;
+        }
+        .site-navigation-wrapper {
+            grid-area: nav;
+            #menu-toggle {
+                max-width: 45px;
+                max-height: 45px;
+                padding: 5px;
+                z-index: 999;
+                background-color: white;
+                position: relative;
+            }
+        }
+        .navigation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 99;
+            &--hidden {
+                display: none;
+            }
+            &--open {
+                display: block;
+            }
+            #primary-menu {
+                list-style-type: none;
+                overflow-y: auto;
+                li {
+                    padding: $spacing-s 0;
+                    a {
+                        @include text-bigger;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@use '../base/vars' as *;
+@use '../base/mixins' as *;
+
+.btn,
+button {
+    border: 1px solid $color-black;
+    background-color: $color-black;
+    color: $color-white;
+    @include transition-all;
+    padding: 7px 15px 4px;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+    height: auto;
+    min-height: 35px;
+    border-radius: 24px;
+    width: auto;
+    display: table;
+    &:disabled,
+    &[disabled] {
+        opacity: 0.5;
+    }
+    &:hover {
+        background-color: $color-white;
+        color: $color-black;
+    }
+}

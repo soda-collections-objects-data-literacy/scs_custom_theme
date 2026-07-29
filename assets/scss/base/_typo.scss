@@ -1,0 +1,132 @@
+@use 'vars' as *;
+@use 'mixins' as *;
+@use 'func' as *;
+
+html{
+    font-size: calc(#{8px} + #{strip-unit(4px)} * ((100vw - #{$breakpoint-s-width}) / #{strip-unit($breakpoints-max-diff)}));
+    line-height: 1.3;
+}
+
+div,
+p,
+span,
+em,
+i,
+li,
+td,
+address,
+a {
+    @include font-text-regular;
+    @include text-regular;
+}
+
+p {
+    margin: $spacing-mobile 0;
+    max-width: $content-text-max-width;
+}
+
+strong,
+b,
+th,
+.strong,
+.bold,
+button,
+.btn,
+label,
+input,
+textarea,
+select {
+    @include font-text-bold;
+    @include text-regular;
+}
+
+h1,
+.h1 {
+    @include font-text-bold;
+    @include text-h1;
+}
+
+h2,
+.h2 {
+    @include font-text-bold;
+    @include text-h2;
+}
+
+h3,
+.h3 {
+    @include font-text-bold;
+    @include text-h3;
+}
+
+h4,
+.h4 {
+    @include font-text-bold;
+    @include text-h4;
+}
+
+h5,
+.h5 {
+    @include font-text-bold;
+    @include text-h5;
+}
+
+h6,
+.h6 {
+    @include font-text-bold;
+    @include text-h6;
+}
+
+
+
+ol,
+ul {
+    padding-left: 1em;
+    margin: $spacing-mobile 0;
+}
+
+.text-bigger {
+    @include text-bigger;
+}
+
+.text-super {
+    @include text-super;
+}
+
+.text-hero {
+    @include text-hero;
+    @include font-text-emotional;
+}
+
+.text-hero-small {
+    @include text-hero-small;
+    @include font-text-emotional;
+}
+
+.text-hero-mini {
+    @include text-hero-mini;
+    @include font-text-emotional;
+}
+
+
+.font-regular {
+    @include font-text-regular;
+}
+
+.font-text-bold {
+    @include font-text-bold;
+}
+
+a {
+    @include transition-all;
+    &.link--nostyle {
+        color: black;
+    }
+}
+
+a,
+a:active,
+a:focus,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
