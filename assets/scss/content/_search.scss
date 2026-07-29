@@ -1,9 +1,10 @@
-@use '../base/vars' as *;
+@use '../base/vars'as *;
 
 .template--search {
     .search-form-wrapper {
         margin-bottom: $spacing-l;
     }
+
     .search-results-wrapper {
         margin-top: $spacing-l;
     }
