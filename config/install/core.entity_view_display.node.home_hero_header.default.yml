@@ -1,0 +1,65 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.home_hero_header.field_cta_button_link
+    - field.field.node.home_hero_header.field_cta_button_text
+    - field.field.node.home_hero_header.field_headline
+    - field.field.node.home_hero_header.field_introtext
+    - field.field.node.home_hero_header.field_video
+    - node.type.home_hero_header
+  module:
+    - link
+    - user
+id: node.home_hero_header.default
+targetEntityType: node
+bundle: home_hero_header
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_introtext:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cta_button_text:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cta_button_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    weight: 5
+    region: content
+hidden:
+  title: true

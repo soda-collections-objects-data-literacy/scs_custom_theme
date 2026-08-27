@@ -1,41 +1,45 @@
-{#
-  Minimal page template for the SCS Custom Theme.
-#}
-<div class="layout-container">
-  <header class="site-header" role="banner">
-    <div class="site-header__inner">
-      <div class="site-branding">
-        {{ page.header }}
+{# Public shell for the homepage, login, and registration pages. #}
+<div class="public-layout">
+  <header class="public-header" role="banner">
+    <div class="public-header__inner">
+      <div class="public-branding">
+        {{ page.header_logo }}
       </div>
-      {% if page.primary_menu %}
-        <nav class="site-nav" aria-label="{{ 'Primary menu'|t }}">
-          {{ page.primary_menu }}
+      {% if page.header_nav %}
+        <nav class="public-nav" aria-label="{{ 'Site navigation'|t }}">
+          {{ page.header_nav }}
         </nav>
+      {% endif %}
+      {% if page.header_user_menu %}
+        <div class="public-user-menu">
+          {{ page.header_user_menu }}
+        </div>
       {% endif %}
     </div>
   </header>
 
+  {% if page.edit_menu %}
+    <div class="drupal-edit-menu">
+      {{ page.edit_menu }}
+    </div>
+  {% endif %}
+
   {% if page.highlighted %}
-    <div class="highlighted">
+    <div class="public-highlighted">
       {{ page.highlighted }}
     </div>
   {% endif %}
 
-  <main id="main-content" class="main-content" tabindex="-1">
-    {% if page.sidebar_first %}
-      <aside class="sidebar" role="complementary">
-        {{ page.sidebar_first }}
-      </aside>
-    {% endif %}
-
-    <div class="content-region">
-      {{ page.content }}
-    </div>
+  <main id="main-content" class="public-main content-container" tabindex="-1">
+    {{ page.content }}
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="site-footer__inner">
-      {{ page.footer }}
+  <footer class="public-footer" role="contentinfo">
+    <div class="public-footer__logo">
+      {{ page.footer_logo }}
     </div>
+    <nav class="public-footer__navs" aria-label="{{ 'Footer navigation'|t }}">
+      {{ page.footer_navs }}
+    </nav>
   </footer>
 </div>

@@ -15,6 +15,12 @@
     </div>
   </aside>
 
+  {% if page.edit_menu %}
+    <div class="drupal-edit-menu">
+      {{ page.edit_menu }}
+    </div>
+  {% endif %}
+
   <main id="main-content" class="dashboard-main" tabindex="-1">
     <div class="dashboard-breadcrumb-and-title">
       {{ page.breadcrumb_and_title }}

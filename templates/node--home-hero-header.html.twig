@@ -1,0 +1,30 @@
+{# Home Hero Header content type. #}
+<section{{ attributes.addClass('home-hero-header') }} class="home-hero-header">
+  <div class="home-hero-header__content">
+    {% if content.field_headline %}
+      <h1 class="home-hero-header__headline">
+        {{ content.field_headline }}
+      </h1>
+    {% endif %}
+
+    {% if content.field_introtext %}
+      <div class="home-hero-header__introtext">
+      <p class="text-bigger">
+        {{ content.field_introtext }}
+        </p>
+      </div>
+    {% endif %}
+
+    {% if content.field_cta_button_text and node.field_cta_button_link.0.url %}
+      <a class="home-hero-header__cta" href="{{ node.field_cta_button_link.0.url }}">
+        {{ content.field_cta_button_text }}
+      </a>
+    {% endif %}
+  </div>
+
+  {% if content.field_video %}
+    <div class="home-hero-header__video">
+      {{ content.field_video }}
+    </div>
+  {% endif %}
+</section>

@@ -1,0 +1,22 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.home-hero-header {
+    @include grid-12;
+
+    .home-hero-header__content {
+        grid-column: 1 / span 6;
+
+        @media screen and (max-width: $breakpoint-m-width) {
+            grid-column: 1 / span 12;
+        }
+    }
+
+    .home-hero-header__video {
+        grid-column: 7 / span 6;
+
+        @media screen and (max-width: $breakpoint-m-width) {
+            grid-column: 1 / span 12;
+        }
+    }
+}

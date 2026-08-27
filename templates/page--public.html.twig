@@ -18,13 +18,19 @@
     </div>
   </header>
 
+  {% if page.edit_menu %}
+    <div class="drupal-edit-menu">
+      {{ page.edit_menu }}
+    </div>
+  {% endif %}
+
   {% if page.highlighted %}
     <div class="public-highlighted">
       {{ page.highlighted }}
     </div>
   {% endif %}
 
-  <main id="main-content" class="public-main" tabindex="-1">
+  <main id="main-content" class="public-main content-container" tabindex="-1">
     {{ page.content }}
   </main>
 

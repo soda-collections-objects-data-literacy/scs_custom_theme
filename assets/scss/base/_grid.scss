@@ -1,17 +1,13 @@
-@use 'vars' as *;
+@use '../base/vars'as *;
+@use '../base/mixins' as *;
 
 .grid {
-    display: grid;
-    &--50-50 {
-        grid-template-columns: 1fr 1fr;
-        gap: $spacing-s;
-    }
+@include grid-12;
 }
+
+
 
 // Tablet down
 @media screen and (max-width: $breakpoint-m-width) {
-    .grid--50-50 {
-        grid-template-columns: 1fr;
-        gap: $spacing-s;
-    }
+
 }

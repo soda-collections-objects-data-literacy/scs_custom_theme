@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_introtext
+    - node.type.home_hero_header
+id: node.home_hero_header.field_introtext
+field_name: field_introtext
+entity_type: node
+bundle: home_hero_header
+label: 'Introtext'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

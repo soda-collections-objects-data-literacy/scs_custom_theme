@@ -10,6 +10,7 @@ regions:
   header_logo: Header Logo
   header_nav: Header Nav
   header_user_menu: Header UserMenu
+  edit_menu: Drupal Edit Menu
   content: Content
   footer_logo: Footer Logo
   footer_navs: Footer Navs
