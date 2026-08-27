@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Theme hooks for the SCS Custom Theme.
+ */
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function scs_custom_theme_preprocess_page(array &$variables): void {
+  $path = trim((string) ($variables['root_path'] ?? ''), '/');
+
+  if ($path === 'soda-scs-manager/dashboard') {
+    $variables['theme_hook_suggestions'][] = 'page__dashboard';
+    return;
+  }
+
+  if ($variables['is_front'] || in_array($path, ['user/login', 'user/register'], TRUE)) {
+    $variables['theme_hook_suggestions'][] = 'page__public';
+  }
+}

@@ -1,0 +1,41 @@
+{# Authenticated SCS Manager dashboard, separate from Drupal administration. #}
+<div class="dashboard-layout">
+  <aside class="dashboard-sidebar" role="complementary">
+    <div class="dashboard-sidebar__logo">
+      {{ page.sidebar_logo }}
+    </div>
+    <nav class="dashboard-sidebar__projectnav" aria-label="{{ 'Project navigation'|t }}">
+      {{ page.sidebar_projectnav }}
+    </nav>
+    <nav class="dashboard-sidebar__secondary-nav" aria-label="{{ 'Secondary navigation'|t }}">
+      {{ page.sidebar_secondary_nav }}
+    </nav>
+    <div class="dashboard-sidebar__account-menu">
+      {{ page.sidebar_account_menu }}
+    </div>
+  </aside>
+
+  <main id="main-content" class="dashboard-main" tabindex="-1">
+    <div class="dashboard-breadcrumb-and-title">
+      {{ page.breadcrumb_and_title }}
+    </div>
+
+    <section class="dashboard-content dashboard-content--full">
+      {{ page.content_full }}
+    </section>
+
+    <div class="dashboard-content-columns">
+      <section class="dashboard-content dashboard-content--left">
+        {{ page.content_left }}
+      </section>
+      <section class="dashboard-content dashboard-content--right">
+        {{ page.content_right }}
+      </section>
+    </div>
+  </main>
+
+  <footer class="dashboard-footer" role="contentinfo">
+    {{ page.footer_logo }}
+    {{ page.footer_navs }}
+  </footer>
+</div>

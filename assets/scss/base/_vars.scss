@@ -22,7 +22,22 @@ $max-container-width-xl: 2000px;
 // colors
 $color-black: #000000;
 $color-white: #FFFFFF;
-$color-grey: #E4E9F4;
+$color-green: #006117;
+$color-red: #A80000;
+$color-orange-500: #FFA933;
+$color-orange-600: #E68500;
+$color-slate-50: #FAFBFC;
+$color-slate-100: #F4F6F8;
+$color-slate-300: #D5DCE4;
+$color-slate-600: #4D5866;
+$color-slate-900: #17212B;
+$color-background-default: $color-slate-50;
+$color-background-surface: $color-white;
+$color-text-primary: $color-slate-900;
+$color-text-secondary: $color-slate-600;
+$color-text-inverse: $color-white;
+$color-button-primary-bg: $color-orange-500;
+$color-button-primary-text: $color-slate-900;
 // font-size and line-height
 $text-font-size: 2.2rem;
 $text-mt: 1em;

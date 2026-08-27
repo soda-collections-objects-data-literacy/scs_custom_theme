@@ -7,9 +7,17 @@ libraries:
   - scs_custom_theme/global-styling
   - scs_custom_theme/global-scripts
 regions:
-  header: Header
-  primary_menu: Primary menu
-  highlighted: Highlighted
+  header_logo: Header Logo
+  header_nav: Header Nav
+  header_user_menu: Header UserMenu
   content: Content
-  sidebar_first: Sidebar first
-  footer: Footer
+  footer_logo: Footer Logo
+  footer_navs: Footer Navs
+  sidebar_logo: Sidebar Logo
+  sidebar_projectnav: Sidebar Projectnav
+  sidebar_secondary_nav: Sidebar SecondaryNav
+  sidebar_account_menu: Sidebar AccountMenu
+  breadcrumb_and_title: Breadcrumb and Title
+  content_full: Dashboard Content full
+  content_left: Dashboard Content left
+  content_right: Dashboard Content right
