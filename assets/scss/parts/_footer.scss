@@ -1,17 +1,17 @@
 @use '../base/vars' as *;
 
-#site-footer {
+footer.public-footer {
     padding-top: $spacing-l;
     padding-bottom: $spacing-l;
-    .footer-wrapper {
         width: 100%;
         grid-template-columns: 20% auto;
-        grid-template-areas: "logo nav" "logo text";
+        grid-template-areas: "logo nav";
         gap: $spacing-s;
-        .footer__site-branding {
+        display: grid;
+        .public-footer__logo {
             grid-area: logo;
         }
-        #footer__navigation {
+        .public-footer__navs {
             grid-area: nav;
             margin: 0;
             padding: 0;
@@ -31,11 +31,7 @@
                 }
             }
         }
-        .footer__text {
-            grid-area: text;
-        }
     }
-}
 
 // Tablet down
 @media screen and (max-width: $breakpoint-m-width) {

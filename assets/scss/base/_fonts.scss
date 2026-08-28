@@ -1,6 +1,10 @@
-/* @font-face {
-    font-family: ">>FONT NAME<<";
-    src: url("../fonts/>>FONT NAME<<.woff2") format("woff2"), url("../fonts/>>FONT NAME<<.woff") format("woff");
-    font-weight: normal;
+@font-face {
+    font-family: "Noto Sans";
+    src: url("../fonts/NotoSans.ttf") format("truetype");
     font-style: normal;
-} */
+}
+@font-face {
+    font-family: "Noto Sans Italic";
+    src: url("../fonts/NotoSans-Italic.ttf") format("truetype");
+    font-style: italic;
+}

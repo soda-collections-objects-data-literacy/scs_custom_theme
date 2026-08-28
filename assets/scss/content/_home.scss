@@ -4,17 +4,46 @@
 .home-hero-header {
     @include grid-12;
 
-    .home-hero-header__content {
-        grid-column: 1 / span 6;
+    &::before {
+        content: '';
+        width: calc((50vw - 50%) + ((100% - 11 * $spacing-s) / 12 * 7 + 6 * $spacing-s));
+        height: 100%;
+        top: 0;
+        left: calc(50% - 50vw);
+        position: absolute;
+        background-color: $color-slate-300;
+        z-index: -1;
+        border-radius: 0 $radius-large $radius-large 0;
+    }
 
+    .home-hero-header__content {
+        grid-column: 1 / span 5;
+        position: relative;
+        padding: 15rem 0;
+        padding-right: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         @media screen and (max-width: $breakpoint-m-width) {
             grid-column: 1 / span 12;
+        }
+        .home-hero-header__cta{
+            margin-top: $spacing-m;
         }
     }
 
     .home-hero-header__video {
-        grid-column: 7 / span 6;
-
+        grid-column: 6 / span 6;
+        padding: 15rem 0;
+        .video-wrapper{
+            border-radius: $radius-large;
+            box-shadow: $shadow-strong;
+            overflow: hidden;
+        }
+        video{
+            margin: 0;
+            width: 100%;
+        }
         @media screen and (max-width: $breakpoint-m-width) {
             grid-column: 1 / span 12;
         }

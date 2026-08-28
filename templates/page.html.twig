@@ -1,7 +1,7 @@
 {# Public shell for the homepage, login, and registration pages. #}
 <div class="public-layout">
   <header class="public-header" role="banner">
-    <div class="public-header__inner">
+    <div class="public-header__inner content-container">
       <div class="public-branding">
         {{ page.header_logo }}
       </div>
@@ -19,7 +19,7 @@
   </header>
 
   {% if page.edit_menu %}
-    <div class="drupal-edit-menu">
+    <div class="drupal-edit-menu content-container">
       {{ page.edit_menu }}
     </div>
   {% endif %}
@@ -34,7 +34,7 @@
     {{ page.content }}
   </main>
 
-  <footer class="public-footer" role="contentinfo">
+  <footer class="public-footer content-container" role="contentinfo">
     <div class="public-footer__logo">
       {{ page.footer_logo }}
     </div>

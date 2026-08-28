@@ -3,25 +3,29 @@
 
 .btn,
 button {
-    border: 1px solid $color-black;
-    background-color: $color-black;
+    border: 1px solid $color-slate-900;
+    background-color: $color-slate-900;
     color: $color-white;
     @include transition-all;
-    padding: 7px 15px 4px;
+    padding: 2rem 8rem 2rem;
     cursor: pointer;
     text-align: center;
     -webkit-appearance: none;
     height: auto;
     min-height: 35px;
-    border-radius: 24px;
-    width: auto;
-    display: table;
+    border-radius: $radius-small;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include text-nav-link;
+    @include font-text-regular;
     &:disabled,
     &[disabled] {
         opacity: 0.5;
     }
     &:hover {
         background-color: $color-white;
-        color: $color-black;
+        color: $color-slate-900;
     }
 }

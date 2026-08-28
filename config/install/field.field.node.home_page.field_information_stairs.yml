@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_information_stairs
+    - node.type.home_page
+    - node.type.information_stairs
+id: node.home_page.field_information_stairs
+field_name: field_information_stairs
+entity_type: node
+bundle: home_page
+label: 'Information Stairs'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      information_stairs: information_stairs
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

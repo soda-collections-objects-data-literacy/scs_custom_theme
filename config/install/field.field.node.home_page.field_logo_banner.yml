@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_logo_banner
+    - node.type.home_page
+    - node.type.logo_banner
+id: node.home_page.field_logo_banner
+field_name: field_logo_banner
+entity_type: node
+bundle: home_page
+label: 'Logo Banner'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      logo_banner: logo_banner
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

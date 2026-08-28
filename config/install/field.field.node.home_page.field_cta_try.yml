@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cta_try
+    - node.type.cta_try
+    - node.type.home_page
+id: node.home_page.field_cta_try
+field_name: field_cta_try
+entity_type: node
+bundle: home_page
+label: 'CTA Try'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      cta_try: cta_try
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

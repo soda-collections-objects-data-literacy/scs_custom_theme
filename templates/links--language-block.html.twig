@@ -1,0 +1,15 @@
+<div class="language-switcher">
+  {{ title_prefix }}
+  {% if heading %}
+    <h{{ heading.level }}{{ heading.attributes }}>{{ heading.text }}</h{{ heading.level }}>
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if links %}
+    <ul{{ attributes }}>
+      {% for item in links %}
+        <li{{ item.attributes }}>{{ item.link }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

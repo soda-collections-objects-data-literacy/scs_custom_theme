@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Logo Banner'
+type: logo_banner
+description: 'Reusable logo banner content.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

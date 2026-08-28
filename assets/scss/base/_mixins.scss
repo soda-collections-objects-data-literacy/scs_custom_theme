@@ -34,6 +34,12 @@
     margin-bottom: $bigger-text-mb;
 }
 
+@mixin text-nav-link() {
+    font-size: $nav-link-text-font-size;
+    margin-top: $nav-link-text-mt;
+    margin-bottom: $nav-link-text-mb;
+}
+
 @mixin text-super() {
     font-size: $super-text-font-size;
     margin-top: $super-text-mt;
@@ -108,21 +114,14 @@
 }
 
 @mixin font-text-regular() {
-    font-family: ">>FONT NAME<<", Arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-}
-
-@mixin font-text-emotional() {
-    font-family: "TT Travels", Arial, sans-serif;
-    font-weight: normal;
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: 500;
     font-style: normal;
 }
 
 @mixin font-text-bold() {
-    font-family: ">>FONT NAME<<", Arial, sans-serif;
-    font-weight: bold;
-    font-style: normal;
+    font-family: "Noto Sans", Arial, sans-serif;
+    font-weight: 700;
 }
 
 @mixin font-icon() {

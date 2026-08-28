@@ -1,0 +1,74 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.public-layout {
+    header {
+        .public-header__inner {
+            display: grid;
+            width: 100%;
+            padding-top: $spacing-s;
+            padding-bottom: $spacing-s;
+            grid-template-columns: 20% auto min-content min-content;
+            grid-template-areas: "logo space nav user-menu";
+            gap: $spacing-s;
+            align-items: start;
+
+            .public-branding {
+                grid-area: logo;
+            }
+
+            .public-nav {
+                grid-area: nav;
+                justify-self: end;
+                display: flex;
+                align-items: center;
+                gap: $spacing-s;
+                height: 12rem;
+
+                nav {
+                    height: 100%;
+
+                    ul {
+                        display: flex;
+                        gap: $spacing-s;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        height: 100%;
+                        align-items: center;
+                        li a {
+                            @include text-nav-link;
+                            @include font-text-bold;
+                        }
+                    }
+                }
+            }
+
+            .public-user-menu {
+                grid-area: user-menu;
+                justify-self: end;
+                height: 12rem;
+                align-items: center;
+
+                nav {
+                    height: 100%;
+
+                    ul {
+                        display: flex;
+                        gap: $spacing-s;
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                        height: 100%;
+                        align-items: center;
+
+                        li a {
+                            @include text-nav-link;
+                            @include font-text-bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

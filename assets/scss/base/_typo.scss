@@ -91,6 +91,11 @@ ul {
     margin: $spacing-mobile 0;
 }
 
+.text-nav-link {
+    @include text-nav-link;
+    @include font-text-bold;
+}
+
 .text-bigger {
     @include text-bigger;
 }
@@ -101,17 +106,17 @@ ul {
 
 .text-hero {
     @include text-hero;
-    @include font-text-emotional;
+    @include font-text-bold;
 }
 
 .text-hero-small {
     @include text-hero-small;
-    @include font-text-emotional;
+    @include font-text-bold;
 }
 
 .text-hero-mini {
     @include text-hero-mini;
-    @include font-text-emotional;
+    @include font-text-bold;
 }
 
 

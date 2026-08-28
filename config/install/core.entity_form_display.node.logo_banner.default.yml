@@ -1,0 +1,192 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.logo_banner
+    - field.field.node.logo_banner.field_logo_1
+    - field.field.node.logo_banner.field_logo_1_link
+    - field.field.node.logo_banner.field_logo_2
+    - field.field.node.logo_banner.field_logo_2_link
+    - field.field.node.logo_banner.field_logo_3
+    - field.field.node.logo_banner.field_logo_3_link
+    - field.field.node.logo_banner.field_logo_4
+    - field.field.node.logo_banner.field_logo_4_link
+    - field.field.node.logo_banner.field_logo_5
+    - field.field.node.logo_banner.field_logo_5_link
+    - field.field.node.logo_banner.field_logo_6
+    - field.field.node.logo_banner.field_logo_6_link
+    - field.field.node.logo_banner.field_logo_7
+    - field.field.node.logo_banner.field_logo_7_link
+    - field.field.node.logo_banner.field_logo_8
+    - field.field.node.logo_banner.field_logo_8_link
+    - field.field.node.logo_banner.field_logo_9
+    - field.field.node.logo_banner.field_logo_9_link
+    - field.field.node.logo_banner.field_logo_10
+    - field.field.node.logo_banner.field_logo_10_link
+  module:
+    - image
+    - link
+id: node.logo_banner.default
+targetEntityType: node
+bundle: logo_banner
+mode: default
+content:
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_logo_1:
+    type: image_image
+    weight: 1
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_1_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_2:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_2_link:
+    type: link_default
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_3:
+    type: image_image
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_3_link:
+    type: link_default
+    weight: 6
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_4:
+    type: image_image
+    weight: 7
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_4_link:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_5:
+    type: image_image
+    weight: 9
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_5_link:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_6:
+    type: image_image
+    weight: 11
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_6_link:
+    type: link_default
+    weight: 12
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_7:
+    type: image_image
+    weight: 13
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_7_link:
+    type: link_default
+    weight: 14
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_8:
+    type: image_image
+    weight: 15
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_8_link:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_9:
+    type: image_image
+    weight: 17
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_9_link:
+    type: link_default
+    weight: 18
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_logo_10:
+    type: image_image
+    weight: 19
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_10_link:
+    type: link_default
+    weight: 20
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden: {  }
