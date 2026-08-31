@@ -1,0 +1,22 @@
+{# Aspect preview content type. #}
+<section{{ attributes.addClass('aspect-preview') }} class="aspect-preview">
+  {% set headline = node.field_aspect_headline.value ?? '' %}
+  {% set description = node.field_aspect_desc.value ?? '' %}
+  {% set video = node.field_video.entity ?? null %}
+
+  {% if headline %}
+    <h3 class="aspect-preview__headline">{{ headline }}</h3>
+  {% endif %}
+
+  {% if description %}
+    <div class="aspect-preview__description">
+      {{ description|raw }}
+    </div>
+  {% endif %}
+
+  {% if video %}
+    <div class="aspect-preview__video">
+      {{ video|render }}
+    </div>
+  {% endif %}
+</section>

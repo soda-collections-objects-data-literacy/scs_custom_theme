@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_aspect_headline
+    - node.type.aspect_preview
+id: node.aspect_preview.field_aspect_headline
+field_name: field_aspect_headline
+entity_type: node
+bundle: aspect_preview
+label: Headline
+description: ''
+required: true
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: string

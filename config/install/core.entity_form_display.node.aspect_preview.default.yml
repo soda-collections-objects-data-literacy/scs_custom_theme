@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.aspect_preview.field_aspect_desc
+    - field.field.node.aspect_preview.field_aspect_headline
+    - field.field.node.aspect_preview.field_video
+    - node.type.aspect_preview
+  module:
+    - media_library
+id: node.aspect_preview.default
+targetEntityType: node
+bundle: aspect_preview
+mode: default
+content:
+  field_aspect_headline:
+    weight: 0
+    region: content
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+  field_aspect_desc:
+    weight: 1
+    region: content
+    type: text_textarea
+    settings:
+      rows: 5
+      placeholder: ''
+  field_video:
+    weight: 2
+    region: content
+    type: media_library
+    settings:
+      media_types: { }
+hidden:
+  status: true
+  promote: true
+  sticky: true
+  uid: true
+  created: true
+  changed: true

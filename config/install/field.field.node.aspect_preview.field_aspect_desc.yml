@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_aspect_desc
+    - node.type.aspect_preview
+id: node.aspect_preview.field_aspect_desc
+field_name: field_aspect_desc
+entity_type: node
+bundle: aspect_preview
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: text_long

@@ -1,7 +1,7 @@
 {# Information stairs content type. #}
 <section{{ attributes.addClass('information-stairs') }} class="information-stairs">
-  {% set section_headline = node.field_information_stairs_headline.value ?? '' %}
-  {% set section_subline = node.field_information_stairs_subline.value ?? '' %}
+  {% set section_headline = node.field_info_stairs_title.value ?? '' %}
+  {% set section_subline = node.field_info_stairs_sub.value ?? '' %}
 
   {% if section_headline %}
     <h2 class="information-stairs__headline">{{ section_headline }}</h2>
@@ -13,9 +13,9 @@
 
   <div class="information-stairs__grid">
     {% for i in [1, 2, 3] %}
-      {% set stair_headline = attribute(node, 'field_stair_' ~ i ~ '_headline').value ?? '' %}
-      {% set stair_subline = attribute(node, 'field_stair_' ~ i ~ '_subline').value ?? '' %}
-      {% set stair_description = attribute(node, 'field_stair_' ~ i ~ '_description').value ?? '' %}
+      {% set stair_headline = attribute(node, 'field_stair' ~ i ~ '_title').value ?? '' %}
+      {% set stair_subline = attribute(node, 'field_stair' ~ i ~ '_sub').value ?? '' %}
+      {% set stair_description = attribute(node, 'field_stair' ~ i ~ '_desc').value ?? '' %}
 
       {% if stair_headline or stair_subline or stair_description %}
         <article class="information-stairs__item">

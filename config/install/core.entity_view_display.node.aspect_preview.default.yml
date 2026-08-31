@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.aspect_preview.field_aspect_desc
+    - field.field.node.aspect_preview.field_aspect_headline
+    - field.field.node.aspect_preview.field_video
+    - node.type.aspect_preview
+  module:
+    - media
+id: node.aspect_preview.default
+targetEntityType: node
+bundle: aspect_preview
+mode: default
+content:
+  field_aspect_headline:
+    weight: 0
+    label: above
+    type: string
+    region: content
+  field_aspect_desc:
+    weight: 1
+    label: above
+    type: text_default
+    region: content
+  field_video:
+    weight: 2
+    label: above
+    type: media
+    region: content
+    settings:
+      image_style: ''
+      image_link: ''
+hidden:
+  links: true

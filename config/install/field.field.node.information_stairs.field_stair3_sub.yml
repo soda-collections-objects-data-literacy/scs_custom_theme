@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stair3_sub
+    - node.type.information_stairs
+id: node.information_stairs.field_stair3_sub
+field_name: field_stair3_sub
+entity_type: node
+bundle: information_stairs
+label: 'Stair 3 subline'
+description: ''
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: string
