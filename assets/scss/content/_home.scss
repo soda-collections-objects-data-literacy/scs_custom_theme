@@ -1,6 +1,7 @@
 @use '../base/vars'as *;
 @use '../base/mixins'as *;
 
+// Hero Header
 .home-hero-header {
     @include grid-12;
 
@@ -48,4 +49,22 @@
             grid-column: 1 / span 12;
         }
     }
+}
+
+// Logo Banner
+.logo-banner{
+    position: relative;
+&::before{
+    content: '';
+    width: 100vw;
+    position: absolute;
+    height: 100%;
+    background-color: $color-slate-300;
+    top: 0;
+    left: calc(50% - 50vw);
+}
+ul.logo-banner__items{
+    display: flex;
+    list-style-type: none;
+}
 }

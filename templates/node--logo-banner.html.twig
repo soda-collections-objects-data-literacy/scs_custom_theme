@@ -3,11 +3,12 @@
   <ul class="logo-banner__items">
     {% for logo_number in 1..10 %}
       {% set logo_field = 'field_logo_' ~ logo_number %}
-      {% set link_field = logo_field ~ '_link' %}
-      {% if node[logo_field].0.target_id %}
+      {% set link_field = 'field_logo_' ~ logo_number ~ '_link' %}
+
+      {% if content[link_field][0]['#url'] %}
         <li class="logo-banner__item">
-          {% if node[link_field].0.url %}
-            <a href="{{ node[link_field].0.url }}">
+          {% if content[link_field] %}
+            <a href="{{ content[link_field][0]['#url'] }}">
               {{ content[logo_field] }}
             </a>
           {% else %}

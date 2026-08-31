@@ -596,6 +596,23 @@ body.menu-open {
   }
 }
 
+.logo-banner {
+  position: relative;
+}
+.logo-banner::before {
+  content: "";
+  width: 100vw;
+  position: absolute;
+  height: 100%;
+  background-color: #D5DCE4;
+  top: 0;
+  left: calc(50% - 50vw);
+}
+.logo-banner ul.logo-banner__items {
+  display: flex;
+  list-style-type: none;
+}
+
 .template--404 .grid--50-50 {
   margin-top: 10vh;
 }
