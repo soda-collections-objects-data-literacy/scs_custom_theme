@@ -598,6 +598,7 @@ body.menu-open {
 
 .logo-banner {
   position: relative;
+  margin: 32rem 0;
 }
 .logo-banner::before {
   content: "";
@@ -611,6 +612,13 @@ body.menu-open {
 .logo-banner ul.logo-banner__items {
   display: flex;
   list-style-type: none;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: no-wrap;
+}
+.logo-banner ul.logo-banner__items li {
+  width: 15%;
+  padding: 12rem;
 }
 
 .template--404 .grid--50-50 {

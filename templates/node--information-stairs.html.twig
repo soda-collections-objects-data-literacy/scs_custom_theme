@@ -1,0 +1,39 @@
+{# Information stairs content type. #}
+<section{{ attributes.addClass('information-stairs') }} class="information-stairs">
+  {% set section_headline = node.field_information_stairs_headline.value ?? '' %}
+  {% set section_subline = node.field_information_stairs_subline.value ?? '' %}
+
+  {% if section_headline %}
+    <h2 class="information-stairs__headline">{{ section_headline }}</h2>
+  {% endif %}
+
+  {% if section_subline %}
+    <p class="information-stairs__subline">{{ section_subline }}</p>
+  {% endif %}
+
+  <div class="information-stairs__grid">
+    {% for i in [1, 2, 3] %}
+      {% set stair_headline = attribute(node, 'field_stair_' ~ i ~ '_headline').value ?? '' %}
+      {% set stair_subline = attribute(node, 'field_stair_' ~ i ~ '_subline').value ?? '' %}
+      {% set stair_description = attribute(node, 'field_stair_' ~ i ~ '_description').value ?? '' %}
+
+      {% if stair_headline or stair_subline or stair_description %}
+        <article class="information-stairs__item">
+          {% if stair_headline %}
+            <h3 class="information-stairs__item-headline">{{ stair_headline }}</h3>
+          {% endif %}
+
+          {% if stair_subline %}
+            <p class="information-stairs__item-subline">{{ stair_subline }}</p>
+          {% endif %}
+
+          {% if stair_description %}
+            <div class="information-stairs__item-description">
+              {{ stair_description|raw }}
+            </div>
+          {% endif %}
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

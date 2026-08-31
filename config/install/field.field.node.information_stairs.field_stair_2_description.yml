@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stair_2_description
+    - node.type.information_stairs
+id: node.information_stairs.field_stair_2_description
+field_name: field_stair_2_description
+entity_type: node
+bundle: information_stairs
+label: 'Stair 2 description'
+description: ''
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings: { }
+field_type: text_long
