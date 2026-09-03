@@ -1,0 +1,52 @@
+{# Public shell for the homepage, login, and registration pages. #}
+<div class="public-layout">
+	<header class="public-header" role="banner">
+		<div class="public-header__inner content-container">
+			<div class="public-branding">
+				{{ page.header_logo }}
+			</div>
+			{% if page.header_nav %}
+				<nav class="public-nav" aria-label="{{ 'Site navigation'|t }}">
+					{{ page.header_nav }}
+				</nav>
+			{% endif %}
+			{% if page.header_user_menu %}
+				<div class="public-user-menu">
+					{{ page.header_user_menu }}
+				</div>
+			{% endif %}
+		</div>
+	</header>
+
+	{% if page.edit_menu %}
+		<div class="drupal-edit-menu content-container">
+			{{ page.edit_menu }}
+		</div>
+	{% endif %}
+
+	{% if page.highlighted %}
+		<div class="public-highlighted">
+			{{ page.highlighted }}
+		</div>
+	{% endif %}
+
+	<main class="error-page error-page--500" id="main-content" role="main" tabindex="-1">
+		<div class="error-page__content">
+			<p class="error-page__code">500</p>
+			<h1 class="error-page__title">{{ 'Something went wrong'|t }}</h1>
+			<p class="error-page__message">{{ 'The page could not be displayed.'|t }}</p>
+			{% if error_message %}
+				<pre class="error-page__details">{{ error_message }}</pre>
+			{% endif %}
+		</div>
+	</main>
+
+	<footer class="public-footer content-container" role="contentinfo">
+		<div class="public-footer__logo">
+			{{ page.footer_logo }}
+		</div>
+		<nav class="public-footer__navs" aria-label="{{ 'Footer navigation'|t }}">
+			{{ page.footer_navs }}
+		</nav>
+	</footer>
+</div>

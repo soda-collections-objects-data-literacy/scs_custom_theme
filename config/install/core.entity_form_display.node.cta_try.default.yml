@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cta_try.field_cta_button_link
+    - field.field.node.cta_try.field_cta_description
+    - field.field.node.cta_try.field_cta_headline
+    - node.type.cta_try
+id: node.cta_try.default
+targetEntityType: node
+bundle: cta_try
+mode: default
+content:
+  field_cta_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+  field_cta_description:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+  field_cta_button_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+hidden:
+  status: true
+  promote: true
+  sticky: true
+  uid: true
+  created: true
+  changed: true

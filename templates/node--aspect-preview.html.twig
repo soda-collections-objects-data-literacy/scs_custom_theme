@@ -1,22 +1,28 @@
 {# Aspect preview content type. #}
-<section{{ attributes.addClass('aspect-preview') }} class="aspect-preview">
-  {% set headline = node.field_aspect_headline.value ?? '' %}
-  {% set description = node.field_aspect_desc.value ?? '' %}
-  {% set video = node.field_video.entity ?? null %}
+<article{{attributes.addClass('aspect-preview')}} class="aspect-preview">
+	{% set headline = node.field_aspect_headline.value ?? '' %}
+	{% set description = node.field_aspect_desc.value ?? '' %}
+	{% set video = node.field_video.entity ?? null %}
 
-  {% if headline %}
-    <h3 class="aspect-preview__headline">{{ headline }}</h3>
-  {% endif %}
+	<div class="aspect-preview__header">
+		{% if headline %}
+			<h2 class="aspect-preview__headline">{{ headline }}</h2>
+		{% endif %}
 
-  {% if description %}
-    <div class="aspect-preview__description">
-      {{ description|raw }}
-    </div>
-  {% endif %}
+		{% if description %}
+			<p class="aspect-preview__subline text-bigger">{{ description }}</p>
+		{% endif %}
+	</div>
 
-  {% if video %}
-    <div class="aspect-preview__video">
-     {{ content.field_video }}
-    </div>
-  {% endif %}
-</section>
+	{% if video %}
+		<div class="aspect-preview__video">
+			<div class="aspect-preview__video-background">
+				<div class="aspect-preview__video-background__rectangle"></div>
+				<div class="aspect-preview__video-background__circle"></div>
+			</div>
+			<div class="aspect-preview__video__wrapper">
+				{{ content.field_video }}
+			</div>
+		</div>
+	{% endif %}
+</article>

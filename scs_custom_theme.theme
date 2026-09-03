@@ -19,3 +19,17 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
     $variables['theme_hook_suggestions'][] = 'page__public';
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function scs_custom_theme_theme($existing, $type, $theme, $path): array {
+  return [
+    'scs_custom_theme_wsod' => [
+      'variables' => [
+        'error_message' => NULL,
+      ],
+      'template' => 'scs-custom-theme-wsod',
+    ],
+  ];
+}

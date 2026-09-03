@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cta_try.field_cta_button_link
+    - field.field.node.cta_try.field_cta_description
+    - field.field.node.cta_try.field_cta_headline
+    - node.type.cta_try
+id: node.cta_try.default
+targetEntityType: node
+bundle: cta_try
+mode: default
+content:
+  field_cta_headline:
+    type: string
+    weight: 0
+    region: content
+    label: above
+  field_cta_description:
+    type: basic_string
+    weight: 1
+    region: content
+    label: above
+  field_cta_button_link:
+    type: link
+    weight: 2
+    region: content
+    label: above
+hidden:
+  links: true

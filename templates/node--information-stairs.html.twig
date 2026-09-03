@@ -3,15 +3,15 @@
   {% set section_headline = node.field_info_stairs_title.value ?? '' %}
   {% set section_subline = node.field_info_stairs_sub.value ?? '' %}
 
-<div class="information-stairs__header">
-  {% if section_headline %}
-    <h2 class="information-stairs__headline">{{ section_headline }}</h2>
-  {% endif %}
+  <div class="information-stairs__header">
+    {% if section_headline %}
+      <h2 class="information-stairs__headline">{{ section_headline }}</h2>
+    {% endif %}
 
-  {% if section_subline %}
-    <p class="information-stairs__subline">{{ section_subline }}</p>
-  {% endif %}‹
-    </div>
+    {% if section_subline %}
+      <p class="information-stairs__subline text-bigger">{{ section_subline }}</p>
+    {% endif %}
+  </div>
 
   <div class="information-stairs__grid">
     {% for i in [1, 2, 3] %}
@@ -21,15 +21,16 @@
 
       {% if stair_headline or stair_subline or stair_description %}
         <article class="information-stairs__item">
-        <div class="information-staiars__item__header">
-          {% if stair_headline %}
-            <h3 class="information-stairs__item-headline">{{ stair_headline }}</h3>
-          {% endif %}
+          <div class="information-stairs__item__header">
+            {% if stair_headline %}
+              <h3 class="information-stairs__item-headline">{{ stair_headline }}</h3>
+            {% endif %}
 
-          {% if stair_subline %}
-            <p class="information-stairs__item-subline">{{ stair_subline }}</p>
-          {% endif %}
-        </div>
+            {% if stair_subline %}
+              <p class="information-stairs__item-subline">{{ stair_subline }}</p>
+            {% endif %}
+          </div>
+
           {% if stair_description %}
             <div class="information-stairs__item-description">
               {{ stair_description|raw }}

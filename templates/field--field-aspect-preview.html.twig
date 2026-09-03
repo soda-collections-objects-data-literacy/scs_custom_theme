@@ -1,0 +1,6 @@
+{# Render repeated aspect preview references inside a dedicated container. #}
+<section class="aspect-previews">
+  {% for item in items %}
+    {{- item.content -}}
+  {% endfor %}
+</section>

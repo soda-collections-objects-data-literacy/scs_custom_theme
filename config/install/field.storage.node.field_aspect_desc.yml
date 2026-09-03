@@ -4,8 +4,9 @@ dependencies: { }
 id: node.field_aspect_desc
 field_name: field_aspect_desc
 entity_type: node
-type: text_long
-settings: { }
+type: string_long
+settings:
+  max_length: 2000
 module: core
 locked: false
 cardinality: 1

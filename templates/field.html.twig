@@ -1,0 +1,4 @@
+{# Render field items directly without Drupal's default wrappers. #}
+{% for item in items %}
+  {{- item.content -}}
+{% endfor %}

@@ -204,7 +204,7 @@ img.avatar {
   }
 }
 .content-container {
-  max-width: 2000px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 0 50px;
 }
@@ -269,7 +269,7 @@ a {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   margin-top: 1em;
   margin-bottom: 1em;
   color: #17212B;
@@ -294,7 +294,7 @@ textarea,
 select {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -303,7 +303,7 @@ h1,
 .h1 {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
-  font-size: 9rem;
+  font-size: 6.2rem;
   margin-top: 0;
   margin-bottom: 0.28em;
 }
@@ -312,7 +312,7 @@ h2,
 .h2 {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
-  font-size: 7rem;
+  font-size: 5.4rem;
   margin-top: 1.85em;
   margin-bottom: 0.7em;
 }
@@ -321,7 +321,7 @@ h3,
 .h3 {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
-  font-size: 5rem;
+  font-size: 4.6rem;
   margin-top: 1.85em;
   margin-bottom: 0.7em;
 }
@@ -348,7 +348,7 @@ h6,
 .h6 {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   margin-top: 1.85em;
   margin-bottom: 0.7em;
 }
@@ -360,7 +360,7 @@ ul {
 }
 
 .text-nav-link {
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Noto Sans", Arial, sans-serif;
@@ -368,13 +368,13 @@ ul {
 }
 
 .text-bigger {
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-top: 0em;
   margin-bottom: 0em;
 }
 
 .text-super {
-  font-size: 9rem;
+  font-size: 5rem;
   margin-top: 3em;
   margin-bottom: 3em;
 }
@@ -467,6 +467,14 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.public-layout {
+  position: relative;
+}
+
+#main-content {
+  position: relative;
+}
+
 figure,
 img {
   position: relative;
@@ -548,6 +556,7 @@ body.menu-open {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 21px;
+  position: relative;
 }
 .home-hero-header::before {
   content: "";
@@ -628,6 +637,7 @@ body.menu-open {
 }
 .information-stairs .information-stairs__header {
   grid-column: 4/span 6;
+  margin-bottom: 8rem;
 }
 .information-stairs .information-stairs__grid {
   grid-column: 1/span 12;
@@ -658,9 +668,112 @@ body.menu-open {
 }
 .information-stairs .information-stairs__item .information-stairs__item__header h3 {
   margin-top: 0;
+  margin-bottom: 0.6em;
 }
 .information-stairs .information-stairs__item .information-stairs__item-description {
   grid-column: 5/span 7;
+}
+.information-stairs .information-stairs__item .information-stairs__item-description p {
+  margin: 0;
+}
+
+.aspect-preview {
+  margin: 22rem 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 21px;
+  position: relative;
+  padding-top: 14rem;
+  padding-bottom: 30rem;
+}
+.aspect-preview .aspect-preview__header {
+  grid-column: 4/span 6;
+  margin-bottom: 8rem;
+}
+.aspect-preview .aspect-preview__video {
+  grid-column: 3/span 8;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 21px;
+}
+.aspect-preview .aspect-preview__video .video-wrapper {
+  width: fit-content;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 12rem 0;
+}
+.aspect-preview .aspect-preview__video .aspect-preview__video__wrapper {
+  grid-column: 2/span 7;
+  position: relative;
+}
+.aspect-preview .aspect-preview__video .aspect-preview__video-background {
+  position: absolute;
+  grid-column: 1/span 3;
+  width: 100%;
+  height: 100%;
+}
+.aspect-preview .aspect-preview__video .aspect-preview__video-background__rectangle {
+  background-color: #D5DCE4;
+  width: 100%;
+  aspect-ratio: 10/13;
+  border-radius: 16px;
+}
+.aspect-preview .aspect-preview__video .aspect-preview__video-background__circle {
+  background-color: #FFA933;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  z-index: 0;
+  position: absolute;
+  top: -2rem;
+  left: calc(50% - 2rem);
+}
+.aspect-preview:nth-child(1) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(5) .aspect-preview__video .aspect-preview__video-background__rectangle {
+  background-color: #D5DCE4;
+}
+.aspect-preview:nth-child(2)::before, .aspect-preview:nth-child(4)::before {
+  content: "";
+  width: 100vw;
+  position: absolute;
+  height: 100%;
+  background-color: #D5DCE4;
+  top: 0;
+  left: calc(50% - 50vw);
+}
+.aspect-preview:nth-child(2) .aspect-preview__header, .aspect-preview:nth-child(4) .aspect-preview__header {
+  z-index: 0;
+}
+.aspect-preview:nth-child(2) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(4) .aspect-preview__video .aspect-preview__video-background__rectangle {
+  background-color: #4D5866;
+}
+.aspect-preview:nth-child(3) .aspect-preview__video .aspect-preview__video-background__rectangle {
+  background-color: #D5DCE4;
+}
+.cta-try {
+  padding: 12rem 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 21px;
+  margin: 22rem 0;
+  position: relative;
+}
+.cta-try::before {
+  content: "";
+  width: 100vw;
+  position: absolute;
+  height: 100%;
+  background-color: #D5DCE4;
+  top: 0;
+  left: calc(50% - 50vw);
+  z-index: -1;
+}
+.cta-try .cta-try__headline, .cta-try .cta-try__description, .cta-try .cta-try__button {
+  grid-column: 4/span 6;
+  text-align: center;
+  margin: 0;
+}
+.cta-try .cta-try__button {
+  justify-self: center;
 }
 
 .template--404 .grid--50-50 {
@@ -698,7 +811,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Noto Sans", Arial, sans-serif;
@@ -824,7 +937,7 @@ header .site-header__container .site-navigation-wrapper {
   background-color: #D5DCE4;
 }
 .drupal-edit-menu ul li a {
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -863,7 +976,7 @@ header .site-header__container .site-navigation-wrapper {
   align-items: center;
 }
 .public-layout header .public-header__inner .public-nav nav ul li a {
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Noto Sans", Arial, sans-serif;
@@ -888,7 +1001,7 @@ header .site-header__container .site-navigation-wrapper {
   align-items: center;
 }
 .public-layout header .public-header__inner .public-user-menu nav ul li a {
-  font-size: 3.2rem;
+  font-size: 2.6rem;
   margin-top: 0;
   margin-bottom: 0;
   font-family: "Noto Sans", Arial, sans-serif;

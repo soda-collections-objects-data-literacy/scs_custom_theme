@@ -1,0 +1,21 @@
+{# CTA Try content type. #}
+<section{{ attributes.addClass('cta-try') }} class="cta-try">
+  {% set headline = node.field_cta_headline.value ?? '' %}
+  {% set description = node.field_cta_description.value ?? '' %}
+  {% set button_url = node.field_cta_button_link.0.url ?? '' %}
+  {% set button_label = node.field_cta_button_link.0.title ?? 'Mehr erfahren' %}
+
+  {% if headline %}
+    <h2 class="cta-try__headline">{{ headline }}</h2>
+  {% endif %}
+
+  {% if description %}
+    <p class="cta-try__description">{{ description }}</p>
+  {% endif %}
+
+  {% if button_url %}
+    <a class="cta-try__button btn" href="{{ button_url }}">
+      {{ button_label }}
+    </a>
+  {% endif %}
+</section>
