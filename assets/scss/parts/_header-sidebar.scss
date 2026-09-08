@@ -1,0 +1,215 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.dashboard-layout {
+    background-color: $color-slate-300;
+    @include grid-12;
+    height: 100vh;
+    gap: 2rem;
+
+    .dashboard-sidebar {
+        grid-column: 1 / span 2;
+        position: relative;
+        background-color: $color-white;
+        margin: 2rem;
+        margin-right: 0;
+        border-radius: $radius-large;
+        display: grid;
+        grid-template-rows: 20rem auto 12rem;
+        height: calc(100vh - 4rem);
+
+        @media screen and (max-width: $breakpoint-m-width) {
+            grid-column: 1 / span 12;
+            min-height: auto;
+            height: auto;
+            padding-top: $spacing-s;
+            padding-bottom: $spacing-s;
+        }
+
+        .dashboard-sidebar__logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 2rem;
+
+            img {
+                max-height: 100%;
+                height: auto;
+                max-width: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .dashboard-sidebar__dark {
+            background-color: $color-slate-900;
+            color: $color-white;
+            padding: $spacing-m;
+            border-top: 2px solid $color-orange-500;
+            border-bottom: 2px solid $color-orange-500;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: $spacing-m;
+            * {
+                color: $color-white;
+            }
+
+            .dashboard-sidebar__projects {
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+
+                .dashboard-sidebar__projects-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .dashboard-sidebar__projects-header-icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 50%;
+                        background-color: $color-orange-500;
+                        cursor: pointer;
+
+                        svg {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                        }
+                    }
+                }
+            }
+
+            .dashboard-sidebar__projectnav {
+                min-height: 0;
+                overflow: hidden;
+            }
+
+            .dashboard-sidebar__project-list {
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .dashboard-sidebar__project-acronym {
+                @include font-text-bold;
+                font-size: 1.5rem;
+                background-color: $color-slate-600;
+                color: $color-white;
+                aspect-ratio: 1 / 1;
+                width: 4rem;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: $radius-small;
+                flex: 0 0 auto;
+            }
+
+            .dashboard-sidebar__project-link {
+                display: flex;
+                align-items: center;
+                gap: $spacing-s;
+
+                span {
+                    margin: 0;
+                }
+            }
+
+            .dashboard-sidebar__projects-see-all {
+                display: block;
+                margin-top: $spacing-s;
+            }
+        }
+
+        .dashboard-sidebar__account-menu {
+            button.dashboard-sidebar__account-menu-header {
+                display: flex;
+                gap: $spacing-s;
+                width: 100%;
+                background-color: $color-slate-900;
+                color: $color-white;
+                border-radius: 0 0 $radius-large $radius-large;
+                border: none;
+                padding: 0;
+                padding-left: $spacing-m;
+                padding-right: $spacing-m;
+                cursor: pointer;
+                height: 100%;
+                justify-content: flex-start;
+
+                span {
+                    @include text-nav-link;
+                    @include font-text-bold;
+                    color: $color-white;
+                }
+
+                .dashboard-sidebar__account-menu-picture {
+                    width: 7rem;
+                    height: 7rem;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+    .dashboard-main {
+        grid-column: 3 / span 10;
+        position: relative;
+        background-color: $color-white;
+        padding: $spacing-m;
+        margin: 2rem;
+        margin-left: 0;
+        border-radius: $radius-large;
+        overflow-y: auto;
+
+        .dashboard-content {
+            @include grid-9;
+        }
+
+        @media screen and (max-width: $breakpoint-m-width) {
+            grid-column: 1 / span 12;
+            min-height: auto;
+            height: auto;
+            padding-top: $spacing-s;
+            padding-bottom: $spacing-s;
+        }
+    }
+}
+
+.drupal-edit-menu {
+    ul {
+        display: flex;
+        gap: $spacing-s;
+        margin: $spacing-s 0;
+        padding: 0 $spacing-s;
+        list-style: none;
+        height: 100%;
+        align-items: center;
+        background-color: $color-slate-100;
+        border-radius: $radius-small;
+        width: fit-content;
+
+        li {
+            padding: $spacing-xs $spacing-s;
+            border-radius: $radius-small;
+
+            &:hover {
+                background-color: $color-slate-300;
+            }
+
+            a {
+                @include text-nav-link;
+            }
+        }
+    }
+}

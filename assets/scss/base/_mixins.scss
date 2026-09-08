@@ -176,3 +176,9 @@
     grid-template-columns: repeat(12, 1fr);
     gap: $spacing-s;
 }
+
+@mixin grid-9 {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: $spacing-s;
+}

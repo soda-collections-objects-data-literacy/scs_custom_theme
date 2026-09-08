@@ -1,3 +1,6 @@
+{% if is_manager_page %}
+  {% include 'page--dashboard.html.twig' %}
+{% else %}
 {# Public shell for the homepage, login, and registration pages. #}
 <div class="public-layout">
   <header class="public-header" role="banner">
@@ -43,3 +46,4 @@
     </nav>
   </footer>
 </div>
+{% endif %}

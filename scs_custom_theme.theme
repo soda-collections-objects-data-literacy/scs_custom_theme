@@ -9,14 +9,69 @@
  */
 function scs_custom_theme_preprocess_page(array &$variables): void {
   $path = trim((string) ($variables['root_path'] ?? ''), '/');
+  $request_path = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+  $is_manager_page = str_contains($path, 'soda-scs-manager') || str_contains($request_path, '/soda-scs-manager');
+  $variables['is_manager_page'] = $is_manager_page;
 
-  if ($path === 'soda-scs-manager/dashboard') {
+  $variables['user_picture'] = [];
+  $variables['dashboard_projects'] = [];
+  $account = \Drupal::currentUser();
+  if ($is_manager_page && $account->isAuthenticated()) {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
+    if ($user && $user->hasField('user_picture') && !$user->get('user_picture')->isEmpty()) {
+      $variables['user_picture'] = $user->get('user_picture')->view([
+        'label' => 'hidden',
+      ]);
+    }
+
+    $project_query = \Drupal::entityTypeManager()
+      ->getStorage('soda_scs_project')
+      ->getQuery()
+      ->accessCheck(TRUE)
+      ->sort('label', 'ASC');
+
+    if (!$account->hasPermission('soda scs manager admin')) {
+      $project_query->condition(
+        $project_query->orConditionGroup()
+          ->condition('owner', $account->id())
+          ->condition('members', $account->id())
+      );
+    }
+
+    $projects = \Drupal::entityTypeManager()
+      ->getStorage('soda_scs_project')
+      ->loadMultiple($project_query->execute());
+
+    foreach ($projects as $project) {
+      $label = (string) $project->label();
+      $variables['dashboard_projects'][] = [
+        'acronym' => mb_strtoupper(mb_substr($label, 0, 1)),
+        'label' => $label,
+        'url' => $project->toUrl('canonical')->toString(),
+      ];
+    }
+  }
+
+  if ($is_manager_page) {
     $variables['theme_hook_suggestions'][] = 'page__dashboard';
     return;
   }
 
   if ($variables['is_front'] || in_array($path, ['user/login', 'user/register'], TRUE)) {
     $variables['theme_hook_suggestions'][] = 'page__public';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function scs_custom_theme_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  $path = trim((string) ($variables['root_path'] ?? ''), '/');
+  $request_path = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+
+  if (str_contains($path, 'soda-scs-manager') || str_contains($request_path, '/soda-scs-manager')) {
+    $suggestions = array_values(array_diff($suggestions, ['page__public']));
+    $suggestions[] = 'page__dashboard';
   }
 }
 

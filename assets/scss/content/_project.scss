@@ -1,0 +1,36 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.project{
+    &--card{
+        display: flex;
+        background-color: $color-white;
+        border-radius: $radius-small;
+        box-shadow: $shadow-small;
+        padding: $spacing-s;
+        border: 1px solid $color-slate-300;
+        align-items: center;
+        gap: $spacing-s;
+        *{
+            margin: 0;
+        }
+        .project-card__header{
+            display: flex;
+            gap: $spacing-s;
+            align-items: center;
+            .project-card__acronym{
+                @include font-text-bold;
+                font-size: 1.5rem;
+                background-color: $color-slate-900;
+                color: $color-white;
+                aspect-ratio: 1/1;
+                width: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: $radius-small;
+                padding: 1rem;
+            }
+        }
+    }
+}

@@ -1,47 +1,77 @@
 {# Authenticated SCS Manager dashboard, separate from Drupal administration. #}
 <div class="dashboard-layout">
-  <aside class="dashboard-sidebar" role="complementary">
-    <div class="dashboard-sidebar__logo">
-      {{ page.sidebar_logo }}
-    </div>
-    <nav class="dashboard-sidebar__projectnav" aria-label="{{ 'Project navigation'|t }}">
-      {{ page.sidebar_projectnav }}
-    </nav>
-    <nav class="dashboard-sidebar__secondary-nav" aria-label="{{ 'Secondary navigation'|t }}">
-      {{ page.sidebar_secondary_nav }}
-    </nav>
-    <div class="dashboard-sidebar__account-menu">
-      {{ page.sidebar_account_menu }}
-    </div>
-  </aside>
+	<aside class="dashboard-sidebar" role="complementary">
+		<div class="dashboard-sidebar__logo">
+			{{ page.sidebar_logo }}
+		</div>
+		<div class="dashboard-sidebar__dark">
+			<div class="dashboard-sidebar__projects">
+				<div class="dashboard-sidebar__projects-header">
+					<p class="dashboard-sidebar__projects-title">{{ 'Projects'|t }}</p>
+					<div class="dashboard-sidebar__projects-header-icon">
+						<svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<line x1="6" y1="-4.37114e-08" x2="6" y2="12" stroke="#17212B" stroke-width="2"/>
+							<line x1="12" y1="6" y2="6" stroke="#17212B" stroke-width="2"/>
+						</svg>
+					</div>
+				</div>
+				<nav class="dashboard-sidebar__projectnav" aria-label="{{ 'Project navigation'|t }}">
+					<ul class="dashboard-sidebar__project-list">
+						{% for project in dashboard_projects %}
+							<li class="dashboard-sidebar__project-item">
+								<a class="dashboard-sidebar__project-link" href="{{ project.url }}">
+									<span class="dashboard-sidebar__project-acronym" aria-hidden="true">{{ project.acronym }}</span>
+									<span class="dashboard-sidebar__project-name">{{ project.label }}</span>
+								</a>
+							</li>
+						{% else %}
+							<li class="dashboard-sidebar__project-item dashboard-sidebar__project-item--empty">
+								{{ 'No projects available'|t }}
+							</li>
+						{% endfor %}
+					</ul>
+					<a class="dashboard-sidebar__projects-see-all" href="{{ path('soda_scs_manager.dashboard') }}">
+						{{ 'See all'|t }}
+					</a>
+				</nav>
+			</div>
+			<nav class="dashboard-sidebar__secondary-nav" aria-label="{{ 'Secondary navigation'|t }}">
+				{{ page.sidebar_secondary_nav }}
+			</nav>
+	</div>
+	<div class="dashboard-sidebar__account-menu">
+		<button type="button" class="dashboard-sidebar__account-menu-header" aria-controls="dashboard-account-menu-content" aria-expanded="false">
 
-  {% if page.edit_menu %}
-    <div class="drupal-edit-menu">
-      {{ page.edit_menu }}
-    </div>
-  {% endif %}
+			{% if user_picture %}
+				<div class="dashboard-sidebar__account-menu-picture" aria-hidden="true">
+					{{ user_picture }}
+				</div>
+			{% endif %}
 
-  <main id="main-content" class="dashboard-main" tabindex="-1">
-    <div class="dashboard-breadcrumb-and-title">
-      {{ page.breadcrumb_and_title }}
-    </div>
 
-    <section class="dashboard-content dashboard-content--full">
-      {{ page.content_full }}
-    </section>
+			<span class="dashboard-sidebar__account-menu-title">{{ 'Account menu'|t }}</span>
+		</button>
+		<div id="dashboard-account-menu-content" class="dashboard-sidebar__account-menu-content" hidden>
+			<nav class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
+				{{ page.sidebar_account_menu }}
+			</nav>
+		</div>
+	</div>
+</aside>
 
-    <div class="dashboard-content-columns">
-      <section class="dashboard-content dashboard-content--left">
-        {{ page.content_left }}
-      </section>
-      <section class="dashboard-content dashboard-content--right">
-        {{ page.content_right }}
-      </section>
-    </div>
-  </main>
+<main id="main-content" class="dashboard-main" tabindex="-1">
+	<div class="dashboard-breadcrumb-and-title">
+		{{ page.breadcrumb_and_title }}
+	</div>
 
-  <footer class="dashboard-footer" role="contentinfo">
-    {{ page.footer_logo }}
-    {{ page.footer_navs }}
-  </footer>
-</div>
+	{% if page.edit_menu %}
+		<div class="drupal-edit-menu">
+			{{ page.edit_menu }}
+		</div>
+	{% endif %}
+
+	<section class="dashboard-content dashboard-content--full">
+		{{ page.content }}
+	</section>
+
+</main></div>
