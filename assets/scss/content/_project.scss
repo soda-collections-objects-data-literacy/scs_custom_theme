@@ -1,24 +1,42 @@
 @use '../base/vars'as *;
 @use '../base/mixins'as *;
 
-.project{
-    &--card{
-        display: flex;
+.project {
+    &--card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 50% 2fr 1fr 1fr 6rem;
         background-color: $color-white;
         border-radius: $radius-small;
         box-shadow: $shadow-small;
-        padding: $spacing-s;
+        padding: $spacing-xs;
         border: 1px solid $color-slate-300;
         align-items: center;
         gap: $spacing-s;
-        *{
+        margin-bottom: $spacing-xs;
+
+        @for $index from 1 through 30 {
+            &:nth-child(#{$index}) {
+                z-index: 100 - $index;
+            }
+        }
+
+        * {
             margin: 0;
         }
-        .project-card__header{
+
+        >* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card__header {
             display: flex;
             gap: $spacing-s;
             align-items: center;
-            .project-card__acronym{
+            position: static;
+
+            .project-card__acronym {
                 @include font-text-bold;
                 font-size: 1.5rem;
                 background-color: $color-slate-900;
@@ -32,5 +50,179 @@
                 padding: 1rem;
             }
         }
+
+        .project-card__link {
+            display: flex;
+            align-items: center;
+            gap: $spacing-s;
+            color: inherit;
+            text-decoration: none;
+
+            &:focus-visible {
+                outline: 3px solid $color-orange-500;
+                outline-offset: 3px;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .project-card__edit {
+            margin-left: auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .project-card__actions-toggle {
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+            padding: $spacing-xs;
+            font-size: 1.5rem;
+            line-height: 1;
+
+            &:focus-visible {
+                outline: 3px solid $color-orange-500;
+                outline-offset: 2px;
+            }
+        }
+
+        .project-card__actions {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            z-index: 4;
+            display: grid;
+            gap: $spacing-xs;
+            min-width: 8rem;
+            padding: $spacing-xs;
+            background-color: $color-white;
+            border: 1px solid $color-slate-300;
+            border-radius: $radius-small;
+            box-shadow: $shadow-small;
+
+            a {
+                padding: $spacing-xs $spacing-s;
+                text-decoration: none;
+
+                &:hover,
+                &:focus-visible {
+                    background-color: $color-slate-100;
+                }
+            }
+        }
+
+        .project-card__members {
+            display: flex;
+            align-items: center;
+        }
+
+        .project-card__member {
+            width: 6rem;
+            height: 6rem;
+            margin-left: -3rem;
+            border: 2px solid $color-white;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: $color-slate-300;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            @for $index from 1 through 30 {
+                &:nth-child(#{$index}) {
+                    z-index: 30 - $index;
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .project-card__member--owner {
+            border-color: $color-orange-500;
+        }
+
+        .project-card__member-initials {
+            @include font-text-bold;
+            font-size: 1.8rem;
+        }
+
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2em;
+            pointer-events: none;
+
+            .tag {
+                background-color: $color-slate-300;
+                color: $color-slate-900;
+                padding: 0.2em 0.4em;
+                border-radius: $radius-small;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+        }
+
+        .project-card__date {
+            pointer-events: none;
+
+            p {
+                color: $color-slate-600;
+            }
+        }
     }
+}
+
+// Project page styles
+.project--left {
+    grid-column: 1 / span 6;
+
+    .project__header {}
+
+    .project__applications {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: $spacing-s;
+    }
+}
+
+.project--right {
+    grid-column: 7 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-s;
+    justify-content: stretch;
+    .project__section {
+        background-color: $color-slate-100;
+        border-radius: $radius-small;
+        border: 1px solid $color-slate-300;
+        padding: $spacing-s;
+
+        .project__section-title {
+            margin-top: 0;
+        }
+    }
+
+    .project__members {}
+
+    .project__note {}
+
+    .project__files {}
+
+    .project__delete {}
 }

@@ -88,3 +88,42 @@ function scs_custom_theme_theme($existing, $type, $theme, $path): array {
     ],
   ];
 }
+
+/**
+ * Prepares project member profile pictures for project cards.
+ */
+function scs_custom_theme_preprocess_soda_scs_manager__project_card(array &$variables): void {
+  $variables['member_profiles'] = [];
+  $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+  $member_ids = array_map('intval', $variables['members_ids'] ?? []);
+  $owner_id = (int) ($variables['owner_id'] ?? ($member_ids[0] ?? 0));
+
+  if ($owner_id > 0) {
+    $member_ids = array_values(array_unique(array_merge([$owner_id], $member_ids)));
+  }
+
+  foreach ($member_ids as $member_id) {
+    $user = $user_storage->load($member_id);
+    if (!$user) {
+      continue;
+    }
+
+    $name = (string) $user->getDisplayName();
+    $profile = [
+      'name' => $name,
+      'initials' => mb_strtoupper(mb_substr($name, 0, 1)),
+      'is_owner' => $member_id === $owner_id,
+      'picture' => [],
+    ];
+
+    if ($user->hasField('user_picture') && !$user->get('user_picture')->isEmpty()) {
+      $profile['picture'] = $user->get('user_picture')->view(['label' => 'hidden']);
+    }
+
+    $variables['member_profiles'][] = $profile;
+  }
+
+  usort($variables['member_profiles'], static function (array $a, array $b): int {
+    return (int) $b['is_owner'] <=> (int) $a['is_owner'];
+  });
+}

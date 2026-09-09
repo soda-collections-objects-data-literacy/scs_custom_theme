@@ -78,4 +78,66 @@
       });
     }
   };
+
+  Drupal.behaviors.scsCustomThemeProjectActions = {
+    attach: function (context) {
+      once('scsCustomThemeProjectActions', '.project-card__actions-toggle', context).forEach(function (toggle) {
+        var actionsId = toggle.getAttribute('aria-controls');
+        var actionContainer = toggle.closest('.project-card__edit');
+        var actions = actionContainer ? actionContainer.querySelector('.project-card__actions') : null;
+
+        if (!actions) {
+          return;
+        }
+
+        toggle.addEventListener('click', function (event) {
+          event.stopPropagation();
+          var expanded = toggle.getAttribute('aria-expanded') === 'true';
+
+          document.querySelectorAll('.project-card__actions[aria-hidden="false"]').forEach(function (openActions) {
+            openActions.hidden = true;
+            openActions.setAttribute('aria-hidden', 'true');
+            var openToggle = openActions.closest('.project-card__edit').querySelector('.project-card__actions-toggle');
+            openToggle.setAttribute('aria-expanded', 'false');
+          });
+
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          actions.hidden = expanded;
+          actions.setAttribute('aria-hidden', String(expanded));
+
+          if (!expanded) {
+            var firstAction = actions.querySelector('[role="menuitem"]');
+            if (firstAction) {
+              firstAction.focus();
+            }
+          }
+        });
+
+        toggle.addEventListener('keydown', function (event) {
+          if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggle.click();
+          }
+        });
+
+        actions.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            actions.hidden = true;
+            actions.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.focus();
+          }
+        });
+
+        document.addEventListener('click', function (event) {
+          if (!actions.hidden && !actions.contains(event.target) && !toggle.contains(event.target)) {
+            actions.hidden = true;
+            actions.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    }
+  };
 })(Drupal, once);
