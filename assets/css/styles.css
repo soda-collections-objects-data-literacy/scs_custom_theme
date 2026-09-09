@@ -1166,6 +1166,46 @@ body.menu-open {
   grid-column: 1/span 8;
 }
 
+.application--card .application__meta .application__health-status {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.application--card .application__meta .application__health-status .application__health__icon {
+  border-radius: 50%;
+  height: 0.6em;
+  width: 0.6em;
+}
+.application--card .application__meta .application__health-status--unknown .application__health__icon {
+  background-color: #4D5866;
+}
+.application--card .application__meta .application__health-status--unknown p {
+  color: #4D5866;
+}
+.application--card .application__meta .application__health-status--stopped .application__health__icon {
+  background-color: #E68500;
+}
+.application--card .application__meta .application__health-status--stopped p {
+  color: #E68500;
+}
+.application--card .application__meta .application__health-status--failure .application__health__icon {
+  background-color: #A80000;
+}
+.application--card .application__meta .application__health-status--failure p {
+  color: #A80000;
+}
+.application--card .application__meta .application__health-status--running .application__health__icon {
+  background-color: #006117;
+}
+.application--card .application__meta .application__health-status--running p {
+  color: #006117;
+}
+.application--card .application__core {
+  display: block;
+  padding: 21px;
+  background-color: #D5DCE4;
+  border-radius: 8px;
+}
 .btn,
 button {
   border: 1px solid #17212B;
