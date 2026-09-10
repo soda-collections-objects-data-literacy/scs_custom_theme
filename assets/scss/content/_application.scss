@@ -1,61 +1,70 @@
 @use '../base/vars'as *;
 @use '../base/mixins'as *;
 
-.application{
-    &--card{
-        .application__meta{
-            .application__health-status{
+.application {
+    &--card {
+        .application__meta {
+            .application__health-status {
                 display: flex;
                 gap: $spacing-xs;
                 align-items: center;
-                .application__health__icon{
+
+                .application__health__icon {
                     border-radius: 50%;
                     height: 0.6em;
                     width: 0.6em;
                 }
-                &--unknown{
-                    .application__health__icon{
-                    background-color: $color-slate-600;
+
+                &--unknown {
+                    .application__health__icon {
+                        background-color: $color-slate-600;
                     }
-                    p{
+
+                    p {
                         color: $color-slate-600;
                     }
                 }
-                &--stopped{
-                    .application__health__icon{
-                    background-color: $color-orange-600;
+
+                &--stopped {
+                    .application__health__icon {
+                        background-color: $color-red;
                     }
-                    p{
-                        color: $color-orange-600;
-                    }
-                }
-                 &--failure{
-                    .application__health__icon{
-                    background-color: $color-red;
-                    }
-                    p{
+
+                    p {
                         color: $color-red;
                     }
                 }
-                 &--running{
-                    .application__health__icon{
-                    background-color: $color-green;
+
+                &--problem {
+                    .application__health__icon {
+                        background-color: $color-orange-600;
                     }
-                    p{
+
+                    p {
+                        color: $color-orange-600;
+                    }
+                }
+
+                &--running {
+                    .application__health__icon {
+                        background-color: $color-green;
+                    }
+
+                    p {
                         color: $color-green;
                     }
                 }
             }
 
         }
-        .application__core{
+
+        .application__core {
             display: block;
             padding: $spacing-s;
             background-color: $color-slate-300;
             border-radius: $radius-small;
         }
-        .application__title{
 
-        }
+        .application__title {}
     }
 }

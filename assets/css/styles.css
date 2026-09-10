@@ -976,12 +976,81 @@ body.menu-open {
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
-.project--card .project-card__actions a {
+.project--card .project-card__actions a,
+.project--card .project-card__actions button {
   padding: 10px 21px;
   text-decoration: none;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
 }
-.project--card .project-card__actions a:hover, .project--card .project-card__actions a:focus-visible {
+.project--card .project-card__actions a:hover, .project--card .project-card__actions a:focus-visible,
+.project--card .project-card__actions button:hover,
+.project--card .project-card__actions button:focus-visible {
   background-color: #F4F6F8;
+}
+.project--card .project-card__delete-confirmation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.56);
+}
+.project--card .project-card__delete-confirmation[hidden] {
+  display: none;
+}
+.project--card .project-card__delete-confirmation__backdrop {
+  position: absolute;
+  inset: 0;
+}
+.project--card .project-card__delete-confirmation__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(30rem, 100vw - 2rem);
+  background: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #D5DCE4;
+  padding: 21px;
+}
+.project--card .project-card__delete-confirmation__dialog h3 {
+  margin-bottom: 10px;
+}
+.project--card .project-card__delete-confirmation__dialog p {
+  margin-bottom: 21px;
+  color: #4D5866;
+}
+.project--card .project-card__delete-confirmation__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.project--card .project-card__delete-confirmation__actions button,
+.project--card .project-card__delete-confirmation__actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 10px 21px;
+  border-radius: 8px;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+}
+.project--card .project-card__delete-confirmation__actions .project-card__delete-confirmation__cancel {
+  border: 1px solid #D5DCE4;
+  background: #FFFFFF;
+  color: #17212B;
+}
+.project--card .project-card__delete-confirmation__actions .project-card__delete-confirmation__confirm {
+  border: 0;
+  background: #A80000;
+  color: #FFFFFF;
 }
 .project--card .project-card__members {
   display: flex;
@@ -1152,6 +1221,22 @@ body.menu-open {
 .project--right .project__section .project__section-title {
   margin-top: 0;
 }
+.project--right .project__section .project__section__header {
+  display: flex;
+  gap: 21px;
+  justify-content: space-between;
+  align-items: center;
+}
+.project--right .project-card__delete-trigger {
+  width: 100%;
+  display: block;
+  background-color: transparent;
+  color: #A80000;
+  border-color: #A80000;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 700;
+}
+
 .dashboard__actions {
   grid-column: 1/span 3;
 }
@@ -1183,16 +1268,16 @@ body.menu-open {
   color: #4D5866;
 }
 .application--card .application__meta .application__health-status--stopped .application__health__icon {
-  background-color: #E68500;
-}
-.application--card .application__meta .application__health-status--stopped p {
-  color: #E68500;
-}
-.application--card .application__meta .application__health-status--failure .application__health__icon {
   background-color: #A80000;
 }
-.application--card .application__meta .application__health-status--failure p {
+.application--card .application__meta .application__health-status--stopped p {
   color: #A80000;
+}
+.application--card .application__meta .application__health-status--problem .application__health__icon {
+  background-color: #E68500;
+}
+.application--card .application__meta .application__health-status--problem p {
+  color: #E68500;
 }
 .application--card .application__meta .application__health-status--running .application__health__icon {
   background-color: #006117;
@@ -1256,6 +1341,22 @@ button:hover p {
 button p {
   margin: 0;
   color: #FFFFFF;
+}
+.btn--extern,
+button--extern {
+  background-color: transparent;
+  color: #17212B;
+  padding: 1rem 2rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn--extern::after,
+button--extern::after {
+  content: "↗";
+  font-size: 0.8em;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 700;
 }
 
 input {

@@ -1,5 +1,5 @@
-@use '../base/vars' as *;
-@use '../base/mixins' as *;
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
 
 .btn,
 button {
@@ -21,19 +21,37 @@ button {
     gap: $spacing-s;
     @include text-nav-link;
     @include font-text-regular;
+
     &:disabled,
     &[disabled] {
         opacity: 0.5;
     }
+
     &:hover {
         background-color: $color-white;
         color: $color-slate-900;
-        p{
+
+        p {
             color: $color-slate-900;
         }
     }
-    p{
+
+    p {
         margin: 0;
         color: $color-white;
+    }
+
+    &--extern {
+        background-color: transparent;
+        color: $color-slate-900;
+        padding: 1rem 2rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: $spacing-xs;
+        &::after{
+            content: '↗';
+            font-size: 0.8em;
+            @include font-text-bold;
+        }
     }
 }

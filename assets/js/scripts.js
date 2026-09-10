@@ -82,7 +82,6 @@
   Drupal.behaviors.scsCustomThemeProjectActions = {
     attach: function (context) {
       once('scsCustomThemeProjectActions', '.project-card__actions-toggle', context).forEach(function (toggle) {
-        var actionsId = toggle.getAttribute('aria-controls');
         var actionContainer = toggle.closest('.project-card__edit');
         var actions = actionContainer ? actionContainer.querySelector('.project-card__actions') : null;
 
@@ -136,6 +135,60 @@
             actions.setAttribute('aria-hidden', 'true');
             toggle.setAttribute('aria-expanded', 'false');
           }
+        });
+      });
+
+      once('scsCustomThemeProjectDeleteConfirm', '.project-card__delete-trigger', context).forEach(function (trigger) {
+        var parentContainer = trigger.closest('.project--card') || trigger.closest('.project__delete');
+        var dialog = parentContainer ? parentContainer.querySelector('.project-card__delete-confirmation') : null;
+        var cancelButton = dialog ? dialog.querySelector('.project-card__delete-confirmation__cancel') : null;
+        var confirmLink = dialog ? dialog.querySelector('.project-card__delete-confirmation__confirm') : null;
+
+        if (!dialog || !cancelButton || !confirmLink) {
+          return;
+        }
+
+        var closeDialog = function () {
+          dialog.hidden = true;
+          dialog.setAttribute('aria-hidden', 'true');
+        };
+
+        var openDialog = function () {
+          dialog.hidden = false;
+          dialog.setAttribute('aria-hidden', 'false');
+          cancelButton.focus();
+        };
+
+        trigger.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          openDialog();
+        });
+
+        cancelButton.addEventListener('click', function () {
+          closeDialog();
+        });
+
+        dialog.addEventListener('click', function (event) {
+          if (event.target === dialog || event.target.classList.contains('project-card__delete-confirmation__backdrop')) {
+            closeDialog();
+          }
+        });
+
+        document.addEventListener('keydown', function (event) {
+          if (!dialog.hidden && event.key === 'Escape') {
+            closeDialog();
+          }
+        });
+
+        confirmLink.addEventListener('click', function (event) {
+          var href = confirmLink.getAttribute('href');
+          if (!href) {
+            event.preventDefault();
+            closeDialog();
+            return;
+          }
+          closeDialog();
         });
       });
     }
