@@ -46,6 +46,8 @@
 				<div class="dashboard-sidebar__account-menu-picture" aria-hidden="true">
 					{{ user_picture }}
 				</div>
+			{% else %}
+				<span class="dashboard-sidebar__account-menu-picture dashboard-sidebar__account-menu-initials" aria-hidden="true">{{ user_initials }}</span>
 			{% endif %}
 
 

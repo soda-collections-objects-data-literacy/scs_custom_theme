@@ -14,6 +14,7 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
   $variables['is_manager_page'] = $is_manager_page;
 
   $variables['user_picture'] = [];
+  $variables['user_initials'] = '';
   $variables['dashboard_projects'] = [];
   $account = \Drupal::currentUser();
   if ($is_manager_page && $account->isAuthenticated()) {
@@ -22,6 +23,27 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
       $variables['user_picture'] = $user->get('user_picture')->view([
         'label' => 'hidden',
       ]);
+    }
+
+    if ($user) {
+      $first_name = $user->hasField('first_name') ? trim((string) $user->get('first_name')->value) : '';
+      $last_name = $user->hasField('last_name') ? trim((string) $user->get('last_name')->value) : '';
+      $name = trim($first_name . ' ' . $last_name);
+      if ($name === '') {
+        $name = (string) $user->getDisplayName();
+      }
+
+      $initials = '';
+      if ($first_name !== '') {
+        $initials .= mb_substr($first_name, 0, 1);
+      }
+      if ($last_name !== '') {
+        $initials .= mb_substr($last_name, 0, 1);
+      }
+      if ($initials === '') {
+        $initials = mb_substr($name, 0, 1);
+      }
+      $variables['user_initials'] = mb_strtoupper($initials);
     }
 
     $project_query = \Drupal::entityTypeManager()
@@ -108,10 +130,27 @@ function scs_custom_theme_preprocess_soda_scs_manager__project_card(array &$vari
       continue;
     }
 
-    $name = (string) $user->getDisplayName();
+    $first_name = $user->hasField('first_name') ? trim((string) $user->get('first_name')->value) : '';
+    $last_name = $user->hasField('last_name') ? trim((string) $user->get('last_name')->value) : '';
+    $name = trim($first_name . ' ' . $last_name);
+    if ($name === '') {
+      $name = (string) $user->getDisplayName();
+    }
+
+    $initials = '';
+    if ($first_name !== '') {
+      $initials .= mb_substr($first_name, 0, 1);
+    }
+    if ($last_name !== '') {
+      $initials .= mb_substr($last_name, 0, 1);
+    }
+    if ($initials === '') {
+      $initials = mb_substr($name, 0, 1);
+    }
+
     $profile = [
       'name' => $name,
-      'initials' => mb_strtoupper(mb_substr($name, 0, 1)),
+      'initials' => mb_strtoupper($initials),
       'is_owner' => $member_id === $owner_id,
       'picture' => [],
     ];
