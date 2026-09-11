@@ -1227,6 +1227,13 @@ body.menu-open {
   justify-content: space-between;
   align-items: center;
 }
+.project--right .project__files .project__files__feed__files {
+  list-style-type: none;
+  padding-left: 0;
+}
+.project--right .project__files .project__files__feed__files .file-date {
+  color: #4D5866;
+}
 .project--right .project-card__delete-trigger {
   width: 100%;
   display: block;
@@ -1342,8 +1349,8 @@ button p {
   margin: 0;
   color: #FFFFFF;
 }
-.btn--extern,
-button--extern {
+.btn--secondary,
+button--secondary {
   background-color: transparent;
   color: #17212B;
   padding: 1rem 2rem 1rem;
@@ -1357,6 +1364,14 @@ button--extern::after {
   font-size: 0.8em;
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
+}
+.btn--icon,
+button--icon {
+  border-color: #4D5866;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {

@@ -41,17 +41,28 @@ button {
         color: $color-white;
     }
 
-    &--extern {
+    &--secondary {
         background-color: transparent;
         color: $color-slate-900;
         padding: 1rem 2rem 1rem;
         display: flex;
         align-items: center;
         gap: $spacing-xs;
+    }
+
+    &--extern {
         &::after{
             content: '↗';
             font-size: 0.8em;
             @include font-text-bold;
         }
+    }
+
+    &--icon {
+        border-color: $color-slate-600;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

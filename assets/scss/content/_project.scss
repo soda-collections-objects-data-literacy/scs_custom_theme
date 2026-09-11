@@ -304,7 +304,13 @@
     .project__members {}
 
     .project__files {
-
+        .project__files__feed__files{
+            list-style-type: none;
+            padding-left: 0;
+        .file-date{
+            color: $color-slate-600;
+        }
+        }
     }
 
     .project-card__delete-trigger {
