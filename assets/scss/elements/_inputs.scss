@@ -1,4 +1,14 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
 input {
     height: 45px;
-    padding: 5px;
+}
+
+input,
+textarea {
+    border: 1px solid $color-slate-600;
+    padding: 1rem;
+    @include font-text-regular;
+    border-radius: $radius-small;
 }

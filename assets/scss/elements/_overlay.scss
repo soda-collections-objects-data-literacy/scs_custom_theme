@@ -1,0 +1,83 @@
+@use '../base/vars' as *;
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: $spacing-s;
+    align-items: start;
+    justify-content: center;
+    padding: $spacing-m;
+    background-color: transparent;
+    overflow-y: auto;
+
+    &[hidden] {
+        display: none;
+    }
+
+    &__backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-color: rgba(15, 23, 42, 0.72);
+    }
+
+    &__dialog {
+        position: relative;
+        z-index: 1;
+        max-height: calc(100vh - 2 * #{$spacing-m});
+        background-color: $color-white;
+        border: 1px solid $color-slate-300;
+        border-radius: $radius-small;
+        box-shadow: $shadow-small;
+        padding: $spacing-s;
+        border-top: 1px solid $color-orange-500;
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            height: 4rem;
+            width: 4rem;
+            background-color: $color-orange-500;
+            border-radius: 50%;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h2 {
+            margin-top: 0;
+        }
+
+        .form-item {
+            margin-bottom: $spacing-s;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: $spacing-xs;
+            justify-content: flex-end;
+        }
+    }
+
+    &--small .overlay__dialog {
+        grid-column: 3 / 7;
+    }
+
+    &--large .overlay__dialog {
+        grid-column: 2 / 8;
+    }
+}
+
+@media (max-width: 48rem) {
+    .overlay--small .overlay__dialog,
+    .overlay--large .overlay__dialog {
+        grid-column: 1 / -1;
+    }
+}

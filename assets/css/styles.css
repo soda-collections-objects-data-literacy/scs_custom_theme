@@ -1227,6 +1227,14 @@ body.menu-open {
   justify-content: space-between;
   align-items: center;
 }
+.project--right .project__section .project__section__header .project__section__edit-button {
+  flex-shrink: 0;
+}
+.project--right .project__section .project__section__header .project__section__edit-button svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
 .project--right .project__members .project__members__list {
   list-style-type: none;
   padding-left: 0;
@@ -1274,6 +1282,49 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member--owner .project-member__name {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-confirm {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  z-index: 2;
+  background: #FFFFFF;
+  border: 1px solid #D5DCE4;
+  border-radius: 8px;
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.12);
+  padding: 21px;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-type-confirmation {
+  margin: 0;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 21px;
+}
+.project--right .project__members .project__members__list--edit .project-member {
+  grid-template-columns: 6rem 1fr auto;
+}
+.project--right .project__members .project__members__list--edit .project-member img,
+.project--right .project__members .project__members__list--edit .project-member .project-member__initials {
+  width: 6rem;
+  height: 6rem;
+  font-size: 1.5rem;
+}
+.project--right .project-members-edit-overlay .overlay__dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.project--right .project-members-edit-overlay .overlay__dialog .project-members-edit-overlay__cancel {
+  margin-left: auto;
 }
 .project--right .project__files .project__files__feed__files {
   list-style-type: none;
@@ -1394,6 +1445,7 @@ body.menu-open {
   justify-content: space-between;
   gap: 21px;
   width: 100%;
+  position: relative;
 }
 .application--card .application__core .application__icons-and-arrow .application__icons {
   display: flex;
@@ -1409,16 +1461,42 @@ body.menu-open {
 }
 .application--card .application__name {
   margin-top: 21px;
+  position: relative;
+  z-index: 1;
 }
 .application--card .application__name * {
   margin: 0;
 }
-.application--card--multiple .application__core::after {
+.application--card--multiple .application__core {
+  width: calc(100% - 1.5rem);
+  height: 46.5rem;
+  position: relative;
+  z-index: 1;
+  margin-bottom: calc(1em + 2.5rem);
+}
+.application--card--multiple .application__core::before {
   content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 46.5rem;
   background-color: #F4F6F8;
+  border-radius: 8px;
+  z-index: -2;
+}
+.application--card--multiple .application__core::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 46.5rem;
+  background-color: #D5DCE4;
+  border-radius: 8px;
+  z-index: -1;
 }
 
 .btn,
@@ -1499,9 +1577,91 @@ button--icon {
 
 input {
   height: 45px;
-  padding: 5px;
 }
 
+input,
+textarea {
+  border: 1px solid #4D5866;
+  padding: 1rem;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  border-radius: 8px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 21px;
+  align-items: start;
+  justify-content: center;
+  padding: 30px;
+  background-color: transparent;
+  overflow-y: auto;
+}
+.overlay[hidden] {
+  display: none;
+}
+.overlay__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: rgba(15, 23, 42, 0.72);
+}
+.overlay__dialog {
+  position: relative;
+  z-index: 1;
+  max-height: calc(100vh - 2 * 30px);
+  background-color: #FFFFFF;
+  border: 1px solid #D5DCE4;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 21px;
+  border-top: 1px solid #FFA933;
+}
+.overlay__dialog::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+  background-color: #FFA933;
+  border-radius: 50%;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.overlay__dialog h2 {
+  margin-top: 0;
+}
+.overlay__dialog .form-item {
+  margin-bottom: 21px;
+}
+.overlay__dialog textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+.overlay__dialog .form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.overlay--small .overlay__dialog {
+  grid-column: 3/7;
+}
+.overlay--large .overlay__dialog {
+  grid-column: 2/8;
+}
+
+@media (max-width: 48rem) {
+  .overlay--small .overlay__dialog,
+  .overlay--large .overlay__dialog {
+    grid-column: 1/-1;
+  }
+}
 .language-switcher {
   position: relative;
   display: inline-flex;

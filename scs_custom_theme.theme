@@ -166,3 +166,10 @@ function scs_custom_theme_preprocess_soda_scs_manager__project_card(array &$vari
     return (int) $b['is_owner'] <=> (int) $a['is_owner'];
   });
 }
+
+/**
+ * Supplies the theme asset directory to the module's entity card template.
+ */
+function scs_custom_theme_preprocess_soda_scs_manager__entity_card(array &$variables): void {
+  $variables['directory'] = base_path() . \Drupal::service('extension.list.theme')->getPath('scs_custom_theme');
+}

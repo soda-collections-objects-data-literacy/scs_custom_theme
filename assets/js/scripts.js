@@ -193,4 +193,129 @@
       });
     }
   };
+
+  Drupal.behaviors.scsCustomThemeProjectNoteEdit = {
+    attach: function (context) {
+      once('scsCustomThemeProjectNoteEdit', '.project__note', context).forEach(function (section) {
+        var trigger = section.querySelector('.project-note-edit-trigger');
+        var overlay = section.querySelector('.project-note-edit-overlay');
+        var cancelButton = overlay ? overlay.querySelector('.project-note-form__cancel') : null;
+
+        if (!trigger || !overlay) {
+          return;
+        }
+
+        var closeOverlay = function () {
+          overlay.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        };
+
+        var openOverlay = function () {
+          overlay.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+          var field = overlay.querySelector('textarea');
+          if (field) {
+            field.focus();
+          }
+        };
+
+        trigger.addEventListener('click', openOverlay);
+        if (cancelButton) {
+          cancelButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            closeOverlay();
+          });
+        }
+
+        overlay.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            closeOverlay();
+          }
+        });
+
+      });
+    }
+  };
+
+  Drupal.behaviors.scsCustomThemeProjectMembersEdit = {
+    attach: function (context) {
+      once('scsCustomThemeProjectMembersEdit', '.project__members', context).forEach(function (section) {
+        var trigger = section.querySelector('.project-members-edit-trigger');
+        var overlay = section.querySelector('.project-members-edit-overlay');
+        var cancelButton = overlay ? overlay.querySelector('.project-members-edit-overlay__cancel') : null;
+
+        if (!trigger || !overlay) {
+          return;
+        }
+
+        var closeOverlay = function () {
+          overlay.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+          overlay.querySelectorAll('.project-member__remove-confirm').forEach(function (confirmBox) {
+            confirmBox.hidden = true;
+          });
+          overlay.querySelectorAll('.project-member__remove-trigger').forEach(function (removeTrigger) {
+            removeTrigger.setAttribute('aria-expanded', 'false');
+          });
+          trigger.focus();
+        };
+
+        var openOverlay = function () {
+          overlay.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+
+          var firstInput = overlay.querySelector('input:not([type="hidden"]), select, textarea');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        };
+
+        trigger.addEventListener('click', openOverlay);
+
+        if (cancelButton) {
+          cancelButton.addEventListener('click', closeOverlay);
+        }
+
+        overlay.querySelectorAll('.project-member__remove-trigger').forEach(function (removeTrigger) {
+          var removeConfirm = removeTrigger.closest('.project-member__remove-menu')?.querySelector('.project-member__remove-confirm');
+          if (!removeConfirm) {
+            return;
+          }
+
+          removeTrigger.addEventListener('click', function (event) {
+            event.preventDefault();
+            removeConfirm.hidden = false;
+            removeTrigger.setAttribute('aria-expanded', 'true');
+          });
+
+          var cancelLink = removeConfirm.querySelector('a[href]');
+          if (cancelLink) {
+            cancelLink.addEventListener('click', function (event) {
+              event.preventDefault();
+              event.stopPropagation();
+              removeConfirm.hidden = true;
+              removeTrigger.setAttribute('aria-expanded', 'false');
+              removeTrigger.focus();
+            });
+          }
+        });
+
+        overlay.addEventListener('click', function (event) {
+          if (event.target === overlay || event.target.classList.contains('overlay__backdrop')) {
+            closeOverlay();
+          }
+        });
+
+        overlay.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            closeOverlay();
+          }
+        });
+      });
+    }
+  };
 })(Drupal, once);
