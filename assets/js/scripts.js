@@ -199,7 +199,7 @@
       once('scsCustomThemeProjectNoteEdit', '.project__note', context).forEach(function (section) {
         var trigger = section.querySelector('.project-note-edit-trigger');
         var overlay = section.querySelector('.project-note-edit-overlay');
-        var cancelButton = overlay ? overlay.querySelector('.project-note-form__cancel') : null;
+        var cancelButtons = overlay ? overlay.querySelectorAll('.project-note-form__cancel, .overlay__close') : [];
 
         if (!trigger || !overlay) {
           return;
@@ -221,13 +221,13 @@
         };
 
         trigger.addEventListener('click', openOverlay);
-        if (cancelButton) {
+        cancelButtons.forEach(function (cancelButton) {
           cancelButton.addEventListener('click', function (event) {
             event.preventDefault();
             event.stopPropagation();
             closeOverlay();
           });
-        }
+        });
 
         overlay.addEventListener('keydown', function (event) {
           if (event.key === 'Escape') {
@@ -245,7 +245,7 @@
       once('scsCustomThemeProjectMembersEdit', '.project__members', context).forEach(function (section) {
         var trigger = section.querySelector('.project-members-edit-trigger');
         var overlay = section.querySelector('.project-members-edit-overlay');
-        var cancelButton = overlay ? overlay.querySelector('.project-members-edit-overlay__cancel') : null;
+        var cancelButtons = overlay ? overlay.querySelectorAll('.project-members-edit-overlay__cancel, .overlay__close') : [];
 
         if (!trigger || !overlay) {
           return;
@@ -275,9 +275,9 @@
 
         trigger.addEventListener('click', openOverlay);
 
-        if (cancelButton) {
+        cancelButtons.forEach(function (cancelButton) {
           cancelButton.addEventListener('click', closeOverlay);
-        }
+        });
 
         overlay.querySelectorAll('.project-member__remove-trigger').forEach(function (removeTrigger) {
           var removeConfirm = removeTrigger.closest('.project-member__remove-menu')?.querySelector('.project-member__remove-confirm');

@@ -1498,7 +1498,81 @@ body.menu-open {
   border-radius: 8px;
   z-index: -1;
 }
+.application--card--add .application__core {
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px dashed #4D5866;
+  background-color: transparent;
+  width: 100%;
+}
+.application--card--add .application__core .application__add-icon {
+  color: #4D5866;
+}
+.application--card--add .application__core:hover {
+  border-color: #17212B;
+}
+.application--card--add .application__core:hover .application__add-icon {
+  color: #17212B;
+}
+.application--card--add .application__name {
+  text-align: center;
+}
 
+.add-app-popup__title {
+  margin-top: 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.add-app-popup__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 21px;
+}
+
+.add-app-popup-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 21px;
+  border: 1px solid #D5DCE4;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.add-app-popup-card:hover {
+  border-color: #FFA933;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+.add-app-popup-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  height: 8rem;
+}
+.add-app-popup-card__icon {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.add-app-popup-card__title {
+  margin: 0;
+  color: #17212B;
+}
+.add-app-popup-card__text {
+  margin: 0;
+  color: #4D5866;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .add-app-popup__grid {
+    grid-template-columns: 1fr;
+  }
+}
 .btn,
 button {
   border: 1px solid #17212B;
@@ -1636,6 +1710,7 @@ textarea {
 }
 .overlay__dialog h2 {
   margin-top: 0;
+  padding-right: 50px;
 }
 .overlay__dialog .form-item {
   margin-bottom: 21px;
@@ -1648,6 +1723,17 @@ textarea {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+}
+.overlay__close {
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  z-index: 2;
+}
+.overlay__close svg {
+  display: block;
+  width: 2rem;
+  height: 2rem;
 }
 .overlay--small .overlay__dialog {
   grid-column: 3/7;

@@ -48,6 +48,7 @@
         }
         h2 {
             margin-top: 0;
+            padding-right: $spacing-l;
         }
 
         .form-item {
@@ -63,6 +64,19 @@
             display: flex;
             gap: $spacing-xs;
             justify-content: flex-end;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: $spacing-s;
+        right: $spacing-s;
+        z-index: 2;
+
+        svg {
+            display: block;
+            width: 2rem;
+            height: 2rem;
         }
     }
 
