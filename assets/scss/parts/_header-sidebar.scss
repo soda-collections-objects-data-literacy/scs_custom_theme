@@ -52,6 +52,7 @@
             flex-direction: column;
             justify-content: space-between;
             gap: $spacing-m;
+
             * {
                 color: $color-white;
             }
@@ -65,6 +66,7 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+
                     .dashboard-sidebar__projects-header-icon {
                         display: flex;
                         align-items: center;
@@ -72,6 +74,10 @@
                         flex-shrink: 0;
                         width: 4rem;
                         height: 4rem;
+                        min-width: 4rem;
+                        min-height: 4rem;
+                        max-width: 4rem;
+                        max-height: 4rem;
                         aspect-ratio: 1 / 1;
                         border: none;
                         border-radius: 50%;
@@ -172,6 +178,32 @@
                     background-color: $color-slate-300;
                     color: $color-slate-900;
                     flex-shrink: 0;
+                }
+            }
+
+            .dashboard-sidebar__account-menu-content {
+                position: absolute;
+                bottom: 17rem;
+                background-color: white;
+                border: 1px solid $color-slate-300;
+                border-radius: $radius-small;
+                padding: $spacing-s;
+                box-shadow: $shadow-strong;
+                width: auto;
+                left: 2rem;
+                min-width: 120%;
+                z-index: 99999;
+                .dashboard-sidebar__account-menu-content-inner{
+                    .dashboard-sidebar__account-menu__account{
+                        .dashboard-sidebar__account-img {
+                            aspect-ratio: 1 / 1;
+                            width: 12rem;
+                            height: 12rem;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            overflow: hidden;
+                        }
+                    }
                 }
             }
         }

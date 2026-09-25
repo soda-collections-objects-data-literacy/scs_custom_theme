@@ -1154,7 +1154,6 @@ body.menu-open {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 21px;
-  align-items: center;
 }
 
 .project--right {
@@ -1428,6 +1427,9 @@ body.menu-open {
   background-color: #D5DCE4;
   border-radius: 8px;
   z-index: -1;
+}
+.application--card--add {
+  margin-top: 23rem;
 }
 .application--card--add .application__core {
   align-items: center;
@@ -2183,6 +2185,10 @@ input + .description {
   flex-shrink: 0;
   width: 4rem;
   height: 4rem;
+  min-width: 4rem;
+  min-height: 4rem;
+  max-width: 4rem;
+  max-height: 4rem;
   aspect-ratio: 1/1;
   border: none;
   border-radius: 50%;
@@ -2272,6 +2278,27 @@ input + .description {
   background-color: #D5DCE4;
   color: #17212B;
   flex-shrink: 0;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content {
+  position: absolute;
+  bottom: 17rem;
+  background-color: white;
+  border: 1px solid #D5DCE4;
+  border-radius: 8px;
+  padding: 21px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+  width: auto;
+  left: 2rem;
+  min-width: 120%;
+  z-index: 99999;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__account .dashboard-sidebar__account-img {
+  aspect-ratio: 1/1;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
 }
 .dashboard-layout .dashboard-main {
   grid-column: 3/span 10;

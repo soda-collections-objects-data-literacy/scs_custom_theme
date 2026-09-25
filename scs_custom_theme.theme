@@ -15,6 +15,8 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
 
   $variables['user_picture'] = [];
   $variables['user_initials'] = '';
+  $variables['user_name'] = '';
+  $variables['user_email'] = '';
   $variables['dashboard_projects'] = [];
   $account = \Drupal::currentUser();
   if ($is_manager_page && $account->isAuthenticated()) {
@@ -24,11 +26,13 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
         'label' => 'hidden',
       ]);
     }
-
-    if ($user) {
+    if ($user && $user->hasField('mail')) {
+      $variables['user_email'] = (string) $user->get('mail')->value;
+    }
       $first_name = $user->hasField('first_name') ? trim((string) $user->get('first_name')->value) : '';
       $last_name = $user->hasField('last_name') ? trim((string) $user->get('last_name')->value) : '';
       $name = trim($first_name . ' ' . $last_name);
+      $variables['user_name'] = $name;
       if ($name === '') {
         $name = (string) $user->getDisplayName();
       }
@@ -72,7 +76,6 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
         'url' => $project->toUrl('canonical')->toString(),
       ];
     }
-  }
 
   if ($is_manager_page) {
     $variables['theme_hook_suggestions'][] = 'page__dashboard';

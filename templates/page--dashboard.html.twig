@@ -38,43 +38,68 @@
 			<nav class="dashboard-sidebar__secondary-nav" aria-label="{{ 'Secondary navigation'|t }}">
 				{{ page.sidebar_secondary_nav }}
 			</nav>
-	</div>
-	<div class="dashboard-sidebar__account-menu">
-		<button type="button" class="dashboard-sidebar__account-menu-header" aria-controls="dashboard-account-menu-content" aria-expanded="false">
+		</div>
+		<div class="dashboard-sidebar__account-menu">
+			<button type="button" class="dashboard-sidebar__account-menu-header" aria-controls="dashboard-account-menu-content" aria-expanded="false">
 
-			{% if user_picture %}
-				<div class="dashboard-sidebar__account-menu-picture" aria-hidden="true">
-					{{ user_picture }}
+				{% if user_picture %}
+					<div class="dashboard-sidebar__account-menu-picture" aria-hidden="true">
+						{{ user_picture }}
+					</div>
+				{% else %}
+					<span class="dashboard-sidebar__account-menu-picture dashboard-sidebar__account-menu-initials" aria-hidden="true">{{ user_initials }}</span>
+				{% endif %}
+
+
+				<span class="dashboard-sidebar__account-menu-title">{{ 'Account menu'|t }}</span>
+			</button>
+			<div id="dashboard-account-menu-content" class="dashboard-sidebar__account-menu-content" hidden>
+				<div class="dashboard-sidebar__account-menu-content-inner">
+					<div class="dashboard-sidebar__account-menu__account">
+						<div class="dashboard-sidebar__account-img">{% if user_picture %}
+								<div class="dashboard-sidebar__account-menu-picture" aria-hidden="true">
+									{{ user_picture }}
+								</div>
+							{% else %}
+								<span class="dashboard-sidebar__account-menu-picture dashboard-sidebar__account-menu-initials" aria-hidden="true">{{ user_initials }}</span>
+							{% endif %}</div>
+						<div class="dashboard-sidebar__account-menu__account-info">
+							<p class="dashboard-sidebar__account-name text--label">{{ user_name }}</p>
+							<p class="dashboard-sidebar__account-email">{{ user_email }}</p>
+						</div>
+					</div>
+					<div class="dashboard-sidebar__account-menu__user-menu">
+						<a href="{{ path('user.page') }}" class="dashboard-sidebar__account-menu-profile">
+							{{ 'Profile'|t }}
+						</a>
+					</div>
+					<nav class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
+						{{ page.sidebar_account_menu }}
+					</nav>
+					<div class="dashboard-sidebar__account-menu__logout">
+						<a href="{{ path('user.logout') }}" class="dashboard-sidebar__account-logout">
+							{{ 'Log out'|t }}
+						</a>
+					</div>
 				</div>
-			{% else %}
-				<span class="dashboard-sidebar__account-menu-picture dashboard-sidebar__account-menu-initials" aria-hidden="true">{{ user_initials }}</span>
-			{% endif %}
-
-
-			<span class="dashboard-sidebar__account-menu-title">{{ 'Account menu'|t }}</span>
-		</button>
-		<div id="dashboard-account-menu-content" class="dashboard-sidebar__account-menu-content" hidden>
-			<nav class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
-				{{ page.sidebar_account_menu }}
-			</nav>
+			</div>
 		</div>
-	</div>
-</aside>
+	</aside>
 
-<main id="main-content" class="dashboard-main" tabindex="-1">
-	{% include '@soda_scs_manager/cards/soda-scs-manager--create-project-wizard.html.twig' %}
-	<div class="dashboard-breadcrumb-and-title">
-		{{ page.breadcrumb_and_title }}
-	</div>
-
-	{% if page.edit_menu %}
-		<div class="drupal-edit-menu">
-			{{ page.edit_menu }}
+	<main id="main-content" class="dashboard-main" tabindex="-1">
+		{% include '@soda_scs_manager/cards/soda-scs-manager--create-project-wizard.html.twig' %}
+		<div class="dashboard-breadcrumb-and-title">
+			{{ page.breadcrumb_and_title }}
 		</div>
-	{% endif %}
 
-	<section class="dashboard-content dashboard-content--full">
-		{{ page.content }}
-	</section>
+		{% if page.edit_menu %}
+			<div class="drupal-edit-menu">
+				{{ page.edit_menu }}
+			</div>
+		{% endif %}
 
-</main></div>
+		<section class="dashboard-content dashboard-content--full">
+			{{ page.content }}
+		</section>
+
+	</main></div>

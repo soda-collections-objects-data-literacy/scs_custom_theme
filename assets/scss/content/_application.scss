@@ -162,6 +162,8 @@
         }
 
         &--add {
+            margin-top: 23rem;
+
             .application__core {
                 align-items: center;
                 justify-content: center;
@@ -227,8 +229,9 @@
             margin: 0;
         }
     }
+
     &--general-information {
-        p{
+        p {
             margin: 0;
         }
     }
