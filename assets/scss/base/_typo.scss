@@ -47,6 +47,10 @@ select {
     @include text-regular;
 }
 
+.text--label{
+    @include font-text-bold;
+}
+
 h1,
 .h1 {
     @include font-text-bold;
@@ -98,6 +102,10 @@ ul {
 
 .text-bigger {
     @include text-bigger;
+}
+
+.text-meta {
+    @include text-meta;
 }
 
 .text-super {

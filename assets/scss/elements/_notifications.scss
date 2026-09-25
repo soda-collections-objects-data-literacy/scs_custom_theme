@@ -1,0 +1,57 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.path-soda-scs-manager {
+    .wisski-ready-notification {
+        position: fixed;
+        right: $spacing-m;
+        top: unset;
+        left: unset;
+        bottom: $spacing-s;
+        border-radius: $radius-small;
+        background-color: $color-slate-900;
+        translate: unset;
+        box-shadow: $shadow-strong;
+        min-height: unset;
+        max-height: unset;
+        height: fit-content;
+        padding: $spacing-s;
+
+        .notification-content {
+            width: 100%;
+            display: block;
+            height: 100%;
+            background: none;
+            border: none;
+            box-shadow: none;
+            max-width: unset;
+            position: static;
+            height: -webkit-fit-content;
+            padding: 0;
+
+            * {
+                color: $color-white;
+                text-align: left;
+                @include text-regular;
+            }
+
+            .text--label {
+                color: $color-green-ondark;
+                margin-top: 0;
+            }
+            p:not(.text--label) {
+                margin-bottom: 0;
+            }
+
+            .notification-close {
+                position: absolute;
+                top: $spacing-xs;
+                right: $spacing-xs;
+                z-index: 2;
+                aspect-ratio: 1 / 1;
+                border: none;
+                margin: 0;
+            }
+        }
+    }
+}

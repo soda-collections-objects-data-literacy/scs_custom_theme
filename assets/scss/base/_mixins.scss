@@ -28,6 +28,12 @@
     margin-bottom: $text-mb;
 }
 
+@mixin text-meta() {
+    font-size: $meta-font-size;
+    margin-top: $meta-mt;
+    margin-bottom: $meta-mb;
+}
+
 @mixin text-bigger() {
     font-size: $bigger-text-font-size;
     margin-top: $bigger-text-mt;

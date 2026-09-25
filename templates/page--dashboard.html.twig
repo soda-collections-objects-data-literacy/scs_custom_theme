@@ -8,12 +8,12 @@
 			<div class="dashboard-sidebar__projects">
 				<div class="dashboard-sidebar__projects-header">
 					<p class="dashboard-sidebar__projects-title">{{ 'Projects'|t }}</p>
-					<div class="dashboard-sidebar__projects-header-icon">
+					<button type="button" class="dashboard-sidebar__projects-header-icon soda-scs-manager--create-project-trigger" aria-controls="create-project-wizard" aria-expanded="false" aria-label="{{ 'Create project'|t }}" title="{{ 'Create project'|t }}">
 						<svg width="12" height="12" viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<line x1="6" y1="-4.37114e-08" x2="6" y2="12" stroke="#17212B" stroke-width="2"/>
 							<line x1="12" y1="6" y2="6" stroke="#17212B" stroke-width="2"/>
 						</svg>
-					</div>
+					</button>
 				</div>
 				<nav class="dashboard-sidebar__projectnav" aria-label="{{ 'Project navigation'|t }}">
 					<ul class="dashboard-sidebar__project-list">
@@ -62,6 +62,7 @@
 </aside>
 
 <main id="main-content" class="dashboard-main" tabindex="-1">
+	{% include '@soda_scs_manager/cards/soda-scs-manager--create-project-wizard.html.twig' %}
 	<div class="dashboard-breadcrumb-and-title">
 		{{ page.breadcrumb_and_title }}
 	</div>

@@ -125,76 +125,6 @@
             }
         }
 
-        .project-card__delete-confirmation {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(15, 23, 42, 0.56);
-
-            &[hidden] {
-                display: none;
-            }
-        }
-
-        .project-card__delete-confirmation__backdrop {
-            position: absolute;
-            inset: 0;
-        }
-
-        .project-card__delete-confirmation__dialog {
-            position: relative;
-            z-index: 1;
-            width: min(30rem, calc(100vw - 2rem));
-            background: $color-white;
-            border-radius: $radius-small;
-            box-shadow: $shadow-small;
-            border: 1px solid $color-slate-300;
-            padding: $spacing-s;
-
-            h3 {
-                margin-bottom: $spacing-xs;
-            }
-
-            p {
-                margin-bottom: $spacing-s;
-                color: $color-slate-600;
-            }
-        }
-
-        .project-card__delete-confirmation__actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: $spacing-xs;
-
-            button,
-            a {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 2.75rem;
-                padding: $spacing-xs $spacing-s;
-                border-radius: $radius-small;
-                text-decoration: none;
-                font: inherit;
-                cursor: pointer;
-            }
-
-            .project-card__delete-confirmation__cancel {
-                border: 1px solid $color-slate-300;
-                background: $color-white;
-                color: $color-slate-900;
-            }
-
-            .project-card__delete-confirmation__confirm {
-                border: 0;
-                background: $color-red;
-                color: $color-white;
-            }
-        }
-
         .project-card__members {
             display: flex;
             align-items: center;
@@ -275,6 +205,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: $spacing-s;
+        align-items: center;
     }
 }
 
@@ -438,12 +369,4 @@
         }
     }
 
-    .project-card__delete-trigger {
-        width: 100%;
-        display: block;
-        background-color: transparent;
-        color: $color-red;
-        border-color: $color-red;
-        @include font-text-bold;
-    }
 }

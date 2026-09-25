@@ -48,7 +48,9 @@
         }
         h2 {
             margin-top: 0;
+            margin-bottom: $spacing-m;
             padding-right: $spacing-l;
+            text-align: left;
         }
 
         .form-item {
@@ -69,15 +71,11 @@
 
     &__close {
         position: absolute;
-        top: $spacing-s;
-        right: $spacing-s;
+        top: $spacing-xs;
+        right: $spacing-xs;
         z-index: 2;
-
-        svg {
-            display: block;
-            width: 2rem;
-            height: 2rem;
-        }
+        aspect-ratio: 1 / 1;
+        border: none;
     }
 
     &--small .overlay__dialog {

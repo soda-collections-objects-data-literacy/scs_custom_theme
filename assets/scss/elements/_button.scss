@@ -66,3 +66,88 @@ button {
         justify-content: center;
     }
 }
+
+.project-card__delete-trigger,
+.application__details-delete-trigger {
+    width: 100%;
+    background-color: transparent;
+    border-color: $color-red;
+    color: $color-red;
+    @include font-text-bold;
+}
+
+.project-card__delete-confirmation,
+.application__details-delete-confirmation {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: $spacing-m;
+
+    &[hidden] {
+        display: none;
+    }
+}
+
+.project-card__delete-confirmation__backdrop,
+.application__details-delete-confirmation__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.72);
+}
+
+.project-card__delete-confirmation__dialog,
+.application__details-delete-confirmation__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 48rem);
+    padding: $spacing-s;
+    border: 1px solid $color-slate-300;
+    border-radius: $radius-small;
+    background-color: $color-white;
+    box-shadow: $shadow-small;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: $spacing-xs;
+    }
+
+    p {
+        margin-bottom: $spacing-s;
+        color: $color-slate-600;
+    }
+}
+
+.project-card__delete-confirmation__actions,
+.application__details-delete-confirmation__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-xs;
+
+    button,
+    a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        padding: $spacing-xs $spacing-s;
+        border-radius: $radius-small;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+.project-card__delete-confirmation__cancel,
+.application__details-delete-confirmation__cancel {
+    border-color: $color-slate-300;
+    background-color: $color-white;
+    color: $color-slate-900;
+}
+
+.project-card__delete-confirmation__confirm,
+.application__details-delete-confirmation__confirm {
+    background-color: $color-red;
+    border-color: $color-red;
+    color: $color-white;
+}

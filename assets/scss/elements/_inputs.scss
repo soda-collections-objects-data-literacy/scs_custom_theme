@@ -11,4 +11,9 @@ textarea {
     padding: 1rem;
     @include font-text-regular;
     border-radius: $radius-small;
+    display: block;
+}
+
+input+.description{
+    @include text-meta;
 }

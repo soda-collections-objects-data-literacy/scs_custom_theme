@@ -1,6 +1,80 @@
 (function (Drupal, once) {
   'use strict';
 
+  /**
+   * Submits a Drupal confirmation form (e.g. an entity delete form) in the
+   * background via fetch, so the user never leaves the current page/overlay.
+   *
+   * Appends a `destination`, which Drupal's core redirect subscriber honors
+   * automatically, so on success the response redirects back to a page the
+   * user can actually land on instead of a fixed route.
+   *
+   * @param {string} url
+   *   The confirmation form URL (e.g. an entity delete-form link).
+   * @param {string} [destination]
+   *   Path to redirect back to on success. Defaults to the current page, but
+   *   callers deleting the entity they are currently viewing must pass a
+   *   destination that still exists afterwards (e.g. the dashboard) -
+   *   otherwise the redirect target itself 404s/500s since the entity is gone.
+   * @param {function(boolean)} [onSettled]
+   *   Called with `true` on success (before navigating away) or `false` on
+   *   failure, so callers can restore button state.
+   */
+  function scsCustomThemeSubmitConfirmForm(url, destination, onSettled) {
+    destination = destination || (window.location.pathname + window.location.search);
+    var separator = url.indexOf('?') === -1 ? '?' : '&';
+    var fetchUrl = url + separator + 'destination=' + encodeURIComponent(destination);
+
+    fetch(fetchUrl, { credentials: 'same-origin' })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Request failed with status ' + response.status);
+        }
+        return response.text();
+      })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var content = doc.querySelector('.dashboard-content') || doc.querySelector('main') || doc.body;
+        var formEl = content ? content.querySelector('form') : null;
+        if (!formEl) {
+          window.location.href = url;
+          return;
+        }
+
+        var submitControl = formEl.querySelector('input[type="submit"], button[type="submit"]');
+        var formData = new FormData(formEl);
+        if (submitControl && submitControl.name) {
+          formData.append(submitControl.name, submitControl.value || '');
+        }
+
+        return fetch(formEl.getAttribute('action') || fetchUrl, {
+          method: 'POST',
+          credentials: 'same-origin',
+          body: formData,
+        }).then(function (response) {
+          if (response.redirected || (response.url && response.url !== fetchUrl)) {
+            if (onSettled) {
+              onSettled(true);
+            }
+            window.location.href = response.url;
+          }
+          else {
+            // Validation/access error: fall back to the real confirmation page.
+            if (onSettled) {
+              onSettled(false);
+            }
+            window.location.href = url;
+          }
+        });
+      })
+      .catch(function () {
+        if (onSettled) {
+          onSettled(false);
+        }
+        window.location.href = url;
+      });
+  }
+
   Drupal.behaviors.scsCustomThemeBreadcrumb = {
     attach: function (context) {
       once('scsCustomThemeBreadcrumb', 'nav[aria-labelledby="system-breadcrumb"]', context).forEach(function (breadcrumb) {
@@ -182,13 +256,81 @@
         });
 
         confirmLink.addEventListener('click', function (event) {
+          event.preventDefault();
           var href = confirmLink.getAttribute('href');
           if (!href) {
-            event.preventDefault();
             closeDialog();
             return;
           }
-          closeDialog();
+          confirmLink.setAttribute('aria-disabled', 'true');
+          var originalText = confirmLink.textContent;
+          confirmLink.textContent = Drupal.t('Deleting…');
+          var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
+          scsCustomThemeSubmitConfirmForm(href, destination, function (success) {
+            if (!success) {
+              confirmLink.removeAttribute('aria-disabled');
+              confirmLink.textContent = originalText;
+            }
+          });
+        });
+      });
+
+      once('scsCustomThemeApplicationDeleteConfirm', '.application__details-delete-trigger', context).forEach(function (trigger) {
+        var parentContainer = trigger.closest('.application__details-delete');
+        var dialog = parentContainer ? parentContainer.querySelector('.application__details-delete-confirmation') : null;
+        var cancelButton = dialog ? dialog.querySelector('.application__details-delete-confirmation__cancel') : null;
+        var confirmLink = dialog ? dialog.querySelector('.application__details-delete-confirmation__confirm') : null;
+
+        if (!dialog || !cancelButton) {
+          return;
+        }
+
+        var closeDialog = function () {
+          dialog.hidden = true;
+          trigger.setAttribute('aria-expanded', 'false');
+          trigger.focus();
+        };
+
+        trigger.addEventListener('click', function () {
+          dialog.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+          cancelButton.focus();
+        });
+
+        cancelButton.addEventListener('click', closeDialog);
+
+        if (confirmLink) {
+          confirmLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            var href = confirmLink.getAttribute('href');
+            if (!href) {
+              closeDialog();
+              return;
+            }
+            confirmLink.setAttribute('aria-disabled', 'true');
+            var originalText = confirmLink.textContent;
+            confirmLink.textContent = Drupal.t('Deleting…');
+            var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
+            scsCustomThemeSubmitConfirmForm(href, destination, function (success) {
+              if (!success) {
+                confirmLink.removeAttribute('aria-disabled');
+                confirmLink.textContent = originalText;
+              }
+            });
+          });
+        }
+
+        dialog.addEventListener('click', function (event) {
+          if (event.target === dialog || event.target.classList.contains('application__details-delete-confirmation__backdrop')) {
+            closeDialog();
+          }
+        });
+
+        dialog.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            closeDialog();
+          }
         });
       });
     }
