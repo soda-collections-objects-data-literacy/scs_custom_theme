@@ -2292,6 +2292,24 @@ input + .description {
   min-width: 120%;
   z-index: 99999;
 }
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__divider {
+  height: 1px;
+  background-color: #D5DCE4;
+  width: 100%;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__account {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 21px;
+  align-items: center;
+  padding-right: 3rem;
+}
 .dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__account .dashboard-sidebar__account-img {
   aspect-ratio: 1/1;
   width: 12rem;
@@ -2299,6 +2317,33 @@ input + .description {
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__account p {
+  margin: 0;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu-nav .dashboard-sidebar__account-menu-nav-title {
+  text-transform: uppercase;
+  color: #4D5866;
+  font-size: 2rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu-nav ul {
+  padding: 0;
+  margin-bottom: 0;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu-nav ul li:last-child {
+  margin-bottom: 0;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__logout .dashboard-sidebar__account-logout {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #A80000;
+  margin-bottom: 0;
+}
+.dashboard-layout .dashboard-sidebar .dashboard-sidebar__account-menu .dashboard-sidebar__account-menu-content .dashboard-sidebar__account-menu-content-inner .dashboard-sidebar__account-menu__logout .dashboard-sidebar__account-logout svg {
+  transform: translateY(-0.3rem);
 }
 .dashboard-layout .dashboard-main {
   grid-column: 3/span 10;

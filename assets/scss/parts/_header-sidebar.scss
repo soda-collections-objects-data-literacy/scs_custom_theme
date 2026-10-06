@@ -194,7 +194,21 @@
                 min-width: 120%;
                 z-index: 99999;
                 .dashboard-sidebar__account-menu-content-inner{
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    gap: $spacing-xs;
+                    .dashboard-sidebar__account-menu__divider{
+                        height: 1px;
+                        background-color: $color-slate-300;
+                        width: 100%;
+                    }
                     .dashboard-sidebar__account-menu__account{
+                        display: grid;
+                        grid-template-columns: auto 1fr;
+                        gap: $spacing-s;
+                        align-items: center;
+                        padding-right: 3rem;
                         .dashboard-sidebar__account-img {
                             aspect-ratio: 1 / 1;
                             width: 12rem;
@@ -202,6 +216,35 @@
                             border-radius: 50%;
                             object-fit: cover;
                             overflow: hidden;
+                        }
+                        p {
+                            margin: 0;
+                        }
+                    }
+                    .dashboard-sidebar__account-menu-nav{
+                    .dashboard-sidebar__account-menu-nav-title{
+                        text-transform: uppercase;
+                        color: $color-slate-600;
+                        @include text-meta;
+                    }
+                    ul{
+                        padding: 0;
+                        margin-bottom: 0;
+                        li:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                    }
+                    .dashboard-sidebar__account-menu__logout{
+                        .dashboard-sidebar__account-logout{
+                            display: flex;
+                            gap: $spacing-xs;
+                            align-items: center;
+                            color: $color-red;
+                            margin-bottom: 0;
+                            svg{
+                                transform: translateY(-0.3rem);
+                            }
                         }
                     }
                 }

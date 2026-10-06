@@ -68,16 +68,26 @@
 							<p class="dashboard-sidebar__account-email">{{ user_email }}</p>
 						</div>
 					</div>
+					<div class="dashboard-sidebar__account-menu__divider"></div>
 					<div class="dashboard-sidebar__account-menu__user-menu">
 						<a href="{{ path('user.page') }}" class="dashboard-sidebar__account-menu-profile">
 							{{ 'Profile'|t }}
 						</a>
 					</div>
-					<nav class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
+					<div class="dashboard-sidebar__account-menu__divider"></div>
+					<div class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
+						<p class="dashboard-sidebar__account-menu-nav-title">{{ 'Legal'|t }}</p>
 						{{ page.sidebar_account_menu }}
-					</nav>
+					</div>
+					<div class="dashboard-sidebar__account-menu__divider"></div>
 					<div class="dashboard-sidebar__account-menu__logout">
 						<a href="{{ path('user.logout') }}" class="dashboard-sidebar__account-logout">
+							<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect x="2.5" y="1" width="7" height="15" stroke="#A80000"/>
+								<rect x="7" y="6.5" width="3" height="4" fill="white"/>
+								<path d="M16.3536 8.85355C16.5488 8.65829 16.5488 8.34171 16.3536 8.14645L13.1716 4.96447C12.9763 4.7692 12.6597 4.7692 12.4645 4.96447C12.2692 5.15973 12.2692 5.47631 12.4645 5.67157L15.2929 8.5L12.4645 11.3284C12.2692 11.5237 12.2692 11.8403 12.4645 12.0355C12.6597 12.2308 12.9763 12.2308 13.1716 12.0355L16.3536 8.85355ZM7 8.5V9H16V8.5V8H7V8.5Z" fill="#A80000"/>
+							</svg>
+
 							{{ 'Log out'|t }}
 						</a>
 					</div>
