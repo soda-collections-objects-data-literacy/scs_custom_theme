@@ -338,7 +338,7 @@
 
   Drupal.behaviors.scsCustomThemeProjectNoteEdit = {
     attach: function (context) {
-      once('scsCustomThemeProjectNoteEdit', '.project__note', context).forEach(function (section) {
+      once('scsCustomThemeProjectNoteEdit', '.project__note, .profile__picture', context).forEach(function (section) {
         var trigger = section.querySelector('.project-note-edit-trigger');
         var overlay = section.querySelector('.project-note-edit-overlay');
         var cancelButtons = overlay ? overlay.querySelectorAll('.project-note-form__cancel, .overlay__close') : [];
