@@ -1,0 +1,90 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+.scs-manager--messages {
+    grid-column: 1 / span 8;
+    margin-top: $spacing-m;
+}
+
+.scs-manager--messages-empty {
+    padding: $spacing-m 0;
+    text-align: center;
+    color: $color-slate-600;
+}
+
+.scs-manager--messages-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.scs-manager--messages-row {
+    background-color: $color-white;
+    box-shadow: none !important;
+
+    &--unread {}
+}
+
+.scs-manager--messages-item {
+    display: grid;
+    grid-template-columns: 6rem auto 28rem max-content;
+    gap: $spacing-s;
+    padding: $spacing-xs;
+    color: $color-slate-900;
+    border-radius: $radius-small;
+    border: 1px solid $color-slate-300;
+    align-items: center;
+}
+
+.scs-manager--messages-sender {
+    margin: 0;
+    img {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        object-fit: cover;
+            margin: 0;
+    }
+}
+
+.scs-manager--messages-initials {
+    @include font-text-bold;
+    font-size: 1.5rem;
+    background-color: $color-slate-900;
+    color: $color-white;
+    aspect-ratio: 1/1;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-small;
+    padding: 1rem;
+        margin: 0;
+}
+
+.scs-manager--messages-subject {
+        margin: 0;
+}
+
+.scs-manager--messages-actions {
+    margin: 0;
+    justify-self: end;
+    form,
+    .form-actions {
+        margin: 0;
+    }
+}
+
+.scs-manager--message-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+}
+
+.scs-manager--messages-date {
+    color: $color-slate-600;
+    justify-self: end;
+    @media (min-width: $breakpoint-sm-width) {
+        text-align: right;
+    }
+}

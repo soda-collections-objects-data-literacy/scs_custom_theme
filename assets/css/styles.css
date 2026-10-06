@@ -1490,6 +1490,23 @@ body.menu-open {
 .application__details-card--general-information p {
   margin: 0;
 }
+.application__details-card--notes .project__section__header {
+  display: flex;
+  gap: 21px;
+  justify-content: space-between;
+  align-items: center;
+}
+.application__details-card--notes .project__section__header .application__details-card-title {
+  margin: 0;
+}
+.application__details-card--notes .project__section__header .project__section__edit-button {
+  flex-shrink: 0;
+}
+.application__details-card--notes .project__section__header .project__section__edit-button svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
 
 .application__details-card-title {
   margin-top: 0;
@@ -1700,6 +1717,94 @@ body.menu-open {
 .create-project-wizard__footer-actions {
   display: flex;
   gap: 10px;
+}
+
+.scs-manager--messages {
+  grid-column: 1/span 8;
+  margin-top: 30px;
+}
+
+.scs-manager--messages-empty {
+  padding: 30px 0;
+  text-align: center;
+  color: #4D5866;
+}
+
+.scs-manager--messages-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scs-manager--messages-row {
+  background-color: #FFFFFF;
+  box-shadow: none !important;
+}
+.scs-manager--messages-item {
+  display: grid;
+  grid-template-columns: 6rem auto 28rem max-content;
+  gap: 21px;
+  padding: 10px;
+  color: #17212B;
+  border-radius: 8px;
+  border: 1px solid #D5DCE4;
+  align-items: center;
+}
+
+.scs-manager--messages-sender {
+  margin: 0;
+}
+.scs-manager--messages-sender img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+}
+
+.scs-manager--messages-initials {
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background-color: #17212B;
+  color: #FFFFFF;
+  aspect-ratio: 1/1;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0;
+}
+
+.scs-manager--messages-subject {
+  margin: 0;
+}
+
+.scs-manager--messages-actions {
+  margin: 0;
+  justify-self: end;
+}
+.scs-manager--messages-actions form,
+.scs-manager--messages-actions .form-actions {
+  margin: 0;
+}
+
+.scs-manager--message-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scs-manager--messages-date {
+  color: #4D5866;
+  justify-self: end;
+}
+@media (min-width: 560px) {
+  .scs-manager--messages-date {
+    text-align: right;
+  }
 }
 
 .btn,

@@ -235,6 +235,29 @@
             margin: 0;
         }
     }
+
+    &--notes {
+        .project__section__header {
+            display: flex;
+            gap: $spacing-s;
+            justify-content: space-between;
+            align-items: center;
+
+            .application__details-card-title {
+                margin: 0;
+            }
+
+            .project__section__edit-button {
+                flex-shrink: 0;
+
+                svg {
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
 }
 
 .application__details-card-title {
