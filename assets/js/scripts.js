@@ -52,19 +52,23 @@
           credentials: 'same-origin',
           body: formData,
         }).then(function (response) {
-          if (response.redirected || (response.url && response.url !== fetchUrl)) {
+          if (response.redirected) {
             if (onSettled) {
               onSettled(true);
             }
             window.location.href = response.url;
+            return;
           }
-          else {
-            // Validation/access error: fall back to the real confirmation page.
+          // Not redirected: the form was rebuilt with an error, so report it here.
+          return response.text().then(function (resultHtml) {
+            var resultDoc = new DOMParser().parseFromString(resultHtml, 'text/html');
+            var errors = Array.prototype.map.call(resultDoc.querySelectorAll('.messages--error'), function (node) {
+              return node.textContent.replace(/\s+/g, ' ').trim();
+            }).filter(Boolean);
             if (onSettled) {
-              onSettled(false);
+              onSettled(false, errors.join(' ') || Drupal.t('Deleting failed. Please try again.'));
             }
-            window.location.href = url;
-          }
+          });
         });
       })
       .catch(function () {
@@ -311,10 +315,20 @@
             var originalText = confirmLink.textContent;
             confirmLink.textContent = Drupal.t('Deleting…');
             var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
-            scsCustomThemeSubmitConfirmForm(href, destination, function (success) {
+            scsCustomThemeSubmitConfirmForm(href, destination, function (success, errorText) {
               if (!success) {
                 confirmLink.removeAttribute('aria-disabled');
                 confirmLink.textContent = originalText;
+                if (errorText) {
+                  var errorEl = dialog.querySelector('.application__details-delete-confirmation__error');
+                  if (!errorEl) {
+                    errorEl = document.createElement('p');
+                    errorEl.className = 'application__details-delete-confirmation__error';
+                    errorEl.setAttribute('role', 'alert');
+                    dialog.querySelector('.application__details-delete-confirmation__actions').before(errorEl);
+                  }
+                  errorEl.textContent = errorText;
+                }
               }
             });
           });

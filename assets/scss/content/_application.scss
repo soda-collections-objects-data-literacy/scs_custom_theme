@@ -231,9 +231,14 @@
     }
 
     &--general-information {
+        margin-top: $spacing-m;
         p {
             margin: 0;
         }
+    }
+
+    &--health-status{
+        margin-top: $spacing-m;
     }
 
     &--notes {
@@ -262,6 +267,10 @@
 
 .application__details-card-title {
     margin-top: 0;
+}
+
+.application__details-delete-confirmation__error {
+    color: $color-red;
 }
 
 .application__details-component-cards {

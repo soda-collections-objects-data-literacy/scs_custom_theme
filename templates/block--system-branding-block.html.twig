@@ -1,0 +1,13 @@
+{# Sidebar branding links to the dashboard; other branding blocks keep the front page. #}
+{% set home_url = home_url|default(path('<front>')) %}
+{{ title_prefix }}
+{{ title_suffix }}
+{% if configuration.use_site_logo %}
+  <a href="{{ home_url }}" rel="home">{{ content.site_logo }}</a>
+{% endif %}
+{% if configuration.use_site_name %}
+  <a href="{{ home_url }}" rel="home">{{ content.site_name }}</a>
+{% endif %}
+{% if configuration.use_site_slogan %}
+  {{ content.site_slogan }}
+{% endif %}
