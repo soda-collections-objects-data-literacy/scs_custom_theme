@@ -9,7 +9,8 @@
         left: unset;
         bottom: $spacing-s;
         border-radius: $radius-small;
-        background-color: $color-slate-900;
+        background-color: $color-slate-100;
+        border: 1px solid $color-slate-300;
         translate: unset;
         box-shadow: $shadow-strong;
         min-height: unset;
@@ -30,15 +31,16 @@
             padding: 0;
 
             * {
-                color: $color-white;
+                color: $color-slate-900;
                 text-align: left;
                 @include text-regular;
             }
 
             .text--label {
-                color: $color-green-ondark;
+                color: $color-green;
                 margin-top: 0;
             }
+
             p:not(.text--label) {
                 margin-bottom: 0;
             }
@@ -51,7 +53,37 @@
                 aspect-ratio: 1 / 1;
                 border: none;
                 margin: 0;
+                color: $color-slate-900;
             }
         }
+    }
+}
+
+.notification-icon-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin: 0;
+    *{
+        margin: 0;
+    }
+}
+
+.notification-count {
+    display: inline-block;
+    aspect-ratio: 1/1;
+    height: 3.6rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    background-color: #B50000;
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+
+    &[hidden] {
+        display: none;
     }
 }

@@ -6,6 +6,9 @@ html {
     font-size: calc(#{2px} + #{strip-unit(4px)} * ((100vw - #{$breakpoint-s-width}) / #{strip-unit($breakpoints-max-diff)}));
     line-height: 1.3;
     color: $color-text-primary;
+    @media (max-width: $breakpoint-l-width) {
+        font-size: 4px;
+    }
 }
 
 body {

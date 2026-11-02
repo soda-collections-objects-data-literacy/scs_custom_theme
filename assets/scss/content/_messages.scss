@@ -28,22 +28,42 @@
 .scs-manager--messages-item {
     display: grid;
     grid-template-columns: 6rem auto 28rem max-content;
+    grid-template-areas:
+        "sender subject date actions";
     gap: $spacing-s;
     padding: $spacing-xs;
     color: $color-slate-900;
     border-radius: $radius-small;
     border: 1px solid $color-slate-300;
     align-items: center;
+
+    @media screen and (max-width: $breakpoint-sm-width) {
+        grid-template-columns: 6rem auto 35rem;
+        grid-template-areas:
+            "sender subject date""actions actions actions";
+
+        .scs-manager--messages-actions {
+            justify-self: start;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-s-width) {
+        grid-template-columns: 6rem auto;
+                grid-template-areas:
+            "space date" "sender subject" "actions actions";
+    }
 }
 
 .scs-manager--messages-sender {
+    grid-area: sender;
     margin: 0;
+
     img {
         width: 6rem;
         height: 6rem;
         border-radius: 50%;
         object-fit: cover;
-            margin: 0;
+        margin: 0;
     }
 }
 
@@ -59,16 +79,19 @@
     justify-content: center;
     border-radius: $radius-small;
     padding: 1rem;
-        margin: 0;
+    margin: 0;
 }
 
 .scs-manager--messages-subject {
-        margin: 0;
+    grid-area: subject;
+    margin: 0;
 }
 
 .scs-manager--messages-actions {
+    grid-area: actions;
     margin: 0;
     justify-self: end;
+
     form,
     .form-actions {
         margin: 0;
@@ -82,8 +105,10 @@
 }
 
 .scs-manager--messages-date {
+    grid-area: date;
     color: $color-slate-600;
     justify-self: end;
+
     @media (min-width: $breakpoint-sm-width) {
         text-align: right;
     }

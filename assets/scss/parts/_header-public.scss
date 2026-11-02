@@ -49,6 +49,8 @@
                 justify-self: end;
                 height: 12rem;
                 align-items: center;
+                display: flex;
+                gap: $spacing-s;
 
                 nav {
                     height: 100%;

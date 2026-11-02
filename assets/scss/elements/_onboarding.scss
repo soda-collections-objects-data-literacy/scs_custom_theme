@@ -1,0 +1,183 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+$onboarding-z-index: 100000;
+$onboarding-card-width: 380px;
+$onboarding-caret-size: 16px;
+$onboarding-outline-width: 3px;
+$onboarding-outline-offset: 4px;
+
+// Dev trigger in the account menu, styled like the neighbouring links.
+.dashboard-sidebar__account-menu-onboarding {
+    display: block;
+    width: auto;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    text-align: left;
+
+    &:hover {
+        box-shadow: none;
+        text-decoration: underline;
+    }
+}
+
+// The root never blocks input itself: only the dimmed area (backdrop) and the
+// card do. Cut-outs in the backdrop's clip-path stay clickable.
+.scs-onboarding {
+    position: fixed;
+    inset: 0;
+    z-index: $onboarding-z-index;
+    pointer-events: none;
+
+    &__backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(15, 23, 42, 0.72);
+        pointer-events: auto;
+    }
+
+    &__card {
+        // Hidden until the script has measured and placed it.
+        visibility: hidden;
+        position: absolute;
+        box-sizing: border-box;
+        width: $onboarding-card-width;
+        max-width: calc(100vw - 2 * #{$spacing-mobile});
+        max-height: calc(100vh - 2 * #{$spacing-mobile});
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-s;
+        padding: $spacing-m;
+        background-color: $color-white;
+        color: $color-text-primary;
+        border-radius: $radius-large;
+        box-shadow: $shadow-strong;
+        pointer-events: auto;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $color-slate-900;
+            outline-offset: 2px;
+        }
+
+        // Pointer towards the highlighted element; the offsets come from the script.
+        &[data-placement="right"],
+        &[data-placement="left"],
+        &[data-placement="top"],
+        &[data-placement="bottom"] {
+            overflow: visible;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: $onboarding-caret-size;
+                height: $onboarding-caret-size;
+                background-color: $color-white;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+
+        &[data-placement="right"]::before {
+            left: 0;
+            top: var(--scs-onboarding-caret-y, 50%);
+        }
+
+        &[data-placement="left"]::before {
+            left: 100%;
+            top: var(--scs-onboarding-caret-y, 50%);
+        }
+
+        &[data-placement="bottom"]::before {
+            left: var(--scs-onboarding-caret-x, 50%);
+            top: 0;
+        }
+
+        &[data-placement="top"]::before {
+            left: var(--scs-onboarding-caret-x, 50%);
+            top: 100%;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xs;
+    }
+
+    &__heading,
+    &__lead,
+    &__text,
+    &__hint {
+        margin: 0;
+    }
+
+    &__hint {
+        color: $color-text-secondary;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: $spacing-xs;
+    }
+
+    &__accent {
+        @include font-text-bold;
+
+        &--blue {
+            color: $color-blue;
+        }
+
+        &--green {
+            color: $color-green;
+        }
+
+        &--external::after {
+            content: '\2197';
+            margin-left: 0.2em;
+            font-size: 0.8em;
+        }
+    }
+
+    &__inline-icon {
+        display: inline-flex;
+        vertical-align: middle;
+        color: $color-slate-900;
+
+        svg {
+            width: 1.25em;
+            height: 1.25em;
+        }
+    }
+}
+
+// Colour-coded outlines on the real elements the text refers to ("click the
+// tile" / "click the details button").
+.scs-onboarding-outline--blue,
+.scs-onboarding-outline--green {
+    outline-style: solid;
+    outline-width: $onboarding-outline-width;
+    outline-offset: $onboarding-outline-offset;
+}
+
+.scs-onboarding-outline--blue {
+    outline-color: $color-blue;
+}
+
+.scs-onboarding-outline--green {
+    outline-color: $color-green;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .scs-onboarding__card {
+        transition: left 0.2s ease, top 0.2s ease;
+    }
+}

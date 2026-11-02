@@ -1,40 +1,48 @@
-@use '../base/vars' as *;
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
 
+// Fixed to the main content rect (set by scripts.js), independent of where the markup sits.
 .overlay {
-    position: absolute;
-    inset: 0;
+    position: fixed;
+    top: var(--scs-overlay-top, 0);
+    left: var(--scs-overlay-left, 0);
+    width: var(--scs-overlay-width, 100%);
+    height: var(--scs-overlay-height, 100%);
     z-index: 9999;
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
     gap: $spacing-s;
     align-items: start;
+    align-content: start;
     justify-content: center;
-    padding: $spacing-m;
-    background-color: transparent;
+    padding: $spacing-l $spacing-m;
+    background-color: rgba(15, 23, 42, 0.72);
+    border-radius: $radius-large;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
 
     &[hidden] {
         display: none;
     }
 
     &__backdrop {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background-color: rgba(15, 23, 42, 0.72);
+        display: none;
     }
 
     &__dialog {
         position: relative;
         z-index: 1;
-        max-height: calc(100vh - 2 * #{$spacing-m});
+        max-height: none;
+        overflow: visible;
         background-color: $color-white;
         border: 1px solid $color-slate-300;
         border-radius: $radius-small;
         box-shadow: $shadow-small;
         padding: $spacing-s;
         border-top: 1px solid $color-orange-500;
-        &::after{
+
+        &::after {
             content: '';
             display: block;
             position: absolute;
@@ -42,10 +50,11 @@
             width: 4rem;
             background-color: $color-orange-500;
             border-radius: 50%;
-            top: -2rem;
+            top: 0;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
         }
+
         h2 {
             margin-top: 0;
             margin-bottom: $spacing-m;
@@ -63,10 +72,46 @@
         }
 
         .form-actions {
-            display: flex;
-            gap: $spacing-xs;
-            justify-content: flex-end;
+            @include overlay-actions-order;
         }
+
+        .form-type-checkbox {
+            display: grid;
+            grid-template-columns: 2rem 1fr;
+            grid-template-areas: 
+                "checkbox label"
+                "checkbox description";
+            gap: $spacing-s;
+            row-gap: 0;
+            align-items: baseline;
+            input{
+                height: unset;
+                grid-area: checkbox;
+            }
+            label{
+                grid-area: label;
+            }
+            div {
+                grid-area: description;
+            }
+        }
+
+        .field--name-machinename {
+            margin-bottom: $spacing-s;
+
+            .description span {
+                display: block;
+            }
+        }
+    }
+
+    .add-app-popup__actions {
+        @include overlay-actions-order;
+    }
+
+    .add-app-popup__back,
+    .add-app-popup__cancel {
+        padding: 2rem 4rem;
     }
 
     &__close {
@@ -87,9 +132,125 @@
     }
 }
 
+.soda-scs-manager__throbber-overlay {
+    position: fixed;
+    top: var(--scs-overlay-top, 0);
+    left: var(--scs-overlay-left, 0);
+    width: var(--scs-overlay-width, 100%);
+    height: var(--scs-overlay-height, 100%);
+    box-sizing: border-box;
+    border-radius: $radius-large;
+    z-index: 10000;
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: $spacing-s;
+    align-items: start;
+    justify-content: center;
+    padding: $spacing-m;
+    background-color: rgba(15, 23, 42, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+    overscroll-behavior: contain;
+}
+
+.soda-scs-manager__throbber-overlay--active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.soda-scs-manager__throbber-overlay__content {
+    grid-column: 3 / span 4;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: calc(100vh - 2 * #{$spacing-m});
+    overflow-y: auto;
+    padding: $spacing-s;
+    border-radius: $radius-small;
+    box-shadow: $shadow-small;
+    background-color: $color-white;
+    color: $color-slate-900;
+    text-align: left;
+}
+
+.soda-scs-manager__throbber-overlay__message {
+    color: $color-slate-900;
+    @include text-bigger;
+    @include font-text-regular;
+    text-align: left;
+    max-width: 100%;
+    width: 100%;
+        margin-top: $spacing-s;
+}
+
+.soda-scs-manager__throbber-overlay__info {
+    text-align: left;
+}
+
+.soda-scs-manager__throbber-overlay__spinner {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: $spacing-s;
+    margin-top: $spacing-s;
+    border: 4px solid $color-slate-900;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: scs-manager-throbber-spin 1s linear infinite;
+}
+
+.soda-scs-manager__throbber-overlay__steps-container{
+    height: unset;
+}
+
+@keyframes scs-manager-throbber-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html.scs-manager--overlay-scroll-locked,
+body.scs-manager--overlay-scroll-locked {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+.dashboard-main.scs-manager--overlay-scroll-locked {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+.soda-scs-manager__throbber-overlay__info,
+.soda-scs-manager__throbber-overlay__info p {
+    color: $color-slate-900;
+    @include text-bigger;
+    @include font-text-regular;
+    max-width: 100%;
+    width: 100%;
+}
+
+.create-project-wizard__hint {
+    margin-bottom: $spacing-s;
+}
+
+@media (max-width: $breakpoint-l-width) and (min-width: 48.01rem) {
+    .overlay--large .overlay__dialog {
+        grid-column: 2 / 9;
+    }
+}
+
 @media (max-width: 48rem) {
+
     .overlay--small .overlay__dialog,
     .overlay--large .overlay__dialog {
+        grid-column: 1 / -1;
+    }
+
+    .soda-scs-manager__throbber-overlay__content {
         grid-column: 1 / -1;
     }
 }

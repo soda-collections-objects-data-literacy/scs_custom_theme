@@ -30,12 +30,10 @@
 							</li>
 						{% endfor %}
 					</ul>
-					<a class="dashboard-sidebar__projects-see-all" href="{{ path('soda_scs_manager.dashboard') }}">
-						{{ 'See all'|t }}
-					</a>
 				</nav>
 			</div>
 			<nav class="dashboard-sidebar__secondary-nav" aria-label="{{ 'Secondary navigation'|t }}">
+				<a class="dashboard-sidebar__all-projects-icon" href="{{ path('soda_scs_manager.dashboard') }}"><span class="menu-item__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><span class="sr-only">{{ 'All projects'|t }}</span></a>
 				{{ page.sidebar_secondary_nav }}
 			</nav>
 		</div>
@@ -73,6 +71,14 @@
 						<a href="{{ path('soda_scs_manager.profile') }}" class="dashboard-sidebar__account-menu-profile">
 							{{ 'Profile'|t }}
 						</a>
+						{% if admin_url %}
+							<a href="{{ admin_url }}" class="dashboard-sidebar__account-menu-admin">
+								{{ 'Administration'|t }}
+							</a>
+						{% endif %}
+						<button type="button" class="dashboard-sidebar__account-menu-onboarding" data-scs-onboarding-start>
+							{{ 'Start onboarding tour'|t }}
+						</button>
 					</div>
 					<div class="dashboard-sidebar__account-menu__divider"></div>
 					<div class="dashboard-sidebar__account-menu-nav" aria-label="{{ 'Account menu'|t }}">
@@ -112,4 +118,5 @@
 			{{ page.content }}
 		</section>
 
-	</main></div>
+	</main>
+</div>

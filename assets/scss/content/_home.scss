@@ -5,6 +5,7 @@
 .home-hero-header {
     @include grid-12;
     position: relative;
+
     &::before {
         content: '';
         width: calc((50vw - 50%) + ((100% - 11 * $spacing-s) / 12 * 7 + 6 * $spacing-s));
@@ -15,6 +16,22 @@
         background-color: $color-slate-300;
         z-index: -1;
         border-radius: 0 $radius-large $radius-large 0;
+
+        @media screen and (max-width: $breakpoint-m-width) {
+            width: calc(100vw - 2 * $spacing-xs);
+            height: 60%;
+            top: 0;
+            left: calc(50% - 50vw + $spacing-xs);
+            border-radius: $radius-large;
+        }
+
+        @media screen and (max-width: $breakpoint-sm-width) {
+            height: 70%;
+        }
+
+        @media screen and (max-width: $breakpoint-s-width) {
+            height: 80%;
+        }
     }
 
     .home-hero-header__content {
@@ -28,6 +45,7 @@
 
         @media screen and (max-width: $breakpoint-m-width) {
             grid-column: 1 / span 12;
+            padding-bottom: 6rem;
         }
 
         .home-hero-header__cta {
@@ -52,6 +70,7 @@
 
         @media screen and (max-width: $breakpoint-m-width) {
             grid-column: 1 / span 12;
+            padding: 0;
         }
     }
 }
@@ -81,6 +100,41 @@
         li {
             width: 15%;
             padding: 12rem;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-ml-width) {
+        ul.logo-banner__items {
+            flex-wrap: wrap;
+
+            li {
+                padding: 6rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-m-width) {
+        margin-top: 26rem;
+        margin-bottom: 16rem;
+    }
+
+    @media screen and (max-width: $breakpoint-sm-width) {
+                margin-top: 20rem;
+        margin-bottom: 10rem;
+        ul.logo-banner__items {
+            justify-content: start;
+
+            li {
+                width: 25%;
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-s-width) {
+        ul.logo-banner__items {
+            li {
+                padding: 3rem;
+            }
         }
     }
 }
@@ -135,6 +189,46 @@
             }
         }
     }
+
+    @media screen and (max-width: $breakpoint-m-width) {
+        .information-stairs__header {
+            grid-column: 2 / span 10;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm-width) {
+        .information-stairs__header {
+            grid-column: 1 / span 12;
+        }
+
+        .information-stairs__item {
+
+
+            .information-stairs__item__header {
+                grid-column: 1 / span 12;
+            }
+
+            .information-stairs__item-description {
+                grid-column: 1 / span 12;
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-s-width) {
+        .information-stairs__item {
+            &:nth-child(1) {
+                grid-column: 1 / span 12;
+            }
+
+            &:nth-child(2) {
+                grid-column: 1 / span 12;
+            }
+
+            &:nth-child(3) {
+                grid-column: 1 / span 12;
+            }
+        }
+    }
 }
 
 // Aspect Preview
@@ -144,6 +238,7 @@
     position: relative;
     padding-top: 14rem;
     padding-bottom: 30rem;
+
     .aspect-preview__header {
         grid-column: 4 / span 6;
         margin-bottom: 8rem;
@@ -154,21 +249,25 @@
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         gap: $spacing-s;
-        .video-wrapper{
+
+        .video-wrapper {
             width: fit-content;
             border-radius: $radius-large;
             overflow: hidden;
             margin: 12rem 0;
         }
-        .aspect-preview__video__wrapper{
+
+        .aspect-preview__video__wrapper {
             grid-column: 2 / span 7;
             position: relative;
         }
+
         .aspect-preview__video-background {
             position: absolute;
             grid-column: 1 / span 3;
             width: 100%;
             height: 100%;
+
             &__rectangle {
                 background-color: $color-slate-300;
                 width: 100%;
@@ -240,14 +339,43 @@
             }
         }
     }
+
+    @media screen and (max-width: $breakpoint-m-width) {
+            margin: 16rem 0;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+        .aspect-preview__header {
+            grid-column: 2 / span 10;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm-width) {
+                    margin: 10rem 0;
+        .aspect-preview__header {
+            grid-column: 1 / span 12;
+        }
+                .video-wrapper {
+            margin: 4rem 0;
+        }
+        .aspect-preview__video {
+        grid-column: 2 / span 10;
+
+        .aspect-preview__video-background {
+            position: absolute;
+            grid-column: 1 / span 4;
+        }
+        
+    }
+    }
 }
 
 // CTA Try
-.cta-try{
+.cta-try {
     padding: 12rem 0;
     @include grid-12;
     margin: 22rem 0;
     position: relative;
+
     &::before {
         content: '';
         width: 100vw;
@@ -258,12 +386,32 @@
         left: calc(50% - 50vw);
         z-index: -1;
     }
-    .cta-try__headline, .cta-try__description, .cta-try__button{
+
+    .cta-try__headline,
+    .cta-try__description,
+    .cta-try__button {
         grid-column: 4 / span 6;
         text-align: center;
         margin: 0;
     }
-    .cta-try__button{
+
+    .cta-try__button {
         justify-self: center;
     }
+        @media screen and (max-width: $breakpoint-m-width) {
+                margin: 16rem 0;
+    .cta-try__headline,
+    .cta-try__description,
+    .cta-try__button {
+        grid-column: 2 / span 10;
+    }
+        }
+                @media screen and (max-width: $breakpoint-sm-width) {
+                                    margin: 10rem 0;
+    .cta-try__headline,
+    .cta-try__description,
+    .cta-try__button {
+        grid-column: 1 / span 12;
+    }
+        }
 }

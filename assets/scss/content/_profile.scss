@@ -122,3 +122,13 @@
         }
     }
 }
+
+@media screen and (min-width: $breakpoint-ml-width) {
+   .dashboard-layout .dashboard-main .dashboard-content .profile--left {
+    grid-column: 1 / span 6;
+}
+
+   .dashboard-layout .dashboard-main .dashboard-content .profile--right {
+    grid-column: 7 / span 3;
+}
+}

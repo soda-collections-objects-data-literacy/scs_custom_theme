@@ -6,6 +6,7 @@
         position: relative;
         display: grid;
         grid-template-columns: 50% 2fr 1fr 1fr 6rem;
+        grid-template-areas: "header tags date members edit";
         background-color: $color-white;
         border-radius: $radius-small;
         box-shadow: $shadow-small;
@@ -15,10 +16,19 @@
         gap: $spacing-s;
         margin-bottom: $spacing-xs;
 
+        &:hover {
+            box-shadow: $shadow-medium;
+        }
+
         @for $index from 1 through 30 {
             &:nth-child(#{$index}) {
                 z-index: 100 - $index;
             }
+        }
+
+        // The card's stacking context would otherwise cap the open confirmation overlay below later cards.
+        &:has(.project-card__delete-confirmation:not([hidden])) {
+            z-index: 9999;
         }
 
         * {
@@ -31,6 +41,7 @@
         }
 
         .project-card__header {
+            grid-area: header;
             display: flex;
             gap: $spacing-s;
             align-items: center;
@@ -74,12 +85,14 @@
         }
 
         .project-card__edit {
+            grid-area: edit;
             margin-left: auto;
             position: relative;
             z-index: 3;
         }
 
         .project-card__actions-toggle {
+
             border: 0;
             background: transparent;
             cursor: pointer;
@@ -107,27 +120,16 @@
             border-radius: $radius-small;
             box-shadow: $shadow-small;
 
-            a,
-            button {
-                padding: $spacing-xs $spacing-s;
+            .btn {
+                width: 100%;
                 text-decoration: none;
-                text-align: left;
-                border: 0;
-                background: transparent;
-                color: inherit;
-                cursor: pointer;
-                font: inherit;
-
-                &:hover,
-                &:focus-visible {
-                    background-color: $color-slate-100;
-                }
             }
         }
 
         .project-card__members {
             display: flex;
             align-items: center;
+            grid-area: members;
         }
 
         .project-card__member {
@@ -170,6 +172,7 @@
         }
 
         .project-card__tags {
+            grid-area: tags;
             display: flex;
             flex-wrap: wrap;
             gap: 0.2em;
@@ -186,6 +189,7 @@
         }
 
         .project-card__date {
+            grid-area: date;
             pointer-events: none;
 
             p {
@@ -203,8 +207,42 @@
 
     .project__applications {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: $spacing-s;
+    }
+}
+
+@media (max-width: #{$breakpoint-ml-width}) and (min-width: #{$breakpoint-sm-width}) {
+    .project--left .project__applications {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: #{$breakpoint-m-width}) {
+    .project {
+        &--card {
+            grid-template-columns: 60% 1fr 1fr 6rem;
+            grid-template-areas: "header date members edit" "tags tags tags tags";
+            row-gap: 0;
+        }
+    }
+
+    .project--right {
+        margin-top: $spacing-m;
+    }
+}
+
+@media (max-width: #{$breakpoint-sm-width - 1px}) {
+    .project--left .project__applications {
+        grid-template-columns: minmax(0, 1fr);
+    }
+        .project {
+        &--card {
+            grid-template-columns: 2fr 1fr 6rem;
+            grid-template-areas: "header date edit" "tags members members";
+            row-gap: 2rem;
+        }
     }
 }
 
@@ -323,9 +361,7 @@
                     }
 
                     .form-actions {
-                        display: flex;
-                        gap: $spacing-xs;
-                        justify-content: flex-end;
+                        @include overlay-actions-order;
                         margin-top: $spacing-s;
                     }
                 }
@@ -351,11 +387,35 @@
         flex-direction: column;
         gap: $spacing-xs;
 
-        .project-members-edit-overlay__cancel {
-            margin-left: auto;
+        ul {
+            margin: 0;
+        }
+
+        .soda-scs-manager--add-member-form-inner {
+            display: flex;
+            align-items: center;
+            gap: $spacing-xs;
+
+            .form-item,
+            .form-actions {
+                margin: 0;
+            }
+
+            .form-item {
+                flex: 1;
+            }
+
+            .soda-scs-manager--add-member-input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .form-actions .btn {
+                height: 45px;
+                padding-block: 0;
+            }
         }
     }
-
 
     .project__files {
         .project__files__feed__files {
@@ -367,5 +427,21 @@
             }
         }
     }
+}
 
+@media screen and (max-width: $breakpoint-l-width) and (min-width: $breakpoint-m-width) {
+    .project--left {
+        grid-column: 1 / -1;
+    }
+
+    .project--right {
+        grid-column: 1 / -1;
+        @include grid-12;
+        margin-top: $spacing-m;
+
+        .project__section,
+        .project__delete {
+            grid-column-end: span 6;
+        }
+    }
 }

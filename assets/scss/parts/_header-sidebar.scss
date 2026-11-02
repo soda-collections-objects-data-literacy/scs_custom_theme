@@ -1,6 +1,17 @@
 @use '../base/vars'as *;
 @use '../base/mixins'as *;
 
+$mobile-nav-height: 64px;
+$bottom-nav-icon-size: 24px;
+
+.dashboard-layout {
+
+    .dashboard-sidebar__all-projects-icon,
+    .dashboard-sidebar__account-menu-admin {
+        display: none;
+    }
+}
+
 .dashboard-layout {
     background-color: $color-slate-300;
     @include grid-12;
@@ -18,21 +29,15 @@
         grid-template-rows: minmax(10rem, 20rem) minmax(0, 1fr) 12rem;
         height: calc(100vh - 4rem);
 
-        @media screen and (max-width: $breakpoint-m-width) {
-            grid-column: 1 / span 12;
-            min-height: auto;
-            height: auto;
-            padding-top: $spacing-s;
-            padding-bottom: $spacing-s;
-        }
-
         .dashboard-sidebar__logo {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
-            padding: 2rem;
-
+            padding: 2rem 6rem;
+            a{
+                flex: 1 1 0;
+            }
             img {
                 max-height: 100%;
                 height: auto;
@@ -133,21 +138,37 @@
             .dashboard-sidebar__project-link {
                 display: flex;
                 align-items: center;
-                gap: $spacing-s;
+                gap: $spacing-xs;
 
                 span {
                     margin: 0;
                 }
             }
 
-            .dashboard-sidebar__projects-see-all {
-                display: block;
-                flex-shrink: 0;
-                margin-top: $spacing-s;
-            }
-
             .dashboard-sidebar__secondary-nav {
                 flex-shrink: 0;
+
+                ul {
+                    padding: 0;
+
+                    .menu-item__label,
+                    .menu-item__icon {
+                        margin: 0;
+                    }
+                }
+
+                a:not(.dashboard-sidebar__all-projects-icon) {
+                    display: flex;
+                    align-items: center;
+                    gap: $spacing-xs;
+                }
+
+                .menu-item__icon {
+                    display: inline-flex;
+                    flex: 0 0 auto;
+                    width: 4rem;
+                    height: 4rem;
+                }
             }
         }
 
@@ -208,22 +229,26 @@
                 left: 2rem;
                 min-width: 120%;
                 z-index: 99999;
-                .dashboard-sidebar__account-menu-content-inner{
+
+                .dashboard-sidebar__account-menu-content-inner {
                     position: relative;
                     display: flex;
                     flex-direction: column;
                     gap: $spacing-xs;
-                    .dashboard-sidebar__account-menu__divider{
+
+                    .dashboard-sidebar__account-menu__divider {
                         height: 1px;
                         background-color: $color-slate-300;
                         width: 100%;
                     }
-                    .dashboard-sidebar__account-menu__account{
+
+                    .dashboard-sidebar__account-menu__account {
                         display: grid;
                         grid-template-columns: auto 1fr;
                         gap: $spacing-s;
                         align-items: center;
                         padding-right: 3rem;
+
                         .dashboard-sidebar__account-img {
                             aspect-ratio: 1 / 1;
                             width: 12rem;
@@ -232,32 +257,38 @@
                             object-fit: cover;
                             overflow: hidden;
                         }
+
                         p {
                             margin: 0;
                         }
                     }
-                    .dashboard-sidebar__account-menu-nav{
-                    .dashboard-sidebar__account-menu-nav-title{
-                        text-transform: uppercase;
-                        color: $color-slate-600;
-                        @include text-meta;
-                    }
-                    ul{
-                        padding: 0;
-                        margin-bottom: 0;
-                        li:last-child {
+
+                    .dashboard-sidebar__account-menu-nav {
+                        .dashboard-sidebar__account-menu-nav-title {
+                            text-transform: uppercase;
+                            color: $color-slate-600;
+                            @include text-meta;
+                        }
+
+                        ul {
+                            padding: 0;
                             margin-bottom: 0;
+
+                            li:last-child {
+                                margin-bottom: 0;
+                            }
                         }
                     }
-                    }
-                    .dashboard-sidebar__account-menu__logout{
-                        .dashboard-sidebar__account-logout{
+
+                    .dashboard-sidebar__account-menu__logout {
+                        .dashboard-sidebar__account-logout {
                             display: flex;
                             gap: $spacing-xs;
                             align-items: center;
                             color: $color-red;
                             margin-bottom: 0;
-                            svg{
+
+                            svg {
                                 transform: translateY(-0.3rem);
                             }
                         }
@@ -279,17 +310,233 @@
 
         .dashboard-content {
             @include grid-9;
-            > article{
+
+            >article {
                 grid-column: 1 / span 6;
+            }
+
+            @media screen and (max-width: $breakpoint-l-width) {
+
+                >*,
+                >article {
+                    grid-column: 1 / -1;
+                }
             }
         }
 
         @media screen and (max-width: $breakpoint-m-width) {
-            grid-column: 1 / span 12;
-            min-height: auto;
-            height: auto;
-            padding-top: $spacing-s;
-            padding-bottom: $spacing-s;
+            grid-column: 1 / -1;
+            margin: $spacing-xs;
+            height: calc(100dvh - #{$spacing-xs * 2});
+            // Room for the floating nav pill so the last content isn't hidden under it.
+            padding: $spacing-s $spacing-s calc(#{$mobile-nav-height} + #{$spacing-xs * 2} + #{$spacing-s} + env(safe-area-inset-bottom, 0px));
+        }
+    }
+
+
+    @media screen and (max-width: $breakpoint-l-width) {
+        .dashboard-sidebar {
+            grid-column: 1 / span 3;
+        }
+
+        .dashboard-main {
+            grid-column: 4 / span 10;
+        }
+    }
+
+    // Below tablet the sidebar becomes a floating pill at the bottom: icons only, create-project button centred.
+    @media screen and (max-width: $breakpoint-m-width) {
+        display: block;
+        height: 100dvh;
+        overflow: hidden;
+
+        .dashboard-sidebar {
+            position: fixed;
+            top: auto;
+            bottom: calc(#{$spacing-xs} + env(safe-area-inset-bottom, 0px));
+            left: 0;
+            right: 0;
+            width: calc(100% - #{$spacing-xs * 4});
+            max-width: 400px;
+            margin: 0 auto;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            height: $mobile-nav-height;
+            padding: 0 $spacing-s;
+            border-radius: $mobile-nav-height;
+            background-color: $color-slate-900;
+            border: none;
+            border-top: 2px solid $color-orange-500;
+            box-shadow: $shadow-strong;
+
+            .dashboard-sidebar__logo,
+            .dashboard-sidebar__dark .dashboard-sidebar__projectnav,
+            .dashboard-sidebar__dark .dashboard-sidebar__projects .dashboard-sidebar__projects-header .dashboard-sidebar__projects-title {
+                display: none;
+            }
+
+            .dashboard-sidebar__dark,
+            .dashboard-sidebar__dark .dashboard-sidebar__projects,
+            .dashboard-sidebar__dark .dashboard-sidebar__projects .dashboard-sidebar__projects-header {
+                display: contents;
+            }
+
+            .dashboard-sidebar__dark .dashboard-sidebar__projects .dashboard-sidebar__projects-header .dashboard-sidebar__projects-header-icon {
+                position: relative;
+                order: 3;
+                margin: 0;
+                flex: 0 0 auto;
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                min-height: 48px;
+                max-width: 48px;
+                max-height: 48px;
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            // Order: all projects, documentation, add project, notifications, account.
+            // The menu wrappers are flattened so each item can be ordered around the plus button.
+            .dashboard-sidebar__dark .dashboard-sidebar__secondary-nav {
+                display: contents;
+
+                div,
+                nav,
+                ul {
+                    display: contents;
+                }
+
+                li {
+                    order: 4;
+                    margin: 0;
+
+                    &:has(> a[href^='http']) {
+                        order: 2;
+                    }
+
+                    // Reachable from the account popup instead.
+                    &:has(> a[href$='/admin']) {
+                        display: none;
+                    }
+                }
+
+                a.dashboard-sidebar__all-projects-icon {
+                    order: 1;
+                }
+
+                // Labels stay available to screen readers; only the icons show in the pill.
+                .menu-item__label,
+                .notification-icon,
+                .sr-only-label {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                    clip: rect(0 0 0 0);
+                    white-space: nowrap;
+                }
+
+                .menu-item__icon,
+                .menu-item__icon svg {
+                    width: $bottom-nav-icon-size;
+                    height: $bottom-nav-icon-size;
+                }
+
+                a {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 44px;
+                    height: 44px;
+                    margin: 0;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $color-orange-500;
+                    }
+
+                    &:focus-visible {
+                        outline: 3px solid $color-orange-500;
+                        outline-offset: 2px;
+                    }
+                }
+
+                a.dashboard-sidebar__all-projects-icon {
+                    display: flex;
+                }
+
+                .notification-icon-wrapper {
+                    position: static;
+                }
+
+                .notification-count {
+                    position: absolute;
+                    top: 2px;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 18px;
+                    height: 18px;
+                    padding: 0 4px;
+                    font-size: 11px;
+
+                    &[hidden] {
+                        display: none;
+                    }
+                }
+            }
+
+            .dashboard-sidebar__account-menu {
+                order: 5;
+                flex: 0 0 auto;
+                display: flex;
+                justify-content: center;
+
+                button.dashboard-sidebar__account-menu-header {
+                    width: auto;
+                    height: auto;
+                    padding: 0;
+                    border-radius: 50%;
+                    background-color: transparent;
+                    justify-content: center;
+
+                    .dashboard-sidebar__account-menu-picture {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .dashboard-sidebar__account-menu-title {
+                        position: absolute;
+                        width: 1px;
+                        height: 1px;
+                        overflow: hidden;
+                        clip: rect(0 0 0 0);
+                        white-space: nowrap;
+                    }
+                }
+
+                .dashboard-sidebar__account-menu-content {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: auto;
+                    bottom: calc(100% + #{$spacing-xs});
+                    min-width: 0;
+                    width: auto;
+
+                    .dashboard-sidebar__account-menu__user-menu a {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 }

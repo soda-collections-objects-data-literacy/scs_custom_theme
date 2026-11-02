@@ -2,6 +2,7 @@
 $breakpoint-s-width: 375px;
 $breakpoint-sm-width: 560px;
 $breakpoint-m-width: 768px;
+$breakpoint-ml-width: 960px;
 $breakpoint-l-width: 1200px;
 $breakpoint-xl-width: 1920px;
 $breakpoints-max-diff: $breakpoint-xl-width - $breakpoint-s-width;
@@ -23,7 +24,11 @@ $color-black: #000000;
 $color-white: #FFFFFF;
 $color-green: #006117;
 $color-green-ondark: #00F539;
+// Accent for "click here" hints; 6.9:1 on white.
+$color-blue: #0B57D0;
 $color-red: #A80000;
+// Lightest red that still gives white text 7:1 (AAA); only 2.3:1 against slate-900.
+$color-red-ondark: #B50000;
 $color-orange-500: #FFA933;
 $color-orange-600: #E68500;
 $color-slate-50: #FAFBFC;
@@ -83,4 +88,5 @@ $hero-mini-mt: 0.7em;
 $hero-mini-mb: 0.7em;
 // shadows
 $shadow-strong: 0px 4px 16px rgba(0, 0, 0, 0.25);
+$shadow-medium: 0px 3px 12px rgba(0, 0, 0, 0.15);
 $shadow-small: 0px 2px 8px rgba(0, 0, 0, 0.1);

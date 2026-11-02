@@ -6,7 +6,6 @@ button {
     border: 1px solid $color-slate-900;
     background-color: $color-slate-900;
     color: $color-white;
-    @include transition-all;
     padding: 2rem 4rem 2rem;
     cursor: pointer;
     text-align: center;
@@ -28,12 +27,7 @@ button {
     }
 
     &:hover {
-        background-color: $color-white;
-        color: $color-slate-900;
-
-        p {
-            color: $color-slate-900;
-        }
+        box-shadow: $shadow-medium;
     }
 
     p {
@@ -90,6 +84,26 @@ button {
     }
 }
 
+.project-card__delete-confirmation--grid,
+.application__details-delete-confirmation--grid {
+    // Fixed to the main content rect (set by scripts.js), independent of where the markup sits.
+    position: fixed;
+    inset: auto;
+    top: var(--scs-overlay-top, 0);
+    left: var(--scs-overlay-left, 0);
+    width: var(--scs-overlay-width, 100%);
+    height: var(--scs-overlay-height, 100%);
+    border-radius: $radius-large;
+    overflow: hidden;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    gap: $spacing-s;
+    align-content: start;
+    justify-content: stretch;
+    place-items: initial;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
 .project-card__delete-confirmation__backdrop,
 .application__details-delete-confirmation__backdrop {
     position: absolute;
@@ -119,6 +133,16 @@ button {
     }
 }
 
+.project-card__delete-confirmation--grid .project-card__delete-confirmation__dialog,
+.application__details-delete-confirmation--grid .application__details-delete-confirmation__dialog {
+    grid-column: 3 / span 4;
+    width: 100%;
+    max-height: unset;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-sizing: border-box;
+}
+
 .project-card__delete-confirmation__actions,
 .application__details-delete-confirmation__actions {
     display: flex;
@@ -141,8 +165,6 @@ button {
 .project-card__delete-confirmation__cancel,
 .application__details-delete-confirmation__cancel {
     border-color: $color-slate-300;
-    background-color: $color-white;
-    color: $color-slate-900;
 }
 
 .project-card__delete-confirmation__confirm,
@@ -150,4 +172,11 @@ button {
     background-color: $color-red;
     border-color: $color-red;
     color: $color-white;
+}
+
+@media (max-width: 48rem) {
+    .project-card__delete-confirmation--grid .project-card__delete-confirmation__dialog,
+    .application__details-delete-confirmation--grid .application__details-delete-confirmation__dialog {
+        grid-column: 1 / -1;
+    }
 }

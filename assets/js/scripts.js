@@ -79,6 +79,158 @@
       });
   }
 
+
+  /**
+   * Shows the same progress overlay used while an application is created.
+   * Confirm links carry a translated message in data-throbber-message.
+   */
+  function scsCustomThemeEnsureThrobberOverlay() {
+    if (document.querySelector('.soda-scs-manager__throbber-overlay')) {
+      return;
+    }
+    var container = document.querySelector('.dashboard-main') || document.body;
+    var overlay = document.createElement('div');
+    overlay.className = 'soda-scs-manager__throbber-overlay';
+    overlay.innerHTML =
+      '<div class="soda-scs-manager__throbber-overlay__content">' +
+        '<div class="soda-scs-manager__throbber-overlay__spinner"></div>' +
+        '<div class="soda-scs-manager__throbber-overlay__message"></div>' +
+        '<div class="soda-scs-manager__throbber-overlay__info"></div>' +
+        '<div class="soda-scs-manager__throbber-overlay__steps-container">' +
+          '<ul class="soda-scs-manager__steps-list"></ul>' +
+        '</div>' +
+      '</div>';
+    container.appendChild(overlay);
+  }
+
+  function scsCustomThemeShowDeleteThrobber(confirmLink) {
+    var message = confirmLink.getAttribute('data-throbber-message') || Drupal.t('Performing action, please do not close the window');
+    scsCustomThemeEnsureThrobberOverlay();
+    var messageEl = document.querySelector('.soda-scs-manager__throbber-overlay__message');
+    var infoEl = document.querySelector('.soda-scs-manager__throbber-overlay__info');
+    var stepsEl = document.querySelector('.soda-scs-manager__steps-list');
+    if (messageEl) {
+      messageEl.textContent = message;
+    }
+    if (infoEl) {
+      infoEl.textContent = '';
+    }
+    if (stepsEl) {
+      stepsEl.replaceChildren();
+    }
+    var overlay = document.querySelector('.soda-scs-manager__throbber-overlay');
+    if (overlay) {
+      overlay.classList.add('soda-scs-manager__throbber-overlay--active');
+    }
+    document.dispatchEvent(new CustomEvent('scs-manager:overlay-state-change'));
+  }
+
+  function scsCustomThemeHideDeleteThrobber() {
+    if (typeof Drupal.sodaScsThrobberOverlayHide === 'function') {
+      Drupal.sodaScsThrobberOverlayHide();
+      return;
+    }
+    var overlay = document.querySelector('.soda-scs-manager__throbber-overlay');
+    if (overlay) {
+      overlay.classList.remove('soda-scs-manager__throbber-overlay--active');
+    }
+    document.dispatchEvent(new CustomEvent('scs-manager:overlay-state-change'));
+  }
+
+  var scsOverlayScrollLockState = null;
+
+  function scsCustomThemeSyncOverlayRect() {
+    var main = document.querySelector('.dashboard-main');
+    var root = document.documentElement;
+    var names = ['top', 'left', 'width', 'height'];
+    if (!main) {
+      names.forEach(function (name) {
+        root.style.removeProperty('--scs-overlay-' + name);
+      });
+      return;
+    }
+    var rect = main.getBoundingClientRect();
+    root.style.setProperty('--scs-overlay-top', rect.top + 'px');
+    root.style.setProperty('--scs-overlay-left', rect.left + 'px');
+    root.style.setProperty('--scs-overlay-width', rect.width + 'px');
+    root.style.setProperty('--scs-overlay-height', rect.height + 'px');
+  }
+
+  function scsCustomThemeSyncOverlayScrollLock() {
+    var isOpen = Boolean(document.querySelector(
+      '.overlay:not([hidden]), .project-card__delete-confirmation:not([hidden]), ' +
+      '.application__details-delete-confirmation:not([hidden]), .soda-scs-manager__throbber-overlay--active'
+    ));
+
+    if (isOpen) {
+      scsCustomThemeSyncOverlayRect();
+    }
+
+    if (isOpen && scsOverlayScrollLockState === null) {
+      var body = document.body;
+      var sidebars = Array.prototype.slice.call(document.querySelectorAll('.dashboard-sidebar'));
+      scsOverlayScrollLockState = {
+        scrollX: window.scrollX,
+        scrollY: window.scrollY,
+        position: body.style.position,
+        top: body.style.top,
+        left: body.style.left,
+        width: body.style.width,
+        sidebars: sidebars.map(function (sidebar) {
+          return { element: sidebar, inert: sidebar.inert };
+        })
+      };
+      body.style.position = 'fixed';
+      body.style.top = -scsOverlayScrollLockState.scrollY + 'px';
+      body.style.left = -scsOverlayScrollLockState.scrollX + 'px';
+      body.style.width = '100%';
+      scsOverlayScrollLockState.sidebars.forEach(function (sidebarState) {
+        sidebarState.element.inert = true;
+      });
+    }
+    else if (!isOpen && scsOverlayScrollLockState !== null) {
+      var bodyToRestore = document.body;
+      var state = scsOverlayScrollLockState;
+      bodyToRestore.style.position = state.position;
+      bodyToRestore.style.top = state.top;
+      bodyToRestore.style.left = state.left;
+      bodyToRestore.style.width = state.width;
+      state.sidebars.forEach(function (sidebarState) {
+        sidebarState.element.inert = sidebarState.inert;
+      });
+      scsOverlayScrollLockState = null;
+      window.scrollTo(state.scrollX, state.scrollY);
+    }
+
+    document.documentElement.classList.toggle('scs-manager--overlay-scroll-locked', isOpen);
+    document.body.classList.toggle('scs-manager--overlay-scroll-locked', isOpen);
+    document.querySelectorAll('.dashboard-main').forEach(function (main) {
+      main.classList.toggle('scs-manager--overlay-scroll-locked', isOpen);
+    });
+  }
+
+  Drupal.scsCustomThemeSyncOverlayScrollLock = scsCustomThemeSyncOverlayScrollLock;
+  document.addEventListener('scs-manager:overlay-state-change', scsCustomThemeSyncOverlayScrollLock);
+  window.addEventListener('resize', function () {
+    if (scsOverlayScrollLockState !== null) {
+      scsCustomThemeSyncOverlayRect();
+    }
+  });
+
+  // Overlays opened by module scripts (add application, project wizard) only toggle `hidden`.
+  new MutationObserver(function (mutations) {
+    var overlayToggled = mutations.some(function (mutation) {
+      return mutation.target.classList && mutation.target.classList.contains('overlay');
+    });
+    if (overlayToggled) {
+      scsCustomThemeSyncOverlayScrollLock();
+    }
+  }).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['hidden'],
+    subtree: true
+  });
+
   Drupal.behaviors.scsCustomThemeBreadcrumb = {
     attach: function (context) {
       once('scsCustomThemeBreadcrumb', 'nav[aria-labelledby="system-breadcrumb"]', context).forEach(function (breadcrumb) {
@@ -87,6 +239,54 @@
         if (items.length <= 1) {
           breadcrumb.hidden = true;
         }
+      });
+    }
+  };
+
+  Drupal.behaviors.scsCustomThemeDeleteApplicationSlot = {
+    attach: function (context) {
+      once('scsCustomThemeDeleteApplicationSlot', '.application__details-right > .application__details-delete', context).forEach(function (deleteBlock) {
+        var right = deleteBlock.parentElement;
+        var left = document.querySelector('.application__details-left');
+        if (!left) {
+          return;
+        }
+
+        // Mirrors $breakpoint-l-width in scss/base/_vars.scss.
+        var belowLarge = window.matchMedia('(max-width: 1200px)');
+        var placeDeleteBlock = function () {
+          (belowLarge.matches ? left : right).appendChild(deleteBlock);
+        };
+
+        placeDeleteBlock();
+        belowLarge.addEventListener('change', placeDeleteBlock);
+      });
+    }
+  };
+
+  Drupal.behaviors.scsCustomThemeDashboardSearch = {
+    attach: function (context) {
+      once('scsCustomThemeDashboardSearch', '.dashboard__actions--search', context).forEach(function (search) {
+        var input = search.querySelector('.dashboard__search');
+        var cards = document.querySelectorAll('.dashboard__projects .project--card');
+        if (!input || !cards.length) {
+          return;
+        }
+
+        var applySearch = function () {
+          var query = input.value.trim().toLocaleLowerCase();
+          cards.forEach(function (card) {
+            card.hidden = query !== '' && !card.textContent.toLocaleLowerCase().includes(query);
+          });
+        };
+
+        input.addEventListener('input', applySearch);
+        input.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            applySearch();
+          }
+        });
       });
     }
   };
@@ -106,53 +306,6 @@
           header.setAttribute('aria-expanded', String(!expanded));
           content.hidden = expanded;
         });
-      });
-    }
-  };
-
-  Drupal.behaviors.scsCustomThemeProjectNavigation = {
-    attach: function (context) {
-      once('scsCustomThemeProjectNavigation', '.dashboard-sidebar__projectnav', context).forEach(function (navigation) {
-        var list = navigation.querySelector('.dashboard-sidebar__project-list');
-        var items = list ? Array.prototype.slice.call(list.children) : [];
-        var seeAll = navigation.querySelector('.dashboard-sidebar__projects-see-all');
-        var projects = navigation.closest('.dashboard-sidebar__projects');
-        var sidebar = navigation.closest('.dashboard-sidebar');
-        var secondaryNavigation = sidebar ? sidebar.querySelector('.dashboard-sidebar__secondary-nav') : null;
-        var accountButton = sidebar ? sidebar.querySelector('.dashboard-sidebar__account-menu-header') : null;
-
-        if (!list || !seeAll || !items.length || !projects || !secondaryNavigation || !accountButton) {
-          return;
-        }
-
-        var updateVisibility = function () {
-          items.forEach(function (item) {
-            item.hidden = false;
-          });
-
-          var secondaryRect = secondaryNavigation.getBoundingClientRect();
-          var accountRect = accountButton.getBoundingClientRect();
-          var listRect = list.getBoundingClientRect();
-          var projectsMarginBottom = parseFloat(window.getComputedStyle(projects).marginBottom) || 0;
-          var availableBottom = Math.min(secondaryRect.top, accountRect.top);
-          var availableHeight = Math.max(0, availableBottom - listRect.top - seeAll.offsetHeight - projectsMarginBottom);
-          var usedHeight = 0;
-
-          items.forEach(function (item) {
-            var itemHeight = item.getBoundingClientRect().height;
-            if (usedHeight + itemHeight <= availableHeight) {
-              usedHeight += itemHeight;
-            }
-            else {
-              item.hidden = true;
-            }
-          });
-
-          list.style.maxHeight = usedHeight + 'px';
-        };
-
-        updateVisibility();
-        window.addEventListener('resize', updateVisibility);
       });
     }
   };
@@ -226,14 +379,26 @@
           return;
         }
 
+        var mainContent = document.querySelector('.dashboard-main');
+        if (mainContent && !mainContent.contains(dialog)) {
+          mainContent.appendChild(dialog);
+        }
+
+        var isDeleting = false;
+
         var closeDialog = function () {
+          if (isDeleting) {
+            return;
+          }
           dialog.hidden = true;
           dialog.setAttribute('aria-hidden', 'true');
+          scsCustomThemeSyncOverlayScrollLock();
         };
 
         var openDialog = function () {
           dialog.hidden = false;
           dialog.setAttribute('aria-hidden', 'false');
+          scsCustomThemeSyncOverlayScrollLock();
           cancelButton.focus();
         };
 
@@ -261,17 +426,28 @@
 
         confirmLink.addEventListener('click', function (event) {
           event.preventDefault();
+          if (confirmLink.getAttribute('aria-disabled') === 'true') {
+            return;
+          }
           var href = confirmLink.getAttribute('href');
           if (!href) {
             closeDialog();
             return;
           }
+          isDeleting = true;
           confirmLink.setAttribute('aria-disabled', 'true');
           var originalText = confirmLink.textContent;
           confirmLink.textContent = Drupal.t('Deleting…');
+          scsCustomThemeShowDeleteThrobber(confirmLink);
+          dialog.hidden = true;
+          dialog.setAttribute('aria-hidden', 'true');
           var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
           scsCustomThemeSubmitConfirmForm(href, destination, function (success) {
             if (!success) {
+              isDeleting = false;
+              dialog.hidden = false;
+              dialog.setAttribute('aria-hidden', 'false');
+              scsCustomThemeHideDeleteThrobber();
               confirmLink.removeAttribute('aria-disabled');
               confirmLink.textContent = originalText;
             }
@@ -289,15 +465,27 @@
           return;
         }
 
+        var mainContent = document.querySelector('.dashboard-main');
+        if (mainContent && dialog.classList.contains('application__details-delete-confirmation--grid') && !mainContent.contains(dialog)) {
+          mainContent.appendChild(dialog);
+        }
+
+        var isDeleting = false;
+
         var closeDialog = function () {
+          if (isDeleting) {
+            return;
+          }
           dialog.hidden = true;
           trigger.setAttribute('aria-expanded', 'false');
           trigger.focus();
+          scsCustomThemeSyncOverlayScrollLock();
         };
 
         trigger.addEventListener('click', function () {
           dialog.hidden = false;
           trigger.setAttribute('aria-expanded', 'true');
+          scsCustomThemeSyncOverlayScrollLock();
           cancelButton.focus();
         });
 
@@ -306,17 +494,26 @@
         if (confirmLink) {
           confirmLink.addEventListener('click', function (event) {
             event.preventDefault();
+            if (confirmLink.getAttribute('aria-disabled') === 'true') {
+              return;
+            }
             var href = confirmLink.getAttribute('href');
             if (!href) {
               closeDialog();
               return;
             }
+            isDeleting = true;
             confirmLink.setAttribute('aria-disabled', 'true');
             var originalText = confirmLink.textContent;
             confirmLink.textContent = Drupal.t('Deleting…');
+            scsCustomThemeShowDeleteThrobber(confirmLink);
+            dialog.hidden = true;
             var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
             scsCustomThemeSubmitConfirmForm(href, destination, function (success, errorText) {
               if (!success) {
+                isDeleting = false;
+                dialog.hidden = false;
+                scsCustomThemeHideDeleteThrobber();
                 confirmLink.removeAttribute('aria-disabled');
                 confirmLink.textContent = originalText;
                 if (errorText) {
@@ -365,11 +562,13 @@
           overlay.hidden = true;
           trigger.setAttribute('aria-expanded', 'false');
           trigger.focus();
+          scsCustomThemeSyncOverlayScrollLock();
         };
 
         var openOverlay = function () {
           overlay.hidden = false;
           trigger.setAttribute('aria-expanded', 'true');
+          scsCustomThemeSyncOverlayScrollLock();
           var field = overlay.querySelector('textarea');
           if (field) {
             field.focus();
@@ -410,6 +609,7 @@
         var closeOverlay = function () {
           overlay.hidden = true;
           trigger.setAttribute('aria-expanded', 'false');
+          scsCustomThemeSyncOverlayScrollLock();
           overlay.querySelectorAll('.project-member__remove-confirm').forEach(function (confirmBox) {
             confirmBox.hidden = true;
           });
@@ -422,6 +622,7 @@
         var openOverlay = function () {
           overlay.hidden = false;
           trigger.setAttribute('aria-expanded', 'true');
+          scsCustomThemeSyncOverlayScrollLock();
 
           var firstInput = overlay.querySelector('input:not([type="hidden"]), select, textarea');
           if (firstInput) {
@@ -471,6 +672,18 @@
             closeOverlay();
           }
         });
+      });
+    }
+  };
+
+  Drupal.behaviors.scsCustomThemeExternalLinks = {
+    attach: function (context) {
+      once('scsCustomThemeExternalLinks', 'a[href]', context).forEach(function (link) {
+        var isWebLink = link.protocol === 'http:' || link.protocol === 'https:';
+        var hasText = link.textContent.trim() !== '';
+        if (isWebLink && hasText && link.hostname !== window.location.hostname) {
+          link.classList.add('link--external');
+        }
       });
     }
   };

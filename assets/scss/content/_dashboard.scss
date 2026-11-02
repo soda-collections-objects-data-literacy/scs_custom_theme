@@ -1,3 +1,5 @@
+    @use '../base/vars' as *;
+
     .dashboard__actions {
         grid-column: 1 / span 3;
 
@@ -14,3 +16,10 @@
     .dashboard__projects {
         grid-column: 1 / span 8;
     }
+
+    @media (max-width: #{$breakpoint-ml-width}) and (min-width: #{$breakpoint-sm-width}) {
+    .dashboard__projects {
+        grid-column: 1 / span 9;
+    }
+    
+}

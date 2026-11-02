@@ -188,3 +188,26 @@
     grid-template-columns: repeat(9, 1fr);
     gap: $spacing-s;
 }
+
+// Overlay button order: cancel left, other secondary actions, main action right.
+@mixin overlay-actions-order {
+    display: flex;
+    gap: $spacing-xs;
+    justify-content: flex-end;
+
+    > * {
+        order: 1;
+    }
+
+    > .project-note-form__cancel,
+    > .add-app-popup__back,
+    > [data-drupal-selector='edit-cancel'],
+    > a.btn--secondary {
+        order: 0;
+    }
+
+    > .btn--primary,
+    > .button--primary {
+        order: 2;
+    }
+}

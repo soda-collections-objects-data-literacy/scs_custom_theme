@@ -31,6 +31,10 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
   $variables['user_email'] = '';
   $variables['dashboard_projects'] = [];
   $account = \Drupal::currentUser();
+  // Shown in the account popup on small screens, where the pill has no admin icon.
+  $variables['admin_url'] = $account->hasPermission('access administration pages')
+    ? \Drupal\Core\Url::fromRoute('system.admin')->toString()
+    : '';
   if ($is_manager_page && $account->isAuthenticated()) {
     $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
     if ($user && $user->hasField('user_picture') && !$user->get('user_picture')->isEmpty()) {
@@ -107,6 +111,13 @@ function scs_custom_theme_preprocess_block__system_branding_block(array &$variab
   if ($block && $block->getRegion() === 'sidebar_logo') {
     $variables['home_url'] = \Drupal\Core\Url::fromRoute('soda_scs_manager.dashboard')->toString();
   }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for eu_cookie_compliance_popup_info.
+ */
+function scs_custom_theme_preprocess_eu_cookie_compliance_popup_info(array &$variables): void {
+  $variables['primary_button_class'] = trim(($variables['primary_button_class'] ?? '') . ' btn btn--primary');
 }
 
 /**
