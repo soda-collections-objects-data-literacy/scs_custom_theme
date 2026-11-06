@@ -1,4 +1,5 @@
-langcode: en
+uuid: b3e6b187-8e9d-4bae-b044-28b3c8061def
+langcode: de
 status: true
 dependencies: {  }
 name: 'Information Stairs'

@@ -1,11 +1,13 @@
-langcode: en
+uuid: ea5a6539-2d37-401d-999a-774d0e0157f9
+langcode: de
 status: true
 dependencies: {  }
 id: node.field_introtext
 field_name: field_introtext
 entity_type: node
 type: string_long
-settings: {  }
+settings:
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

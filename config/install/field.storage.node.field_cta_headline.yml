@@ -1,18 +1,21 @@
-langcode: en
+uuid: 079003ee-fde9-4271-881a-a3a9730fa307
+langcode: de
 status: true
-dependencies: { }
+dependencies:
+  module:
+    - node
 id: node.field_cta_headline
 field_name: field_cta_headline
 entity_type: node
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1
 translatable: true
-indexes: { }
+indexes: {  }
 persist_with_no_fields: false
 custom_storage: false

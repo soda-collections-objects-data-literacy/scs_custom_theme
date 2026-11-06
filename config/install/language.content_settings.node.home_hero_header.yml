@@ -1,0 +1,18 @@
+uuid: d90b48ba-72d8-48cb-aebb-5760233dbd96
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.home_hero_header
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.home_hero_header
+target_entity_type_id: node
+target_bundle: home_hero_header
+default_langcode: site_default
+language_alterable: true

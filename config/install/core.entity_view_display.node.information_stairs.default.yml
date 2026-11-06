@@ -1,107 +1,117 @@
-langcode: en
+uuid: 9ec0bfd3-5782-41d4-92e9-807e82e4f3cb
+langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.information_stairs.field_information_stairs_headline
-    - field.field.node.information_stairs.field_information_stairs_subline
-    - field.field.node.information_stairs.field_stair_1_description
-    - field.field.node.information_stairs.field_stair_1_headline
-    - field.field.node.information_stairs.field_stair_1_subline
-    - field.field.node.information_stairs.field_stair_2_description
-    - field.field.node.information_stairs.field_stair_2_headline
-    - field.field.node.information_stairs.field_stair_2_subline
-    - field.field.node.information_stairs.field_stair_3_description
-    - field.field.node.information_stairs.field_stair_3_headline
-    - field.field.node.information_stairs.field_stair_3_subline
+    - field.field.node.information_stairs.field_info_stairs_sub
+    - field.field.node.information_stairs.field_info_stairs_title
+    - field.field.node.information_stairs.field_stair1_desc
+    - field.field.node.information_stairs.field_stair1_sub
+    - field.field.node.information_stairs.field_stair1_title
+    - field.field.node.information_stairs.field_stair2_desc
+    - field.field.node.information_stairs.field_stair2_sub
+    - field.field.node.information_stairs.field_stair2_title
+    - field.field.node.information_stairs.field_stair3_desc
+    - field.field.node.information_stairs.field_stair3_sub
+    - field.field.node.information_stairs.field_stair3_title
     - node.type.information_stairs
+  module:
+    - text
+    - user
 id: node.information_stairs.default
 targetEntityType: node
 bundle: information_stairs
 mode: default
 content:
-  field_information_stairs_headline:
+  field_info_stairs_sub:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 0
-    region: content
-  field_information_stairs_subline:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: { }
+    third_party_settings: {  }
     weight: 1
     region: content
-  field_stair_1_headline:
+  field_info_stairs_title:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 2
+    third_party_settings: {  }
+    weight: 0
     region: content
-  field_stair_1_subline:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: { }
-    weight: 3
-    region: content
-  field_stair_1_description:
+  field_stair1_desc:
     type: text_default
     label: above
-    settings: { }
-    third_party_settings: { }
+    settings: {  }
+    third_party_settings: {  }
     weight: 4
     region: content
-  field_stair_2_headline:
+  field_stair1_sub:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 5
+    third_party_settings: {  }
+    weight: 3
     region: content
-  field_stair_2_subline:
+  field_stair1_title:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 6
+    third_party_settings: {  }
+    weight: 2
     region: content
-  field_stair_2_description:
+  field_stair2_desc:
     type: text_default
     label: above
-    settings: { }
-    third_party_settings: { }
+    settings: {  }
+    third_party_settings: {  }
     weight: 7
     region: content
-  field_stair_3_headline:
+  field_stair2_sub:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 8
+    third_party_settings: {  }
+    weight: 6
     region: content
-  field_stair_3_subline:
+  field_stair2_title:
     type: string
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: { }
-    weight: 9
+    third_party_settings: {  }
+    weight: 5
     region: content
-  field_stair_3_description:
+  field_stair3_desc:
     type: text_default
     label: above
-    settings: { }
-    third_party_settings: { }
+    settings: {  }
+    third_party_settings: {  }
     weight: 10
     region: content
-hidden: { }
+  field_stair3_sub:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_stair3_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

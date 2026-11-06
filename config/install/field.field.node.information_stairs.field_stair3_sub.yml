@@ -1,4 +1,5 @@
-langcode: en
+uuid: 821738d8-7765-446b-9051-5fd246b9bb03
+langcode: de
 status: true
 dependencies:
   config:
@@ -12,7 +13,7 @@ label: 'Stair 3 subline'
 description: ''
 required: false
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
-settings: { }
+settings: {  }
 field_type: string

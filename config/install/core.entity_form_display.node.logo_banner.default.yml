@@ -1,4 +1,5 @@
-langcode: en
+uuid: 2484e4f7-7eba-4f3a-8363-95614004a60c
+langcode: de
 status: true
 dependencies:
   config:
@@ -31,13 +32,11 @@ targetEntityType: node
 bundle: logo_banner
 mode: default
 content:
-  title:
-    type: string_textfield
-    weight: -10
+  created:
+    type: datetime_timestamp
+    weight: 10
     region: content
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_logo_1:
     type: image_image
@@ -45,6 +44,21 @@ content:
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_10:
+    type: image_image
+    weight: 19
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_logo_10_link:
+    type: link_default
+    weight: 20
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_logo_1_link:
     type: link_default
@@ -174,19 +188,44 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_logo_10:
-    type: image_image
-    weight: 19
+  langcode:
+    type: language_select
+    weight: 2
     region: content
     settings:
-      progress_indicator: throbber
+      include_locked: true
     third_party_settings: {  }
-  field_logo_10_link:
-    type: link_default
-    weight: 20
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      display_label: true
     third_party_settings: {  }
-hidden: {  }
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

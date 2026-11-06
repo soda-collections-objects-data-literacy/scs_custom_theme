@@ -1,0 +1,8 @@
+uuid: f5e7326b-51f0-4ef5-8be8-c39720c806bf
+langcode: de
+status: true
+dependencies: {  }
+id: sidebar-secondary-nav
+label: 'Sidebar Secondary Nav'
+description: ''
+locked: false

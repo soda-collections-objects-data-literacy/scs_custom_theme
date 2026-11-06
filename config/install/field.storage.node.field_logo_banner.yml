@@ -1,4 +1,5 @@
-langcode: en
+uuid: 4a0ff8f3-57c0-4c47-bdf9-415660c61c64
+langcode: de
 status: true
 dependencies: {  }
 id: node.field_logo_banner

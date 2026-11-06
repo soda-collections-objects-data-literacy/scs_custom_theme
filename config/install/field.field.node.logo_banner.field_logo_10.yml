@@ -1,11 +1,19 @@
-langcode: en
+uuid: ff0db237-849d-4732-8fa2-6a7207c75cdd
+langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_logo_10
     - node.type.logo_banner
   module:
+    - content_translation
     - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
 id: node.logo_banner.field_logo_10
 field_name: field_logo_10
 entity_type: node
@@ -17,7 +25,9 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: 'logos'
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: logos
   file_extensions: 'png jpg jpeg webp svg'
   max_filesize: ''
   max_resolution: ''

@@ -1,0 +1,18 @@
+uuid: b1357ed3-8a4e-45dd-8353-b42bb730ee23
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.information_stairs
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.information_stairs
+target_entity_type_id: node
+target_bundle: information_stairs
+default_langcode: site_default
+language_alterable: true

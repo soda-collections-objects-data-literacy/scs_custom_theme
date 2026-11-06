@@ -1,4 +1,5 @@
-langcode: en
+uuid: e4624cb5-9d6b-4406-8a98-84d034848bbb
+langcode: de
 status: true
 dependencies: {  }
 name: 'Logo Banner'

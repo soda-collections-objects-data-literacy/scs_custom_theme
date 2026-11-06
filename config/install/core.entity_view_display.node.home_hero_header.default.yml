@@ -1,9 +1,9 @@
-langcode: en
+uuid: 68889647-ea57-4000-a5b2-cd7c7b8d8bb4
+langcode: de
 status: true
 dependencies:
   config:
     - field.field.node.home_hero_header.field_cta_button_link
-    - field.field.node.home_hero_header.field_cta_button_text
     - field.field.node.home_hero_header.field_headline
     - field.field.node.home_hero_header.field_introtext
     - field.field.node.home_hero_header.field_video
@@ -16,6 +16,18 @@ targetEntityType: node
 bundle: home_hero_header
 mode: default
 content:
+  field_cta_button_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_headline:
     type: string
     label: hidden
@@ -30,25 +42,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_cta_button_text:
-    type: string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  field_cta_button_link:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_video:
     type: entity_reference_entity_view
     label: hidden
@@ -62,4 +55,4 @@ content:
     weight: 5
     region: content
 hidden:
-  title: true
+  langcode: true

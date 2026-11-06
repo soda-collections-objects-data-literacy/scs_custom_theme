@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Install the home page content types together with the default start page.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Installs the shipped home page when the theme is enabled for the first time.
+ */
+function scs_custom_theme_install(): void {
+  require_once __DIR__ . '/scs_custom_theme.post_update.php';
+  scs_custom_theme_post_update_install_home_page();
+}

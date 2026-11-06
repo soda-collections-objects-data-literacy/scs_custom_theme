@@ -1,4 +1,5 @@
-langcode: en
+uuid: 0dc5792d-daed-4421-b3ac-e88c82613765
+langcode: de
 status: true
 dependencies:
   config:
@@ -8,35 +9,79 @@ dependencies:
     - node.type.aspect_preview
   module:
     - media_library
+    - path
 id: node.aspect_preview.default
 targetEntityType: node
 bundle: aspect_preview
 mode: default
 content:
-  field_aspect_headline:
-    weight: 0
+  created:
+    type: datetime_timestamp
+    weight: 10
     region: content
-    type: string_textfield
-    settings:
-      size: 60
-      placeholder: ''
+    settings: {  }
+    third_party_settings: {  }
   field_aspect_desc:
+    type: string_textarea
     weight: 1
     region: content
-    type: text_textarea
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_aspect_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_video:
+    type: media_library_widget
     weight: 2
     region: content
-    type: media_library
     settings:
-      media_types: { }
+      media_types: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
 hidden:
-  status: true
   promote: true
   sticky: true
-  uid: true
-  created: true
-  changed: true

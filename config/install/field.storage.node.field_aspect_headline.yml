@@ -1,18 +1,21 @@
-langcode: en
+uuid: fc66c949-fae0-4f8f-aa9e-d09e46db8a52
+langcode: de
 status: true
-dependencies: { }
+dependencies:
+  module:
+    - node
 id: node.field_aspect_headline
 field_name: field_aspect_headline
 entity_type: node
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1
 translatable: true
-indexes: { }
+indexes: {  }
 persist_with_no_fields: false
 custom_storage: false

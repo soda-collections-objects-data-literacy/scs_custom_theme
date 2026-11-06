@@ -1,4 +1,5 @@
-langcode: en
+uuid: 2d4fbf4f-1fa3-44df-a202-a4929ee3a6d8
+langcode: de
 status: true
 dependencies:
   config:
@@ -40,6 +41,27 @@ content:
       image_style: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_logo_10:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  field_logo_10_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 20
     region: content
   field_logo_1_link:
     type: link
@@ -221,24 +243,10 @@ content:
     third_party_settings: {  }
     weight: 18
     region: content
-  field_logo_10:
-    type: image
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: ''
+  links:
+    settings: {  }
     third_party_settings: {  }
-    weight: 19
+    weight: 100
     region: content
-  field_logo_10_link:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 20
-    region: content
+hidden:
+  langcode: true

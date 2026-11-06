@@ -1,4 +1,5 @@
-langcode: en
+uuid: 8c673be6-7435-4329-9320-f946cfc46ecb
+langcode: de
 status: true
 dependencies: {  }
 id: node.field_headline
@@ -7,8 +8,8 @@ entity_type: node
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

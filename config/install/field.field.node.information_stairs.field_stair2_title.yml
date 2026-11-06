@@ -1,4 +1,5 @@
-langcode: en
+uuid: 1afad486-7fa9-48a6-ba54-baed833ca1e1
+langcode: de
 status: true
 dependencies:
   config:
@@ -12,7 +13,7 @@ label: 'Stair 2 headline'
 description: ''
 required: true
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
-settings: { }
+settings: {  }
 field_type: string

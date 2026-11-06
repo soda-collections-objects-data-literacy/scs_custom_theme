@@ -1,4 +1,5 @@
-langcode: en
+uuid: d3a900bd-cc89-4da1-8cd4-bfa42fbb9315
+langcode: de
 status: true
 dependencies:
   config:
@@ -8,7 +9,7 @@ id: node.home_hero_header.field_headline
 field_name: field_headline
 entity_type: node
 bundle: home_hero_header
-label: 'Headline'
+label: Headline
 description: ''
 required: true
 translatable: true

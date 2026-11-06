@@ -1,15 +1,19 @@
-langcode: en
+uuid: 7184c47d-193c-4114-ba6f-bc159a933463
+langcode: de
 status: true
-dependencies: { }
+dependencies:
+  module:
+    - node
+    - text
 id: node.field_stair3_desc
 field_name: field_stair3_desc
 entity_type: node
 type: text_long
-settings: { }
+settings: {  }
 module: text
 locked: false
 cardinality: 1
 translatable: true
-indexes: { }
+indexes: {  }
 persist_with_no_fields: false
 custom_storage: false

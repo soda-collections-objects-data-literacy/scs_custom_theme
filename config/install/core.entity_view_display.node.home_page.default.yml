@@ -1,4 +1,5 @@
-langcode: en
+uuid: 02a1d55d-2f90-4509-9b3f-a66d2eb3f14d
+langcode: de
 status: true
 dependencies:
   config:
@@ -15,33 +16,6 @@ targetEntityType: node
 bundle: home_page
 mode: default
 content:
-  field_home_hero_header:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  field_logo_banner:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_information_stairs:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_aspect_preview:
     type: entity_reference_entity_view
     label: hidden
@@ -60,6 +34,33 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_home_hero_header:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_information_stairs:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_logo_banner:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
-  title: true
+  langcode: true
   links: true

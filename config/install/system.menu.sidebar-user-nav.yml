@@ -1,0 +1,8 @@
+uuid: 5cc0caeb-4d80-4508-b82f-a73ef303c351
+langcode: de
+status: true
+dependencies: {  }
+id: sidebar-user-nav
+label: 'Sidebar User Nav Legal'
+description: ''
+locked: false

@@ -1,4 +1,5 @@
-langcode: en
+uuid: fe538d29-1d6a-4c1c-ab09-326113e5c697
+langcode: de
 status: true
 dependencies:
   config:
@@ -14,9 +15,9 @@ label: 'Button link'
 description: ''
 required: false
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
 settings:
+  title: 1
   link_type: 17
-  title: 0
 field_type: link

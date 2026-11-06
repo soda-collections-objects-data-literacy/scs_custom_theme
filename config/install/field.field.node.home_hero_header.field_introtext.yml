@@ -1,4 +1,5 @@
-langcode: en
+uuid: c3435cb7-bf3a-433f-b2b3-d8744c8c289b
+langcode: de
 status: true
 dependencies:
   config:
@@ -8,7 +9,7 @@ id: node.home_hero_header.field_introtext
 field_name: field_introtext
 entity_type: node
 bundle: home_hero_header
-label: 'Introtext'
+label: Introtext
 description: ''
 required: false
 translatable: true

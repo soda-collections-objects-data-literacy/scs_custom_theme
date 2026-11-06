@@ -19,3 +19,12 @@ regions:
   sidebar_secondary_nav: Sidebar SecondaryNav
   sidebar_account_menu: Sidebar AccountMenu
   breadcrumb_and_title: Breadcrumb and Title
+
+dependencies:
+  - drupal:image
+  - drupal:link
+  - drupal:media
+  - drupal:media_library
+  - drupal:content_translation
+  - single_content_sync:single_content_sync
+

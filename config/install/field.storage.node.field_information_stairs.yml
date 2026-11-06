@@ -1,4 +1,5 @@
-langcode: en
+uuid: 4561aa98-b868-4f68-a250-8e596a2f0073
+langcode: de
 status: true
 dependencies: {  }
 id: node.field_information_stairs

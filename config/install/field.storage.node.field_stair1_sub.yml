@@ -1,18 +1,21 @@
-langcode: en
+uuid: af413c1a-6368-4456-92fc-08b01f96c4e8
+langcode: de
 status: true
-dependencies: { }
+dependencies:
+  module:
+    - node
 id: node.field_stair1_sub
 field_name: field_stair1_sub
 entity_type: node
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1
 translatable: true
-indexes: { }
+indexes: {  }
 persist_with_no_fields: false
 custom_storage: false

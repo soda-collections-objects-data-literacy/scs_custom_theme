@@ -1,0 +1,8 @@
+uuid: 6d8e81ac-dc99-4209-8cef-b15f57c9df00
+langcode: de
+status: true
+dependencies: {  }
+id: footer-left
+label: 'Imprint, Privacy Policies and ToS'
+description: footer-left
+locked: false

@@ -1,9 +1,9 @@
-langcode: en
+uuid: b806709c-70a6-431d-a4cd-7e80925b1f5c
+langcode: de
 status: true
 dependencies:
   config:
     - field.field.node.home_hero_header.field_cta_button_link
-    - field.field.node.home_hero_header.field_cta_button_text
     - field.field.node.home_hero_header.field_headline
     - field.field.node.home_hero_header.field_introtext
     - field.field.node.home_hero_header.field_video
@@ -11,18 +11,25 @@ dependencies:
   module:
     - link
     - media_library
+    - path
 id: node.home_hero_header.default
 targetEntityType: node
 bundle: home_hero_header
 mode: default
 content:
-  title:
-    type: string_textfield
-    weight: -10
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_cta_button_link:
+    type: link_default
+    weight: 3
     region: content
     settings:
-      size: 60
-      placeholder: ''
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_headline:
     type: string_textfield
@@ -40,22 +47,6 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_cta_button_text:
-    type: string_textfield
-    weight: 2
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_cta_button_link:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_video:
     type: media_library_widget
     weight: 4
@@ -65,4 +56,44 @@ content:
         - video
         - remote_video
     third_party_settings: {  }
-hidden: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

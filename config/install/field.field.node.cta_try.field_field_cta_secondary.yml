@@ -1,0 +1,24 @@
+uuid: 8de498b1-c857-4939-a6e9-43d5f878e660
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_field_cta_secondary
+    - filter.format.basic_html
+    - node.type.cta_try
+  module:
+    - text
+id: node.cta_try.field_field_cta_secondary
+field_name: field_field_cta_secondary
+entity_type: node
+bundle: cta_try
+label: Secondary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

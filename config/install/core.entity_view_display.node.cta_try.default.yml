@@ -1,30 +1,61 @@
-langcode: en
+uuid: 320384d8-8c15-4cde-b200-7859992e801a
+langcode: de
 status: true
 dependencies:
   config:
     - field.field.node.cta_try.field_cta_button_link
     - field.field.node.cta_try.field_cta_description
     - field.field.node.cta_try.field_cta_headline
+    - field.field.node.cta_try.field_field_cta_secondary
     - node.type.cta_try
+  module:
+    - link
+    - text
+    - user
 id: node.cta_try.default
 targetEntityType: node
 bundle: cta_try
 mode: default
 content:
-  field_cta_headline:
-    type: string
-    weight: 0
-    region: content
-    label: above
-  field_cta_description:
-    type: basic_string
-    weight: 1
-    region: content
-    label: above
   field_cta_button_link:
     type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
     weight: 2
     region: content
+  field_cta_description:
+    type: basic_string
     label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cta_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_field_cta_secondary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
 hidden:
-  links: true
+  langcode: true

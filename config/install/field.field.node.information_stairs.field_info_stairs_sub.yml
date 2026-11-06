@@ -1,4 +1,5 @@
-langcode: en
+uuid: d7a73450-e192-48c8-866f-b5c36a131509
+langcode: de
 status: true
 dependencies:
   config:
@@ -8,11 +9,11 @@ id: node.information_stairs.field_info_stairs_sub
 field_name: field_info_stairs_sub
 entity_type: node
 bundle: information_stairs
-label: 'Subline'
+label: Subline
 description: ''
 required: false
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
-settings: { }
+settings: {  }
 field_type: string

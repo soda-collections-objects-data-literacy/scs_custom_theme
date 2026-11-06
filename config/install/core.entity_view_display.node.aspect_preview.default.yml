@@ -1,4 +1,5 @@
-langcode: en
+uuid: f3758cee-deb5-4890-80bd-c5c6b6ba38ed
+langcode: de
 status: true
 dependencies:
   config:
@@ -7,29 +8,40 @@ dependencies:
     - field.field.node.aspect_preview.field_video
     - node.type.aspect_preview
   module:
-    - media
+    - user
 id: node.aspect_preview.default
 targetEntityType: node
 bundle: aspect_preview
 mode: default
 content:
-  field_aspect_headline:
-    weight: 0
-    label: above
-    type: string
-    region: content
   field_aspect_desc:
-    weight: 1
+    type: basic_string
     label: above
-    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_aspect_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
     region: content
   field_video:
-    weight: 2
-    label: above
-    type: media
-    region: content
+    type: entity_reference_entity_view
+    label: hidden
     settings:
-      image_style: ''
-      image_link: ''
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
 hidden:
-  links: true
+  langcode: true

@@ -1,11 +1,10 @@
-langcode: en
+uuid: d6991f10-ca09-4c1d-9c62-c67f515cb78a
+langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_video
     - node.type.aspect_preview
-  module:
-    - media
 id: node.aspect_preview.field_video
 field_name: field_video
 entity_type: node
@@ -14,15 +13,9 @@ label: Video
 description: ''
 required: false
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:media'
-  handler_settings:
-    target_bundles:
-      video: video
-    sort:
-      field: _none
-    auto_create: false
-    auto_create_bundle: ''
+  handler_settings: {  }
 field_type: entity_reference

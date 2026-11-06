@@ -1,9 +1,12 @@
-langcode: en
+uuid: 946cc10e-dcf2-4dd6-a06f-e79fc45d2729
+langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_stair1_desc
     - node.type.information_stairs
+  module:
+    - text
 id: node.information_stairs.field_stair1_desc
 field_name: field_stair1_desc
 entity_type: node
@@ -12,7 +15,8 @@ label: 'Stair 1 description'
 description: ''
 required: false
 translatable: true
-default_value: { }
+default_value: {  }
 default_value_callback: ''
-settings: { }
+settings:
+  allowed_formats: {  }
 field_type: text_long

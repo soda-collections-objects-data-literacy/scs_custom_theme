@@ -1,16 +1,19 @@
-langcode: en
+uuid: 6496defa-b575-4a7f-b91b-0974f5310b64
+langcode: de
 status: true
-dependencies: { }
+dependencies:
+  module:
+    - node
 id: node.field_aspect_desc
 field_name: field_aspect_desc
 entity_type: node
 type: string_long
 settings:
-  max_length: 2000
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1
 translatable: true
-indexes: { }
+indexes: {  }
 persist_with_no_fields: false
 custom_storage: false
