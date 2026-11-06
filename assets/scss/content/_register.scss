@@ -1,0 +1,138 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
+$register-form-max-width: 720px;
+$register-checkbox-size: 20px;
+
+// Public sign-up card; first and last name share a row, everything else spans it.
+.soda-scs-manager-keycloak-user-registration-form {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $register-form-max-width;
+    margin: $spacing-l auto;
+    padding: $spacing-l;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: $spacing-s;
+    row-gap: $spacing-s;
+    background-color: $color-background-surface;
+    border: 1px solid $color-slate-300;
+    border-radius: $radius-large;
+    box-shadow: $shadow-small;
+
+    @media screen and (max-width: $breakpoint-sm-width) {
+        padding: $spacing-m $spacing-mobile;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    > * {
+        grid-column: 1 / -1;
+        margin: 0;
+    }
+
+    .register__title {
+        margin: 0;
+    }
+
+    .register__intro {
+        margin: 0;
+        max-width: none;
+        color: $color-text-secondary;
+    }
+
+    .form-item-first-name,
+    .form-item-last-name {
+        grid-column: span 1;
+
+        @media screen and (max-width: $breakpoint-sm-width) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .form-item {
+        label {
+            display: block;
+            margin-bottom: $spacing-xs * 0.5;
+        }
+
+        input:not([type="checkbox"]),
+        select {
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        select {
+            height: 45px;
+            padding: 0 1rem;
+            border: 1px solid $color-slate-600;
+            border-radius: $radius-small;
+            background-color: $color-white;
+            @include font-text-regular;
+        }
+
+        .description {
+            margin-top: $spacing-xs * 0.5;
+            color: $color-text-secondary;
+            @include text-meta;
+        }
+
+        input.error,
+        select.error {
+            border-color: $color-red;
+        }
+    }
+
+    // Both password fields share one description and a common gap.
+    .form-type-password-confirm {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-s;
+
+        .form-item {
+            margin: 0;
+        }
+    }
+
+    .form-type-checkbox {
+        display: grid;
+        grid-template-columns: $register-checkbox-size minmax(0, 1fr);
+        column-gap: $spacing-xs;
+        align-items: center;
+
+        input {
+            grid-column: 1;
+            width: $register-checkbox-size;
+            height: $register-checkbox-size;
+            margin: 0;
+            accent-color: $color-slate-900;
+            cursor: pointer;
+        }
+
+        label {
+            grid-column: 2;
+            margin: 0;
+            cursor: pointer;
+            @include font-text-regular;
+
+            a {
+                text-decoration: underline;
+                @include font-text-bold;
+            }
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: $spacing-xs;
+
+        @media screen and (max-width: $breakpoint-sm-width) {
+            justify-content: stretch;
+
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -680,9 +680,13 @@
     attach: function (context) {
       once('scsCustomThemeExternalLinks', 'a[href]', context).forEach(function (link) {
         var isWebLink = link.protocol === 'http:' || link.protocol === 'https:';
-        var hasText = link.textContent.trim() !== '';
-        if (isWebLink && hasText && link.hostname !== window.location.hostname) {
+        if (isWebLink && link.hostname !== window.location.hostname) {
           link.classList.add('link--external');
+          link.target = '_blank';
+          var relTokens = new Set((link.rel || '').split(/\s+/).filter(Boolean));
+          relTokens.add('noopener');
+          relTokens.add('noreferrer');
+          link.rel = Array.from(relTokens).join(' ');
         }
       });
     }

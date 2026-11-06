@@ -23,6 +23,10 @@
     mask: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.3536 6.14645L4.65512e-05 6.5L0.707153 7.20711L1.06071 6.85355L0.707153 6.5L0.3536 6.14645ZM7.20715 0.499999C7.20715 0.223857 6.9833 -4.30791e-07 6.70715 -5.57231e-07L2.20715 -1.56836e-07C1.93101 -3.25423e-07 1.70715 0.223857 1.70715 0.5C1.70715 0.776142 1.93101 1 2.20715 1L6.20715 1L6.20715 5C6.20715 5.27614 6.43101 5.5 6.70715 5.5C6.9833 5.5 7.20715 5.27614 7.20715 5L7.20715 0.499999ZM0.707153 6.5L1.06071 6.85355L7.06071 0.853553L6.70715 0.5L6.3536 0.146446L0.3536 6.14645L0.707153 6.5Z' fill='black'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
+.logo-banner .link--external::after {
+    display: none;
+}
+
 p .link--external,
 .project-file .link--external {
     display: inline-flex;

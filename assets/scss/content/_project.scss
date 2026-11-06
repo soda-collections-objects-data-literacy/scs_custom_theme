@@ -185,6 +185,10 @@
                 border-radius: $radius-small;
                 font-size: 2rem;
                 font-weight: 600;
+                &--demo {
+                    background-color: $color-blue;
+                    color: $color-white;
+                }
             }
         }
 

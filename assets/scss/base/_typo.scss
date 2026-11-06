@@ -9,6 +9,9 @@ html {
     @media (max-width: $breakpoint-l-width) {
         font-size: 4px;
     }
+        @media (min-width: $breakpoint-xl-width) {
+        font-size: 6px;
+    }
 }
 
 body {

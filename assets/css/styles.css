@@ -213,7 +213,7 @@ img.avatar {
   }
 }
 .content-container {
-  max-width: 1680px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 50px;
 }
@@ -264,6 +264,11 @@ html {
 @media (max-width: 1200px) {
   html {
     font-size: 4px;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+    font-size: 6px;
   }
 }
 
@@ -672,17 +677,19 @@ body.menu-open {
   justify-content: space-between;
   align-items: center;
   flex-wrap: no-wrap;
+  padding: 15rem 0;
 }
 .logo-banner ul.logo-banner__items li {
-  width: 15%;
-  padding: 12rem;
+  width: 8%;
 }
 @media screen and (max-width: 960px) {
   .logo-banner ul.logo-banner__items {
     flex-wrap: wrap;
+    padding: 6rem 0;
+    row-gap: 6rem;
   }
   .logo-banner ul.logo-banner__items li {
-    padding: 6rem;
+    width: 10%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -698,14 +705,18 @@ body.menu-open {
   }
   .logo-banner ul.logo-banner__items {
     justify-content: start;
+    gap: 17%;
   }
   .logo-banner ul.logo-banner__items li {
-    width: 25%;
+    width: 12%;
   }
 }
 @media screen and (max-width: 375px) {
+  .logo-banner ul.logo-banner__items {
+    gap: 26%;
+  }
   .logo-banner ul.logo-banner__items li {
-    padding: 3rem;
+    width: 16%;
   }
 }
 
@@ -784,13 +795,13 @@ body.menu-open {
 }
 
 .aspect-preview {
-  margin: 22rem 0;
+  margin: 26rem 0;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 21px;
   position: relative;
-  padding-top: 14rem;
-  padding-bottom: 30rem;
+  padding-top: 0;
+  padding-bottom: 10rem;
 }
 .aspect-preview .aspect-preview__header {
   grid-column: 4/span 6;
@@ -834,10 +845,14 @@ body.menu-open {
   top: -2rem;
   left: calc(50% - 2rem);
 }
-.aspect-preview:nth-child(1) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(5) .aspect-preview__video .aspect-preview__video-background__rectangle {
+.aspect-preview:nth-child(2) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(4) .aspect-preview__video .aspect-preview__video-background__rectangle {
   background-color: #D5DCE4;
 }
-.aspect-preview:nth-child(2)::before, .aspect-preview:nth-child(4)::before {
+.aspect-preview:nth-child(1), .aspect-preview:nth-child(5) {
+  padding-top: 20rem;
+  padding-bottom: 20rem;
+}
+.aspect-preview:nth-child(1)::before, .aspect-preview:nth-child(5)::before {
   content: "";
   width: 100vw;
   position: absolute;
@@ -846,10 +861,10 @@ body.menu-open {
   top: 0;
   left: calc(50% - 50vw);
 }
-.aspect-preview:nth-child(2) .aspect-preview__header, .aspect-preview:nth-child(4) .aspect-preview__header {
+.aspect-preview:nth-child(1) .aspect-preview__header, .aspect-preview:nth-child(5) .aspect-preview__header {
   z-index: 0;
 }
-.aspect-preview:nth-child(2) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(4) .aspect-preview__video .aspect-preview__video-background__rectangle {
+.aspect-preview:nth-child(1) .aspect-preview__video .aspect-preview__video-background__rectangle, .aspect-preview:nth-child(5) .aspect-preview__video .aspect-preview__video-background__rectangle {
   background-color: #4D5866;
 }
 .aspect-preview:nth-child(3) .aspect-preview__video .aspect-preview__video-background__rectangle {
@@ -860,6 +875,11 @@ body.menu-open {
     margin: 16rem 0;
     padding-top: 4rem;
     padding-bottom: 6rem;
+  }
+  .aspect-preview:nth-child(1), .aspect-preview:nth-child(5) {
+    margin-top: 20rem;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
   .aspect-preview .aspect-preview__header {
     grid-column: 2/span 10;
@@ -1275,6 +1295,10 @@ body.menu-open {
   border-radius: 8px;
   font-size: 2rem;
   font-weight: 600;
+}
+.project--card .project-card__tags .tag--demo {
+  background-color: #0B57D0;
+  color: #FFFFFF;
 }
 .project--card .project-card__date {
   grid-area: date;
@@ -2461,6 +2485,129 @@ body.menu-open {
     grid-column: 7/span 3;
   }
 }
+.soda-scs-manager-keycloak-user-registration-form {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  margin: 50px auto;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 21px;
+  row-gap: 21px;
+  background-color: #FFFFFF;
+  border: 1px solid #D5DCE4;
+  border-radius: 16px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 560px) {
+  .soda-scs-manager-keycloak-user-registration-form {
+    padding: 30px 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.soda-scs-manager-keycloak-user-registration-form > * {
+  grid-column: 1/-1;
+  margin: 0;
+}
+.soda-scs-manager-keycloak-user-registration-form .register__title {
+  margin: 0;
+}
+.soda-scs-manager-keycloak-user-registration-form .register__intro {
+  margin: 0;
+  max-width: none;
+  color: #4D5866;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item-first-name,
+.soda-scs-manager-keycloak-user-registration-form .form-item-last-name {
+  grid-column: span 1;
+}
+@media screen and (max-width: 560px) {
+  .soda-scs-manager-keycloak-user-registration-form .form-item-first-name,
+  .soda-scs-manager-keycloak-user-registration-form .form-item-last-name {
+    grid-column: 1/-1;
+  }
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item label {
+  display: block;
+  margin-bottom: 5px;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item input:not([type=checkbox]),
+.soda-scs-manager-keycloak-user-registration-form .form-item select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item select {
+  height: 45px;
+  padding: 0 1rem;
+  border: 1px solid #4D5866;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item .description {
+  margin-top: 5px;
+  color: #4D5866;
+  font-size: 2rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-item input.error,
+.soda-scs-manager-keycloak-user-registration-form .form-item select.error {
+  border-color: #A80000;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-password-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-password-confirm .form-item {
+  margin: 0;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-checkbox {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 10px;
+  align-items: center;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-checkbox input {
+  grid-column: 1;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #17212B;
+  cursor: pointer;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-checkbox label {
+  grid-column: 2;
+  margin: 0;
+  cursor: pointer;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-type-checkbox label a {
+  text-decoration: underline;
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-weight: 700;
+}
+.soda-scs-manager-keycloak-user-registration-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+@media screen and (max-width: 560px) {
+  .soda-scs-manager-keycloak-user-registration-form .form-actions {
+    justify-content: stretch;
+  }
+  .soda-scs-manager-keycloak-user-registration-form .form-actions .btn {
+    width: 100%;
+  }
+}
+
 .btn,
 button {
   border: 1px solid #17212B;
@@ -3012,6 +3159,9 @@ body.scs-manager--overlay-scroll-locked {
   left: var(--scs-onboarding-caret-x, 50%);
   top: 100%;
 }
+.scs-onboarding__close {
+  z-index: 1;
+}
 .scs-onboarding__content {
   display: flex;
   flex-direction: column;
@@ -3032,17 +3182,13 @@ body.scs-manager--overlay-scroll-locked {
 .scs-onboarding__accent {
   font-family: "Noto Sans", Arial, sans-serif;
   font-weight: 700;
+  gap: 0.5em;
 }
 .scs-onboarding__accent--blue {
   color: #0B57D0;
 }
 .scs-onboarding__accent--green {
   color: #006117;
-}
-.scs-onboarding__accent--external::after {
-  content: "↗";
-  margin-left: 0.2em;
-  font-size: 0.8em;
 }
 .scs-onboarding__inline-icon {
   display: inline-flex;
@@ -3265,6 +3411,10 @@ body.scs-manager--overlay-scroll-locked {
   vertical-align: middle;
   background-color: currentColor;
   mask: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.3536 6.14645L4.65512e-05 6.5L0.707153 7.20711L1.06071 6.85355L0.707153 6.5L0.3536 6.14645ZM7.20715 0.499999C7.20715 0.223857 6.9833 -4.30791e-07 6.70715 -5.57231e-07L2.20715 -1.56836e-07C1.93101 -3.25423e-07 1.70715 0.223857 1.70715 0.5C1.70715 0.776142 1.93101 1 2.20715 1L6.20715 1L6.20715 5C6.20715 5.27614 6.43101 5.5 6.70715 5.5C6.9833 5.5 7.20715 5.27614 7.20715 5L7.20715 0.499999ZM0.707153 6.5L1.06071 6.85355L7.06071 0.853553L6.70715 0.5L6.3536 0.146446L0.3536 6.14645L0.707153 6.5Z' fill='black'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.logo-banner .link--external::after {
+  display: none;
 }
 
 p .link--external,
