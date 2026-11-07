@@ -1,0 +1,80 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: 1ab085fb-ec26-48ff-8264-b2e002abd0f6
+entity_type: node
+bundle: aspect_preview
+base_fields:
+  title: 'Dateien und Daten anwendungsübergreifend nutzen'
+  status: true
+  langcode: de
+  created: '1788193945'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793980419'
+  url: null
+custom_fields:
+  field_aspect_desc:
+    -
+      value: 'Der Projektordner steht sowohl dem Team als auch den Anwendungen des Projekts zur Verfügung. So lassen sich Daten in Nextcloud, JupyterHub und WissKI nutzen und unnötige Duplikate können vermieden werden.'
+  field_aspect_headline:
+    -
+      value: 'Dateien und Daten anwendungsübergreifend nutzen'
+  field_video:
+    -
+      uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+      entity_type: media
+      bundle: video
+      base_fields:
+        name: slide_3.mp4
+        created: '1782823546'
+        status: true
+        langcode: en
+        changed: '1782823546'
+        url: null
+      custom_fields:
+        field_media_video_file:
+          -
+            target_entity:
+              uuid: 47cb47f4-4a52-45df-8cf9-16ce796ee340
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: slide_3.mp4
+                uri: 'public://2026-06/slide_3.mp4'
+                url: 'http://default/sites/default/files/2026-06/slide_3.mp4'
+                status: '1'
+                created: 1782823546
+                changed: 1782823548
+                mimetype: video/mp4
+              custom_fields: {  }
+translations:
+  en:
+    base_fields:
+      title: 'Share files and data across applications'
+      status: true
+      langcode: en
+      created: '1793980347'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1793980363'
+      url: null
+    custom_fields:
+      field_aspect_desc:
+        -
+          value: 'Access to the project folder is shared with your team as well as the applications. Nextcloud, JupyterHub, and WissKI are connected to it, allowing you to use your data across applications while reducing unnecessary duplication.'
+      field_aspect_headline:
+        -
+          value: 'Share files and data across applications'
+      field_video:
+        -
+          uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+          entity_type: media
+          base_fields:
+            name: slide_3.mp4
+            created: '1782823546'
+            status: true
+            langcode: en
+            changed: '1782823546'
+            url: null
+          bundle: video

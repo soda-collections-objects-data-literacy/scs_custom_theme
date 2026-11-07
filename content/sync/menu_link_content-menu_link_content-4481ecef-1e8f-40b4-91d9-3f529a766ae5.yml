@@ -1,0 +1,73 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: 4481ecef-1e8f-40b4-91d9-3f529a766ae5
+entity_type: menu_link_content
+bundle: menu_link_content
+base_fields:
+  title: Impressum
+  enabled: true
+  expanded: false
+  langcode: de
+  menu_name: footer-left
+  description: null
+  link:
+    -
+      uri: 'entity:node/21da7785-9f28-4e62-8e4c-3402dd9abc2c'
+      title: ''
+      options: {  }
+      entity:
+        uuid: 21da7785-9f28-4e62-8e4c-3402dd9abc2c
+        entity_type: node
+        bundle: page
+        base_fields:
+          title: Impressum
+          status: true
+          langcode: de
+          created: '1778573594'
+          author: j.neubauer@gnm.de
+          revision_log_message: null
+          revision_uid: '2'
+          changed: '1782740432'
+          url: /imprint
+        custom_fields:
+          body:
+            -
+              value: '<p><strong>Interessengemeinschaft für Semantische Datenverarbeitung e.V.</strong><br>Irisstr. 23a<br>80935 München</p><p>Vereinsregister: VR 201583<br>Registergericht: Amtsgericht Nürnberg</p><p><strong>Vertreten durch:</strong><br>Georg Hohmann</p><h2>Kontakt</h2><p>E-Mail: <a href="vorstand@igsd-ev.de">vorstand@igsd-ev.de</a></p><h2>Redaktionell verantwortlich</h2><p>Robert Nasarek<br>Kornmarkt 1<br>90409 Nürnberg</p><p>Quelle: Erstellt mit dem Impressum-Generator von <a href="https://www.e-recht24.de">https://www.e-recht24.de</a></p><hr><h2>Rechtliche Hinweise</h2><h3>Haftung für Inhalte</h3><p>Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt. Die Interessengemeinschaft für Semantische Datenverarbeitung e. V. (nachfolgend „Anbieter“) übernimmt jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte. Die Nutzung der abrufbaren Inhalte erfolgt auf eigene Gefahr des Nutzers.</p><p>Allein durch den Aufruf dieser frei zugänglichen Website kommt kein Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande. Für die Nutzung der digitalen Forschungs- und Arbeitsumgebung (Login-Bereich) gelten vorrangig die gesonderten <strong>Nutzungsbedingungen</strong>.</p><h3>Haftung für externe Links</h3><p>Diese Website enthält Verknüpfungen zu Websites Dritter („externe Links“). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte auf etwaige Rechtsverstöße überprüft. Zu dem Zeitpunkt waren keine Rechtsverstöße ersichtlich. Der Anbieter hat keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Das Setzen von externen Links bedeutet nicht, dass sich der Anbieter die hinter dem Verweis oder Link liegenden Inhalte zu eigen macht.</p><p>&nbsp;</p><p>Stand: 01. Juni 2026</p>'
+              summary: ''
+              format: full_html
+              embed_entities: {  }
+  weight: -50
+  parent: ''
+  changed: '1782740761'
+custom_fields: {  }
+translations:
+  en:
+    base_fields:
+      title: Imprint
+      enabled: true
+      expanded: false
+      langcode: en
+      menu_name: footer-left
+      description: null
+      link:
+        -
+          uri: 'entity:node/21da7785-9f28-4e62-8e4c-3402dd9abc2c'
+          title: ''
+          options: {  }
+          entity:
+            uuid: 21da7785-9f28-4e62-8e4c-3402dd9abc2c
+            entity_type: node
+            base_fields:
+              title: Impressum
+              status: true
+              langcode: de
+              created: '1778573594'
+              author: j.neubauer@gnm.de
+              revision_log_message: null
+              revision_uid: '2'
+              changed: '1782740432'
+              url: /imprint
+            bundle: page
+      weight: -50
+      parent: ''
+      changed: '1782740761'
+    custom_fields: {  }

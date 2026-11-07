@@ -1,0 +1,90 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: f2e2d24e-f403-4ba4-bc32-c204139da90c
+entity_type: node
+bundle: home_hero_header
+base_fields:
+  title: 'Hero Header Home'
+  status: true
+  langcode: de
+  created: '1787841207'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793991055'
+  url: null
+custom_fields:
+  field_cta_button_link:
+    -
+      uri: 'internal:/node/10'
+      title: ''
+      options: {  }
+  field_headline:
+    -
+      value: 'SODa Semantic Co-Working Space'
+  field_introtext:
+    -
+      value: "Die kollaborative Arbeitsumgebung für Datenmanagement.\r\n\r\nEntdecken Sie vorkonfigurierte Anwendungen, um Ihre Daten zu erschließen, anzureichern, zu analysieren und zu teilen – alles an einem Ort, ohne Einrichtungs- oder Wartungsaufwand."
+  field_video:
+    -
+      uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+      entity_type: media
+      bundle: video
+      base_fields:
+        name: slide_3.mp4
+        created: '1782823546'
+        status: true
+        langcode: en
+        changed: '1782823546'
+        url: null
+      custom_fields:
+        field_media_video_file:
+          -
+            target_entity:
+              uuid: 47cb47f4-4a52-45df-8cf9-16ce796ee340
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: slide_3.mp4
+                uri: 'public://2026-06/slide_3.mp4'
+                url: 'http://default/sites/default/files/2026-06/slide_3.mp4'
+                status: '1'
+                created: 1782823546
+                changed: 1782823548
+                mimetype: video/mp4
+              custom_fields: {  }
+translations:
+  en:
+    base_fields:
+      title: 'Hero Header Home'
+      status: true
+      langcode: en
+      created: '1793980668'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1793980670'
+      url: null
+    custom_fields:
+      field_cta_button_link:
+        -
+          uri: 'internal:/node/10'
+          title: ''
+          options: {  }
+      field_headline:
+        -
+          value: 'SODa Semantic Co-Working Space'
+      field_introtext:
+        -
+          value: "Your collaborative workspace to manage your data, learn and explore.\r\n\r\nDiscover curated, pre-configured tools to create, enrich, analyse, and share your data — all in one place, with the setup and maintenance taken care of."
+      field_video:
+        -
+          uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+          entity_type: media
+          base_fields:
+            name: slide_3.mp4
+            created: '1782823546'
+            status: true
+            langcode: en
+            changed: '1782823546'
+            url: null
+          bundle: video

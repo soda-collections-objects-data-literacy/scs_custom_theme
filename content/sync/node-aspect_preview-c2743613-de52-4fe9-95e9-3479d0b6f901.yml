@@ -1,0 +1,80 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: c2743613-de52-4fe9-95e9-3479d0b6f901
+entity_type: node
+bundle: aspect_preview
+base_fields:
+  title: 'Teams und Anwendungen zusammenbringen'
+  status: true
+  langcode: de
+  created: '1788193811'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793980450'
+  url: null
+custom_fields:
+  field_aspect_desc:
+    -
+      value: 'Laden Sie Ihre Co-Worker in gemeinsame Projekte ein, um ganz einfach Zugriffe auf Anwendungen und Ressourcen zu teilen. Projektordner und Echtzeitbearbeitung von Dokumenten ermöglichen eine nahtlose Zusammenarbeit und halten alle Beteiligten auf dem gleichen Stand.'
+  field_aspect_headline:
+    -
+      value: 'Teams und Anwendungen zusammenbringen'
+  field_video:
+    -
+      uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+      entity_type: media
+      bundle: video
+      base_fields:
+        name: slide_3.mp4
+        created: '1782823546'
+        status: true
+        langcode: en
+        changed: '1782823546'
+        url: null
+      custom_fields:
+        field_media_video_file:
+          -
+            target_entity:
+              uuid: 47cb47f4-4a52-45df-8cf9-16ce796ee340
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: slide_3.mp4
+                uri: 'public://2026-06/slide_3.mp4'
+                url: 'http://default/sites/default/files/2026-06/slide_3.mp4'
+                status: '1'
+                created: 1782823546
+                changed: 1782823548
+                mimetype: video/mp4
+              custom_fields: {  }
+translations:
+  en:
+    base_fields:
+      title: 'Bring your team and tools together'
+      status: true
+      langcode: en
+      created: '1793980429'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1793980430'
+      url: null
+    custom_fields:
+      field_aspect_desc:
+        -
+          value: "Invite your co-workers to shared projects and give them access to the applications and resources they need. Shared project folders and integrated live editors enable seamless collaboration, keeping your team's work connected and in sync."
+      field_aspect_headline:
+        -
+          value: 'Bring your team and tools together'
+      field_video:
+        -
+          uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+          entity_type: media
+          base_fields:
+            name: slide_3.mp4
+            created: '1782823546'
+            status: true
+            langcode: en
+            changed: '1782823546'
+            url: null
+          bundle: video

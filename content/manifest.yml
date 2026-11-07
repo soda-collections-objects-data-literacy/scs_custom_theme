@@ -1,0 +1,20 @@
+# What export-content.bash writes into content/sync.
+# import-content.bash imports every YAML file in that directory, so an
+# exported entity is created or updated by UUID on the next run.
+node_bundles:
+  - aspect_preview
+  - cta_try
+  - home_hero_header
+  - home_page
+  - information_stairs
+  - logo_banner
+node_uuids:
+  - 21da7785-9f28-4e62-8e4c-3402dd9abc2c
+  - 09feb739-fd50-44cc-8442-b9008b2efdc7
+  - ab243f8e-acd7-4bc7-abb9-5344ac30d8cd
+  - add355f7-61ae-4491-af32-bc4dc47065dd
+menus:
+  - footer-left
+  - sidebar-secondary-nav
+  - sidebar-user-nav
+  - sign-up

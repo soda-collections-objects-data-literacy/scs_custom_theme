@@ -1,0 +1,559 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: adf0811e-df79-4448-a209-ea9b2b890d31
+entity_type: node
+bundle: home_page
+base_fields:
+  title: Home
+  status: true
+  langcode: de
+  created: '1787899557'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '23'
+  changed: '1788361002'
+  url: null
+custom_fields:
+  field_aspect_preview:
+    -
+      uuid: c2743613-de52-4fe9-95e9-3479d0b6f901
+      entity_type: node
+      bundle: aspect_preview
+      base_fields:
+        title: 'Teams und Anwendungen zusammenbringen'
+        status: true
+        langcode: de
+        created: '1788193811'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793980450'
+        url: null
+      custom_fields:
+        field_aspect_desc:
+          -
+            value: 'Laden Sie Ihre Co-Worker in gemeinsame Projekte ein, um ganz einfach Zugriffe auf Anwendungen und Ressourcen zu teilen. Projektordner und Echtzeitbearbeitung von Dokumenten ermöglichen eine nahtlose Zusammenarbeit und halten alle Beteiligten auf dem gleichen Stand.'
+        field_aspect_headline:
+          -
+            value: 'Teams und Anwendungen zusammenbringen'
+        field_video:
+          -
+            uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+            entity_type: media
+            bundle: video
+            base_fields:
+              name: slide_3.mp4
+              created: '1782823546'
+              status: true
+              langcode: en
+              changed: '1782823546'
+              url: null
+            custom_fields:
+              field_media_video_file:
+                -
+                  target_entity:
+                    uuid: 47cb47f4-4a52-45df-8cf9-16ce796ee340
+                    entity_type: file
+                    bundle: file
+                    base_fields:
+                      name: slide_3.mp4
+                      uri: 'public://2026-06/slide_3.mp4'
+                      url: 'http://default/sites/default/files/2026-06/slide_3.mp4'
+                      status: '1'
+                      created: 1782823546
+                      changed: 1782823548
+                      mimetype: video/mp4
+                    custom_fields: {  }
+      translations:
+        en:
+          base_fields:
+            title: 'Bring your team and tools together'
+            status: true
+            langcode: en
+            created: '1793980429'
+            author: j.neubauer@gnm.de
+            revision_log_message: null
+            revision_uid: '5'
+            changed: '1793980430'
+            url: null
+          custom_fields:
+            field_aspect_desc:
+              -
+                value: "Invite your co-workers to shared projects and give them access to the applications and resources they need. Shared project folders and integrated live editors enable seamless collaboration, keeping your team's work connected and in sync."
+            field_aspect_headline:
+              -
+                value: 'Bring your team and tools together'
+            field_video:
+              -
+                uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+                entity_type: media
+                base_fields:
+                  name: slide_3.mp4
+                  created: '1782823546'
+                  status: true
+                  langcode: en
+                  changed: '1782823546'
+                  url: null
+                bundle: video
+    -
+      uuid: 1ab085fb-ec26-48ff-8264-b2e002abd0f6
+      entity_type: node
+      bundle: aspect_preview
+      base_fields:
+        title: 'Dateien und Daten anwendungsübergreifend nutzen'
+        status: true
+        langcode: de
+        created: '1788193945'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793980419'
+        url: null
+      custom_fields:
+        field_aspect_desc:
+          -
+            value: 'Der Projektordner steht sowohl dem Team als auch den Anwendungen des Projekts zur Verfügung. So lassen sich Daten in Nextcloud, JupyterHub und WissKI nutzen und unnötige Duplikate können vermieden werden.'
+        field_aspect_headline:
+          -
+            value: 'Dateien und Daten anwendungsübergreifend nutzen'
+        field_video:
+          -
+            uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+            entity_type: media
+            base_fields:
+              name: slide_3.mp4
+              created: '1782823546'
+              status: true
+              langcode: en
+              changed: '1782823546'
+              url: null
+            bundle: video
+      translations:
+        en:
+          base_fields:
+            title: 'Share files and data across applications'
+            status: true
+            langcode: en
+            created: '1793980347'
+            author: j.neubauer@gnm.de
+            revision_log_message: null
+            revision_uid: '5'
+            changed: '1793980363'
+            url: null
+          custom_fields:
+            field_aspect_desc:
+              -
+                value: 'Access to the project folder is shared with your team as well as the applications. Nextcloud, JupyterHub, and WissKI are connected to it, allowing you to use your data across applications while reducing unnecessary duplication.'
+            field_aspect_headline:
+              -
+                value: 'Share files and data across applications'
+            field_video:
+              -
+                uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+                entity_type: media
+                base_fields:
+                  name: slide_3.mp4
+                  created: '1782823546'
+                  status: true
+                  langcode: en
+                  changed: '1782823546'
+                  url: null
+                bundle: video
+  field_cta_try:
+    -
+      uuid: 432e90a0-2744-465f-983c-c5b6fa3eec18
+      entity_type: node
+      bundle: cta_try
+      base_fields:
+        title: 'CT Try Home'
+        status: true
+        langcode: de
+        created: '1788360930'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793980506'
+        url: null
+      custom_fields:
+        field_cta_button_link:
+          -
+            uri: 'internal:/user/register'
+            title: 'Jetzt registrieren!'
+            options: {  }
+        field_cta_description:
+          -
+            value: 'Der Semantic Co-Working Space (SCS) stellt Anwendungen und die technische Infrastruktur für die kollaborative Arbeit entlang des Datenlebenszyklus bereit. Konzipiert insbesondere für wissenschaftliche Sammlungen, ermöglicht er es, Werkzeuge praktisch zu erproben, zusammenzuarbeiten und Datenkompetenzen durch praktische Erfahrung zu stärken.'
+        field_cta_headline:
+          -
+            value: 'Vernetzen, forschen und lernen'
+        field_field_cta_secondary:
+          -
+            value: '<p>Sie möchten Ihr Wissen vertiefen? Das SODa-Projekt bietet ergänzend <a href="https://sammlungen.io/kb">Lernmaterialien und Vermittlungsangebote zum Forschungsdatenmanagement</a> an.</p>'
+            format: basic_html
+            embed_entities: {  }
+      translations:
+        en:
+          base_fields:
+            title: 'CT Try Home'
+            status: true
+            langcode: en
+            created: '1793980457'
+            author: j.neubauer@gnm.de
+            revision_log_message: null
+            revision_uid: '5'
+            changed: '1793980459'
+            url: null
+          custom_fields:
+            field_cta_button_link:
+              -
+                uri: 'internal:/user/register'
+                title: 'Register now!'
+                options: {  }
+            field_cta_description:
+              -
+                value: 'The Semantic Co-Working Space (SCS) provides infrastructure and applications that support collaborative work across different stages of the data lifecycle. Designed especially for scientific collections, it offers an environment to explore new tools, work together, and improve data literacy through hands-on experience.'
+            field_cta_headline:
+              -
+                value: 'Connect, research, and learn'
+            field_field_cta_secondary:
+              -
+                value: '<p>Looking to deepen your knowledge? The SODa project also offers <a href="https://sammlungen.io/kb">educational resources on research data management (German only)</a>.</p>'
+                format: basic_html
+                embed_entities: {  }
+  field_home_hero_header:
+    -
+      uuid: f2e2d24e-f403-4ba4-bc32-c204139da90c
+      entity_type: node
+      bundle: home_hero_header
+      base_fields:
+        title: 'Hero Header Home'
+        status: true
+        langcode: de
+        created: '1787841207'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793991055'
+        url: null
+      custom_fields:
+        field_cta_button_link:
+          -
+            uri: 'internal:/node/10'
+            title: ''
+            options: {  }
+        field_headline:
+          -
+            value: 'SODa Semantic Co-Working Space'
+        field_introtext:
+          -
+            value: "Die kollaborative Arbeitsumgebung für Datenmanagement.\r\n\r\nEntdecken Sie vorkonfigurierte Anwendungen, um Ihre Daten zu erschließen, anzureichern, zu analysieren und zu teilen – alles an einem Ort, ohne Einrichtungs- oder Wartungsaufwand."
+        field_video:
+          -
+            uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+            entity_type: media
+            base_fields:
+              name: slide_3.mp4
+              created: '1782823546'
+              status: true
+              langcode: en
+              changed: '1782823546'
+              url: null
+            bundle: video
+      translations:
+        en:
+          base_fields:
+            title: 'Hero Header Home'
+            status: true
+            langcode: en
+            created: '1793980668'
+            author: j.neubauer@gnm.de
+            revision_log_message: null
+            revision_uid: '5'
+            changed: '1793980670'
+            url: null
+          custom_fields:
+            field_cta_button_link:
+              -
+                uri: 'internal:/node/10'
+                title: ''
+                options: {  }
+            field_headline:
+              -
+                value: 'SODa Semantic Co-Working Space'
+            field_introtext:
+              -
+                value: "Your collaborative workspace to manage your data, learn and explore.\r\n\r\nDiscover curated, pre-configured tools to create, enrich, analyse, and share your data — all in one place, with the setup and maintenance taken care of."
+            field_video:
+              -
+                uuid: 9f1696ed-46bf-4a52-a028-e168d660af51
+                entity_type: media
+                base_fields:
+                  name: slide_3.mp4
+                  created: '1782823546'
+                  status: true
+                  langcode: en
+                  changed: '1782823546'
+                  url: null
+                bundle: video
+  field_information_stairs:
+    -
+      uuid: fc0075f9-bc51-41f8-b638-3a5f99e3c7f1
+      entity_type: node
+      bundle: information_stairs
+      base_fields:
+        title: 'Home Informations Treppe'
+        status: true
+        langcode: de
+        created: '1788188271'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793980652'
+        url: null
+      custom_fields:
+        field_info_stairs_sub:
+          -
+            value: 'Entdecken Sie Anwendungen für die verschiedenen Aufgaben des Datenmanagements. Modellieren, entwickeln, transformieren, migrieren, anreichern, verarbeiten, analysieren, visualisieren, speichern und veröffentlichen – alles an einem Ort.'
+        field_info_stairs_title:
+          -
+            value: 'Anwendungen für den gesamten Datenlebenszyklus'
+        field_stair1_desc:
+          -
+            value: '<p>Erkunden und bearbeiten Sie Daten in interaktiven Notebooks, die Code, Visualisierungen und erläuternde Texte verbinden. Mit OpenRefine lassen sich Datensätze bereinigen, Fehler und Unstimmigkeiten korrigieren und Daten mit externen Quellen anreichern.</p>'
+            format: basic_html
+            embed_entities: {  }
+        field_stair1_sub:
+          -
+            value: 'mit JupyterHub und OpenRefine'
+        field_stair1_title:
+          -
+            value: 'Data Enrichment'
+        field_stair2_desc:
+          -
+            value: '<p>Erstellen und bearbeiten Sie gemeinsam Ontologien, um Beziehungen zwischen Begriffen, Objekten und Themen zu beschreiben. Diese semantischen Beziehungen verknüpfen Daten mit Bedeutung und stellen Zusammenhänge zwischen Informationen her.</p>'
+            format: basic_html
+            embed_entities: {  }
+        field_stair2_sub:
+          -
+            value: 'mit WebProtégé'
+        field_stair2_title:
+          -
+            value: 'Ontology Management'
+        field_stair3_desc:
+          -
+            value: '<p>Erfassen, dokumentieren und veröffentlichen Sie Informationen zu Forschung und Sammlungen ganz einfach über Webformulare. Im Hintergrund nutzt WissKI semantische Beziehungen, um Informationen miteinander zu verknüpfen und strukturierte Daten im Sinne der FAIR-Prinzipien zu erzeugen.</p>'
+            format: basic_html
+            embed_entities: {  }
+        field_stair3_sub:
+          -
+            value: 'mit WissKI'
+        field_stair3_title:
+          -
+            value: 'Data Management'
+      translations:
+        en:
+          base_fields:
+            title: 'Home Information Steps'
+            status: true
+            langcode: en
+            created: '1793980521'
+            author: j.neubauer@gnm.de
+            revision_log_message: null
+            revision_uid: '5'
+            changed: '1793980552'
+            url: null
+          custom_fields:
+            field_info_stairs_sub:
+              -
+                value: 'Explore a range of applications that support different aspects of data management. Use them to model, develop, transform, migrate, enrich, process, analyse, visualise, store, and publish your data.'
+            field_info_stairs_title:
+              -
+                value: 'Applications for the full data lifecycle'
+            field_stair1_desc:
+              -
+                value: '<p>Explore and work with your data using interactive notebooks that combine code, visualisations, and explanatory text. Use OpenRefine to clean up messy datasets, correct inconsistencies, and enrich your data with external resources.</p>'
+                format: basic_html
+                embed_entities: {  }
+            field_stair1_sub:
+              -
+                value: 'with JupyterHub and OpenRefine'
+            field_stair1_title:
+              -
+                value: 'Data Enrichment'
+            field_stair2_desc:
+              -
+                value: '<p>Collaboratively create and manage ontologies to describe how different concepts, objects, and topics relate to each other. These semantic relationships add meaning and context to your data, connecting information in meaningful ways.</p>'
+                format: basic_html
+                embed_entities: {  }
+            field_stair2_sub:
+              -
+                value: 'with WebProtégé'
+            field_stair2_title:
+              -
+                value: 'Ontology Management'
+            field_stair3_desc:
+              -
+                value: '<p>Organise, document, and publish information about your research and collections through familiar web forms. Behind the scenes, WissKI uses semantic relationships to connect information and structure your data in support of the FAIR principles, making it easier to find, share, and reuse.</p>'
+                format: basic_html
+                embed_entities: {  }
+            field_stair3_sub:
+              -
+                value: 'with WissKI'
+            field_stair3_title:
+              -
+                value: 'Data Management'
+  field_logo_banner:
+    -
+      uuid: ba00525d-f667-45f4-815e-6c209d7be013
+      entity_type: node
+      bundle: logo_banner
+      base_fields:
+        title: 'Home Logo Banner'
+        status: true
+        langcode: de
+        created: '1788179802'
+        author: lea.stocker@sammlungen.io
+        revision_log_message: null
+        revision_uid: '5'
+        changed: '1793980979'
+        url: null
+      custom_fields:
+        field_logo_1:
+          -
+            alt: 'WissKI Logo'
+            title: ''
+            target_entity:
+              uuid: 2eabf568-25c0-4686-a206-686d13554436
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: WissKI_logo_300dpi.png
+                uri: 'public://logos/WissKI_logo_300dpi.png'
+                url: 'http://default/sites/default/files/logos/WissKI_logo_300dpi.png'
+                status: '1'
+                created: 1791806686
+                changed: 1791806722
+                mimetype: image/png
+              custom_fields: {  }
+        field_logo_10: null
+        field_logo_10_link: null
+        field_logo_1_link:
+          -
+            uri: 'https://wiss-ki.eu'
+            title: ''
+            options: {  }
+        field_logo_2:
+          -
+            alt: 'Nextcloud Logo'
+            title: ''
+            target_entity:
+              uuid: ab93bbf4-eee8-4429-8ca7-9f05def617c1
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: nextcloud-icon-round.png
+                uri: 'public://logos/nextcloud-icon-round.png'
+                url: 'http://default/sites/default/files/logos/nextcloud-icon-round.png'
+                status: '1'
+                created: 1791806856
+                changed: 1791806895
+                mimetype: image/png
+              custom_fields: {  }
+        field_logo_2_link:
+          -
+            uri: 'https://nextcloud.com/'
+            title: ''
+            options: {  }
+        field_logo_3:
+          -
+            alt: 'OpenGDB Logo'
+            title: ''
+            target_entity:
+              uuid: d7666adb-ea54-4726-b251-60a69af7174b
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: ImgSlate900Mono.svg
+                uri: 'public://logos/ImgSlate900Mono.svg'
+                url: 'http://default/sites/default/files/logos/ImgSlate900Mono.svg'
+                status: '1'
+                created: 1791807431
+                changed: 1791807437
+                mimetype: image/svg+xml
+              custom_fields: {  }
+        field_logo_3_link:
+          -
+            uri: 'https://github.com/FAU-CDI/open_gdb?tab=readme-ov-file'
+            title: ''
+            options: {  }
+        field_logo_4:
+          -
+            alt: 'MariaDB Logo'
+            title: ''
+            target_entity:
+              uuid: b7eebcb8-41f5-4d0a-af9c-37a41f8d01f3
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png
+                uri: 'public://logos/https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png'
+                url: 'http://default/sites/default/files/logos/https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png'
+                status: '1'
+                created: 1791807031
+                changed: 1791807049
+                mimetype: image/png
+              custom_fields: {  }
+        field_logo_4_link:
+          -
+            uri: 'https://mariadb.com'
+            title: ''
+            options: {  }
+        field_logo_5: null
+        field_logo_5_link: null
+        field_logo_6:
+          -
+            alt: 'Protégé Logo'
+            title: ''
+            target_entity:
+              uuid: 2ed7b3b1-4c2b-4a89-9780-888177aadac0
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: protege_logo.svg
+                uri: 'public://logos/protege_logo.svg'
+                url: 'http://default/sites/default/files/logos/protege_logo.svg'
+                status: '1'
+                created: 1793980938
+                changed: 1793980979
+                mimetype: image/svg+xml
+              custom_fields: {  }
+        field_logo_6_link:
+          -
+            uri: 'https://webprotege.stanford.edu'
+            title: ''
+            options: {  }
+        field_logo_7:
+          -
+            alt: 'Jupyter Logo'
+            title: ''
+            target_entity:
+              uuid: 4bfd9c9f-4c58-4e28-9b59-4f46bbfe4e82
+              entity_type: file
+              bundle: file
+              base_fields:
+                name: Jupyter_logo.svg.webp
+                uri: 'public://logos/Jupyter_logo.svg.webp'
+                url: 'http://default/sites/default/files/logos/Jupyter_logo.svg.webp'
+                status: '1'
+                created: 1791807348
+                changed: 1791807358
+                mimetype: image/webp
+              custom_fields: {  }
+        field_logo_7_link:
+          -
+            uri: 'https://jupyter.org/'
+            title: ''
+            options: {  }
+        field_logo_8: null
+        field_logo_8_link: null
+        field_logo_9: null
+        field_logo_9_link: null

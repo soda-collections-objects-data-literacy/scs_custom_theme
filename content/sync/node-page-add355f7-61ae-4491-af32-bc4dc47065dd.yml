@@ -1,0 +1,40 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: add355f7-61ae-4491-af32-bc4dc47065dd
+entity_type: node
+bundle: page
+base_fields:
+  title: Barrierefreiheitserklärung
+  status: true
+  langcode: de
+  created: '1782898335'
+  author: j.neubauer@gnm.de
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1782898351'
+  url: /accessibility
+custom_fields:
+  body:
+    -
+      value: '<p>Diese Erklärung bezieht sich auf die Website <a href="https://manager.scs.sammlungen.io/"><strong>https://manager.scs.sammlungen.io/</strong></a>.</p><p>Wir sind bemüht, unsere Website im Einklang mit den Bestimmungen des Behindertengleichstellungsgesetzes (BGG) sowie der Barrierefreie-Informationstechnik-Verordnung (BITV 2.0) zur Umsetzung der Richtlinie (EU) 2016/2102 barrierefrei zugänglich zu machen.</p><p><strong>Stand der Vereinbarkeit mit den Anforderungen</strong></p><p>Diese Website ist gegenwärtig <strong>nicht barrierefrei</strong>. Eine vollständige Konformität mit den Anforderungen der BITV 2.0 bzw. den Web Content Accessibility Guidelines (WCAG) 2.1 besteht derzeit noch nicht.</p><p><strong>Erstellung dieser Erklärung</strong></p><p>Diese Erklärung wurde am 30.06.2026 erstellt.</p><p><strong>Maßnahmen zur Verbesserung der Barrierefreiheit</strong></p><p>Wir arbeiten kontinuierlich daran, die Zugänglichkeit unserer Website zu verbessern und bestehende Barrieren schrittweise abzubauen.</p><p><strong>Kontakt / Feedback</strong></p><p>Sollten Sie auf Barrieren stoßen oder Hinweise zur Verbesserung der Barrierefreiheit haben, kontaktieren Sie uns gerne unter: <a href="mailto:scs-manager@sammlungen.io">scs-manager@sammlungen.io</a></p>'
+      summary: ''
+      format: basic_html
+      embed_entities: {  }
+translations:
+  en:
+    base_fields:
+      title: 'Accessibility Statement'
+      status: true
+      langcode: en
+      created: '1782898310'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1782898330'
+      url: /accessibility
+    custom_fields:
+      body:
+        -
+          value: '<p>This statement applies to the website <a href="https://manager.scs.sammlungen.io/"><strong>https://manager.scs.sammlungen.io/</strong></a>.</p><p>We are committed to making our website accessible, in line with applicable accessibility regulations.</p><p><strong>Compliance Status</strong></p><p>This website is currently <strong>not accessible</strong>. It does not yet fully conform to the Web Content Accessibility Guidelines (WCAG) 2.1.</p><p><strong>Preparation of this statement</strong></p><p>This statement was created on 30.06.2026.</p><p><strong>Measures to improve accessibility</strong></p><p>We are actively working to improve the accessibility of our website and to address existing barriers step by step.</p><p><strong>Feedback / Contact</strong></p><p>If you encounter any accessibility barriers or have suggestions for improvement, please contact us at: <a href="mailto:scs-manager@sammlungen.io">scs-manager@sammlungen.io</a></p>'
+          summary: ''
+          format: basic_html
+          embed_entities: {  }

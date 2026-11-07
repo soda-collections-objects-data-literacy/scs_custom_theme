@@ -1,0 +1,20 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: 012e55cc-7f61-45b4-8102-af8d9991e479
+entity_type: menu_link_content
+bundle: menu_link_content
+base_fields:
+  title: Administration
+  enabled: true
+  expanded: false
+  langcode: de
+  menu_name: sidebar-secondary-nav
+  description: null
+  link:
+    -
+      uri: 'internal:/admin'
+      title: ''
+      options: {  }
+  weight: 0
+  parent: ''
+  changed: '1788788670'
+custom_fields: {  }

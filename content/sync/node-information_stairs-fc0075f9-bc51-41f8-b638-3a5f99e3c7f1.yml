@@ -1,0 +1,106 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: fc0075f9-bc51-41f8-b638-3a5f99e3c7f1
+entity_type: node
+bundle: information_stairs
+base_fields:
+  title: 'Home Informations Treppe'
+  status: true
+  langcode: de
+  created: '1788188271'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793980652'
+  url: null
+custom_fields:
+  field_info_stairs_sub:
+    -
+      value: 'Entdecken Sie Anwendungen für die verschiedenen Aufgaben des Datenmanagements. Modellieren, entwickeln, transformieren, migrieren, anreichern, verarbeiten, analysieren, visualisieren, speichern und veröffentlichen – alles an einem Ort.'
+  field_info_stairs_title:
+    -
+      value: 'Anwendungen für den gesamten Datenlebenszyklus'
+  field_stair1_desc:
+    -
+      value: '<p>Erkunden und bearbeiten Sie Daten in interaktiven Notebooks, die Code, Visualisierungen und erläuternde Texte verbinden. Mit OpenRefine lassen sich Datensätze bereinigen, Fehler und Unstimmigkeiten korrigieren und Daten mit externen Quellen anreichern.</p>'
+      format: basic_html
+      embed_entities: {  }
+  field_stair1_sub:
+    -
+      value: 'mit JupyterHub und OpenRefine'
+  field_stair1_title:
+    -
+      value: 'Data Enrichment'
+  field_stair2_desc:
+    -
+      value: '<p>Erstellen und bearbeiten Sie gemeinsam Ontologien, um Beziehungen zwischen Begriffen, Objekten und Themen zu beschreiben. Diese semantischen Beziehungen verknüpfen Daten mit Bedeutung und stellen Zusammenhänge zwischen Informationen her.</p>'
+      format: basic_html
+      embed_entities: {  }
+  field_stair2_sub:
+    -
+      value: 'mit WebProtégé'
+  field_stair2_title:
+    -
+      value: 'Ontology Management'
+  field_stair3_desc:
+    -
+      value: '<p>Erfassen, dokumentieren und veröffentlichen Sie Informationen zu Forschung und Sammlungen ganz einfach über Webformulare. Im Hintergrund nutzt WissKI semantische Beziehungen, um Informationen miteinander zu verknüpfen und strukturierte Daten im Sinne der FAIR-Prinzipien zu erzeugen.</p>'
+      format: basic_html
+      embed_entities: {  }
+  field_stair3_sub:
+    -
+      value: 'mit WissKI'
+  field_stair3_title:
+    -
+      value: 'Data Management'
+translations:
+  en:
+    base_fields:
+      title: 'Home Information Steps'
+      status: true
+      langcode: en
+      created: '1793980521'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1793980552'
+      url: null
+    custom_fields:
+      field_info_stairs_sub:
+        -
+          value: 'Explore a range of applications that support different aspects of data management. Use them to model, develop, transform, migrate, enrich, process, analyse, visualise, store, and publish your data.'
+      field_info_stairs_title:
+        -
+          value: 'Applications for the full data lifecycle'
+      field_stair1_desc:
+        -
+          value: '<p>Explore and work with your data using interactive notebooks that combine code, visualisations, and explanatory text. Use OpenRefine to clean up messy datasets, correct inconsistencies, and enrich your data with external resources.</p>'
+          format: basic_html
+          embed_entities: {  }
+      field_stair1_sub:
+        -
+          value: 'with JupyterHub and OpenRefine'
+      field_stair1_title:
+        -
+          value: 'Data Enrichment'
+      field_stair2_desc:
+        -
+          value: '<p>Collaboratively create and manage ontologies to describe how different concepts, objects, and topics relate to each other. These semantic relationships add meaning and context to your data, connecting information in meaningful ways.</p>'
+          format: basic_html
+          embed_entities: {  }
+      field_stair2_sub:
+        -
+          value: 'with WebProtégé'
+      field_stair2_title:
+        -
+          value: 'Ontology Management'
+      field_stair3_desc:
+        -
+          value: '<p>Organise, document, and publish information about your research and collections through familiar web forms. Behind the scenes, WissKI uses semantic relationships to connect information and structure your data in support of the FAIR principles, making it easier to find, share, and reuse.</p>'
+          format: basic_html
+          embed_entities: {  }
+      field_stair3_sub:
+        -
+          value: 'with WissKI'
+      field_stair3_title:
+        -
+          value: 'Data Management'

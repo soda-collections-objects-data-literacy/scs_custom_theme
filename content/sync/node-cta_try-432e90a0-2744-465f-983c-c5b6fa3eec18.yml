@@ -1,0 +1,60 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: 432e90a0-2744-465f-983c-c5b6fa3eec18
+entity_type: node
+bundle: cta_try
+base_fields:
+  title: 'CT Try Home'
+  status: true
+  langcode: de
+  created: '1788360930'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793980506'
+  url: null
+custom_fields:
+  field_cta_button_link:
+    -
+      uri: 'internal:/user/register'
+      title: 'Jetzt registrieren!'
+      options: {  }
+  field_cta_description:
+    -
+      value: 'Der Semantic Co-Working Space (SCS) stellt Anwendungen und die technische Infrastruktur für die kollaborative Arbeit entlang des Datenlebenszyklus bereit. Konzipiert insbesondere für wissenschaftliche Sammlungen, ermöglicht er es, Werkzeuge praktisch zu erproben, zusammenzuarbeiten und Datenkompetenzen durch praktische Erfahrung zu stärken.'
+  field_cta_headline:
+    -
+      value: 'Vernetzen, forschen und lernen'
+  field_field_cta_secondary:
+    -
+      value: '<p>Sie möchten Ihr Wissen vertiefen? Das SODa-Projekt bietet ergänzend <a href="https://sammlungen.io/kb">Lernmaterialien und Vermittlungsangebote zum Forschungsdatenmanagement</a> an.</p>'
+      format: basic_html
+      embed_entities: {  }
+translations:
+  en:
+    base_fields:
+      title: 'CT Try Home'
+      status: true
+      langcode: en
+      created: '1793980457'
+      author: j.neubauer@gnm.de
+      revision_log_message: null
+      revision_uid: '5'
+      changed: '1793980459'
+      url: null
+    custom_fields:
+      field_cta_button_link:
+        -
+          uri: 'internal:/user/register'
+          title: 'Register now!'
+          options: {  }
+      field_cta_description:
+        -
+          value: 'The Semantic Co-Working Space (SCS) provides infrastructure and applications that support collaborative work across different stages of the data lifecycle. Designed especially for scientific collections, it offers an environment to explore new tools, work together, and improve data literacy through hands-on experience.'
+      field_cta_headline:
+        -
+          value: 'Connect, research, and learn'
+      field_field_cta_secondary:
+        -
+          value: '<p>Looking to deepen your knowledge? The SODa project also offers <a href="https://sammlungen.io/kb">educational resources on research data management (German only)</a>.</p>'
+          format: basic_html
+          embed_entities: {  }

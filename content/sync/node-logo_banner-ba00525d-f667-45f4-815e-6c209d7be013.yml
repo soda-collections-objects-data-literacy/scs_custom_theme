@@ -1,0 +1,155 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: ba00525d-f667-45f4-815e-6c209d7be013
+entity_type: node
+bundle: logo_banner
+base_fields:
+  title: 'Home Logo Banner'
+  status: true
+  langcode: de
+  created: '1788179802'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '5'
+  changed: '1793980979'
+  url: null
+custom_fields:
+  field_logo_1:
+    -
+      alt: 'WissKI Logo'
+      title: ''
+      target_entity:
+        uuid: 2eabf568-25c0-4686-a206-686d13554436
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: WissKI_logo_300dpi.png
+          uri: 'public://logos/WissKI_logo_300dpi.png'
+          url: 'http://default/sites/default/files/logos/WissKI_logo_300dpi.png'
+          status: '1'
+          created: 1791806686
+          changed: 1791806722
+          mimetype: image/png
+        custom_fields: {  }
+  field_logo_10: null
+  field_logo_10_link: null
+  field_logo_1_link:
+    -
+      uri: 'https://wiss-ki.eu'
+      title: ''
+      options: {  }
+  field_logo_2:
+    -
+      alt: 'Nextcloud Logo'
+      title: ''
+      target_entity:
+        uuid: ab93bbf4-eee8-4429-8ca7-9f05def617c1
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: nextcloud-icon-round.png
+          uri: 'public://logos/nextcloud-icon-round.png'
+          url: 'http://default/sites/default/files/logos/nextcloud-icon-round.png'
+          status: '1'
+          created: 1791806856
+          changed: 1791806895
+          mimetype: image/png
+        custom_fields: {  }
+  field_logo_2_link:
+    -
+      uri: 'https://nextcloud.com/'
+      title: ''
+      options: {  }
+  field_logo_3:
+    -
+      alt: 'OpenGDB Logo'
+      title: ''
+      target_entity:
+        uuid: d7666adb-ea54-4726-b251-60a69af7174b
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: ImgSlate900Mono.svg
+          uri: 'public://logos/ImgSlate900Mono.svg'
+          url: 'http://default/sites/default/files/logos/ImgSlate900Mono.svg'
+          status: '1'
+          created: 1791807431
+          changed: 1791807437
+          mimetype: image/svg+xml
+        custom_fields: {  }
+  field_logo_3_link:
+    -
+      uri: 'https://github.com/FAU-CDI/open_gdb?tab=readme-ov-file'
+      title: ''
+      options: {  }
+  field_logo_4:
+    -
+      alt: 'MariaDB Logo'
+      title: ''
+      target_entity:
+        uuid: b7eebcb8-41f5-4d0a-af9c-37a41f8d01f3
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png
+          uri: 'public://logos/https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png'
+          url: 'http://default/sites/default/files/logos/https___mariadb.com_wp-content_uploads_2019_11_mariadb-logo-vert_blue-transparent.png'
+          status: '1'
+          created: 1791807031
+          changed: 1791807049
+          mimetype: image/png
+        custom_fields: {  }
+  field_logo_4_link:
+    -
+      uri: 'https://mariadb.com'
+      title: ''
+      options: {  }
+  field_logo_5: null
+  field_logo_5_link: null
+  field_logo_6:
+    -
+      alt: 'Protégé Logo'
+      title: ''
+      target_entity:
+        uuid: 2ed7b3b1-4c2b-4a89-9780-888177aadac0
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: protege_logo.svg
+          uri: 'public://logos/protege_logo.svg'
+          url: 'http://default/sites/default/files/logos/protege_logo.svg'
+          status: '1'
+          created: 1793980938
+          changed: 1793980979
+          mimetype: image/svg+xml
+        custom_fields: {  }
+  field_logo_6_link:
+    -
+      uri: 'https://webprotege.stanford.edu'
+      title: ''
+      options: {  }
+  field_logo_7:
+    -
+      alt: 'Jupyter Logo'
+      title: ''
+      target_entity:
+        uuid: 4bfd9c9f-4c58-4e28-9b59-4f46bbfe4e82
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: Jupyter_logo.svg.webp
+          uri: 'public://logos/Jupyter_logo.svg.webp'
+          url: 'http://default/sites/default/files/logos/Jupyter_logo.svg.webp'
+          status: '1'
+          created: 1791807348
+          changed: 1791807358
+          mimetype: image/webp
+        custom_fields: {  }
+  field_logo_7_link:
+    -
+      uri: 'https://jupyter.org/'
+      title: ''
+      options: {  }
+  field_logo_8: null
+  field_logo_8_link: null
+  field_logo_9: null
+  field_logo_9_link: null

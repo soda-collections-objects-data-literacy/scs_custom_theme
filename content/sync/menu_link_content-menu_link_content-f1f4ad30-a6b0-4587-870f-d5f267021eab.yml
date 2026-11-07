@@ -1,0 +1,38 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: f1f4ad30-a6b0-4587-870f-d5f267021eab
+entity_type: menu_link_content
+bundle: menu_link_content
+base_fields:
+  title: Registrieren
+  enabled: true
+  expanded: false
+  langcode: de
+  menu_name: sign-up
+  description: null
+  link:
+    -
+      uri: 'internal:/user/register'
+      title: ''
+      options: {  }
+  weight: 0
+  parent: ''
+  changed: '1774598225'
+custom_fields: {  }
+translations:
+  en:
+    base_fields:
+      title: 'Sign up '
+      enabled: true
+      expanded: false
+      langcode: en
+      menu_name: sign-up
+      description: null
+      link:
+        -
+          uri: 'internal:/user/register'
+          title: ''
+          options: {  }
+      weight: 0
+      parent: ''
+      changed: '1770647193'
+    custom_fields: {  }

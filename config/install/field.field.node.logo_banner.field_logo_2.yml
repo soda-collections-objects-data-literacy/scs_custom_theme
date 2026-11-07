@@ -36,5 +36,10 @@ settings:
   alt_field_required: true
   title_field: false
   title_field_required: false
-  default_image: {  }
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
 field_type: image

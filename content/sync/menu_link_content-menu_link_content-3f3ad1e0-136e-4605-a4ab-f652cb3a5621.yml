@@ -1,0 +1,20 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: 3f3ad1e0-136e-4605-a4ab-f652cb3a5621
+entity_type: menu_link_content
+bundle: menu_link_content
+base_fields:
+  title: Dokumentation
+  enabled: true
+  expanded: false
+  langcode: de
+  menu_name: sidebar-secondary-nav
+  description: null
+  link:
+    -
+      uri: 'https://docs.sammlungen.io'
+      title: ''
+      options: {  }
+  weight: 0
+  parent: ''
+  changed: '1788788699'
+custom_fields: {  }
