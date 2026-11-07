@@ -10,11 +10,12 @@ declare(strict_types=1);
 use Drupal\Core\Config\FileStorage;
 
 /**
- * Installs the home page content types and the default start page.
+ * Installs the home page content types, the default start page, and the legal pages.
  *
  * The content types used to ship with field names Drupal rejects and with
  * view displays that had no formatter settings, so enabling the theme never
- * created them. The start page itself lived only in the development database.
+ * created them. The start page and the legal pages lived only in the
+ * development database.
  */
 function scs_custom_theme_post_update_install_home_page(): void {
   $modules = [
@@ -74,7 +75,10 @@ function scs_custom_theme_post_update_install_home_page(): void {
   }
 
   usort($content_files, static function (string $left, string $right): int {
-    return str_contains($right, 'node-home_page') <=> str_contains($left, 'node-home_page');
+    $rank = static function (string $path): int {
+      return str_starts_with(basename($path), 'node-') ? 0 : 1;
+    };
+    return $rank($left) <=> $rank($right);
   });
   foreach ($content_files as $content_file) {
     $importer->importFromFile($content_file);
