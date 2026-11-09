@@ -4,8 +4,7 @@
 $onboarding-z-index: 100000;
 $onboarding-card-width: 380px;
 $onboarding-caret-size: 16px;
-$onboarding-outline-width: 3px;
-$onboarding-outline-offset: 4px;
+$onboarding-border-width: 3px;
 
 // Dev trigger in the account menu, styled like the neighbouring links.
 .dashboard-sidebar__account-menu-onboarding {
@@ -156,21 +155,18 @@ $onboarding-outline-offset: 4px;
     }
 }
 
-// Colour-coded outlines on the real elements the text refers to ("click the
-// tile" / "click the details button").
 .scs-onboarding-outline--blue,
 .scs-onboarding-outline--green {
-    outline-style: solid;
-    outline-width: $onboarding-outline-width;
-    outline-offset: $onboarding-outline-offset;
+    box-sizing: border-box;
+    border: $onboarding-border-width solid;
 }
 
 .scs-onboarding-outline--blue {
-    outline-color: $color-blue;
+    border-color: $color-blue;
 }
 
 .scs-onboarding-outline--green {
-    outline-color: $color-green;
+    border-color: $color-green;
 }
 
 @media (prefers-reduced-motion: no-preference) {

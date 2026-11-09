@@ -3209,17 +3209,16 @@ body.scs-manager--overlay-scroll-locked {
 
 .scs-onboarding-outline--blue,
 .scs-onboarding-outline--green {
-  outline-style: solid;
-  outline-width: 3px;
-  outline-offset: 4px;
+  box-sizing: border-box;
+  border: 3px solid;
 }
 
 .scs-onboarding-outline--blue {
-  outline-color: #0B57D0;
+  border-color: #0B57D0;
 }
 
 .scs-onboarding-outline--green {
-  outline-color: #006117;
+  border-color: #006117;
 }
 
 @media (prefers-reduced-motion: no-preference) {
