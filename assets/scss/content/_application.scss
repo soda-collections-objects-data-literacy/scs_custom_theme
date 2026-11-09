@@ -283,6 +283,14 @@ $application-card-meta-height: max($application-card-meta-control-size,
         p.h2 {
             margin: 0;
         }
+
+        .application__version-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     &--general-information {
