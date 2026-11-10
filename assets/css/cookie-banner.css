@@ -1,0 +1,294 @@
+/*
+ * Cookie banner (eu_cookie_compliance). Moved unchanged from the retired
+ * soda_scs_manager_theme; loads before styles.css, whose
+ * elements/_cookie-banner.scss builds on it.
+ */
+
+
+@media print {
+  #sliding-popup {
+    display: none !important;
+  }
+}
+
+/* ----- Full-width bar; cancel Olivero “floating card” / ultra-wide offset ----- */
+
+div#sliding-popup,
+div#sliding-popup .eu-cookie-withdraw-banner,
+.eu-cookie-withdraw-banner {
+  background: unset !important;
+}
+
+/*
+ * Olivero EU cookie CSS pins #sliding-popup with max-width 600px, horizontal padding,
+ * and drupal-displace `left`/`right` — content tracks the main column (e.g. ~260px inset).
+ * Stretch to the viewport and zero padding so the inner banner can truly center.
+ */
+div#sliding-popup {
+  filter: none !important;
+  box-sizing: border-box !important;
+  /* Stretch fixed layer edge-to-edge (do not use width:100% alone — displace vars break centering). */
+  inset-inline-start: 0 !important;
+  inset-inline-end: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-block: 0 !important;
+  padding-inline: 0 !important;
+  background-color: #fafafa !important;
+  border-block-start: 4px solid var(--scs-manager--card-dot-color, #ffa933);
+  box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.07);
+  z-index: 10000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+[dir='rtl'] div#sliding-popup {
+  left: 0 !important;
+  right: 0 !important;
+}
+
+@media (min-width: 1800px) {
+  div#sliding-popup {
+    inset-inline-start: 0 !important;
+    inset-inline-end: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+  }
+
+  [dir='rtl'] div#sliding-popup {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/*
+ * Vertical placement (`top` / `bottom`) is driven by eu_cookie_compliance.js animations.
+ * Only pin horizontal full-bleed and stacking here.
+ */
+div#sliding-popup.sliding-popup-bottom {
+  position: fixed !important;
+  inset-inline-start: 0 !important;
+  inset-inline-end: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+}
+
+div#sliding-popup.sliding-popup-top {
+  position: fixed !important;
+  inset-inline-start: 0 !important;
+  inset-inline-end: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.07);
+  border-block-start: none;
+  border-block-end: 4px solid var(--scs-manager--card-dot-color, #ffa933);
+}
+
+/* ----- Inner column (fixes 2400px+ single-line banner) ----- */
+
+/*
+ * Avoid width:100% here — it fills the (possibly inset) Olivero popup box, not the viewport.
+ * Fixed max width + align-items:center on #sliding-popup centers this block on screen.
+ */
+#sliding-popup .eu-cookie-compliance-banner {
+  /* Use % so width tracks the full-bleed #sliding-popup, not the viewport alone (avoids vw scrollbar shift). */
+  width: min(72rem, calc(100% - 2rem)) !important;
+  max-width: min(72rem, calc(100% - 2rem)) !important;
+  flex: 0 0 auto !important;
+  margin-inline: auto !important;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+  padding-block: 1rem;
+  box-sizing: border-box !important;
+}
+
+#sliding-popup .eu-cookie-compliance-content {
+  float: none !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 1rem 1.5rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-height: none !important;
+  overflow: visible !important;
+  color: #374151 !important;
+}
+
+@supports (filter: drop-shadow(0 0 72px rgb(0 0 0 / 10%))) {
+  #sliding-popup .eu-cookie-compliance-content {
+    box-shadow: none !important;
+  }
+}
+
+#sliding-popup h1,
+#sliding-popup h2,
+#sliding-popup h3,
+#sliding-popup p,
+#sliding-popup label,
+#sliding-popup .eu-cookie-compliance-message {
+  color: inherit !important;
+}
+
+#sliding-popup .eu-cookie-compliance-message {
+  flex: 1 1 18rem;
+  margin: 0 !important;
+  text-align: start;
+}
+
+#sliding-popup .eu-cookie-compliance-message h2 {
+  font-family: inherit !important;
+  font-size: 1.0625rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: #111827 !important;
+  margin: 0 0 0.35rem !important;
+}
+
+#sliding-popup .eu-cookie-compliance-message h2:first-child {
+  margin-block-start: 0 !important;
+}
+
+#sliding-popup .eu-cookie-compliance-message p {
+  font-size: 0.9375rem !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  color: #4b5563 !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons,
+#sliding-popup .eu-cookie-compliance-categories-buttons {
+  float: none !important;
+  max-width: none !important;
+  flex: 0 1 auto;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+}
+
+[dir='rtl'] #sliding-popup .eu-cookie-compliance-buttons,
+[dir='rtl'] #sliding-popup .eu-cookie-compliance-categories-buttons {
+  justify-content: flex-start !important;
+}
+
+/* ----- Buttons: match site CTAs (orange primary, black-outline secondary) ----- */
+
+#sliding-popup .eu-cookie-compliance-buttons button,
+#sliding-popup .eu-cookie-compliance-categories-buttons button {
+  margin: 0 !important;
+  border-radius: 0.175rem !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25 !important;
+  padding: 0.5rem 1rem !important;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease !important;
+  /* eu_cookie_compliance.css (default, non-Olivero library): embossed white shadow clashes with flat / orange primary → ghost text. */
+  text-shadow: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons .button.button--primary,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button.button--primary {
+  color: #fff !important;
+  background-color: #e68500 !important;
+  border: 2px solid #e68500 !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons .button.button--primary:hover,
+#sliding-popup .eu-cookie-compliance-buttons .button.button--primary:active,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button.button--primary:hover,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button.button--primary:active {
+  background-color: #b86a00 !important;
+  border-color: #b86a00 !important;
+  color: #fff !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons .button.button--primary:focus,
+#sliding-popup .eu-cookie-compliance-buttons .button.button--primary:focus-visible,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button.button--primary:focus,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button.button--primary:focus-visible {
+  outline: none !important;
+  box-shadow:
+    0 0 0 2px #e68500,
+    0 0 0 4px rgba(230, 133, 0, 0.28) !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons .button:not(.button--primary),
+#sliding-popup .eu-cookie-compliance-categories-buttons .button:not(.button--primary) {
+  color: #111827 !important;
+  background-color: transparent !important;
+  border: 2px solid #000 !important;
+}
+
+#sliding-popup .eu-cookie-compliance-buttons .button:not(.button--primary):hover,
+#sliding-popup .eu-cookie-compliance-buttons .button:not(.button--primary):active,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button:not(.button--primary):hover,
+#sliding-popup .eu-cookie-compliance-categories-buttons .button:not(.button--primary):active {
+  background-color: #e68500 !important;
+  border-color: #e68500 !important;
+  color: #fff !important;
+}
+
+#sliding-popup .eu-cookie-compliance-more-button,
+#sliding-popup .eu-cookie-compliance-more-button-thank-you {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #e68500 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.125em !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  padding: 0.35rem 0.5rem !important;
+  cursor: pointer !important;
+}
+
+#sliding-popup .eu-cookie-compliance-more-button:hover,
+#sliding-popup .eu-cookie-compliance-more-button-thank-you:hover {
+  color: #b86a00 !important;
+}
+
+#sliding-popup .eu-cookie-compliance-more-button:focus,
+#sliding-popup .eu-cookie-compliance-more-button:focus-visible,
+#sliding-popup .eu-cookie-compliance-more-button-thank-you:focus,
+#sliding-popup .eu-cookie-compliance-more-button-thank-you:focus-visible {
+  outline: none !important;
+  border-radius: 0.175rem !important;
+  box-shadow:
+    0 0 0 2px #e68500,
+    0 0 0 4px rgba(230, 133, 0, 0.28) !important;
+}
+
+/* Withdraw UI */
+
+.eu-cookie-withdraw-tab {
+  color: #e68500 !important;
+  border-color: #e68500 !important;
+  font-weight: 500 !important;
+}
+
+.eu-cookie-withdraw-tab:hover {
+  color: #b86a00 !important;
+  border-color: #b86a00 !important;
+}

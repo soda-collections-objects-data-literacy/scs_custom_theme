@@ -1,6 +1,10 @@
 global-styling:
-  version: 1.3
+  version: 1.4
   css:
+    base:
+      assets/css/reset.css: { preprocess: false }
+    component:
+      assets/css/cookie-banner.css: { preprocess: false }
     theme:
       assets/css/styles.css: { preprocess: false }
 global-scripts:
