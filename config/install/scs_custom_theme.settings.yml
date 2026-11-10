@@ -1,0 +1,4 @@
+favicon:
+  use_default: false
+  path: themes/custom/scs_custom_theme/assets/img/SODaSCSLogoFavicon.png
+  mimetype: image/png

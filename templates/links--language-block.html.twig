@@ -6,9 +6,18 @@
   {{ title_suffix }}
 
   {% if links %}
+    <button type="button" class="language-switcher__toggle" aria-expanded="false" aria-label="{{ 'Language'|t }}" title="{{ 'Language'|t }}">
+      <span class="language-switcher__icon" aria-hidden="true"></span>
+    </button>
     <ul{{ attributes }}>
       {% for item in links %}
-        <li{{ item.attributes }}>{{ item.link }}</li>
+        <li{{ item.attributes }}>
+          {% if item.link['#title']['#theme']|default('') == 'languageicons_link_content' %}
+            {{ item.link|merge({'#title': item.link['#title']['#text']}) }}
+          {% else %}
+            {{ item.link }}
+          {% endif %}
+        </li>
       {% endfor %}
     </ul>
   {% endif %}
