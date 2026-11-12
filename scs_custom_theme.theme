@@ -153,9 +153,7 @@ function scs_custom_theme_theme_suggestions_page_alter(array &$suggestions, arra
 function scs_custom_theme_theme($existing, $type, $theme, $path): array {
   return [
     'scs_custom_theme_wsod' => [
-      'variables' => [
-        'error_message' => NULL,
-      ],
+      'variables' => [],
       'template' => 'scs-custom-theme-wsod',
     ],
   ];
