@@ -1,0 +1,77 @@
+@use 'tokens' as *;
+
+// Demo project status panel on the project page; the rows are rebuilt by the
+// module's js/demoProjectStatus.js while the demo job runs.
+@layer components {
+    .scs-manager--demo-status-job-line {
+        margin: 0;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        color: $scs-gray-600;
+    }
+
+    .scs-manager--demo-status-apps {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+    }
+
+    .scs-manager--demo-status-app {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .scs-manager--demo-status-app-state {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $scs-gray-500;
+    }
+
+    .scs-manager--demo-status-version {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        color: $scs-gray-600;
+    }
+
+    .scs-manager--demo-status-note {
+        margin: 0;
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        color: $scs-gray-700;
+    }
+}
+
+// Unlayered, as css/demo-status.css was in the module.
+.scs-manager--demo-status-throbber {
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    border: 2px solid currentcolor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: scs-manager--demo-status-spin 0.8s linear infinite;
+}
+
+@keyframes scs-manager--demo-status-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scs-manager--demo-status-throbber {
+        animation: none;
+    }
+}

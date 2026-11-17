@@ -1,0 +1,24 @@
+// SCS Manager UI: the module (soda_scs_manager) only sets these classes,
+// all of their styling lives here. One partial per module component.
+@forward 'layers';
+@forward 'base';
+@forward 'administration';
+@forward 'cards';
+@forward 'create-project-wizard';
+@forward 'demo-status';
+@forward 'entity';
+@forward 'grid';
+@forward 'images';
+@forward 'intro-wizard';
+@forward 'keycloak-registration-form';
+@forward 'messages';
+@forward 'navigation';
+@forward 'nextcloud-connect';
+@forward 'notifications';
+@forward 'project-members';
+@forward 'service-keys';
+@forward 'table-list';
+@forward 'throbber-overlay';
+@forward 'version-info';
+// Last: these beat Claro and the component rules above, as in the module.
+@forward 'overrides';

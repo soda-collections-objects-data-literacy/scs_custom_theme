@@ -1,0 +1,260 @@
+@use 'tokens' as *;
+
+@layer components {
+    .soda-scs-manager--card-tags {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        width: 100%;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .soda-scs-manager--card-tag {
+        position: relative;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    .soda-scs-manager--entity--connectedComponents {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--created {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--default {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .soda-scs-manager--entity--description,
+    .soda-scs-manager--entity--description * {
+        margin-top: 0.5rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        color: $scs-gray-700;
+    }
+
+    .soda-scs-manager--entity--attributes-row {
+        grid-column: span 6 / span 6;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .soda-scs-manager--entity--description-row {
+        grid-column: span 4 / span 4;
+    }
+
+    .soda-scs-manager--entity--footer {
+        grid-column: span 4 / span 4;
+    }
+
+    .soda-scs-manager--entity--health {
+        display: flex;
+        align-items: center;
+    }
+
+    .soda-scs-manager--entity--health-row {
+        display: flex;
+        min-width: 0px;
+        align-items: center;
+        overflow: visible;
+    }
+
+    .health-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        border-radius: calc(infinity * 1px);
+        padding-inline: 0.625rem;
+        padding-block: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        font-weight: 500;
+        white-space: nowrap;
+        transform-origin: center;
+        &:is(a) {
+            cursor: pointer;
+            text-decoration-line: none;
+            text-decoration: none !important;
+            text-underline-offset: 0;
+        }
+        &:is(a):hover,
+        &:is(a):focus,
+        &:is(a):focus-visible,
+        &:is(a):active,
+        &:is(a):visited {
+            text-decoration-line: none;
+            text-decoration: none !important;
+        }
+        &:is(a):hover {
+            opacity: 90%;
+        }
+        .health-badge__symbol {
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            line-height: 1;
+        }
+        &.health-badge--running {
+            border-style: solid;
+            border-width: 1px;
+            border-color: $scs-green-200;
+            background-color: $scs-green-100;
+            color: $scs-green-800;
+            .health-badge__symbol {
+                color: $scs-green-600;
+            }
+        }
+        &.health-badge--stopped {
+            border-style: solid;
+            border-width: 1px;
+            border-color: $scs-stone-200;
+            background-color: $scs-stone-100;
+            color: $scs-stone-700;
+            .health-badge__symbol {
+                color: $scs-stone-500;
+            }
+        }
+        &.health-badge--problem,
+        &.health-badge--error {
+            border-style: solid;
+            border-width: 1px;
+            border-color: $scs-red-200;
+            background-color: $scs-red-100;
+            color: $scs-red-800;
+            .health-badge__symbol {
+                color: $scs-red-600;
+            }
+        }
+        &.health-badge--unknown,
+        &.health-badge--starting {
+            border-style: solid;
+            border-width: 1px;
+            border-color: $scs-amber-200;
+            background-color: $scs-amber-100;
+            color: $scs-amber-800;
+            animation: health-badge-bump 1.5s ease-in-out infinite;
+            .health-badge__symbol {
+                color: $scs-amber-600;
+            }
+        }
+    }
+
+    @keyframes health-badge-bump {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.06);
+        }
+    }
+
+    .soda-scs-manager--entity--header {
+        grid-column: span 6 / span 6;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .soda-scs-manager--entity--header--left {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--header--right {
+        grid-column: span 2 / span 2;
+        display: grid;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+
+    .soda-scs-manager--entity--header-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .soda-scs-manager--entity--includedComponents {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--info {
+        grid-column: span 4 / span 4;
+    }
+
+    .soda-scs-manager--entity--left-column {
+        grid-column: span 4 / span 4;
+    }
+
+    .soda-scs-manager--entity--machine-name {
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        color: $scs-gray-600;
+    }
+
+    .soda-scs-manager--entity--machine-name-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .soda-scs-manager--entity--main {
+        grid-column: span 6 / span 6;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .soda-scs-manager--entity--owner {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--partOfStack {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--right-column {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--service-key {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--snapshots {
+        grid-column: span 2 / span 2;
+    }
+
+    .soda-scs-manager--entity--tags {
+        margin-top: 0.5rem;
+    }
+
+    .soda-scs-manager--entity--tags-row {
+        grid-column: span 4 / span 4;
+    }
+
+    .soda-scs-manager--entity--thumbnail {
+        height: 4rem;
+        width: 4rem;
+        flex-shrink: 0;
+    }
+
+    .soda-scs-manager--entity--title {
+        margin: 0px;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-weight: 600;
+        color: $scs-gray-900;
+    }
+
+    .soda-scs-manager--entity--updated {
+        grid-column: span 2 / span 2;
+    }
+}

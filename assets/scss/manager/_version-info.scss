@@ -1,0 +1,30 @@
+@use 'tokens' as *;
+
+@layer components {
+    .soda-scs-manager__version-info {
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem;
+        border-style: solid;
+        border-width: 2px;
+        border-color: $scs-stone-200;
+        background-color: $scs-white;
+        padding: 1rem;
+        width: 100%;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+
+    .soda-scs-manager__version-info__label {
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 500;
+        color: $scs-stone-600;
+    }
+
+    .soda-scs-manager__version-info__value {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-weight: 600;
+        color: $scs-orange-400;
+    }
+}

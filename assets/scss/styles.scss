@@ -1,3 +1,6 @@
+// SCS Manager UI first: it replaces the module's own CSS, which loaded before
+// the theme, so the theme's rules keep winning on equal specificity.
+@use 'manager/index' as *;
 @use 'base/vars' as *;
 @use 'base/func' as *;
 @use 'base/mixins' as *;

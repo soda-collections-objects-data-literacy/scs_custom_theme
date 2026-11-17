@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "scs_custom_theme",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "sass --no-source-map --style=expanded assets/scss/styles.scss assets/css/styles.css",
+    "build:dev": "sass --style=expanded assets/scss/styles.scss assets/css/styles.css",
+    "watch": "sass --watch --style=expanded assets/scss/styles.scss assets/css/styles.css"
+  },
+  "devDependencies": {
+    "sass": "1.83.4"
+  }
+}

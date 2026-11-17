@@ -1,0 +1,12 @@
+@use '../base/vars' as *;
+
+// Toast shown where the user clicked a service password; JS sets top/left.
+.scs-manager--copy-confirmation {
+    position: absolute;
+    z-index: 1000;
+    padding: 5px;
+    border-radius: $radius-small;
+    background-color: $color-green;
+    color: $color-text-inverse;
+    box-shadow: $shadow-strong;
+}

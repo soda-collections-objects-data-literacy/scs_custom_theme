@@ -11,11 +11,23 @@ A minimal Drupal 10/11 starter theme.
 
 ## Build
 
-Compile the stylesheet with:
+Compile `assets/scss/styles.scss` to `assets/css/styles.css` (node runs in
+the Drupal container):
 
 ```bash
-sass assets/scss/test.scss assets/css/styles.css
+docker exec -u developer -w /opt/drupal/web/themes/custom/scs_custom_theme \
+  manager--drupal--app sh -c 'npm ci && npm run build'
 ```
+
+`npm run watch` rebuilds on every change. Commit the SCSS and the built CSS
+together.
+
+## SCS Manager UI
+
+The `soda_scs_manager` module ships no CSS: it only sets semantic classes
+(`scs-manager--…`, `soda-scs-manager--…`). Their styles live in
+`assets/scss/manager/`, one partial per module component, forwarded by
+`manager/_index.scss`.
 
 ## Home page and legal pages
 

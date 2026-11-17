@@ -1,0 +1,31 @@
+@use '../base/vars' as *;
+@use 'tokens' as *;
+
+// Tick before the status once Nextcloud is connected with a bearer token.
+@layer components {
+    .scs-manager--nextcloud-connect-status-inline[data-status="connected"][data-method="bearer"]::before,
+    .scs-manager--nextcloud-connect-status[data-status="connected"][data-method="bearer"]::before,
+    .scs-manager--nextcloud-status-check-result[data-status="connected"][data-method="bearer"]::before {
+        content: "✓";
+        display: inline-block;
+        margin-right: 0.375rem;
+        font-weight: 700;
+        color: $scs-green-600;
+    }
+}
+
+// Nextcloud connect field on the user form.
+.scs-manager--nextcloud-connect-fallback-hint {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: $color-text-secondary;
+}
+
+// Status line below the connect button, set off from the field above.
+@layer components {
+    .scs-manager--nextcloud-status-check {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid $scs-stone-300;
+    }
+}

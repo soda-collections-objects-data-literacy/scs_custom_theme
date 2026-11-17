@@ -1,0 +1,49 @@
+@use 'tokens' as *;
+
+// Create-project wizard: the invite step and the error lines. The wizard's
+// layout itself lives in content/_application.scss.
+@layer components {
+    .create-project-wizard__invite-label {
+        display: block;
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        font-weight: 500;
+        color: $scs-stone-800;
+    }
+
+    .create-project-wizard__invite-row {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .create-project-wizard__invite-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid $scs-stone-300;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+    }
+
+    .create-project-wizard__invited-person {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        color: $scs-stone-800;
+    }
+
+    // Review error and the banner above an application form.
+    .create-project-wizard__form-error {
+        margin-top: 0.75rem;
+        font-size: 0.875rem;
+        line-height: calc(1.25 / 0.875);
+        font-weight: 500;
+        color: $scs-red-700;
+    }
+}

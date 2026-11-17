@@ -1,0 +1,277 @@
+@use 'tokens' as *;
+
+@layer components {
+    .soda-scs-manager__throbber-overlay__spinner--success {
+        border-color: $scs-green-300;
+        border-top-color: $scs-green-500;
+        animation: none;
+    }
+
+    .soda-scs-manager__throbber-overlay__spinner--error {
+        border-color: $scs-red-300;
+        border-top-color: $scs-red-500;
+        animation: none;
+    }
+
+    .soda-scs-manager__throbber-overlay__message {
+        margin-bottom: 1rem;
+        max-width: 28rem;
+        padding-inline: 1.5rem;
+        text-align: center;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-weight: 600;
+    }
+
+    .soda-scs-manager__throbber-overlay__progress {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        max-width: 28rem;
+    }
+
+    .soda-scs-manager__throbber-overlay__steps {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 32rem;
+    }
+
+    .soda-scs-manager__throbber-overlay__logs {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 32rem;
+    }
+
+    .soda-scs-manager__throbber-overlay__steps-container {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 32rem;
+        height: 16rem;
+        overflow: hidden;
+    }
+
+    .soda-scs-manager__throbber-overlay__info {
+        margin-top: 1.5rem;
+        max-width: 32rem;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.625;
+    }
+
+    .soda-scs-manager__progress-bar {
+        width: 100%;
+    }
+
+    .soda-scs-manager__progress-bar__track {
+        height: 0.75rem;
+        overflow: hidden;
+        border-radius: calc(infinity * 1px);
+        background-color: $scs-gray-700;
+    }
+
+    .soda-scs-manager__progress-bar__fill {
+        height: 100%;
+        border-radius: calc(infinity * 1px);
+        background-image: linear-gradient(to right in oklab, $scs-orange-400 0%, $scs-orange-500 100%);
+        transition-property: all;
+        transition-duration: 500ms;
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .soda-scs-manager__progress-bar__text {
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        color: $scs-gray-300;
+    }
+
+    .soda-scs-manager__steps-list {
+        margin: 0px;
+        list-style-type: none;
+        padding: 0px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0.5rem 0;
+    }
+
+    .soda-scs-manager__steps-list > .soda-scs-manager__step {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .soda-scs-manager__steps-list > .soda-scs-manager__step:first-child {
+        margin-top: 0;
+    }
+
+    .soda-scs-manager__steps-list > .soda-scs-manager__step:last-child {
+        margin-bottom: 0;
+    }
+
+    .soda-scs-manager__steps-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .soda-scs-manager__steps-list::-webkit-scrollbar-track {
+        border-radius: 0.25rem;
+        background-color: $scs-gray-800;
+    }
+
+    .soda-scs-manager__steps-list::-webkit-scrollbar-thumb {
+        border-radius: 0.25rem;
+        background-color: $scs-gray-600;
+    }
+
+    .soda-scs-manager__steps-list::-webkit-scrollbar-thumb:hover {
+        background-color: $scs-gray-500;
+    }
+
+    .soda-scs-manager__step {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        border-radius: 0.5rem;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+    }
+
+    .soda-scs-manager__step--pending {
+        background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848) 50%, transparent);
+        color: $scs-gray-400;
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-gray-800 50%, transparent);
+        }
+    }
+
+    .soda-scs-manager__step--running {
+        border-style: solid;
+        border-width: 1px;
+        border-color: color-mix(in srgb, oklch(70.5% 0.213 47.604) 50%, transparent);
+        background-color: color-mix(in srgb, oklch(40.8% 0.123 38.172) 30%, transparent);
+        color: $scs-orange-300;
+        @supports (color: color-mix(in lab, red, red)) {
+            border-color: color-mix(in oklab, $scs-orange-500 50%, transparent);
+        }
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-orange-900 30%, transparent);
+        }
+    }
+
+    .soda-scs-manager__step--completed {
+        background-color: color-mix(in srgb, oklch(39.3% 0.095 152.535) 30%, transparent);
+        color: $scs-green-400;
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-green-900 30%, transparent);
+        }
+    }
+
+    .soda-scs-manager__step--failed {
+        background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723) 30%, transparent);
+        color: $scs-red-400;
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-red-900 30%, transparent);
+        }
+    }
+
+    .soda-scs-manager__step--skipped {
+        background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848) 30%, transparent);
+        color: $scs-gray-500;
+        text-decoration-line: line-through;
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-gray-800 30%, transparent);
+        }
+    }
+
+    .soda-scs-manager__step__icon {
+        height: 1.25rem;
+        width: 1.25rem;
+        flex-shrink: 0;
+    }
+
+    .soda-scs-manager__step__label {
+        flex-grow: 1;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 500;
+    }
+
+    .soda-scs-manager__step__message {
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        opacity: 70%;
+    }
+
+    .soda-scs-manager__icon {
+        height: 1.25rem;
+        width: 1.25rem;
+    }
+
+    .soda-scs-manager__icon--completed {
+        color: $scs-green-400;
+    }
+
+    .soda-scs-manager__icon--running {
+        color: $scs-orange-400;
+    }
+
+    .soda-scs-manager__icon--failed {
+        color: $scs-red-400;
+    }
+
+    .soda-scs-manager__icon--skipped {
+        color: $scs-gray-500;
+    }
+
+    .soda-scs-manager__icon--pending {
+        color: $scs-gray-500;
+    }
+
+    .soda-scs-manager__logs {
+        border-radius: 0.5rem;
+        background-color: color-mix(in srgb, oklch(21% 0.034 264.665) 50%, transparent);
+        padding: 0.75rem;
+        @supports (color: color-mix(in lab, red, red)) {
+            background-color: color-mix(in oklab, $scs-gray-900 50%, transparent);
+        }
+    }
+
+    .soda-scs-manager__logs__title {
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        letter-spacing: 0.05em;
+        color: $scs-gray-400;
+        text-transform: uppercase;
+    }
+
+    .soda-scs-manager__logs__list {
+        margin: 0px;
+        max-height: 6rem;
+        list-style-type: none;
+        overflow-y: auto;
+        padding: 0px;
+        :where(& > :not(:last-child)) {
+            margin-block-start: 0;
+            margin-block-end: calc(0.25rem * calc(1 - 0));
+        }
+    }
+
+    .soda-scs-manager__log {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+    }
+
+    .soda-scs-manager__log--info {
+        color: $scs-gray-300;
+    }
+
+    .soda-scs-manager__log--warning {
+        color: $scs-yellow-400;
+    }
+
+    .soda-scs-manager__log--error {
+        color: $scs-red-400;
+    }
+}

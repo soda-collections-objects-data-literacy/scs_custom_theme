@@ -1,0 +1,298 @@
+@use 'tokens' as *;
+
+.soda-scs-manager--administration-page {
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1rem;
+    padding-block: 2rem;
+}
+
+.soda-scs-manager--administration-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.soda-scs-manager--administration-title {
+    margin-bottom: 1rem;
+    font-size: 2.25rem;
+    line-height: 1.1111;
+    font-weight: 700;
+    color: $scs-black;
+}
+
+.soda-scs-manager--administration-intro {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: $scs-stone-400;
+}
+
+.soda-scs-manager--administration-empty {
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: $scs-stone-200;
+    background-color: $scs-slate-950;
+    padding: 1rem;
+    text-align: center;
+    opacity: 20%;
+}
+
+.soda-scs-manager--administration-empty-text {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: $scs-stone-200;
+}
+
+.soda-scs-manager--administration-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: stretch;
+    // Was Tailwind's `container mx-auto` on the grid: full width, capped at
+    // each breakpoint.
+    width: 100%;
+    margin-inline: auto;
+    @each $breakpoint in 40rem, 48rem, 64rem, 80rem, 96rem {
+        @media (min-width: $breakpoint) {
+            max-width: $breakpoint;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: $scs-white;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    &:hover {
+        @media (hover: hover) {
+            scale: 105% 105%;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    color: $scs-gray-900;
+    text-decoration-line: none;
+    text-decoration: none;
+    flex: 1;
+    min-height: 200px;
+}
+
+.soda-scs-manager--admin-card-icon {
+    display: flex;
+    height: 4rem;
+    width: 4rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.soda-scs-manager--admin-card-icon svg,
+.soda-scs-manager--admin-card-icon-svg {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.soda-scs-manager--admin-card-icon-svg {
+    filter: brightness(0) saturate(100%);
+    opacity: 0.8;
+}
+
+.soda-scs-manager--admin-card-content {
+    flex: 1;
+}
+
+.soda-scs-manager--admin-card-title {
+    margin: 0px;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: $scs-gray-900;
+}
+
+.soda-scs-manager--admin-card-description {
+    font-size: 0.875rem;
+    line-height: 1.625;
+    color: $scs-gray-600;
+}
+
+.soda-scs-manager--admin-card-arrow {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
+    opacity: 50%;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.soda-scs-manager--admin-card-arrow svg {
+    height: 100%;
+    width: 100%;
+}
+
+.soda-scs-manager--admin-card:hover .soda-scs-manager--admin-card-arrow {
+    translate: 0.25rem 0;
+    opacity: 100%;
+}
+
+.soda-scs-manager--admin-card-emerald {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-emerald-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-emerald-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-emerald .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
+    color: $scs-emerald-700;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-emerald-500 20%, transparent);
+    }
+}
+
+.soda-scs-manager--admin-card-blue {
+    border-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-blue-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-blue-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-blue .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 20%, transparent);
+    color: $scs-blue-700;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-blue-500 20%, transparent);
+    }
+}
+
+.soda-scs-manager--admin-card-amber {
+    border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-amber-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-amber-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-amber .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 20%, transparent);
+    color: $scs-amber-700;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-amber-500 20%, transparent);
+    }
+}
+
+.soda-scs-manager--admin-card-purple {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-purple-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-purple-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-purple .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 20%, transparent);
+    color: $scs-purple-700;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-purple-500 20%, transparent);
+    }
+}
+
+.soda-scs-manager--admin-card-rose {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-rose-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-rose-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-rose .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 20%, transparent);
+    color: $scs-red-700;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-rose-500 20%, transparent);
+    }
+}
+
+.soda-scs-manager--admin-card-slate {
+    border-color: color-mix(in srgb, oklch(55.4% 0.046 257.417) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+        border-color: color-mix(in oklab, $scs-slate-500 30%, transparent);
+    }
+
+    &:hover {
+        @media (hover: hover) {
+            border-color: $scs-slate-500;
+        }
+    }
+}
+
+.soda-scs-manager--admin-card-slate .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in srgb, oklch(55.4% 0.046 257.417) 20%, transparent);
+    color: $scs-slate-800;
+    @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, $scs-slate-500 20%, transparent);
+    }
+}
+
+@media (max-width: 768px) {
+    .soda-scs-manager--administration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .soda-scs-manager--admin-card-link {
+        padding: 1rem;
+    }
+
+    .soda-scs-manager--admin-card-icon {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .soda-scs-manager--admin-card-icon svg {
+        height: 2rem;
+        width: 2rem;
+    }
+}

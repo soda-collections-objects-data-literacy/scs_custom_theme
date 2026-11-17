@@ -1,0 +1,1182 @@
+@use '../base/vars' as *;
+@use 'tokens' as *;
+
+@layer components {
+    a.soda-scs-manager--tile-card {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0;
+        border-style: solid;
+        border-width: 0px;
+        background-color: transparent;
+        padding: 1.5rem;
+        text-align: center;
+        text-decoration-line: none;
+        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-sizing: border-box;
+            border: 2px solid $color-black;
+            border-top-color: $color-black;
+            border-right-color: $color-black;
+            border-bottom-color: $color-black;
+            border-left-color: $color-black;
+            border-radius: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 3;
+            transition: border-color 0.2s ease-in-out;
+        }
+        &:hover::after {
+            border-color: $color-orange-600;
+        }
+        h2 {
+            position: relative;
+            z-index: 2;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            background-color: $scs-white;
+            font-size: 1.25rem;
+            line-height: 1.4;
+            font-weight: 600;
+            color: $color-orange-600;
+            text-decoration-line: underline;
+            text-underline-offset: 2px;
+        }
+        p {
+            position: relative;
+            z-index: 2;
+            background-color: $scs-white;
+            color: $scs-stone-900;
+        }
+    }
+
+    .soda-scs-manager--card-type {
+        width: 100%;
+        flex-shrink: 0;
+        text-align: center;
+    }
+
+    .soda-scs-manager--type--card {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        height: 100%;
+        min-height: 0px;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.75rem;
+        text-align: center;
+        @media (width >= 40rem) {
+            padding: 1rem;
+        }
+        @media (width >= 80rem) {
+            padding: 1rem;
+        }
+    }
+
+    .soda-scs-manager--health-icon {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        height: 2rem;
+        width: 2rem;
+        border-radius: calc(infinity * 1px);
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-stone-300;
+        transition-property: all;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        background-color: $scs-white;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        z-index: 55;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        &.soda-scs-manager--health-running::before {
+            background-image: url('/modules/contrib/soda_scs_manager/assets/images/health-running.svg');
+        }
+        &.soda-scs-manager--health-stopped::before {
+            background-image: url('/modules/contrib/soda_scs_manager/assets/images/health-stopped.svg');
+        }
+        &.soda-scs-manager--health-problem::before,
+        &.soda-scs-manager--health-failure::before {
+            background-image: url('/modules/contrib/soda_scs_manager/assets/images/health-failure.svg');
+        }
+        &.soda-scs-manager--health-unknown::before,
+        &.soda-scs-manager--health-starting::before {
+            background-image: url('/modules/contrib/soda_scs_manager/assets/images/health-starting.svg');
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+    }
+
+    .application__health-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        font-weight: 500;
+        .application__health__icon {
+            display: inline-block;
+            height: 0.625rem;
+            width: 0.625rem;
+            border-radius: calc(infinity * 1px);
+            background-color: currentColor;
+        }
+        &.application__health-status--running {
+            color: $scs-emerald-700;
+        }
+        &.application__health-status--stopped {
+            color: $scs-stone-500;
+        }
+        &.application__health-status--problem {
+            color: $scs-rose-700;
+        }
+        &.application__health-status--unknown {
+            color: $scs-amber-700;
+        }
+        &.application__health-status--starting {
+            color: $scs-amber-700;
+            .application__health__icon {
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+        }
+    }
+
+    .soda-scs-manager--health-control {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        z-index: 56;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+        margin: -0.25rem 0 0 -0.25rem;
+    }
+
+    .soda-scs-manager--health-control .soda-scs-manager--health-icon {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin: 0px;
+        flex-shrink: 0;
+        cursor: pointer;
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-stone-300;
+        padding: 0px;
+        appearance: none;
+        background-color: $color-white;
+        &:focus:not(:focus-visible) {
+            outline: none;
+            box-shadow: none;
+        }
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px $color-orange-600, 0 0 0 4px rgba(230, 133, 0, 0.28);
+        }
+    }
+
+    .soda-scs-manager--health-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-0.375rem) scale(0.92);
+        transform-origin: left center;
+        transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 160ms ease-out;
+    }
+
+    .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0) scale(1);
+    }
+
+    .soda-scs-manager--health-control.is-busy .soda-scs-manager--health-actions {
+        pointer-events: none;
+        opacity: 0.55;
+    }
+
+    .soda-scs-manager--health-action {
+        position: relative;
+        height: 2rem;
+        width: 2rem;
+        flex-shrink: 0;
+        cursor: pointer;
+        border-radius: calc(infinity * 1px);
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-stone-300;
+        background-color: $scs-white;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        appearance: none;
+        padding: 0;
+        z-index: 56;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.16s ease-in-out, opacity 160ms ease-out;
+        &:hover {
+            border-color: $color-orange-600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px $color-orange-600, 0 0 0 4px rgba(230, 133, 0, 0.28);
+        }
+        &:active {
+            transform: scale(0.92);
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1.25rem;
+            height: 1.25rem;
+            transform: translate(-50%, -50%);
+            background-color: $color-orange-600;
+            background-image: none;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+        }
+        &:hover::before,
+        &:focus-visible::before,
+        &:active::before {
+            background-color: $scs-orange-pressed;
+        }
+    }
+
+    .soda-scs-manager--health-action--start::before {
+        background-color: $scs-health-start;
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/health-action-start-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/health-action-start-mask.svg');
+    }
+
+    .soda-scs-manager--health-action--start:hover::before,
+    .soda-scs-manager--health-action--start:focus-visible::before,
+    .soda-scs-manager--health-action--start:active::before {
+        background-color: $scs-health-start-pressed;
+    }
+
+    .soda-scs-manager--health-action--stop::before {
+        width: 0.75rem;
+        height: 0.75rem;
+        min-width: 0.75rem;
+        min-height: 0.75rem;
+        aspect-ratio: 1;
+        border-radius: 0.125rem;
+        background-color: $scs-health-stop;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .soda-scs-manager--health-action--stop:hover::before,
+    .soda-scs-manager--health-action--stop:focus-visible::before,
+    .soda-scs-manager--health-action--stop:active::before {
+        background-color: $scs-health-stop-pressed;
+    }
+
+    .soda-scs-manager--health-action--restart::before {
+        background-color: $scs-health-restart;
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/health-action-restart-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/health-action-restart-mask.svg');
+    }
+
+    .soda-scs-manager--health-action--restart:hover::before,
+    .soda-scs-manager--health-action--restart:focus-visible::before,
+    .soda-scs-manager--health-action--restart:active::before {
+        background-color: $scs-health-restart-pressed;
+    }
+
+    .soda-scs-manager--health-action:nth-child(1) {
+        transition-delay: 0ms, 0ms, 0ms, 0ms, 0ms;
+    }
+
+    .soda-scs-manager--health-action:nth-child(2) {
+        transition-delay: 40ms, 40ms, 40ms, 0ms, 40ms;
+    }
+
+    .soda-scs-manager--health-control[data-health-state="running"] [data-lifecycle-action="start"],
+    .soda-scs-manager--health-control[data-health-state="stopped"] [data-lifecycle-action="stop"],
+    .soda-scs-manager--health-control[data-health-state="stopped"] [data-lifecycle-action="restart"],
+    .soda-scs-manager--health-control[data-health-state="problem"] .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control[data-health-state="unknown"] .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control[data-health-state="starting"] .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control[data-health-state="other"] .soda-scs-manager--health-actions {
+        display: none;
+    }
+
+    .soda-scs-manager--health-control[data-health-state="problem"] .soda-scs-manager--health-icon,
+    .soda-scs-manager--health-control[data-health-state="unknown"] .soda-scs-manager--health-icon,
+    .soda-scs-manager--health-control[data-health-state="starting"] .soda-scs-manager--health-icon,
+    .soda-scs-manager--health-control[data-health-state="other"] .soda-scs-manager--health-icon {
+        cursor: default;
+    }
+
+    @media (hover: none) {
+        .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateX(-0.375rem) scale(0.92);
+        }
+        .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions,
+        .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(0) scale(1);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .soda-scs-manager--health-actions,
+        .soda-scs-manager--health-action {
+            transition: opacity 80ms linear, visibility 80ms linear;
+            transform: none;
+        }
+        .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions,
+        .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions,
+        .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions {
+            transform: none;
+        }
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.4;
+        }
+    }
+
+    a.soda-scs-manager--card-icon {
+        text-decoration-line: none;
+    }
+
+    .soda-scs-manager--card-icon {
+        position: absolute;
+        top: 0.5rem;
+        height: 2rem;
+        width: 2rem;
+        cursor: pointer;
+        border-radius: calc(infinity * 1px);
+        background-color: $scs-white;
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-stone-300;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        outline-style: none;
+        z-index: 55;
+        background-color: $color-white !important;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.4s ease-in-out, transform 0.2s ease-in-out;
+        &:hover {
+            @media (hover: hover) {
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            }
+        }
+        &:hover {
+            border-color: $color-orange-600;
+            background-color: $color-white;
+        }
+        &:focus-visible {
+            border-color: $color-orange-600;
+            background-color: $scs-white;
+            background-color: $color-white;
+        }
+        &:active {
+            border-color: $scs-orange-pressed;
+            background-color: $scs-white;
+            background-color: $color-white;
+            transform: scale(0.92);
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.2s ease-in-out;
+        }
+    }
+
+    .soda-scs-manager--details-icon {
+        right: 3rem;
+        &::before {
+            background-color: $color-orange-600;
+            background-image: none;
+            mask-image: url('/modules/contrib/soda_scs_manager/assets/images/info-icon-mask.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/info-icon-mask.svg');
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            transition: background-color 0.2s ease-in-out;
+        }
+        &:hover::before {
+            background-color: $scs-orange-pressed;
+        }
+        &:focus-visible::before,
+        &:active::before {
+            background-color: $scs-orange-pressed;
+        }
+    }
+
+    .soda-scs-manager--card-icon.soda-scs-manager--book-icon {
+        right: 0.5rem;
+        &::before {
+            background-color: $color-orange-600;
+            background-image: none;
+            mask-image: url('/modules/contrib/soda_scs_manager/assets/images/book-icon-mask.svg');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/book-icon-mask.svg');
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            transition: background-color 0.2s ease-in-out;
+        }
+        &:hover::before {
+            background-color: $scs-orange-pressed;
+        }
+        &:focus-visible::before,
+        &:active::before {
+            background-color: $scs-orange-pressed;
+        }
+    }
+
+    .soda-scs-manager--card-content-wrapper {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        min-height: 0px;
+        width: 100%;
+        flex: 1;
+        flex-direction: column;
+        align-items: stretch;
+        overflow: visible;
+        border-radius: 0;
+        border-style: solid;
+        border-width: 0px;
+        background-color: transparent;
+        padding: 0.75rem;
+        text-align: center;
+        opacity: 100%;
+        transition-property: all;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        @media (width >= 40rem) {
+            padding: 1rem;
+        }
+        @media (width >= 80rem) {
+            padding: 1rem;
+        }
+    }
+
+    .soda-scs-manager--card-status-banner {
+        pointer-events: none;
+        visibility: hidden;
+        position: absolute;
+        top: calc(1 / 2 * 100%);
+        left: calc(1 / 2 * 100%);
+        z-index: 45;
+        display: flex;
+        max-height: min(22rem, calc(100% - 2rem));
+        width: max-content;
+        min-width: 0px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+        overflow-y: auto;
+        text-align: center;
+        opacity: 0%;
+        max-width: calc(100% - 1.25rem);
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running .soda-scs-manager--card-status-banner:not(:empty) {
+        visibility: visible;
+        border-radius: 0.25rem;
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-stone-200;
+        background-color: $scs-white;
+        padding-inline: 0.75rem;
+        padding-block: 0.75rem;
+        opacity: 100%;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        @media (width >= 48rem) {
+            padding-inline: 1rem;
+            padding-block: 0.875rem;
+        }
+    }
+
+    .soda-scs-manager--card-status-banner__throbber {
+        margin-bottom: 0.25rem;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        align-self: center;
+        border-radius: calc(infinity * 1px);
+        border-style: solid;
+        border-width: 3px;
+        border-color: $scs-orange-300;
+        border-top-color: $scs-orange-500;
+        width: 2.25rem;
+        height: 2.25rem;
+        animation: spin 1s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .soda-scs-manager--card-status-banner__throbber {
+            animation: none;
+            opacity: 0.85;
+        }
+    }
+
+    .soda-scs-manager--card-status-banner__primary {
+        max-width: 100%;
+        font-size: 0.875rem;
+        line-height: 1.375;
+        font-weight: 600;
+        color: $scs-stone-900;
+        @media (width >= 48rem) {
+            font-size: 1rem;
+            line-height: 1.375;
+        }
+    }
+
+    .soda-scs-manager--card-status-banner__secondary {
+        max-width: 100%;
+        font-size: 0.75rem;
+        line-height: 1.375;
+        font-weight: 400;
+        color: $scs-stone-800;
+        @media (width >= 48rem) {
+            font-size: 0.875rem;
+            line-height: 1.375;
+        }
+    }
+
+    .soda-scs-manager--card-status-banner__detail {
+        display: block;
+        font-weight: 500;
+        color: $scs-stone-900;
+    }
+
+    .soda-scs-manager--card-status-banner a.soda-scs-manager--card-status-banner__mailto {
+        pointer-events: auto;
+        font-weight: 500;
+        color: $scs-orange-pressed;
+        text-decoration-line: underline;
+        text-decoration-color: color-mix(in oklab, $scs-orange-pressed 80%, transparent);
+        text-underline-offset: 2px;
+        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+    }
+
+    .soda-scs-manager--card-status-banner a.soda-scs-manager--card-status-banner__mailto:hover {
+        color: $scs-orange-pressed-dark;
+        text-decoration-color: $scs-orange-pressed-dark;
+    }
+
+    .soda-scs-manager--card-content-wrapper::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        box-sizing: border-box;
+        border: 2px solid $color-black;
+        border-top-color: $color-black;
+        border-right-color: $color-black;
+        border-bottom-color: $color-black;
+        border-left-color: $color-black;
+        border-radius: 0;
+        background: transparent;
+        pointer-events: none;
+        z-index: 3;
+        transition-property: all;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .soda-scs-manager--card-content-wrapper:hover::after {
+        border-color: $color-orange-600;
+    }
+
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running::after {
+        background: rgba(120, 113, 108, 0.5);
+        pointer-events: auto;
+        z-index: 40;
+    }
+
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-stopped::after {
+        background: rgba(87, 83, 78, 0.55);
+    }
+
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-problem::after,
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-offline::after {
+        background: rgba(68, 64, 60, 0.62);
+    }
+
+    .soda-scs-manager--card-body {
+        position: relative;
+        z-index: 2;
+        min-height: 0px;
+        flex: 1;
+        overflow-y: auto;
+        background-color: $scs-white;
+    }
+
+    .soda-scs-manager--card-actions {
+        position: relative;
+        z-index: 55;
+        margin-top: 0.75rem;
+        display: flex;
+        width: 100%;
+        flex-shrink: 0;
+        flex-direction: column;
+        gap: 0.5rem;
+        background-color: $scs-white;
+    }
+
+    a.soda-scs-manager--card-action-button,
+    button.soda-scs-manager--card-action-button {
+        display: block;
+        width: 100%;
+        border-radius: 0.375rem;
+        border-style: solid;
+        border-width: 2px;
+        border-color: $color-orange-600;
+        background-color: $color-orange-600;
+        padding-inline: 0.75rem;
+        padding-block: 0.5rem;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 600;
+        color: $scs-white;
+        text-decoration-line: none;
+        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        pointer-events: auto;
+        &:hover,
+        &:focus-visible {
+            border-color: $scs-orange-pressed;
+            background-color: $scs-orange-pressed;
+            color: $scs-white;
+            text-decoration-line: none;
+            outline-style: none;
+        }
+        &:active {
+            border-color: $scs-orange-pressed-dark;
+            background-color: $scs-orange-pressed-dark;
+        }
+    }
+
+    .soda-scs-manager--image-wrapper {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        aspect-ratio: 4/3;
+        width: 100%;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: $scs-white;
+    }
+
+    .soda-scs-manager--card-img-top {
+        display: block;
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .soda-scs-manager--tag-filter-container {
+        width: 100%;
+    }
+
+    .soda-scs-manager--dashboard-heading-section {
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: 1.875rem;
+        line-height: 1.2;
+        font-weight: 700;
+        color: $scs-black;
+    }
+
+    // Projects page heading: space before the project list.
+    .scs-manager--projects-list-heading {
+        margin-bottom: 2rem;
+    }
+
+    .soda-scs-manager--dashboard-heading-with-add {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        @media (width >= 48rem) {
+            gap: 0.75rem;
+        }
+    }
+
+    .soda-scs-manager--dashboard-heading-section--inline {
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .soda-scs-manager--add-app-heading-button {
+        box-sizing: border-box;
+        display: inline-flex;
+        flex-shrink: 0;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        border-radius: calc(infinity * 1px);
+        border-style: solid;
+        border-width: 2px;
+        border-color: $scs-stone-400;
+        background-color: transparent;
+        padding: 0px;
+        font-weight: 300;
+        color: $scs-stone-600;
+        height: 2.5rem;
+        width: 2.5rem;
+        transition-property: all;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        @media (width >= 48rem) {
+            height: 2.75rem;
+            width: 2.75rem;
+        }
+        &:hover {
+            @media (hover: hover) {
+                border-color: $color-orange-600;
+                color: $color-orange-600;
+            }
+        }
+    }
+
+    .soda-scs-manager--add-app-heading-button:active {
+        transform: scale(0.92);
+    }
+
+    a.soda-scs-manager--add-app-heading-button {
+        text-decoration-line: none;
+    }
+
+    a.soda-scs-manager--add-app-heading-button:any-link {
+        color: $scs-stone-600;
+    }
+
+    a.soda-scs-manager--add-app-heading-button:visited {
+        border-color: $scs-stone-400;
+        color: $scs-stone-600;
+    }
+
+    a.soda-scs-manager--add-app-heading-button:hover,
+    a.soda-scs-manager--add-app-heading-button:visited:hover {
+        border-color: $color-orange-600;
+        color: $color-orange-600;
+    }
+
+    .soda-scs-manager--add-app-heading-plus {
+        position: relative;
+        top: -1px;
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .soda-scs-manager--tag-filter-button {
+        line-height: 1.25;
+        font-weight: 500;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        transition-property: box-shadow;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        &:hover {
+            @media (hover: hover) {
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            }
+        }
+    }
+
+    .soda-scs-manager--tag-filter .soda-scs-manager--tag-filter-button[aria-pressed="true"] {
+        box-shadow: inset 0 0 0 2px rgb(120 113 108 / 0.5);
+    }
+
+    .soda-scs-manager--tag-filter .soda-scs-manager--tag-remove {
+        margin-left: 0.25rem;
+        display: inline-block;
+        width: 0.75rem;
+        flex-shrink: 0;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1;
+        font-weight: 700;
+        visibility: hidden;
+    }
+
+    .soda-scs-manager--tag-filter .soda-scs-manager--tag-filter-button[aria-pressed="true"] .soda-scs-manager--tag-remove {
+        visibility: visible;
+    }
+
+    .soda-scs-manager--card-tag.soda-scs-manager--tag-filter-button[aria-pressed="true"] {
+        box-shadow: inset 0 0 0 1px rgb(120 113 108 / 0.45);
+    }
+
+    .soda-scs-manager--type--card.hidden-by-filter {
+        pointer-events: none;
+        margin-block: 0px;
+        max-height: 0px;
+        border-style: solid;
+        border-width: 0px;
+        padding-block: 0px;
+        opacity: 0%;
+    }
+
+    .soda-scs-manager--empty-filter-message {
+        grid-column: 1 / -1;
+        padding-inline: 1rem;
+        padding-block: 2rem;
+        text-align: center;
+        p {
+            font-size: 1.125rem;
+            line-height: 1.5556;
+            color: $scs-stone-300;
+        }
+        a {
+            color: $color-orange-600;
+            text-decoration-line: underline;
+            transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 200ms;
+            &:hover {
+                @media (hover: hover) {
+                    color: $scs-orange-pressed;
+                }
+            }
+        }
+    }
+
+    .soda-scs-manager--card-title {
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 600;
+        color: $color-orange-600;
+        @media (width >= 80rem) {
+            font-size: 1.125rem;
+            line-height: 1.5556;
+        }
+    }
+
+    .soda-scs-manager--card-text {
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        color: $scs-stone-800;
+        @media (width >= 80rem) {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    }
+
+    .soda-scs-manager--type--card--feed .soda-scs-manager--card-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .soda-scs-manager--card-feed {
+        margin-top: 0.5rem;
+        display: flex;
+        min-height: 0px;
+        flex: 1;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .soda-scs-manager--card-feed-heading {
+        margin-bottom: 0.5rem;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        font-weight: 600;
+        letter-spacing: 0.025em;
+        color: $scs-stone-700;
+        text-transform: uppercase;
+    }
+
+    .soda-scs-manager--card-feed-message {
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        color: $scs-stone-700;
+    }
+
+    .soda-scs-manager--card-feed-message--error {
+        color: $scs-red-700;
+    }
+
+    .soda-scs-manager--card-feed-connect {
+        position: relative;
+        z-index: 55;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .soda-scs-manager--card-feed-list {
+        margin: 0px;
+        display: flex;
+        min-height: 0px;
+        flex: 1;
+        list-style-type: none;
+        flex-direction: column;
+        gap: 0.5rem;
+        overflow-y: auto;
+        padding: 0px;
+    }
+
+    .soda-scs-manager--card-feed-item {
+        position: relative;
+        z-index: 55;
+        display: flex;
+        min-width: 0px;
+        align-items: flex-start;
+        gap: 0.5rem;
+        text-align: left;
+    }
+
+    .soda-scs-manager--card-feed-item-text {
+        min-width: 0px;
+        flex: 1;
+    }
+
+    .soda-scs-manager--card-feed-action {
+        margin-top: 0.125rem;
+        display: inline-block;
+        height: 1.25rem;
+        width: 1.25rem;
+        flex-shrink: 0;
+        background-color: $color-orange-600;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+
+    .soda-scs-manager--card-feed-action--created {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-created-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-created-mask.svg');
+    }
+
+    .soda-scs-manager--card-feed-action--changed {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-changed-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-changed-mask.svg');
+    }
+
+    .soda-scs-manager--card-feed-action--deleted {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-deleted-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-deleted-mask.svg');
+    }
+
+    .soda-scs-manager--card-feed-action--restored {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-restored-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-restored-mask.svg');
+    }
+
+    .soda-scs-manager--card-feed-action--renamed {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-renamed-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-renamed-mask.svg');
+    }
+
+    .soda-scs-manager--card-feed-action--moved {
+        mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-moved-mask.svg');
+        -webkit-mask-image: url('/modules/contrib/soda_scs_manager/assets/images/feed-action-moved-mask.svg');
+    }
+
+    a.soda-scs-manager--card-feed-link {
+        display: block;
+        min-width: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 500;
+        pointer-events: auto;
+    }
+
+    .soda-scs-manager--card-feed-label {
+        display: block;
+        min-width: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 500;
+        color: $scs-stone-900;
+    }
+
+    .soda-scs-manager--card-feed-subtitle {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        color: $scs-stone-500;
+    }
+
+    .soda-scs-manager--add-app-content {
+        border-style: dashed;
+        border-color: $scs-black;
+        cursor: pointer;
+        &:hover {
+            @media (hover: hover) {
+                border-color: $color-orange-600;
+            }
+        }
+    }
+
+    .soda-scs-manager--add-app-content .soda-scs-manager--add-app-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        cursor: pointer;
+        border-style: solid;
+        border-width: 0px;
+        background-color: transparent;
+        padding: 0px;
+    }
+
+    .soda-scs-manager--plus-icon-container {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
+
+    .soda-scs-manager--plus-icon {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
+
+    .soda-scs-manager--add-app-content:hover .soda-scs-manager--plus-icon {
+        scale: 110% 110%;
+        color: $color-orange-600;
+    }
+
+    .soda-scs-manager--add-app-popup {
+        z-index: 9999;
+        transition-property: opacity;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+    }
+
+    .soda-scs-manager--add-app-popup.hidden {
+        opacity: 0%;
+    }
+
+    .soda-scs-manager--add-app-popup.flex {
+        opacity: 100%;
+    }
+
+    .soda-scs-manager--add-app-popup-inner {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    @media (max-width: 767px) {
+        .soda-scs-manager--add-app-popup {
+            padding: 0.75rem;
+        }
+        .soda-scs-manager--add-app-popup-inner {
+            max-width: 100%;
+            padding: 1.5rem;
+        }
+        .soda-scs-manager--add-app-popup h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            line-height: 1.3333;
+        }
+        .soda-scs-manager--add-app-popup .grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+        }
+    }
+
+    #add-app-popup .soda-scs-manager--add-app-popup-card:focus:not(:focus-visible),
+    #add-app-popup .soda-scs-manager--add-app-popup-card:active {
+        outline: none;
+        box-shadow: none;
+    }
+
+    #add-app-popup .soda-scs-manager--add-app-popup-card:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px $color-orange-600, 0 0 0 4px rgba(230, 133, 0, 0.28);
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes pulse {
+        50% {
+            opacity: 0.5;
+        }
+    }
+    
+}

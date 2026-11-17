@@ -1,0 +1,193 @@
+@use 'tokens' as *;
+
+@layer components {
+    .keycloak-user-registration-form {
+        margin-inline: auto;
+        max-width: 36rem;
+        border-radius: 0.5rem;
+        background-color: $scs-white;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    .keycloak-user-registration-form .form-item {
+        margin-bottom: 1rem;
+    }
+
+    .keycloak-user-registration-form label {
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+        font-weight: 700;
+        color: $scs-gray-700;
+    }
+
+    .keycloak-user-registration-form input[type="text"],
+    .keycloak-user-registration-form input[type="email"],
+    .keycloak-user-registration-form input[type="password"],
+    .keycloak-user-registration-form select {
+        width: 100%;
+        appearance: none;
+        border-radius: 0.25rem;
+        border-style: solid;
+        border-width: 1px;
+        padding-inline: 0.75rem;
+        padding-block: 0.5rem;
+        line-height: 1.25;
+        color: $scs-gray-700;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+
+    .keycloak-user-registration-form input[type="text"]:focus,
+    .keycloak-user-registration-form input[type="email"]:focus,
+    .keycloak-user-registration-form input[type="password"]:focus,
+    .keycloak-user-registration-form select:focus {
+        box-shadow: 0 0 0 calc(2px + 0px) $scs-blue-500;
+        outline-style: none;
+    }
+
+    .keycloak-user-registration-form details {
+        border-radius: 0.5rem;
+        border-style: solid;
+        border-width: 1px;
+        border-color: $scs-gray-200;
+        background-color: $scs-gray-50;
+        padding: 0.75rem;
+    }
+
+    .keycloak-user-registration-form details summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: $scs-gray-800;
+    }
+
+    .keycloak-user-registration-form .description {
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        color: $scs-gray-600;
+    }
+
+    .keycloak-user-registration-form .form-actions {
+        margin-top: 1.5rem;
+    }
+
+    .keycloak-user-registration-form .form-submit {
+        border-radius: 0.25rem;
+        background-color: $scs-blue-500;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        font-weight: 700;
+        color: $scs-white;
+        &:hover {
+            @media (hover: hover) {
+                background-color: $scs-blue-700;
+            }
+        }
+        &:focus {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            outline-style: none;
+        }
+    }
+
+    .keycloak-user-approval-form {
+        margin-inline: auto;
+        max-width: 56rem;
+        border-radius: 0.5rem;
+        background-color: $scs-white;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    .keycloak-user-approval-form table {
+        min-width: 100%;
+        background-color: $scs-white;
+    }
+
+    .keycloak-user-approval-form th {
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-color: $scs-gray-200;
+        background-color: $scs-gray-100;
+        padding-inline: 1.5rem;
+        padding-block: 0.75rem;
+        text-align: left;
+        font-size: 0.75rem;
+        line-height: 1.3333;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        color: $scs-gray-600;
+        text-transform: uppercase;
+    }
+
+    .keycloak-user-approval-form td {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-color: $scs-gray-200;
+        padding-inline: 1.5rem;
+        padding-block: 1rem;
+        font-size: 0.875rem;
+        line-height: 1.4286;
+    }
+
+    .keycloak-user-approval-form tr:hover {
+        background-color: $scs-gray-50;
+    }
+
+    .keycloak-user-approval-form .button {
+        display: inline-block;
+        border-radius: 0.5rem;
+        border-style: solid;
+        border-width: 1px;
+        border-color: transparent;
+        background-color: $scs-blue-600;
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+        color: $scs-white;
+        transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        &:hover {
+            @media (hover: hover) {
+                background-color: $scs-blue-700;
+            }
+        }
+        &:focus {
+            outline-style: none;
+        }
+        &:active {
+            background-color: $scs-blue-600;
+        }
+    }
+
+    .keycloak-user-approval-form .button-approve {
+        background-color: $scs-green-600;
+        &:hover {
+            @media (hover: hover) {
+                background-color: $scs-green-700;
+            }
+        }
+    }
+
+    .keycloak-user-approval-form .button-reject {
+        background-color: $scs-red-600;
+        &:hover {
+            @media (hover: hover) {
+                background-color: $scs-red-700;
+            }
+        }
+    }
+}
+
+// "Forgot password" page (SodaScsKeycloakForgotPasswordRedirectController):
+// space above the Keycloak hint and button, was Tailwind's mt-6.
+@layer components {
+    .scs-manager--keycloak-forgot-password {
+        margin-top: 1.5rem;
+    }
+}

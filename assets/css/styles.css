@@ -1,4 +1,4370 @@
 @charset "UTF-8";
+@layer base, components, utilities;
+/*
+ * The module's markup is sized with border-box everywhere (the old theme
+ * bundle applied Tailwind's reset site-wide, also under Gin). Scoped to the
+ * module's own elements; :where() keeps the specificity at 0.
+ */
+@layer base {
+  :where([class*=soda-scs-], [class*=scs-manager--]),
+  :where([class*=soda-scs-], [class*=scs-manager--]) *,
+  :where([class*=soda-scs-], [class*=scs-manager--]) ::before,
+  :where([class*=soda-scs-], [class*=scs-manager--]) ::after {
+    box-sizing: border-box;
+  }
+}
+/*
+ * Space above every section on front pages. The module's start page set this
+ * for the whole site; kept so the pages do not shift now that the module ships
+ * no CSS. Layered, so any section rule of the theme wins.
+ */
+@layer components {
+  section {
+    margin-top: 2rem;
+  }
+}
+.soda-scs-manager--administration-page {
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  padding-block: 2rem;
+}
+
+.soda-scs-manager--administration-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.soda-scs-manager--administration-title {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  line-height: 1.1111;
+  font-weight: 700;
+  color: #000;
+}
+
+.soda-scs-manager--administration-intro {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: oklch(70.9% 0.01 56.259deg);
+}
+
+.soda-scs-manager--administration-empty {
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: oklch(92.3% 0.003 48.717deg);
+  background-color: oklch(12.9% 0.042 264.695deg);
+  padding: 1rem;
+  text-align: center;
+  opacity: 20%;
+}
+
+.soda-scs-manager--administration-empty-text {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: oklch(92.3% 0.003 48.717deg);
+}
+
+.soda-scs-manager--administration-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
+  width: 100%;
+  margin-inline: auto;
+}
+@media (min-width: 40rem) {
+  .soda-scs-manager--administration-grid {
+    max-width: 40rem;
+  }
+}
+@media (min-width: 48rem) {
+  .soda-scs-manager--administration-grid {
+    max-width: 48rem;
+  }
+}
+@media (min-width: 64rem) {
+  .soda-scs-manager--administration-grid {
+    max-width: 64rem;
+  }
+}
+@media (min-width: 80rem) {
+  .soda-scs-manager--administration-grid {
+    max-width: 80rem;
+  }
+}
+@media (min-width: 96rem) {
+  .soda-scs-manager--administration-grid {
+    max-width: 96rem;
+  }
+}
+
+.soda-scs-manager--admin-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card:hover {
+    scale: 105% 105%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.soda-scs-manager--admin-card-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  color: oklch(21% 0.034 264.665deg);
+  text-decoration-line: none;
+  text-decoration: none;
+  flex: 1;
+  min-height: 200px;
+}
+
+.soda-scs-manager--admin-card-icon {
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.soda-scs-manager--admin-card-icon svg,
+.soda-scs-manager--admin-card-icon-svg {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.soda-scs-manager--admin-card-icon-svg {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.8;
+}
+
+.soda-scs-manager--admin-card-content {
+  flex: 1;
+}
+
+.soda-scs-manager--admin-card-title {
+  margin: 0px;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 700;
+  color: oklch(21% 0.034 264.665deg);
+}
+
+.soda-scs-manager--admin-card-description {
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: oklch(44.6% 0.03 256.802deg);
+}
+
+.soda-scs-manager--admin-card-arrow {
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  opacity: 50%;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.soda-scs-manager--admin-card-arrow svg {
+  height: 100%;
+  width: 100%;
+}
+
+.soda-scs-manager--admin-card:hover .soda-scs-manager--admin-card-arrow {
+  translate: 0.25rem 0;
+  opacity: 100%;
+}
+
+.soda-scs-manager--admin-card-emerald {
+  border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-emerald {
+    border-color: color-mix(in oklab, oklch(69.6% 0.17 162.48deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-emerald:hover {
+    border-color: oklch(69.6% 0.17 162.48deg);
+  }
+}
+
+.soda-scs-manager--admin-card-emerald .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48deg) 20%, transparent);
+  color: oklch(50.8% 0.118 165.612deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-emerald .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(69.6% 0.17 162.48deg) 20%, transparent);
+  }
+}
+
+.soda-scs-manager--admin-card-blue {
+  border-color: color-mix(in srgb, oklch(62.3% 0.214 259.815deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-blue {
+    border-color: color-mix(in oklab, oklch(62.3% 0.214 259.815deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-blue:hover {
+    border-color: oklch(62.3% 0.214 259.815deg);
+  }
+}
+
+.soda-scs-manager--admin-card-blue .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815deg) 20%, transparent);
+  color: oklch(48.8% 0.243 264.376deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-blue .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(62.3% 0.214 259.815deg) 20%, transparent);
+  }
+}
+
+.soda-scs-manager--admin-card-amber {
+  border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-amber {
+    border-color: color-mix(in oklab, oklch(76.9% 0.188 70.08deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-amber:hover {
+    border-color: oklch(76.9% 0.188 70.08deg);
+  }
+}
+
+.soda-scs-manager--admin-card-amber .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08deg) 20%, transparent);
+  color: oklch(55.5% 0.163 48.998deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-amber .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(76.9% 0.188 70.08deg) 20%, transparent);
+  }
+}
+
+.soda-scs-manager--admin-card-purple {
+  border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-purple {
+    border-color: color-mix(in oklab, oklch(62.7% 0.265 303.9deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-purple:hover {
+    border-color: oklch(62.7% 0.265 303.9deg);
+  }
+}
+
+.soda-scs-manager--admin-card-purple .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9deg) 20%, transparent);
+  color: oklch(49.6% 0.265 301.924deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-purple .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(62.7% 0.265 303.9deg) 20%, transparent);
+  }
+}
+
+.soda-scs-manager--admin-card-rose {
+  border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-rose {
+    border-color: color-mix(in oklab, oklch(64.5% 0.246 16.439deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-rose:hover {
+    border-color: oklch(64.5% 0.246 16.439deg);
+  }
+}
+
+.soda-scs-manager--admin-card-rose .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439deg) 20%, transparent);
+  color: oklch(50.5% 0.213 27.518deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-rose .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(64.5% 0.246 16.439deg) 20%, transparent);
+  }
+}
+
+.soda-scs-manager--admin-card-slate {
+  border-color: color-mix(in srgb, oklch(55.4% 0.046 257.417deg) 30%, transparent);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-slate {
+    border-color: color-mix(in oklab, oklch(55.4% 0.046 257.417deg) 30%, transparent);
+  }
+}
+@media (hover: hover) {
+  .soda-scs-manager--admin-card-slate:hover {
+    border-color: oklch(55.4% 0.046 257.417deg);
+  }
+}
+
+.soda-scs-manager--admin-card-slate .soda-scs-manager--admin-card-icon {
+  background-color: color-mix(in srgb, oklch(55.4% 0.046 257.417deg) 20%, transparent);
+  color: oklch(27.9% 0.041 260.031deg);
+}
+@supports (color: color-mix(in lab, red, red)) {
+  .soda-scs-manager--admin-card-slate .soda-scs-manager--admin-card-icon {
+    background-color: color-mix(in oklab, oklch(55.4% 0.046 257.417deg) 20%, transparent);
+  }
+}
+
+@media (max-width: 768px) {
+  .soda-scs-manager--administration-grid {
+    grid-template-columns: 1fr;
+  }
+  .soda-scs-manager--admin-card-link {
+    padding: 1rem;
+  }
+  .soda-scs-manager--admin-card-icon {
+    height: 3rem;
+    width: 3rem;
+  }
+  .soda-scs-manager--admin-card-icon svg {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+@layer components {
+  a.soda-scs-manager--tile-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0px;
+    background-color: transparent;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration-line: none;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  a.soda-scs-manager--tile-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-top-color: #000000;
+    border-right-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    border-radius: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 3;
+    transition: border-color 0.2s ease-in-out;
+  }
+  a.soda-scs-manager--tile-card:hover::after {
+    border-color: #E68500;
+  }
+  a.soda-scs-manager--tile-card h2 {
+    position: relative;
+    z-index: 2;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #E68500;
+    text-decoration-line: underline;
+    text-underline-offset: 2px;
+  }
+  a.soda-scs-manager--tile-card p {
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  .soda-scs-manager--card-type {
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .soda-scs-manager--type--card {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    min-height: 0px;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  @media (width >= 40rem) {
+    .soda-scs-manager--type--card {
+      padding: 1rem;
+    }
+  }
+  @media (width >= 80rem) {
+    .soda-scs-manager--type--card {
+      padding: 1rem;
+    }
+  }
+  .soda-scs-manager--health-icon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    border-radius: calc(infinity * 1px);
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    z-index: 55;
+  }
+  .soda-scs-manager--health-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .soda-scs-manager--health-icon.soda-scs-manager--health-running::before {
+    background-image: url("/modules/contrib/soda_scs_manager/assets/images/health-running.svg");
+  }
+  .soda-scs-manager--health-icon.soda-scs-manager--health-stopped::before {
+    background-image: url("/modules/contrib/soda_scs_manager/assets/images/health-stopped.svg");
+  }
+  .soda-scs-manager--health-icon.soda-scs-manager--health-problem::before, .soda-scs-manager--health-icon.soda-scs-manager--health-failure::before {
+    background-image: url("/modules/contrib/soda_scs_manager/assets/images/health-failure.svg");
+  }
+  .soda-scs-manager--health-icon.soda-scs-manager--health-unknown::before, .soda-scs-manager--health-icon.soda-scs-manager--health-starting::before {
+    background-image: url("/modules/contrib/soda_scs_manager/assets/images/health-starting.svg");
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  .application__health-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    font-weight: 500;
+  }
+  .application__health-status .application__health__icon {
+    display: inline-block;
+    height: 0.625rem;
+    width: 0.625rem;
+    border-radius: calc(infinity * 1px);
+    background-color: currentColor;
+  }
+  .application__health-status.application__health-status--running {
+    color: oklch(50.8% 0.118 165.612deg);
+  }
+  .application__health-status.application__health-status--stopped {
+    color: oklch(55.3% 0.013 58.071deg);
+  }
+  .application__health-status.application__health-status--problem {
+    color: oklch(51.4% 0.222 16.935deg);
+  }
+  .application__health-status.application__health-status--unknown {
+    color: oklch(55.5% 0.163 48.998deg);
+  }
+  .application__health-status.application__health-status--starting {
+    color: oklch(55.5% 0.163 48.998deg);
+  }
+  .application__health-status.application__health-status--starting .application__health__icon {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  .soda-scs-manager--health-control {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 56;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    margin: -0.25rem 0 0 -0.25rem;
+  }
+  .soda-scs-manager--health-control .soda-scs-manager--health-icon {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    padding: 0px;
+    appearance: none;
+    background-color: #FFFFFF;
+  }
+  .soda-scs-manager--health-control .soda-scs-manager--health-icon:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+  .soda-scs-manager--health-control .soda-scs-manager--health-icon:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+  }
+  .soda-scs-manager--health-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(-0.375rem) scale(0.92);
+    transform-origin: left center;
+    transition: opacity 160ms ease-out, transform 160ms ease-out, visibility 160ms ease-out;
+  }
+  .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions,
+  .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions,
+  .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
+  }
+  .soda-scs-manager--health-control.is-busy .soda-scs-manager--health-actions {
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .soda-scs-manager--health-action {
+    position: relative;
+    height: 2rem;
+    width: 2rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: calc(infinity * 1px);
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    padding: 0;
+    z-index: 56;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.16s ease-in-out, opacity 160ms ease-out;
+  }
+  .soda-scs-manager--health-action:hover {
+    border-color: #E68500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  .soda-scs-manager--health-action:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+  }
+  .soda-scs-manager--health-action:active {
+    transform: scale(0.92);
+  }
+  .soda-scs-manager--health-action::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: translate(-50%, -50%);
+    background-color: #E68500;
+    background-image: none;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  }
+  .soda-scs-manager--health-action:hover::before, .soda-scs-manager--health-action:focus-visible::before, .soda-scs-manager--health-action:active::before {
+    background-color: #b86a00;
+  }
+  .soda-scs-manager--health-action--start::before {
+    background-color: #22c55e;
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/health-action-start-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/health-action-start-mask.svg");
+  }
+  .soda-scs-manager--health-action--start:hover::before,
+  .soda-scs-manager--health-action--start:focus-visible::before,
+  .soda-scs-manager--health-action--start:active::before {
+    background-color: #16a34a;
+  }
+  .soda-scs-manager--health-action--stop::before {
+    width: 0.75rem;
+    height: 0.75rem;
+    min-width: 0.75rem;
+    min-height: 0.75rem;
+    aspect-ratio: 1;
+    border-radius: 0.125rem;
+    background-color: #ef4444;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .soda-scs-manager--health-action--stop:hover::before,
+  .soda-scs-manager--health-action--stop:focus-visible::before,
+  .soda-scs-manager--health-action--stop:active::before {
+    background-color: #dc2626;
+  }
+  .soda-scs-manager--health-action--restart::before {
+    background-color: #f59e0b;
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/health-action-restart-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/health-action-restart-mask.svg");
+  }
+  .soda-scs-manager--health-action--restart:hover::before,
+  .soda-scs-manager--health-action--restart:focus-visible::before,
+  .soda-scs-manager--health-action--restart:active::before {
+    background-color: #d97706;
+  }
+  .soda-scs-manager--health-action:nth-child(1) {
+    transition-delay: 0ms, 0ms, 0ms, 0ms, 0ms;
+  }
+  .soda-scs-manager--health-action:nth-child(2) {
+    transition-delay: 40ms, 40ms, 40ms, 0ms, 40ms;
+  }
+  .soda-scs-manager--health-control[data-health-state=running] [data-lifecycle-action=start],
+  .soda-scs-manager--health-control[data-health-state=stopped] [data-lifecycle-action=stop],
+  .soda-scs-manager--health-control[data-health-state=stopped] [data-lifecycle-action=restart],
+  .soda-scs-manager--health-control[data-health-state=problem] .soda-scs-manager--health-actions,
+  .soda-scs-manager--health-control[data-health-state=unknown] .soda-scs-manager--health-actions,
+  .soda-scs-manager--health-control[data-health-state=starting] .soda-scs-manager--health-actions,
+  .soda-scs-manager--health-control[data-health-state=other] .soda-scs-manager--health-actions {
+    display: none;
+  }
+  .soda-scs-manager--health-control[data-health-state=problem] .soda-scs-manager--health-icon,
+  .soda-scs-manager--health-control[data-health-state=unknown] .soda-scs-manager--health-icon,
+  .soda-scs-manager--health-control[data-health-state=starting] .soda-scs-manager--health-icon,
+  .soda-scs-manager--health-control[data-health-state=other] .soda-scs-manager--health-icon {
+    cursor: default;
+  }
+  @media (hover: none) {
+    .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(-0.375rem) scale(0.92);
+    }
+    .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(0) scale(1);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-action {
+      transition: opacity 80ms linear, visibility 80ms linear;
+      transform: none;
+    }
+    .soda-scs-manager--health-control:hover .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control:focus-within .soda-scs-manager--health-actions,
+    .soda-scs-manager--health-control.is-open .soda-scs-manager--health-actions {
+      transform: none;
+    }
+  }
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  a.soda-scs-manager--card-icon {
+    text-decoration-line: none;
+  }
+  .soda-scs-manager--card-icon {
+    position: absolute;
+    top: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    border-radius: calc(infinity * 1px);
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    outline-style: none;
+    z-index: 55;
+    background-color: #FFFFFF !important;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.4s ease-in-out, transform 0.2s ease-in-out;
+  }
+  @media (hover: hover) {
+    .soda-scs-manager--card-icon:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .soda-scs-manager--card-icon:hover {
+    border-color: #E68500;
+    background-color: #FFFFFF;
+  }
+  .soda-scs-manager--card-icon:focus-visible {
+    border-color: #E68500;
+    background-color: #fff;
+    background-color: #FFFFFF;
+  }
+  .soda-scs-manager--card-icon:active {
+    border-color: #b86a00;
+    background-color: #fff;
+    background-color: #FFFFFF;
+    transform: scale(0.92);
+  }
+  .soda-scs-manager--card-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease-in-out;
+  }
+  .soda-scs-manager--details-icon {
+    right: 3rem;
+  }
+  .soda-scs-manager--details-icon::before {
+    background-color: #E68500;
+    background-image: none;
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/info-icon-mask.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/info-icon-mask.svg");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .soda-scs-manager--details-icon:hover::before {
+    background-color: #b86a00;
+  }
+  .soda-scs-manager--details-icon:focus-visible::before, .soda-scs-manager--details-icon:active::before {
+    background-color: #b86a00;
+  }
+  .soda-scs-manager--card-icon.soda-scs-manager--book-icon {
+    right: 0.5rem;
+  }
+  .soda-scs-manager--card-icon.soda-scs-manager--book-icon::before {
+    background-color: #E68500;
+    background-image: none;
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/book-icon-mask.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/book-icon-mask.svg");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .soda-scs-manager--card-icon.soda-scs-manager--book-icon:hover::before {
+    background-color: #b86a00;
+  }
+  .soda-scs-manager--card-icon.soda-scs-manager--book-icon:focus-visible::before, .soda-scs-manager--card-icon.soda-scs-manager--book-icon:active::before {
+    background-color: #b86a00;
+  }
+  .soda-scs-manager--card-content-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    min-height: 0px;
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: visible;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0px;
+    background-color: transparent;
+    padding: 0.75rem;
+    text-align: center;
+    opacity: 100%;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (width >= 40rem) {
+    .soda-scs-manager--card-content-wrapper {
+      padding: 1rem;
+    }
+  }
+  @media (width >= 80rem) {
+    .soda-scs-manager--card-content-wrapper {
+      padding: 1rem;
+    }
+  }
+  .soda-scs-manager--card-status-banner {
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 45;
+    display: flex;
+    max-height: min(22rem, 100% - 2rem);
+    width: max-content;
+    min-width: 0px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    overflow-y: auto;
+    text-align: center;
+    opacity: 0%;
+    max-width: calc(100% - 1.25rem);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running .soda-scs-manager--card-status-banner:not(:empty) {
+    visibility: visible;
+    border-radius: 0.25rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.3% 0.003 48.717deg);
+    background-color: #fff;
+    padding-inline: 0.75rem;
+    padding-block: 0.75rem;
+    opacity: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running .soda-scs-manager--card-status-banner:not(:empty) {
+      padding-inline: 1rem;
+      padding-block: 0.875rem;
+    }
+  }
+  .soda-scs-manager--card-status-banner__throbber {
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    align-self: center;
+    border-radius: calc(infinity * 1px);
+    border-style: solid;
+    border-width: 3px;
+    border-color: oklch(83.7% 0.128 66.29deg);
+    border-top-color: oklch(70.5% 0.213 47.604deg);
+    width: 2.25rem;
+    height: 2.25rem;
+    animation: spin 1s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .soda-scs-manager--card-status-banner__throbber {
+      animation: none;
+      opacity: 0.85;
+    }
+  }
+  .soda-scs-manager--card-status-banner__primary {
+    max-width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.375;
+    font-weight: 600;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--card-status-banner__primary {
+      font-size: 1rem;
+      line-height: 1.375;
+    }
+  }
+  .soda-scs-manager--card-status-banner__secondary {
+    max-width: 100%;
+    font-size: 0.75rem;
+    line-height: 1.375;
+    font-weight: 400;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--card-status-banner__secondary {
+      font-size: 0.875rem;
+      line-height: 1.375;
+    }
+  }
+  .soda-scs-manager--card-status-banner__detail {
+    display: block;
+    font-weight: 500;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  .soda-scs-manager--card-status-banner a.soda-scs-manager--card-status-banner__mailto {
+    pointer-events: auto;
+    font-weight: 500;
+    color: #b86a00;
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in oklab, #b86a00 80%, transparent);
+    text-underline-offset: 2px;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  .soda-scs-manager--card-status-banner a.soda-scs-manager--card-status-banner__mailto:hover {
+    color: #8c5200;
+    text-decoration-color: #8c5200;
+  }
+  .soda-scs-manager--card-content-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    border: 2px solid #000000;
+    border-top-color: #000000;
+    border-right-color: #000000;
+    border-bottom-color: #000000;
+    border-left-color: #000000;
+    border-radius: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 3;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .soda-scs-manager--card-content-wrapper:hover::after {
+    border-color: #E68500;
+  }
+  .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running::after {
+    background: rgba(120, 113, 108, 0.5);
+    pointer-events: auto;
+    z-index: 40;
+  }
+  .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-stopped::after {
+    background: rgba(87, 83, 78, 0.55);
+  }
+  .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-problem::after,
+  .soda-scs-manager--card-content-wrapper.soda-scs-manager--card--not-running.soda-scs-manager--card--status-offline::after {
+    background: rgba(68, 64, 60, 0.62);
+  }
+  .soda-scs-manager--card-body {
+    position: relative;
+    z-index: 2;
+    min-height: 0px;
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  .soda-scs-manager--card-actions {
+    position: relative;
+    z-index: 55;
+    margin-top: 0.75rem;
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #fff;
+  }
+  a.soda-scs-manager--card-action-button,
+  button.soda-scs-manager--card-action-button {
+    display: block;
+    width: 100%;
+    border-radius: 0.375rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #E68500;
+    background-color: #E68500;
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 600;
+    color: #fff;
+    text-decoration-line: none;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    pointer-events: auto;
+  }
+  a.soda-scs-manager--card-action-button:hover, a.soda-scs-manager--card-action-button:focus-visible,
+  button.soda-scs-manager--card-action-button:hover,
+  button.soda-scs-manager--card-action-button:focus-visible {
+    border-color: #b86a00;
+    background-color: #b86a00;
+    color: #fff;
+    text-decoration-line: none;
+    outline-style: none;
+  }
+  a.soda-scs-manager--card-action-button:active,
+  button.soda-scs-manager--card-action-button:active {
+    border-color: #8c5200;
+    background-color: #8c5200;
+  }
+  .soda-scs-manager--image-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    aspect-ratio: 4/3;
+    width: 100%;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  .soda-scs-manager--card-img-top {
+    display: block;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .soda-scs-manager--tag-filter-container {
+    width: 100%;
+  }
+  .soda-scs-manager--dashboard-heading-section {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.875rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #000;
+  }
+  .scs-manager--projects-list-heading {
+    margin-bottom: 2rem;
+  }
+  .soda-scs-manager--dashboard-heading-with-add {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--dashboard-heading-with-add {
+      gap: 0.75rem;
+    }
+  }
+  .soda-scs-manager--dashboard-heading-section--inline {
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  .soda-scs-manager--add-app-heading-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-shrink: 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(infinity * 1px);
+    border-style: solid;
+    border-width: 2px;
+    border-color: oklch(70.9% 0.01 56.259deg);
+    background-color: transparent;
+    padding: 0px;
+    font-weight: 300;
+    color: oklch(44.4% 0.011 73.639deg);
+    height: 2.5rem;
+    width: 2.5rem;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--add-app-heading-button {
+      height: 2.75rem;
+      width: 2.75rem;
+    }
+  }
+  @media (hover: hover) {
+    .soda-scs-manager--add-app-heading-button:hover {
+      border-color: #E68500;
+      color: #E68500;
+    }
+  }
+  .soda-scs-manager--add-app-heading-button:active {
+    transform: scale(0.92);
+  }
+  a.soda-scs-manager--add-app-heading-button {
+    text-decoration-line: none;
+  }
+  a.soda-scs-manager--add-app-heading-button:any-link {
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  a.soda-scs-manager--add-app-heading-button:visited {
+    border-color: oklch(70.9% 0.01 56.259deg);
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  a.soda-scs-manager--add-app-heading-button:hover,
+  a.soda-scs-manager--add-app-heading-button:visited:hover {
+    border-color: #E68500;
+    color: #E68500;
+  }
+  .soda-scs-manager--add-app-heading-plus {
+    position: relative;
+    top: -1px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .soda-scs-manager--tag-filter-button {
+    line-height: 1.25;
+    font-weight: 500;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    transition-property: box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  @media (hover: hover) {
+    .soda-scs-manager--tag-filter-button:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .soda-scs-manager--tag-filter .soda-scs-manager--tag-filter-button[aria-pressed=true] {
+    box-shadow: inset 0 0 0 2px rgba(120, 113, 108, 0.5);
+  }
+  .soda-scs-manager--tag-filter .soda-scs-manager--tag-remove {
+    margin-left: 0.25rem;
+    display: inline-block;
+    width: 0.75rem;
+    flex-shrink: 0;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 700;
+    visibility: hidden;
+  }
+  .soda-scs-manager--tag-filter .soda-scs-manager--tag-filter-button[aria-pressed=true] .soda-scs-manager--tag-remove {
+    visibility: visible;
+  }
+  .soda-scs-manager--card-tag.soda-scs-manager--tag-filter-button[aria-pressed=true] {
+    box-shadow: inset 0 0 0 1px rgba(120, 113, 108, 0.45);
+  }
+  .soda-scs-manager--type--card.hidden-by-filter {
+    pointer-events: none;
+    margin-block: 0px;
+    max-height: 0px;
+    border-style: solid;
+    border-width: 0px;
+    padding-block: 0px;
+    opacity: 0%;
+  }
+  .soda-scs-manager--empty-filter-message {
+    grid-column: 1/-1;
+    padding-inline: 1rem;
+    padding-block: 2rem;
+    text-align: center;
+  }
+  .soda-scs-manager--empty-filter-message p {
+    font-size: 1.125rem;
+    line-height: 1.5556;
+    color: oklch(86.9% 0.005 56.366deg);
+  }
+  .soda-scs-manager--empty-filter-message a {
+    color: #E68500;
+    text-decoration-line: underline;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  @media (hover: hover) {
+    .soda-scs-manager--empty-filter-message a:hover {
+      color: #b86a00;
+    }
+  }
+  .soda-scs-manager--card-title {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #E68500;
+  }
+  @media (width >= 80rem) {
+    .soda-scs-manager--card-title {
+      font-size: 1.125rem;
+      line-height: 1.5556;
+    }
+  }
+  .soda-scs-manager--card-text {
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  @media (width >= 80rem) {
+    .soda-scs-manager--card-text {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+  .soda-scs-manager--type--card--feed .soda-scs-manager--card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .soda-scs-manager--card-feed {
+    margin-top: 0.5rem;
+    display: flex;
+    min-height: 0px;
+    flex: 1;
+    flex-direction: column;
+    text-align: left;
+  }
+  .soda-scs-manager--card-feed-heading {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: oklch(37.4% 0.01 67.558deg);
+    text-transform: uppercase;
+  }
+  .soda-scs-manager--card-feed-message {
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(37.4% 0.01 67.558deg);
+  }
+  .soda-scs-manager--card-feed-message--error {
+    color: oklch(50.5% 0.213 27.518deg);
+  }
+  .soda-scs-manager--card-feed-connect {
+    position: relative;
+    z-index: 55;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .soda-scs-manager--card-feed-list {
+    margin: 0px;
+    display: flex;
+    min-height: 0px;
+    flex: 1;
+    list-style-type: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    padding: 0px;
+  }
+  .soda-scs-manager--card-feed-item {
+    position: relative;
+    z-index: 55;
+    display: flex;
+    min-width: 0px;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+  }
+  .soda-scs-manager--card-feed-item-text {
+    min-width: 0px;
+    flex: 1;
+  }
+  .soda-scs-manager--card-feed-action {
+    margin-top: 0.125rem;
+    display: inline-block;
+    height: 1.25rem;
+    width: 1.25rem;
+    flex-shrink: 0;
+    background-color: #E68500;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  }
+  .soda-scs-manager--card-feed-action--created {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-created-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-created-mask.svg");
+  }
+  .soda-scs-manager--card-feed-action--changed {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-changed-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-changed-mask.svg");
+  }
+  .soda-scs-manager--card-feed-action--deleted {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-deleted-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-deleted-mask.svg");
+  }
+  .soda-scs-manager--card-feed-action--restored {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-restored-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-restored-mask.svg");
+  }
+  .soda-scs-manager--card-feed-action--renamed {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-renamed-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-renamed-mask.svg");
+  }
+  .soda-scs-manager--card-feed-action--moved {
+    mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-moved-mask.svg");
+    -webkit-mask-image: url("/modules/contrib/soda_scs_manager/assets/images/feed-action-moved-mask.svg");
+  }
+  a.soda-scs-manager--card-feed-link {
+    display: block;
+    min-width: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    pointer-events: auto;
+  }
+  .soda-scs-manager--card-feed-label {
+    display: block;
+    min-width: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  .soda-scs-manager--card-feed-subtitle {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    color: oklch(55.3% 0.013 58.071deg);
+  }
+  .soda-scs-manager--add-app-content {
+    border-style: dashed;
+    border-color: #000;
+    cursor: pointer;
+  }
+  @media (hover: hover) {
+    .soda-scs-manager--add-app-content:hover {
+      border-color: #E68500;
+    }
+  }
+  .soda-scs-manager--add-app-content .soda-scs-manager--add-app-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 0px;
+    background-color: transparent;
+    padding: 0px;
+  }
+  .soda-scs-manager--plus-icon-container {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  .soda-scs-manager--plus-icon {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  .soda-scs-manager--add-app-content:hover .soda-scs-manager--plus-icon {
+    scale: 110% 110%;
+    color: #E68500;
+  }
+  .soda-scs-manager--add-app-popup {
+    z-index: 9999;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  .soda-scs-manager--add-app-popup.hidden {
+    opacity: 0%;
+  }
+  .soda-scs-manager--add-app-popup.flex {
+    opacity: 100%;
+  }
+  .soda-scs-manager--add-app-popup-inner {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  @media (max-width: 767px) {
+    .soda-scs-manager--add-app-popup {
+      padding: 0.75rem;
+    }
+    .soda-scs-manager--add-app-popup-inner {
+      max-width: 100%;
+      padding: 1.5rem;
+    }
+    .soda-scs-manager--add-app-popup h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      line-height: 1.3333;
+    }
+    .soda-scs-manager--add-app-popup .grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+  }
+  #add-app-popup .soda-scs-manager--add-app-popup-card:focus:not(:focus-visible),
+  #add-app-popup .soda-scs-manager--add-app-popup-card:active {
+    outline: none;
+    box-shadow: none;
+  }
+  #add-app-popup .soda-scs-manager--add-app-popup-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+@layer components {
+  .create-project-wizard__invite-label {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    font-weight: 500;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  .create-project-wizard__invite-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .create-project-wizard__invite-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid oklch(86.9% 0.005 56.366deg);
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+  }
+  .create-project-wizard__invited-person {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  .create-project-wizard__form-error {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    font-weight: 500;
+    color: oklch(50.5% 0.213 27.518deg);
+  }
+}
+@layer components {
+  .scs-manager--demo-status-job-line {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    color: oklch(44.6% 0.03 256.802deg);
+  }
+  .scs-manager--demo-status-apps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+  }
+  .scs-manager--demo-status-app {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .scs-manager--demo-status-app-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: oklch(55.1% 0.027 264.364deg);
+  }
+  .scs-manager--demo-status-version {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    color: oklch(44.6% 0.03 256.802deg);
+  }
+  .scs-manager--demo-status-note {
+    margin: 0;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    color: oklch(37.3% 0.034 259.733deg);
+  }
+}
+.scs-manager--demo-status-throbber {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  border: 2px solid currentcolor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: scs-manager--demo-status-spin 0.8s linear infinite;
+}
+
+@keyframes scs-manager--demo-status-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scs-manager--demo-status-throbber {
+    animation: none;
+  }
+}
+@layer components {
+  .soda-scs-manager--card-tags {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  .soda-scs-manager--card-tag {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
+  .soda-scs-manager--entity--connectedComponents {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--created {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--default {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .soda-scs-manager--entity--description,
+  .soda-scs-manager--entity--description * {
+    margin-top: 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: oklch(37.3% 0.034 259.733deg);
+  }
+  .soda-scs-manager--entity--attributes-row {
+    grid-column: span 6/span 6;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .soda-scs-manager--entity--description-row {
+    grid-column: span 4/span 4;
+  }
+  .soda-scs-manager--entity--footer {
+    grid-column: span 4/span 4;
+  }
+  .soda-scs-manager--entity--health {
+    display: flex;
+    align-items: center;
+  }
+  .soda-scs-manager--entity--health-row {
+    display: flex;
+    min-width: 0px;
+    align-items: center;
+    overflow: visible;
+  }
+  .health-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: calc(infinity * 1px);
+    padding-inline: 0.625rem;
+    padding-block: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    font-weight: 500;
+    white-space: nowrap;
+    transform-origin: center;
+  }
+  .health-badge:is(a) {
+    cursor: pointer;
+    text-decoration-line: none;
+    text-decoration: none !important;
+    text-underline-offset: 0;
+  }
+  .health-badge:is(a):hover, .health-badge:is(a):focus, .health-badge:is(a):focus-visible, .health-badge:is(a):active, .health-badge:is(a):visited {
+    text-decoration-line: none;
+    text-decoration: none !important;
+  }
+  .health-badge:is(a):hover {
+    opacity: 90%;
+  }
+  .health-badge .health-badge__symbol {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+  .health-badge.health-badge--running {
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.5% 0.084 155.995deg);
+    background-color: oklch(96.2% 0.044 156.743deg);
+    color: oklch(44.8% 0.119 151.328deg);
+  }
+  .health-badge.health-badge--running .health-badge__symbol {
+    color: oklch(62.7% 0.194 149.214deg);
+  }
+  .health-badge.health-badge--stopped {
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.3% 0.003 48.717deg);
+    background-color: oklch(97% 0.001 106.424deg);
+    color: oklch(37.4% 0.01 67.558deg);
+  }
+  .health-badge.health-badge--stopped .health-badge__symbol {
+    color: oklch(55.3% 0.013 58.071deg);
+  }
+  .health-badge.health-badge--problem, .health-badge.health-badge--error {
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(88.5% 0.062 18.334deg);
+    background-color: oklch(93.6% 0.032 17.717deg);
+    color: oklch(44.4% 0.177 26.899deg);
+  }
+  .health-badge.health-badge--problem .health-badge__symbol, .health-badge.health-badge--error .health-badge__symbol {
+    color: oklch(57.7% 0.245 27.325deg);
+  }
+  .health-badge.health-badge--unknown, .health-badge.health-badge--starting {
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.4% 0.12 95.746deg);
+    background-color: oklch(96.2% 0.059 95.617deg);
+    color: oklch(47.3% 0.137 46.201deg);
+    animation: health-badge-bump 1.5s ease-in-out infinite;
+  }
+  .health-badge.health-badge--unknown .health-badge__symbol, .health-badge.health-badge--starting .health-badge__symbol {
+    color: oklch(66.6% 0.179 58.318deg);
+  }
+  @keyframes health-badge-bump {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.06);
+    }
+  }
+  .soda-scs-manager--entity--header {
+    grid-column: span 6/span 6;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .soda-scs-manager--entity--header--left {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--header--right {
+    grid-column: span 2/span 2;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .soda-scs-manager--entity--header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .soda-scs-manager--entity--includedComponents {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--info {
+    grid-column: span 4/span 4;
+  }
+  .soda-scs-manager--entity--left-column {
+    grid-column: span 4/span 4;
+  }
+  .soda-scs-manager--entity--machine-name {
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(44.6% 0.03 256.802deg);
+  }
+  .soda-scs-manager--entity--machine-name-row {
+    display: flex;
+    align-items: center;
+  }
+  .soda-scs-manager--entity--main {
+    grid-column: span 6/span 6;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .soda-scs-manager--entity--owner {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--partOfStack {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--right-column {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--service-key {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--snapshots {
+    grid-column: span 2/span 2;
+  }
+  .soda-scs-manager--entity--tags {
+    margin-top: 0.5rem;
+  }
+  .soda-scs-manager--entity--tags-row {
+    grid-column: span 4/span 4;
+  }
+  .soda-scs-manager--entity--thumbnail {
+    height: 4rem;
+    width: 4rem;
+    flex-shrink: 0;
+  }
+  .soda-scs-manager--entity--title {
+    margin: 0px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: oklch(21% 0.034 264.665deg);
+  }
+  .soda-scs-manager--entity--updated {
+    grid-column: span 2/span 2;
+  }
+}
+@layer components {
+  .soda-scs-manager--view--grid {
+    display: grid;
+    min-height: 0px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 1rem;
+  }
+  @media (width >= 48rem) {
+    .soda-scs-manager--view--grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+  @media (width >= 80rem) {
+    .soda-scs-manager--view--grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+  @media (width >= 96rem) {
+    .soda-scs-manager--view--grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+@layer components {
+  .soda-scs-manager--component--thumbnail {
+    display: flex;
+    height: 4rem;
+    width: 4rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.25rem;
+  }
+  .soda-scs-manager--component--thumbnail img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+@layer components {
+  .scs-manager--coworking-intro {
+    position: fixed;
+    inset: 0px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(in srgb, oklch(12.9% 0.042 264.695deg) 70%, transparent);
+    padding: 0.5rem;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .scs-manager--coworking-intro {
+      background-color: color-mix(in oklab, oklch(12.9% 0.042 264.695deg) 70%, transparent);
+    }
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro {
+      padding: 0.75rem;
+    }
+  }
+  #scs-manager--coworking-intro.scs-manager--coworking-intro-root--hidden {
+    display: none;
+  }
+  .scs-manager--coworking-intro-panel {
+    display: flex;
+    min-height: 0px;
+    width: min(1024px, 100vw - 1rem);
+    max-width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.3% 0.003 48.717deg);
+    background-color: #fff;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    height: min(680px, 100dvh - 2.5rem);
+    max-height: min(680px, 100dvh - 2.5rem);
+  }
+  @supports (height: 100svh) {
+    .scs-manager--coworking-intro-panel {
+      height: min(680px, 100svh - 2.5rem);
+      max-height: min(680px, 100svh - 2.5rem);
+    }
+  }
+  .scs-manager--coworking-intro-header {
+    position: relative;
+    flex-shrink: 0;
+    padding-inline: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-header {
+      padding-inline: 1.5rem;
+      padding-top: 1.25rem;
+    }
+  }
+  .scs-manager--coworking-intro-skip-row {
+    text-align: right;
+  }
+  .scs-manager--coworking-intro-skip {
+    z-index: 10;
+    max-width: 100%;
+    text-align: end;
+    font-size: 0.875rem;
+    line-height: 1.375;
+    color: oklch(55.3% 0.013 58.071deg);
+    text-decoration-line: underline;
+  }
+  .scs-manager--coworking-intro-skip:hover {
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  .scs-manager--coworking-intro-panel-divider {
+    flex-shrink: 0;
+    padding-inline: 1rem;
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-panel-divider {
+      padding-inline: 1.5rem;
+    }
+  }
+  #scs-manager--coworking-intro[data-coworking-intro-active-slide="0"] .scs-manager--coworking-intro-panel-divider {
+    display: none;
+  }
+  .scs-manager--coworking-intro-welcome-visual-wrap {
+    margin-inline: auto;
+    margin-bottom: 0.75rem;
+    display: flex;
+    max-height: min(520px, 58svh);
+    min-height: 0px;
+    width: 100%;
+    flex: 1;
+    flex-basis: 0px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.375rem;
+    background-color: oklch(97% 0.001 106.424deg);
+  }
+  .scs-manager--coworking-intro-welcome-visual {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .scs-manager--coworking-intro-scroll-body {
+    display: flex;
+    min-height: 0px;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    padding-inline: 1rem;
+    color: oklch(37.4% 0.01 67.558deg);
+    font-size: clamp(0.75rem, 0.35vw + 0.68rem, 0.875rem);
+    line-height: 1.45;
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-scroll-body {
+      padding-inline: 1.5rem;
+    }
+  }
+  .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden) {
+    display: flex;
+    min-height: 0px;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden) .scs-manager--coworking-intro-copy-rise {
+    min-height: 0px;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden)[data-coworking-intro-slide="0"] .scs-manager--coworking-intro-copy-rise {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+    overflow: visible;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden)[data-coworking-intro-slide="1"] .scs-manager--coworking-intro-copy-rise,
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden)[data-coworking-intro-slide="2"] .scs-manager--coworking-intro-copy-rise {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: auto;
+    overflow-y: auto;
+  }
+  .scs-manager--coworking-intro-slide--hidden {
+    display: none;
+  }
+  .scs-manager--coworking-intro-welcome-content > p:first-of-type {
+    margin-bottom: 0.75rem;
+  }
+  #scs-manager--coworking-intro [data-coworking-intro-slide="6"] .scs-manager--coworking-intro-slide-lede {
+    margin-bottom: 1rem;
+  }
+  #scs-manager--coworking-intro [data-coworking-intro-slide="7"] .scs-manager--coworking-intro-slide-lede {
+    margin-bottom: 0.75rem;
+  }
+  .scs-manager--coworking-intro-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-color: oklch(97% 0.001 106.424deg);
+    background-color: oklch(98.5% 0.001 106.423deg);
+    padding-inline: 1rem;
+    padding-block: 0.75rem;
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-footer {
+      gap: 0.75rem;
+      padding-inline: 1.5rem;
+      padding-block: 1rem;
+    }
+  }
+  .scs-manager--coworking-intro-step-label {
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    color: oklch(55.3% 0.013 58.071deg);
+  }
+  .scs-manager--coworking-intro-footer-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .scs-manager--coworking-intro-footer-control--hidden {
+    display: none;
+  }
+  .scs-manager--coworking-intro-btn-back,
+  .scs-manager--coworking-intro-btn-next {
+    border-radius: 0.25rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+  .scs-manager--coworking-intro-btn-back:disabled,
+  .scs-manager--coworking-intro-btn-next:disabled {
+    cursor: not-allowed;
+    opacity: 40%;
+  }
+  .scs-manager--coworking-intro-btn-back {
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+  }
+  @media (hover: hover) {
+    .scs-manager--coworking-intro-btn-back:hover {
+      background-color: #fff;
+    }
+  }
+  .scs-manager--coworking-intro-btn-next {
+    background-color: oklch(26.8% 0.007 34.298deg);
+    color: #fff;
+  }
+  @media (hover: hover) {
+    .scs-manager--coworking-intro-btn-next:hover {
+      background-color: oklch(21.6% 0.006 56.043deg);
+    }
+  }
+  #scs-manager--coworking-intro .scs-manager--nextcloud-connect-wrapper.scs-manager--nextcloud-connect-inline {
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.3% 0.003 48.717deg);
+    background-color: oklch(98.5% 0.001 106.423deg);
+    padding: 1rem;
+  }
+  #scs-manager--coworking-intro .scs-manager--nextcloud-connect-btn {
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: oklch(26.8% 0.007 34.298deg);
+    padding-inline: 1rem;
+    padding-block: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: #fff;
+  }
+  @media (hover: hover) {
+    #scs-manager--coworking-intro .scs-manager--nextcloud-connect-btn:hover {
+      background-color: oklch(21.6% 0.006 56.043deg);
+    }
+  }
+  #scs-manager--coworking-intro .scs-manager--nextcloud-connect-btn:focus {
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px oklch(55.3% 0.013 58.071deg);
+    outline-style: none;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-nextcloud-status {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-nextcloud-hint {
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  .scs-manager--coworking-intro-sso-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  .scs-manager--coworking-intro-text-link {
+    font-weight: 500;
+    color: oklch(48.8% 0.243 264.376deg);
+    text-decoration-line: underline;
+  }
+  @media (hover: hover) {
+    .scs-manager--coworking-intro-text-link:hover {
+      color: oklch(37.9% 0.146 265.522deg);
+    }
+  }
+  .scs-manager--coworking-intro-success-details-link {
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+  .scs-manager--coworking-intro-field-label {
+    margin-bottom: 0.25rem;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  .scs-manager--coworking-intro-field-hint {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    color: oklch(55.3% 0.013 58.071deg);
+  }
+  .scs-manager--coworking-intro-wisski-name-input {
+    margin-bottom: 0.25rem;
+    width: 100%;
+    border-radius: 0.375rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  .scs-manager--coworking-intro-wisski-name-input:focus {
+    border-color: oklch(70.9% 0.01 56.259deg);
+    box-shadow: 0 0 0 2px oklch(92.3% 0.003 48.717deg);
+    outline-style: none;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-wisski-name-input.scs-manager--coworking-intro-wisski-name-input--invalid {
+    border-color: oklch(57.7% 0.245 27.325deg);
+    box-shadow: 0 0 0 2px oklch(88.5% 0.062 18.334deg);
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-wisski-name-input.scs-manager--coworking-intro-wisski-name-input--invalid:focus {
+    box-shadow: 0 0 0 2px oklch(88.5% 0.062 18.334deg);
+    border-color: oklch(57.7% 0.245 27.325deg);
+  }
+  .scs-manager--coworking-intro-field-error {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: oklch(50.5% 0.213 27.518deg);
+  }
+  .scs-manager--coworking-intro-form-actions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-block: 0.625rem;
+  }
+  .scs-manager--coworking-intro-success-note {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  .scs-manager--coworking-intro-success-footer {
+    display: block;
+  }
+  .scs-manager--coworking-intro-btn-close {
+    border-radius: 0.25rem;
+    background-color: oklch(26.8% 0.007 34.298deg);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: #fff;
+  }
+  @media (hover: hover) {
+    .scs-manager--coworking-intro-btn-close:hover {
+      background-color: oklch(21.6% 0.006 56.043deg);
+    }
+  }
+  .scs-manager--coworking-intro-btn-outlined {
+    border-radius: 0.25rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(86.9% 0.005 56.366deg);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+  @media (hover: hover) {
+    .scs-manager--coworking-intro-btn-outlined:hover {
+      background-color: oklch(98.5% 0.001 106.423deg);
+    }
+  }
+  .scs-manager--coworking-intro-btn-create-wisski {
+    border-radius: 0.25rem;
+    background-color: #E68500;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: #fff;
+  }
+  .scs-manager--coworking-intro-btn-create-wisski:focus {
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #E68500;
+    outline-style: none;
+  }
+  .scs-manager--coworking-intro-btn-create-wisski:hover {
+    background-color: #b86a00;
+  }
+  .scs-manager--coworking-intro-success-details-link.scs-manager--coworking-intro-success-details-link--pending {
+    pointer-events: none;
+    opacity: 50%;
+  }
+  .scs-manager--coworking-intro-title {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.5556;
+    font-weight: 600;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-title {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+  }
+  .scs-manager--coworking-intro-subtitle {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: oklch(21.6% 0.006 56.043deg);
+  }
+  @media (width >= 40rem) {
+    .scs-manager--coworking-intro-subtitle {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+  .scs-manager--coworking-intro-success-title {
+    color: #b86a00;
+  }
+  .scs-manager--coworking-intro-welcome-divider {
+    margin-bottom: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  .scs-manager--coworking-intro-welcome-divider-track {
+    position: relative;
+    margin-inline: auto;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 2.25rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+  }
+  .scs-manager--coworking-intro-welcome-divider-line {
+    position: absolute;
+    top: calc(50% - 1.5px);
+    right: 3px;
+    left: 3px;
+    z-index: 2;
+    height: 3px;
+    transform-origin: 0;
+    scale: 100% 1;
+    background-color: #000;
+  }
+  .scs-manager--coworking-intro-welcome-divider-dot {
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    z-index: 0;
+    height: 30px;
+    width: 30px;
+    transform-origin: center;
+    border-radius: calc(infinity * 1px);
+    background-color: #FFA933;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-welcome-divider--static .scs-manager--coworking-intro-welcome-divider-line {
+    scale: 100% 1;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-welcome-divider--static .scs-manager--coworking-intro-welcome-divider-dot {
+    scale: 100% 100%;
+    opacity: 100%;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-welcome-divider]:not([data-coworking-intro-replay]) .scs-manager--coworking-intro-welcome-divider-line {
+    scale: 0% 1;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-welcome-divider]:not([data-coworking-intro-replay]) .scs-manager--coworking-intro-welcome-divider-dot {
+    scale: 0% 0%;
+    opacity: 0%;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-copy-rise]:not([data-coworking-intro-copy-replay]) {
+    translate: 0 1rem;
+    opacity: 0%;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not(.scs-manager--coworking-intro-slide--hidden) .scs-manager--coworking-intro-welcome-visual-wrap[data-coworking-intro-copy-rise]:not([data-coworking-intro-copy-replay]) {
+    translate: 0 0px;
+    scale: 0.97;
+    opacity: 0%;
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) .scs-manager--coworking-intro-welcome-visual-wrap[data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+    animation: scs-manager-coworking-intro-welcome-visual-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) .scs-manager--coworking-intro-welcome-visual-wrap[data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+      scale: 100% 100%;
+      animation: none;
+      opacity: 100%;
+    }
+  }
+  #scs-manager--coworking-intro [data-coworking-intro-welcome-divider][data-coworking-intro-replay] .scs-manager--coworking-intro-welcome-divider-line {
+    animation: scs-manager-coworking-intro-welcome-line-in 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scs-manager--coworking-intro [data-coworking-intro-welcome-divider][data-coworking-intro-replay] .scs-manager--coworking-intro-welcome-divider-line {
+      scale: 100% 1;
+      animation: none;
+    }
+  }
+  #scs-manager--coworking-intro [data-coworking-intro-welcome-divider][data-coworking-intro-replay] .scs-manager--coworking-intro-welcome-divider-dot {
+    animation: scs-manager-coworking-intro-welcome-dot-pump 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.72s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scs-manager--coworking-intro [data-coworking-intro-welcome-divider][data-coworking-intro-replay] .scs-manager--coworking-intro-welcome-divider-dot {
+      scale: 100% 100%;
+      animation: none;
+      opacity: 100%;
+    }
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+    animation: scs-manager-coworking-intro-welcome-content-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scs-manager--coworking-intro .scs-manager--coworking-intro-slide[data-coworking-intro-slide="0"]:not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+      translate: 0 0px;
+      animation: none;
+      opacity: 100%;
+    }
+  }
+  #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not([data-coworking-intro-slide="0"]):not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+    animation: scs-manager-coworking-intro-welcome-content-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #scs-manager--coworking-intro .scs-manager--coworking-intro-slide:not([data-coworking-intro-slide="0"]):not(.scs-manager--coworking-intro-slide--hidden) [data-coworking-intro-copy-rise][data-coworking-intro-copy-replay] {
+      translate: 0 0px;
+      animation: none;
+      opacity: 100%;
+    }
+  }
+  button:focus,
+  button:focus-visible,
+  a:focus,
+  a:focus-visible,
+  input:focus,
+  input:focus-visible {
+    box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+    outline-style: none;
+  }
+}
+@keyframes scs-manager-coworking-intro-welcome-visual-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scs-manager-coworking-intro-welcome-line-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes scs-manager-coworking-intro-welcome-dot-pump {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes scs-manager-coworking-intro-welcome-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@layer components {
+  .keycloak-user-registration-form {
+    margin-inline: auto;
+    max-width: 36rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  .keycloak-user-registration-form .form-item {
+    margin-bottom: 1rem;
+  }
+  .keycloak-user-registration-form label {
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 700;
+    color: oklch(37.3% 0.034 259.733deg);
+  }
+  .keycloak-user-registration-form input[type=text],
+  .keycloak-user-registration-form input[type=email],
+  .keycloak-user-registration-form input[type=password],
+  .keycloak-user-registration-form select {
+    width: 100%;
+    appearance: none;
+    border-radius: 0.25rem;
+    border-style: solid;
+    border-width: 1px;
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
+    line-height: 1.25;
+    color: oklch(37.3% 0.034 259.733deg);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  }
+  .keycloak-user-registration-form input[type=text]:focus,
+  .keycloak-user-registration-form input[type=email]:focus,
+  .keycloak-user-registration-form input[type=password]:focus,
+  .keycloak-user-registration-form select:focus {
+    box-shadow: 0 0 0 2px oklch(62.3% 0.214 259.815deg);
+    outline-style: none;
+  }
+  .keycloak-user-registration-form details {
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: oklch(92.8% 0.006 264.531deg);
+    background-color: oklch(98.5% 0.002 247.839deg);
+    padding: 0.75rem;
+  }
+  .keycloak-user-registration-form details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: oklch(27.8% 0.033 256.848deg);
+  }
+  .keycloak-user-registration-form .description {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    color: oklch(44.6% 0.03 256.802deg);
+  }
+  .keycloak-user-registration-form .form-actions {
+    margin-top: 1.5rem;
+  }
+  .keycloak-user-registration-form .form-submit {
+    border-radius: 0.25rem;
+    background-color: oklch(62.3% 0.214 259.815deg);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  @media (hover: hover) {
+    .keycloak-user-registration-form .form-submit:hover {
+      background-color: oklch(48.8% 0.243 264.376deg);
+    }
+  }
+  .keycloak-user-registration-form .form-submit:focus {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    outline-style: none;
+  }
+  .keycloak-user-approval-form {
+    margin-inline: auto;
+    max-width: 56rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  .keycloak-user-approval-form table {
+    min-width: 100%;
+    background-color: #fff;
+  }
+  .keycloak-user-approval-form th {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: oklch(92.8% 0.006 264.531deg);
+    background-color: oklch(96.7% 0.003 264.542deg);
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    text-align: left;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: oklch(44.6% 0.03 256.802deg);
+    text-transform: uppercase;
+  }
+  .keycloak-user-approval-form td {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: oklch(92.8% 0.006 264.531deg);
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+  .keycloak-user-approval-form tr:hover {
+    background-color: oklch(98.5% 0.002 247.839deg);
+  }
+  .keycloak-user-approval-form .button {
+    display: inline-block;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+    background-color: oklch(54.6% 0.245 262.881deg);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  @media (hover: hover) {
+    .keycloak-user-approval-form .button:hover {
+      background-color: oklch(48.8% 0.243 264.376deg);
+    }
+  }
+  .keycloak-user-approval-form .button:focus {
+    outline-style: none;
+  }
+  .keycloak-user-approval-form .button:active {
+    background-color: oklch(54.6% 0.245 262.881deg);
+  }
+  .keycloak-user-approval-form .button-approve {
+    background-color: oklch(62.7% 0.194 149.214deg);
+  }
+  @media (hover: hover) {
+    .keycloak-user-approval-form .button-approve:hover {
+      background-color: oklch(52.7% 0.154 150.069deg);
+    }
+  }
+  .keycloak-user-approval-form .button-reject {
+    background-color: oklch(57.7% 0.245 27.325deg);
+  }
+  @media (hover: hover) {
+    .keycloak-user-approval-form .button-reject:hover {
+      background-color: oklch(50.5% 0.213 27.518deg);
+    }
+  }
+}
+@layer components {
+  .scs-manager--keycloak-forgot-password {
+    margin-top: 1.5rem;
+  }
+}
+@layer components {
+  .scs-manager--message {
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+  .scs-manager--message-back {
+    margin-bottom: 1rem;
+  }
+  .scs-manager--message-back-link {
+    color: oklch(44.4% 0.011 73.639deg);
+    text-decoration-line: none;
+  }
+  @media (hover: hover) {
+    .scs-manager--message-back-link:hover {
+      color: oklch(21.6% 0.006 56.043deg);
+      text-decoration-line: underline;
+    }
+  }
+  .scs-manager--message-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid oklch(92.3% 0.003 48.717deg);
+  }
+  .scs-manager--message-subject {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: oklch(26.8% 0.007 34.298deg);
+  }
+  .scs-manager--message-meta {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.4285714286;
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  .scs-manager--message-meta-label {
+    display: inline;
+    font-weight: 500;
+  }
+  .scs-manager--message-meta-value {
+    display: inline;
+    margin: 0;
+  }
+  .scs-manager--message-body {
+    margin-bottom: 2rem;
+    color: oklch(37.4% 0.01 67.558deg);
+  }
+}
+.scs-manager--conversation-start {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.scs-manager--conversation-start__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.scs-manager--conversation-start__chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.scs-manager--conversation-team__new {
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.scs-manager--conversation-team__filters {
+  margin-bottom: 1rem;
+}
+
+.scs-manager--message-actions-row .button {
+  cursor: pointer;
+}
+
+.scs-manager--messages-conversation {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.scs-manager--messages-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scs-manager--conversation-back,
+.scs-manager--conversation-participant {
+  margin-bottom: 0.75rem;
+}
+
+.scs-manager--conversation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scs-manager--conversation-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  align-self: flex-start;
+  max-width: 48rem;
+}
+
+.scs-manager--conversation-message--own {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.scs-manager--conversation-avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.scs-manager--conversation-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scs-manager--conversation-bubble {
+  min-width: 0;
+}
+
+.scs-manager--conversation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.scs-manager--conversation-body {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.scs-manager--conversation-body h3,
+.scs-manager--conversation-body h4,
+.scs-manager--conversation-body h5 {
+  margin: 0 0 0.25rem;
+}
+
+.scs-manager--conversation-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.scs-manager--conversation-reply {
+  margin-top: 1.5rem;
+}
+
+@layer components {
+  .scs-manager--invitation-body > :not(:last-child) {
+    margin-block-start: 0;
+    margin-block-end: 0.75rem;
+  }
+  .scs-manager--invitation-project-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+}
+@layer components {
+  nav[role=navigation] a.is-active-page {
+    font-weight: bold !important;
+  }
+}
+@layer components {
+  .scs-manager--nextcloud-connect-status-inline[data-status=connected][data-method=bearer]::before,
+  .scs-manager--nextcloud-connect-status[data-status=connected][data-method=bearer]::before,
+  .scs-manager--nextcloud-status-check-result[data-status=connected][data-method=bearer]::before {
+    content: "✓";
+    display: inline-block;
+    margin-right: 0.375rem;
+    font-weight: 700;
+    color: oklch(62.7% 0.194 149.214deg);
+  }
+}
+.scs-manager--nextcloud-connect-fallback-hint {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #4D5866;
+}
+
+@layer components {
+  .scs-manager--nextcloud-status-check {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid oklch(86.9% 0.005 56.366deg);
+  }
+}
+.wisski-ready-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  translate: -50% -50%;
+  opacity: 0%;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  pointer-events: none;
+}
+.wisski-ready-notification.show {
+  pointer-events: auto;
+  opacity: 100%;
+}
+
+.wisski-ready-notification .notification-content {
+  max-width: 28rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-style: solid;
+  border-width: 2px;
+  border-color: oklch(72.3% 0.219 149.579deg);
+  position: relative;
+}
+
+.wisski-ready-notification .notification-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: oklch(70.9% 0.01 56.259deg);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 0px;
+  background-color: transparent;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+@media (hover: hover) {
+  .wisski-ready-notification .notification-close:hover {
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+}
+.wisski-ready-notification .notification-close:hover {
+  border-radius: 0.25rem;
+  background-color: oklch(97% 0.001 106.424deg);
+}
+.wisski-ready-notification .notification-close:focus {
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px oklch(72.3% 0.219 149.579deg);
+  outline-style: none;
+}
+
+.wisski-ready-notification .notification-icon {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 1;
+  color: oklch(72.3% 0.219 149.579deg);
+  margin-inline: auto;
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(infinity * 1px);
+  background-color: oklch(96.2% 0.044 156.743deg);
+}
+
+.wisski-ready-notification h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.3333;
+  font-weight: 700;
+  color: oklch(26.8% 0.007 34.298deg);
+}
+
+.wisski-ready-notification p {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: oklch(44.4% 0.011 73.639deg);
+}
+
+.wisski-ready-notification a {
+  color: oklch(62.7% 0.194 149.214deg);
+  text-decoration-line: underline;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  word-break: break-all;
+}
+@media (hover: hover) {
+  .wisski-ready-notification a:hover {
+    color: oklch(52.7% 0.154 150.069deg);
+  }
+}
+
+.wisski-ready-notification strong {
+  font-weight: 600;
+  color: oklch(26.8% 0.007 34.298deg);
+}
+
+.wisski-ready-notification .notification-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.wisski-ready-notification .notification-ok-button {
+  border-radius: 0.5rem;
+  background-color: oklch(62.7% 0.194 149.214deg);
+  padding-inline: 2rem;
+  padding-block: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 0px;
+}
+@media (hover: hover) {
+  .wisski-ready-notification .notification-ok-button:hover {
+    background-color: oklch(52.7% 0.154 150.069deg);
+  }
+}
+.wisski-ready-notification .notification-ok-button:focus {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px oklch(72.3% 0.219 149.579deg), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  outline-style: none;
+}
+.wisski-ready-notification .notification-ok-button {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+@media (hover: hover) {
+  .wisski-ready-notification .notification-ok-button:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (max-width: 640px) {
+  .wisski-ready-notification {
+    width: calc(100% - 2rem);
+    max-width: 28rem;
+  }
+  .wisski-ready-notification .notification-content {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .wisski-ready-notification h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+  .wisski-ready-notification .notification-ok-button {
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+  }
+}
+.project-members-table-wrapper {
+  width: 100%;
+}
+@media (max-width: 1000px) {
+  .project-members-table-wrapper {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(198, 105, 0) rgb(243, 244, 246);
+  }
+  .project-members-table-wrapper::-webkit-scrollbar {
+    height: 8px;
+  }
+  .project-members-table-wrapper::-webkit-scrollbar-track {
+    border-radius: 0.25rem;
+    background-color: oklch(96.7% 0.003 264.542deg);
+  }
+  .project-members-table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(160deg, rgb(255, 138, 5) 0%, rgb(198, 105, 0) 78.66%);
+    border-radius: 0.25rem;
+  }
+  .project-members-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgb(198, 105, 0);
+  }
+}
+
+.project-members-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+@media (min-width: 1001px) {
+  .project-members-table {
+    width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .project-members-table {
+    min-width: 800px;
+  }
+}
+.project-members-table thead {
+  background-color: oklch(27.9% 0.041 260.031deg);
+}
+.project-members-table thead th {
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: oklch(92.3% 0.003 48.717deg);
+  word-wrap: break-word;
+  white-space: normal;
+}
+.project-members-table thead th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+.project-members-table thead th:last-child {
+  border-top-right-radius: 0.5rem;
+  text-align: center;
+}
+.project-members-table tbody {
+  background-color: #fff;
+}
+:where(.project-members-table tbody > :not(:last-child)) {
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-color: oklch(92.8% 0.006 264.531deg);
+}
+.project-members-table tbody tr {
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.project-members-table tbody tr:hover {
+  background-color: rgba(255, 138, 5, 0.05);
+}
+.project-members-table tbody tr:nth-child(even) {
+  background-color: oklch(98.5% 0.002 247.839deg);
+}
+.project-members-table tbody tr:nth-child(even):hover {
+  background-color: rgba(255, 138, 5, 0.05);
+}
+.project-members-table tbody tr td {
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  color: oklch(21% 0.034 264.665deg);
+  word-wrap: break-word;
+  white-space: normal;
+}
+.project-members-table tbody tr td:first-child {
+  font-weight: 600;
+}
+.project-members-table tbody tr td:nth-child(2) {
+  color: oklch(44.6% 0.03 256.802deg);
+}
+.project-members-table tbody tr td:nth-child(3) {
+  color: oklch(37.3% 0.034 259.733deg);
+}
+.project-members-table tbody tr td:nth-child(3) strong {
+  color: rgb(198, 105, 0);
+}
+.project-members-table tbody tr td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+.project-members-table tbody tr td:last-child button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  padding-inline: 0.75rem;
+  padding-block: 0.375rem;
+  font-size: 0.75rem;
+  line-height: 1.3333;
+  font-weight: 500;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.project-members-table tbody tr td:last-child button.button--danger {
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(80.8% 0.114 19.571deg);
+  background-color: oklch(93.6% 0.032 17.717deg);
+  color: oklch(50.5% 0.213 27.518deg);
+}
+.project-members-table tbody tr td:last-child button.button--danger:hover {
+  border-color: oklch(50.5% 0.213 27.518deg);
+  background-color: oklch(57.7% 0.245 27.325deg);
+  color: #fff;
+}
+.project-members-table tbody tr td:last-child button.button--small {
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.3333;
+}
+
+@media (max-width: 768px) {
+  .project-members-table {
+    font-size: 0.75rem;
+    line-height: 1.3333;
+  }
+  .project-members-table thead th {
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+  }
+  .project-members-table tbody td {
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+  }
+}
+details.current_members,
+details.pending_invitations {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(37.4% 0.01 67.558deg);
+  background-color: oklch(20.8% 0.042 265.755deg);
+}
+details.current_members summary,
+details.pending_invitations summary {
+  cursor: pointer;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  font-weight: 600;
+  color: oklch(92.3% 0.003 48.717deg);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+details.current_members summary:hover,
+details.pending_invitations summary:hover {
+  background-color: oklch(27.9% 0.041 260.031deg);
+}
+details.current_members[open] summary,
+details.pending_invitations[open] summary {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: oklch(37.4% 0.01 67.558deg);
+}
+details.current_members > div,
+details.pending_invitations > div {
+  padding: 1rem;
+}
+
+.soda-scs-manager--add-member-form-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.soda-scs-manager--add-member-form-inner .form-item {
+  margin-bottom: 0px;
+}
+.soda-scs-manager--add-member-form-inner .form-actions {
+  margin-bottom: 0px;
+}
+
+.project--right .project__members__invitations-title {
+  margin: 0;
+}
+
+.project--right .project__members .project__members__list--invitations .project-member__invitation-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.project--right .project__members .project__members__list--invitations .project-member__resend-form .form-actions {
+  margin: 0;
+}
+
+.project--right .project__members .project__members__list .project-member .project-member__status {
+  color: #4D5866;
+}
+
+.project--right .project__members .project__members__list .project-member--invitation-declined .project-member__status {
+  color: #17212B;
+  font-weight: 700;
+}
+
+.project-member__roles-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.project-member__roles-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 3;
+  width: min(320px, 100vw - 32px);
+  background: #FFFFFF;
+  border: 1px solid #cbd2d9;
+  border-radius: 4px;
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.12);
+  padding: 12px;
+}
+
+.project-member__roles-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.project-member__roles-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-member__role {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-member__role-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.project-member__role-select {
+  flex: 0 0 auto;
+}
+
+.project-member__roles-status {
+  margin: 8px 0 0;
+  color: #4D5866;
+  font-size: 0.875rem;
+}
+
+.project-member__roles-status:empty {
+  display: none;
+}
+
+.project-member__roles-status--error {
+  color: #b00020;
+}
+
+.project-member__roles-empty {
+  margin: 0;
+  color: #4D5866;
+}
+
+.project-member__roles-list:empty {
+  display: none;
+}
+
+/* Role menu and remove button share the third grid column of a member row. */
+.project-member__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.project-member__role-name,
+.project-member__role-type {
+  display: block;
+}
+
+.project-member__role-type {
+  color: #4D5866;
+  font-size: 0.875rem;
+}
+
+.scs-manager--copy-confirmation {
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #006117;
+  color: #FFFFFF;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.soda-scs-component-filters {
+  margin-bottom: 1.5rem;
+}
+.soda-scs-component-filters .soda-scs-filters-form {
+  width: 100%;
+}
+.soda-scs-component-filters details,
+.soda-scs-component-filters .soda-scs-filter-details {
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.soda-scs-component-filters details summary,
+.soda-scs-component-filters details .filter-summary,
+.soda-scs-component-filters .soda-scs-filter-details summary,
+.soda-scs-component-filters .soda-scs-filter-details .filter-summary {
+  cursor: pointer;
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  font-weight: 600;
+  color: oklch(37.3% 0.034 259.733deg);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
+}
+@media (hover: hover) {
+  .soda-scs-component-filters details summary:hover,
+  .soda-scs-component-filters details .filter-summary:hover,
+  .soda-scs-component-filters .soda-scs-filter-details summary:hover,
+  .soda-scs-component-filters .soda-scs-filter-details .filter-summary:hover {
+    background-color: oklch(98.5% 0.002 247.839deg);
+  }
+}
+.soda-scs-component-filters details summary::-webkit-details-marker,
+.soda-scs-component-filters details .filter-summary::-webkit-details-marker,
+.soda-scs-component-filters .soda-scs-filter-details summary::-webkit-details-marker,
+.soda-scs-component-filters .soda-scs-filter-details .filter-summary::-webkit-details-marker {
+  display: none;
+}
+.soda-scs-component-filters details summary::marker,
+.soda-scs-component-filters details .filter-summary::marker,
+.soda-scs-component-filters .soda-scs-filter-details summary::marker,
+.soda-scs-component-filters .soda-scs-filter-details .filter-summary::marker {
+  display: none;
+}
+.soda-scs-component-filters details summary .filter-caret,
+.soda-scs-component-filters details .filter-summary .filter-caret,
+.soda-scs-component-filters .soda-scs-filter-details summary .filter-caret,
+.soda-scs-component-filters .soda-scs-filter-details .filter-summary .filter-caret {
+  color: oklch(55.1% 0.027 264.364deg);
+  transition-property: transform, translate, scale, rotate;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+}
+.soda-scs-component-filters details summary .filter-title,
+.soda-scs-component-filters details .filter-summary .filter-title,
+.soda-scs-component-filters .soda-scs-filter-details summary .filter-title,
+.soda-scs-component-filters .soda-scs-filter-details .filter-summary .filter-title {
+  flex-grow: 1;
+  white-space: nowrap;
+}
+.soda-scs-component-filters details[open] summary,
+.soda-scs-component-filters details[open] .filter-summary,
+.soda-scs-component-filters .soda-scs-filter-details[open] summary,
+.soda-scs-component-filters .soda-scs-filter-details[open] .filter-summary {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+}
+.soda-scs-component-filters details[open] summary .filter-caret,
+.soda-scs-component-filters details[open] .filter-summary .filter-caret,
+.soda-scs-component-filters .soda-scs-filter-details[open] summary .filter-caret,
+.soda-scs-component-filters .soda-scs-filter-details[open] .filter-summary .filter-caret {
+  transform: rotate(90deg);
+}
+.soda-scs-component-filters .filter-fields {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+@media (min-width: 1024px) {
+  .soda-scs-component-filters .filter-fields {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.soda-scs-component-filters .form-item {
+  display: flex;
+  flex-direction: column;
+}
+.soda-scs-component-filters .form-item label {
+  margin-bottom: 0.25rem;
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  font-weight: 500;
+  color: oklch(37.3% 0.034 259.733deg);
+}
+.soda-scs-component-filters .form-item input[type=text],
+.soda-scs-component-filters .form-item .form-text {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+  padding-inline: 0.75rem;
+  padding-block: 0.5rem;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.soda-scs-component-filters .form-item input[type=text]:focus,
+.soda-scs-component-filters .form-item .form-text:focus {
+  border-color: oklch(70.5% 0.213 47.604deg);
+  box-shadow: 0 0 0 2px oklch(70.5% 0.213 47.604deg);
+}
+.soda-scs-component-filters .form-item input[type=text]::placeholder,
+.soda-scs-component-filters .form-item .form-text::placeholder {
+  color: oklch(70.7% 0.022 261.325deg);
+}
+.soda-scs-component-filters .form-item select,
+.soda-scs-component-filters .form-item .form-select {
+  display: block;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+  padding-inline: 0.75rem;
+  padding-block: 0.5rem;
+  background-color: #fff;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.soda-scs-component-filters .form-item select:focus,
+.soda-scs-component-filters .form-item .form-select:focus {
+  border-color: oklch(70.5% 0.213 47.604deg);
+  box-shadow: 0 0 0 2px oklch(70.5% 0.213 47.604deg);
+}
+.soda-scs-component-filters .form-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+.soda-scs-component-filters .form-actions button[type=submit],
+.soda-scs-component-filters .form-actions .form-submit {
+  border-radius: 0.375rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  font-weight: 500;
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background: linear-gradient(160deg, rgb(255, 138, 5) 0%, rgb(198, 105, 0) 78.66%) !important;
+  color: #fff;
+  border: none !important;
+  outline: none !important;
+}
+.soda-scs-component-filters .form-actions button[type=submit]:hover,
+.soda-scs-component-filters .form-actions .form-submit:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  background: rgb(198, 105, 0) !important;
+  color: white !important;
+  outline: none !important;
+  border: none !important;
+}
+.soda-scs-component-filters .form-actions button[type=submit]:focus,
+.soda-scs-component-filters .form-actions .form-submit:focus {
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px oklch(70.5% 0.213 47.604deg);
+  outline: none !important;
+  border: none !important;
+}
+.soda-scs-component-filters .form-actions button[type=submit]:active,
+.soda-scs-component-filters .form-actions .form-submit:active {
+  outline: none !important;
+  border: none !important;
+}
+.soda-scs-component-filters .form-actions .button {
+  border-radius: 0.375rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  font-weight: 500;
+  background-color: oklch(92.8% 0.006 264.531deg);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  text-decoration-line: none;
+  color: rgb(55, 65, 81) !important;
+  border: 1px solid rgb(209, 213, 219) !important;
+  outline: none !important;
+}
+.soda-scs-component-filters .form-actions .button:hover {
+  background-color: oklch(87.2% 0.01 258.338deg);
+  color: rgb(55, 65, 81) !important;
+  outline: none !important;
+  border: 1px solid rgb(209, 213, 219) !important;
+}
+.soda-scs-component-filters .form-actions .button:focus {
+  outline: none !important;
+  border: 1px solid rgb(209, 213, 219) !important;
+}
+.soda-scs-component-filters .form-actions .button:active {
+  outline: none !important;
+}
+
+.soda-scs-table-list-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: rgb(198, 105, 0) rgb(243, 244, 246);
+}
+.soda-scs-table-list-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.soda-scs-table-list-wrapper::-webkit-scrollbar-track {
+  border-radius: 0.25rem;
+  background-color: oklch(96.7% 0.003 264.542deg);
+}
+.soda-scs-table-list-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(160deg, rgb(255, 138, 5) 0%, rgb(198, 105, 0) 78.66%);
+  border-radius: 0.25rem;
+}
+.soda-scs-table-list-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgb(198, 105, 0);
+}
+
+.soda-scs-table-list {
+  width: 100%;
+  border-collapse: collapse;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+  min-width: 800px;
+}
+.soda-scs-table-list thead th {
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+.soda-scs-table-list thead th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+.soda-scs-table-list thead th:last-child {
+  border-top-right-radius: 0.5rem;
+  text-align: center;
+}
+.soda-scs-table-list thead th a.sortable-header {
+  color: oklch(37.3% 0.034 259.733deg);
+  text-decoration-line: none;
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  position: relative;
+}
+.soda-scs-table-list thead th a.sortable-header:hover {
+  color: rgb(255, 138, 5);
+}
+.soda-scs-table-list thead th a.sortable-header.is-active::after {
+  content: "";
+  margin-left: 0.25rem;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+.soda-scs-table-list thead th a.sortable-header.is-active.sort-asc::after {
+  border-bottom: 6px solid currentColor;
+}
+.soda-scs-table-list thead th a.sortable-header.is-active.sort-desc::after {
+  border-top: 6px solid currentColor;
+}
+.soda-scs-table-list thead th.is-active a.sortable-header {
+  color: rgb(198, 105, 0);
+  font-weight: 700;
+}
+.soda-scs-table-list tbody {
+  background-color: #fff;
+}
+:where(.soda-scs-table-list tbody > :not(:last-child)) {
+  border-bottom-style: solid;
+  border-top-style: solid;
+  border-top-width: 0;
+  border-bottom-width: 1px;
+  border-color: oklch(92.8% 0.006 264.531deg);
+}
+.soda-scs-table-list tbody tr {
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.soda-scs-table-list tbody tr:hover {
+  background-color: rgba(255, 138, 5, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.soda-scs-table-list tbody tr:nth-child(even) {
+  background-color: oklch(98.5% 0.002 247.839deg);
+}
+.soda-scs-table-list tbody tr:nth-child(even):hover {
+  background-color: rgba(255, 138, 5, 0.05);
+}
+.soda-scs-table-list tbody tr td {
+  padding-inline: 1rem;
+  padding-block: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  color: oklch(21% 0.034 264.665deg);
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+.soda-scs-table-list tbody tr td:first-child {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.soda-scs-table-list tbody tr td:first-child.soda-scs-manager__drupal-package-name--outdated::before {
+  content: "";
+  margin-right: 0.5rem;
+  display: inline-block;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: calc(infinity * 1px);
+  background-color: oklch(57.7% 0.245 27.325deg);
+  vertical-align: middle;
+}
+.soda-scs-table-list tbody tr td:first-child a {
+  color: rgb(198, 105, 0);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.soda-scs-table-list tbody tr td:first-child a:hover {
+  color: rgb(255, 138, 5);
+}
+@media (hover: hover) {
+  .soda-scs-table-list tbody tr td:first-child a:hover {
+    text-decoration-line: underline;
+  }
+}
+.soda-scs-table-list tbody tr td code {
+  border-radius: 0.25rem;
+  background-color: oklch(96.7% 0.003 264.542deg);
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem;
+  line-height: 1.3333;
+  color: oklch(37.3% 0.034 259.733deg);
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(87.2% 0.01 258.338deg);
+}
+.soda-scs-table-list tbody tr td a {
+  color: rgb(198, 105, 0);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.soda-scs-table-list tbody tr td a:hover {
+  color: rgb(255, 138, 5);
+}
+@media (hover: hover) {
+  .soda-scs-table-list tbody tr td a:hover {
+    text-decoration-line: underline;
+  }
+}
+.soda-scs-table-list tbody tr td:last-child {
+  text-align: center;
+  vertical-align: middle;
+}
+.soda-scs-table-list .component-health-status {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.4286;
+  font-weight: 500;
+}
+.soda-scs-table-list .component-health-status.health-running, .soda-scs-table-list .component-health-status.health-success {
+  font-weight: 600;
+  color: oklch(62.7% 0.194 149.214deg);
+}
+.soda-scs-table-list .component-health-status.health-stopped {
+  font-weight: 600;
+  color: oklch(55.3% 0.013 58.071deg);
+}
+.soda-scs-table-list .component-health-status.health-problem, .soda-scs-table-list .component-health-status.health-error {
+  cursor: help;
+  font-weight: 600;
+  color: oklch(57.7% 0.245 27.325deg);
+}
+.soda-scs-table-list .component-health-status.health-unknown, .soda-scs-table-list .component-health-status.health-starting, .soda-scs-table-list .component-health-status.health-pending, .soda-scs-table-list .component-health-status.health-loading {
+  font-weight: 600;
+  color: oklch(55.5% 0.163 48.998deg);
+}
+.soda-scs-table-list .component-health-status.health-unknown .dots, .soda-scs-table-list .component-health-status.health-starting .dots, .soda-scs-table-list .component-health-status.health-pending .dots, .soda-scs-table-list .component-health-status.health-loading .dots {
+  display: inline-block;
+  width: 1rem;
+}
+.soda-scs-table-list .status-active {
+  display: inline-flex;
+  align-items: center;
+  border-radius: calc(infinity * 1px);
+  padding-inline: 0.625rem;
+  padding-block: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1.3333;
+  font-weight: 500;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(92.5% 0.084 155.995deg);
+  background-color: oklch(96.2% 0.044 156.743deg);
+  color: oklch(44.8% 0.119 151.328deg);
+}
+.soda-scs-table-list .status-active::before {
+  content: "●";
+  margin-right: 0.25rem;
+  color: oklch(72.3% 0.219 149.579deg);
+}
+.soda-scs-table-list .status-inactive {
+  display: inline-flex;
+  align-items: center;
+  border-radius: calc(infinity * 1px);
+  padding-inline: 0.625rem;
+  padding-block: 0.125rem;
+  font-size: 0.75rem;
+  line-height: 1.3333;
+  font-weight: 500;
+  border-style: solid;
+  border-width: 1px;
+  border-color: oklch(88.5% 0.062 18.334deg);
+  background-color: oklch(93.6% 0.032 17.717deg);
+  color: oklch(44.4% 0.177 26.899deg);
+}
+.soda-scs-table-list .status-inactive::before {
+  content: "●";
+  margin-right: 0.25rem;
+  color: oklch(63.7% 0.237 25.331deg);
+}
+
+@media (max-width: 1024px) {
+  .soda-scs-table-list {
+    font-size: 0.75rem;
+    line-height: 1.3333;
+  }
+  .soda-scs-table-list thead th {
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+  }
+  .soda-scs-table-list tbody td {
+    padding-inline: 0.5rem;
+    padding-block: 0.5rem;
+  }
+}
+.soda-scs-table-list + .empty {
+  padding-block: 2rem;
+  text-align: center;
+  color: oklch(55.1% 0.027 264.364deg);
+  font-style: italic;
+}
+
+@layer components {
+  .soda-scs-manager__throbber-overlay__spinner--success {
+    border-color: oklch(87.1% 0.15 154.449deg);
+    border-top-color: oklch(72.3% 0.219 149.579deg);
+    animation: none;
+  }
+  .soda-scs-manager__throbber-overlay__spinner--error {
+    border-color: oklch(80.8% 0.114 19.571deg);
+    border-top-color: oklch(63.7% 0.237 25.331deg);
+    animation: none;
+  }
+  .soda-scs-manager__throbber-overlay__message {
+    margin-bottom: 1rem;
+    max-width: 28rem;
+    padding-inline: 1.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .soda-scs-manager__throbber-overlay__progress {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 28rem;
+  }
+  .soda-scs-manager__throbber-overlay__steps {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 32rem;
+  }
+  .soda-scs-manager__throbber-overlay__logs {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 32rem;
+  }
+  .soda-scs-manager__throbber-overlay__steps-container {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 32rem;
+    height: 16rem;
+    overflow: hidden;
+  }
+  .soda-scs-manager__throbber-overlay__info {
+    margin-top: 1.5rem;
+    max-width: 32rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.625;
+  }
+  .soda-scs-manager__progress-bar {
+    width: 100%;
+  }
+  .soda-scs-manager__progress-bar__track {
+    height: 0.75rem;
+    overflow: hidden;
+    border-radius: calc(infinity * 1px);
+    background-color: oklch(37.3% 0.034 259.733deg);
+  }
+  .soda-scs-manager__progress-bar__fill {
+    height: 100%;
+    border-radius: calc(infinity * 1px);
+    background-image: linear-gradient(to right in oklab, oklch(75% 0.183 55.934deg) 0%, oklch(70.5% 0.213 47.604deg) 100%);
+    transition-property: all;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+  .soda-scs-manager__progress-bar__text {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    color: oklch(87.2% 0.01 258.338deg);
+  }
+  .soda-scs-manager__steps-list {
+    margin: 0px;
+    list-style-type: none;
+    padding: 0px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem 0;
+  }
+  .soda-scs-manager__steps-list > .soda-scs-manager__step {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  .soda-scs-manager__steps-list > .soda-scs-manager__step:first-child {
+    margin-top: 0;
+  }
+  .soda-scs-manager__steps-list > .soda-scs-manager__step:last-child {
+    margin-bottom: 0;
+  }
+  .soda-scs-manager__steps-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  .soda-scs-manager__steps-list::-webkit-scrollbar-track {
+    border-radius: 0.25rem;
+    background-color: oklch(27.8% 0.033 256.848deg);
+  }
+  .soda-scs-manager__steps-list::-webkit-scrollbar-thumb {
+    border-radius: 0.25rem;
+    background-color: oklch(44.6% 0.03 256.802deg);
+  }
+  .soda-scs-manager__steps-list::-webkit-scrollbar-thumb:hover {
+    background-color: oklch(55.1% 0.027 264.364deg);
+  }
+  .soda-scs-manager__step {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+  }
+  .soda-scs-manager__step--pending {
+    background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848deg) 50%, transparent);
+    color: oklch(70.7% 0.022 261.325deg);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--pending {
+      background-color: color-mix(in oklab, oklch(27.8% 0.033 256.848deg) 50%, transparent);
+    }
+  }
+  .soda-scs-manager__step--running {
+    border-style: solid;
+    border-width: 1px;
+    border-color: color-mix(in srgb, oklch(70.5% 0.213 47.604deg) 50%, transparent);
+    background-color: color-mix(in srgb, oklch(40.8% 0.123 38.172deg) 30%, transparent);
+    color: oklch(83.7% 0.128 66.29deg);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--running {
+      border-color: color-mix(in oklab, oklch(70.5% 0.213 47.604deg) 50%, transparent);
+    }
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--running {
+      background-color: color-mix(in oklab, oklch(40.8% 0.123 38.172deg) 30%, transparent);
+    }
+  }
+  .soda-scs-manager__step--completed {
+    background-color: color-mix(in srgb, oklch(39.3% 0.095 152.535deg) 30%, transparent);
+    color: oklch(79.2% 0.209 151.711deg);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--completed {
+      background-color: color-mix(in oklab, oklch(39.3% 0.095 152.535deg) 30%, transparent);
+    }
+  }
+  .soda-scs-manager__step--failed {
+    background-color: color-mix(in srgb, oklch(39.6% 0.141 25.723deg) 30%, transparent);
+    color: oklch(70.4% 0.191 22.216deg);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--failed {
+      background-color: color-mix(in oklab, oklch(39.6% 0.141 25.723deg) 30%, transparent);
+    }
+  }
+  .soda-scs-manager__step--skipped {
+    background-color: color-mix(in srgb, oklch(27.8% 0.033 256.848deg) 30%, transparent);
+    color: oklch(55.1% 0.027 264.364deg);
+    text-decoration-line: line-through;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__step--skipped {
+      background-color: color-mix(in oklab, oklch(27.8% 0.033 256.848deg) 30%, transparent);
+    }
+  }
+  .soda-scs-manager__step__icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    flex-shrink: 0;
+  }
+  .soda-scs-manager__step__label {
+    flex-grow: 1;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+  }
+  .soda-scs-manager__step__message {
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    opacity: 70%;
+  }
+  .soda-scs-manager__icon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  .soda-scs-manager__icon--completed {
+    color: oklch(79.2% 0.209 151.711deg);
+  }
+  .soda-scs-manager__icon--running {
+    color: oklch(75% 0.183 55.934deg);
+  }
+  .soda-scs-manager__icon--failed {
+    color: oklch(70.4% 0.191 22.216deg);
+  }
+  .soda-scs-manager__icon--skipped {
+    color: oklch(55.1% 0.027 264.364deg);
+  }
+  .soda-scs-manager__icon--pending {
+    color: oklch(55.1% 0.027 264.364deg);
+  }
+  .soda-scs-manager__logs {
+    border-radius: 0.5rem;
+    background-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 50%, transparent);
+    padding: 0.75rem;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .soda-scs-manager__logs {
+      background-color: color-mix(in oklab, oklch(21% 0.034 264.665deg) 50%, transparent);
+    }
+  }
+  .soda-scs-manager__logs__title {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    letter-spacing: 0.05em;
+    color: oklch(70.7% 0.022 261.325deg);
+    text-transform: uppercase;
+  }
+  .soda-scs-manager__logs__list {
+    margin: 0px;
+    max-height: 6rem;
+    list-style-type: none;
+    overflow-y: auto;
+    padding: 0px;
+  }
+  :where(.soda-scs-manager__logs__list > :not(:last-child)) {
+    margin-block-start: 0;
+    margin-block-end: 0.25rem;
+  }
+  .soda-scs-manager__log {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.75rem;
+    line-height: 1.3333;
+  }
+  .soda-scs-manager__log--info {
+    color: oklch(87.2% 0.01 258.338deg);
+  }
+  .soda-scs-manager__log--warning {
+    color: oklch(85.2% 0.199 91.936deg);
+  }
+  .soda-scs-manager__log--error {
+    color: oklch(70.4% 0.191 22.216deg);
+  }
+}
+@layer components {
+  .soda-scs-manager__version-info {
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-width: 2px;
+    border-color: oklch(92.3% 0.003 48.717deg);
+    background-color: #fff;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  }
+  .soda-scs-manager__version-info__label {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.4286;
+    font-weight: 500;
+    color: oklch(44.4% 0.011 73.639deg);
+  }
+  .soda-scs-manager__version-info__value {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+    color: oklch(75% 0.183 55.934deg);
+  }
+}
+/*
+ * Unlayered manager overrides: must beat Claro/Gin and theme link rules,
+ * so they sit outside @layer. Moved from soda_scs_manager_theme (site-overrides).
+ */
+:root {
+  --scs-manager--card-dot-size: 20px;
+  --scs-manager--card-dot-offset: -10px;
+  --scs-manager--card-dot-color: #FFA933;
+}
+
+.scs-manager--card-dot,
+.soda-scs-manager--card-content-wrapper,
+a.soda-scs-manager--tile-card {
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+.scs-manager--card-dot::before,
+.soda-scs-manager--card-content-wrapper::before,
+a.soda-scs-manager--tile-card::before {
+  content: "";
+  position: absolute;
+  top: var(--scs-manager--card-dot-offset);
+  right: var(--scs-manager--card-dot-offset);
+  width: var(--scs-manager--card-dot-size);
+  height: var(--scs-manager--card-dot-size);
+  background-color: var(--scs-manager--card-dot-color);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scs-manager--card-dot > * {
+  position: relative;
+  z-index: 2;
+}
+
+/*
+ * Manager forms: Claro .button--primary uses blue tokens; match SODa orange
+ * (co-working intro CTA, tabs, focus ring).
+ */
+.soda-scs-stack--stack--form-submit.button--primary,
+#soda-scs-manager-project-edit-form .button--primary,
+#soda-scs-user-scs-manager-settings .button--primary {
+  color: #FFFFFF;
+  background-color: #E68500;
+  border-color: #E68500;
+}
+
+.soda-scs-stack--stack--form-submit.button--primary:hover,
+.soda-scs-stack--stack--form-submit.button--primary:active,
+#soda-scs-manager-project-edit-form .button--primary:hover,
+#soda-scs-manager-project-edit-form .button--primary:active,
+#soda-scs-user-scs-manager-settings .button--primary:hover,
+#soda-scs-user-scs-manager-settings .button--primary:active {
+  color: #FFFFFF;
+  background-color: #b86a00;
+  border-color: #b86a00;
+}
+
+.soda-scs-stack--stack--form-submit.button--primary:focus,
+.soda-scs-stack--stack--form-submit.button--primary:focus-visible,
+#soda-scs-manager-project-edit-form .button--primary:focus,
+#soda-scs-manager-project-edit-form .button--primary:focus-visible,
+#soda-scs-user-scs-manager-settings .button--primary:focus,
+#soda-scs-user-scs-manager-settings .button--primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+}
+
+/*
+ * Project edit: Claro checkboxes use focus blue when checked; match SODa orange.
+ * :not(.error) keeps Claro validation styling.
+ */
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:checked:not(.error) {
+  border-color: #E68500;
+  background-color: #E68500;
+}
+
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:checked:not(.error):hover,
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:checked:not(.error):active {
+  border-color: #b86a00;
+  background-color: #b86a00;
+}
+
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus:not(.error),
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus-visible:not(.error) {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+}
+
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus:not(.error):hover,
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus:not(.error):active,
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus-visible:not(.error):hover,
+#soda-scs-manager-project-edit-form .form-boolean--type-checkbox:focus-visible:not(.error):active {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28), inset 0 0 0 1px var(--input-fg-color);
+}
+
+/*
+ * Entity card chips (health / details / docs): sit above .soda-scs-manager--card--not-running::after (z-index 40).
+ * Opaque white + isolation avoids the grey wash reading through; !important beats Claro/global link backgrounds.
+ */
+.soda-scs-manager--card-content-wrapper > .soda-scs-manager--health-icon,
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon {
+  isolation: isolate;
+  z-index: 55;
+  background-color: #FFFFFF !important;
+}
+
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:hover,
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:focus,
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:focus-visible,
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:active {
+  background-color: #FFFFFF !important;
+}
+
+/*
+ * Claro: .page-wrapper *:focus applies a green (--color-focus) box-shadow on links
+ * and buttons. Use SODa orange focus ring (same as .field--name-field__use-button:focus).
+ */
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:focus,
+.soda-scs-manager--card-content-wrapper > a.soda-scs-manager--card-icon:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+}
+
+.soda-scs-manager--tag-filter-button:focus,
+.soda-scs-manager--tag-filter-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+}
+
+#clear-all-tags:focus,
+#clear-all-tags:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #E68500, 0 0 0 4px rgba(230, 133, 0, 0.28);
+}
+
+/*
+ * Entity header health chip as <a> (e.g. WissKI login): @layer components styles lose to
+ * unlayered Claro/Gin and load order. Pin the running pill (Tailwind green palette) here, last
+ * in the theme bundle, with !important (same idea as .soda-scs-manager--health-icon chips).
+ */
+.soda-scs-manager--entity--health a.health-badge.health-badge--running {
+  background-color: #dcfce7 !important;
+  color: #166534 !important;
+  border: 1px solid #bbf7d0 !important;
+  text-decoration: none !important;
+}
+
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:hover,
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:focus,
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:focus-visible,
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:active,
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:visited {
+  color: #166534 !important;
+  background-color: #dcfce7 !important;
+  border-color: #bbf7d0 !important;
+  text-decoration: none !important;
+}
+
+.soda-scs-manager--entity--health a.health-badge.health-badge--running .health-badge__symbol {
+  color: #16a34a !important;
+}
+
+.soda-scs-manager--entity--health a.health-badge.health-badge--running:hover {
+  opacity: 0.9;
+}
+
+/*
+ * Claro styles raw <button> elements (padding, min-height, green focus).
+ * Health speed-dial chips must stay 2rem circles matching the status icon.
+ */
+button.soda-scs-manager--health-icon,
+button.soda-scs-manager--health-action {
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  line-height: 1;
+  background-image: none;
+}
+
+button.soda-scs-manager--health-icon:focus:not(:focus-visible),
+button.soda-scs-manager--health-action:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/*
+ * Dashboard content is a 9-column grid; direct children default to one column
+ * (~90px). --full pages and our conversation blocks must span the row.
+ */
+.dashboard-content--full > .scs-manager--conversation-start,
+.dashboard-content--full > .scs-manager--conversation-team,
+.dashboard-content--full > form.soda-scs-manager-conversation-start-form {
+  grid-column: 1/-1;
+}
+
+/*
+ * Conversation start form and admin list: theme input rules are unlayered and
+ * leave width to the size/cols attributes. Beat that here.
+ */
+.scs-manager--conversation-start {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.scs-manager--conversation-start .form-item,
+.scs-manager--conversation-start .js-form-item {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Radios render as #edit-mode without .form-radios (stable9 template). */
+.scs-manager--conversation-start #edit-mode {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+}
+
+.scs-manager--conversation-start #edit-mode .form-item,
+.scs-manager--conversation-start #edit-mode .js-form-item {
+  display: inline-flex;
+  width: auto;
+  max-width: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.scs-manager--conversation-start #edit-mode input.form-radio {
+  display: inline-block;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.scs-manager--conversation-start input.form-text,
+.scs-manager--conversation-start input.form-autocomplete,
+.scs-manager--conversation-start textarea.form-textarea,
+.scs-manager--conversation-start select.form-select,
+.scs-manager--conversation-start .scs-manager--conversation-start__field,
+.scs-manager--conversation-start .scs-manager--conversation-start__picker {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0;
+}
+
+.scs-manager--conversation-start__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+}
+
+.scs-manager--conversation-team {
+  width: 100%;
+  max-width: 100%;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list {
+  width: 100%;
+  min-width: 100%;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list thead th,
+.scs-manager--conversation-team .soda-scs-table-list tbody td {
+  max-width: none;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list tbody td[colspan] {
+  padding: 2.5rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .text-white,
 .text-white:before {
   color: #FFFFFF;
@@ -717,117 +5083,6 @@ body.menu-open {
   }
   .logo-banner ul.logo-banner__items li {
     width: 16%;
-  }
-}
-
-.funding-partners {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 21px;
-  position: relative;
-  margin: 24rem 0;
-  padding: 14rem 0;
-}
-.funding-partners__copy {
-  grid-column: 3/span 8;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 21px;
-  align-items: center;
-  row-gap: 0;
-}
-.funding-partners__headline {
-  grid-column: 1/span 8;
-}
-.funding-partners__headline, .funding-partners__group-title {
-  margin-top: 0;
-}
-.funding-partners__text {
-  grid-column: 1/span 5;
-}
-.funding-partners__text > :last-child {
-  margin-bottom: 0;
-}
-.funding-partners__text .funding-partners__bigger-text p {
-  font-size: 3.2rem;
-  margin-top: 0em;
-  margin-bottom: 0em;
-}
-.funding-partners__logos {
-  grid-column: span 12;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 21px;
-  gap: 21px;
-  min-width: 0;
-}
-.funding-partners__soda-logo {
-  grid-column: 6/span 3;
-}
-.funding-partners__soda-logo .field--name-field-soda-logo,
-.funding-partners__soda-logo .field__item {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-.funding-partners__soda-logo img {
-  display: block;
-  width: 100%;
-  object-fit: contain;
-  max-height: unset !important;
-}
-.funding-partners__group {
-  min-width: 0;
-  padding: 21px;
-  background-color: #F4F6F8;
-  border-radius: 16px;
-}
-.funding-partners__group--funding {
-  grid-column: 2/span 2;
-}
-.funding-partners__group--funding img {
-  max-height: unset !important;
-}
-.funding-partners__group--partners {
-  grid-column: 5/span 7;
-}
-.funding-partners__group-title {
-  margin-bottom: 10px;
-}
-.funding-partners .field--name-field-founding-logos,
-.funding-partners .field--name-field-partner-logos,
-.funding-partners .field__items {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 21px;
-}
-.funding-partners .field__item {
-  display: flex;
-  flex: 0 1 14rem;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  min-height: 8rem;
-}
-.funding-partners img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  max-height: 8rem;
-  object-fit: contain;
-}
-@media screen and (max-width: 768px) {
-  .funding-partners {
-    margin: 16rem 0;
-    padding: 10rem 0;
-  }
-  .funding-partners__layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
-  }
-  .funding-partners__copy, .funding-partners__logos {
-    grid-column: 1;
   }
 }
 
@@ -1555,6 +5810,7 @@ body.menu-open {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  margin-top: 21px;
 }
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > * {
   order: 1;
@@ -1568,9 +5824,6 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .btn--primary,
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .button--primary {
   order: 2;
-}
-.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
-  margin-top: 21px;
 }
 .project--right .project__members .project__members__list--edit .project-member {
   grid-template-columns: 6rem 1fr auto;
@@ -4548,5 +8801,3 @@ footer.public-footer .public-footer__navs #footer-menu ul li:last-child {
     margin-bottom: 21px;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,88 @@
+// Colours the SCS Manager UI took over from the Tailwind palette of the
+// soda_scs_manager module, so the port looks the same. Map them to the theme
+// palette in base/_vars.scss over time and drop the ones no longer used.
+$scs-amber-100: oklch(96.2% 0.059 95.617);
+$scs-amber-200: oklch(92.4% 0.12 95.746);
+$scs-amber-500: oklch(76.9% 0.188 70.08);
+$scs-amber-600: oklch(66.6% 0.179 58.318);
+$scs-amber-700: oklch(55.5% 0.163 48.998);
+$scs-amber-800: oklch(47.3% 0.137 46.201);
+$scs-black: #000;
+$scs-blue-500: oklch(62.3% 0.214 259.815);
+$scs-blue-600: oklch(54.6% 0.245 262.881);
+$scs-blue-700: oklch(48.8% 0.243 264.376);
+$scs-blue-900: oklch(37.9% 0.146 265.522);
+$scs-emerald-500: oklch(69.6% 0.17 162.48);
+$scs-emerald-700: oklch(50.8% 0.118 165.612);
+$scs-gray-50: oklch(98.5% 0.002 247.839);
+$scs-gray-100: oklch(96.7% 0.003 264.542);
+$scs-gray-200: oklch(92.8% 0.006 264.531);
+$scs-gray-300: oklch(87.2% 0.01 258.338);
+$scs-gray-400: oklch(70.7% 0.022 261.325);
+$scs-gray-500: oklch(55.1% 0.027 264.364);
+$scs-gray-600: oklch(44.6% 0.03 256.802);
+$scs-gray-700: oklch(37.3% 0.034 259.733);
+$scs-gray-800: oklch(27.8% 0.033 256.848);
+$scs-gray-900: oklch(21% 0.034 264.665);
+$scs-green-100: oklch(96.2% 0.044 156.743);
+$scs-green-200: oklch(92.5% 0.084 155.995);
+$scs-green-300: oklch(87.1% 0.15 154.449);
+$scs-green-400: oklch(79.2% 0.209 151.711);
+$scs-green-500: oklch(72.3% 0.219 149.579);
+$scs-green-600: oklch(62.7% 0.194 149.214);
+$scs-green-700: oklch(52.7% 0.154 150.069);
+$scs-green-800: oklch(44.8% 0.119 151.328);
+$scs-green-900: oklch(39.3% 0.095 152.535);
+$scs-orange-300: oklch(83.7% 0.128 66.29);
+$scs-orange-400: oklch(75% 0.183 55.934);
+$scs-orange-500: oklch(70.5% 0.213 47.604);
+$scs-orange-900: oklch(40.8% 0.123 38.172);
+$scs-purple-500: oklch(62.7% 0.265 303.9);
+$scs-purple-700: oklch(49.6% 0.265 301.924);
+$scs-red-100: oklch(93.6% 0.032 17.717);
+$scs-red-200: oklch(88.5% 0.062 18.334);
+$scs-red-300: oklch(80.8% 0.114 19.571);
+$scs-red-400: oklch(70.4% 0.191 22.216);
+$scs-red-500: oklch(63.7% 0.237 25.331);
+$scs-red-600: oklch(57.7% 0.245 27.325);
+$scs-red-700: oklch(50.5% 0.213 27.518);
+$scs-red-800: oklch(44.4% 0.177 26.899);
+$scs-red-900: oklch(39.6% 0.141 25.723);
+$scs-rose-500: oklch(64.5% 0.246 16.439);
+$scs-rose-700: oklch(51.4% 0.222 16.935);
+$scs-slate-500: oklch(55.4% 0.046 257.417);
+$scs-slate-800: oklch(27.9% 0.041 260.031);
+$scs-slate-900: oklch(20.8% 0.042 265.755);
+$scs-slate-950: oklch(12.9% 0.042 264.695);
+$scs-stone-50: oklch(98.5% 0.001 106.423);
+$scs-stone-100: oklch(97% 0.001 106.424);
+$scs-stone-200: oklch(92.3% 0.003 48.717);
+$scs-stone-300: oklch(86.9% 0.005 56.366);
+$scs-stone-400: oklch(70.9% 0.01 56.259);
+$scs-stone-500: oklch(55.3% 0.013 58.071);
+$scs-stone-600: oklch(44.4% 0.011 73.639);
+$scs-stone-700: oklch(37.4% 0.01 67.558);
+$scs-stone-800: oklch(26.8% 0.007 34.298);
+$scs-stone-900: oklch(21.6% 0.006 56.043);
+$scs-white: #fff;
+$scs-yellow-400: oklch(85.2% 0.199 91.936);
+
+// Hex values of the module's unlayered overrides (manager/_overrides.scss).
+$scs-orange-pressed: #b86a00;
+$scs-running-bg: #dcfce7;
+$scs-running-border: #bbf7d0;
+$scs-running-symbol: #16a34a;
+$scs-running-text: #166534;
+$scs-orange-pressed-dark: #8c5200;
+
+// Health action buttons (start / stop / restart) and their pressed state.
+$scs-health-start: #22c55e;
+$scs-health-start-pressed: #16a34a;
+$scs-health-stop: #ef4444;
+$scs-health-stop-pressed: #dc2626;
+$scs-health-restart: #f59e0b;
+$scs-health-restart-pressed: #d97706;
+
+// Project members role menu.
+$scs-members-menu-border: #cbd2d9;
+$scs-members-error: #b00020;
