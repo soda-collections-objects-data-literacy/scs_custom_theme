@@ -4,6 +4,7 @@
 node_bundles:
   - aspect_preview
   - cta_try
+  - funding_and_partners
   - home_hero_header
   - home_page
   - information_stairs

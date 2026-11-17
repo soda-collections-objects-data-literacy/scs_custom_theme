@@ -1,0 +1,159 @@
+site_uuid: 1c3fd352-89c4-4d23-a0c1-f4a968e353d3
+uuid: c6e4609b-4e7e-42e4-b10f-ade0908b4890
+entity_type: node
+bundle: funding_and_partners
+base_fields:
+  title: 'Funding and Partners'
+  status: true
+  langcode: de
+  created: '1794833761'
+  author: lea.stocker@sammlungen.io
+  revision_log_message: null
+  revision_uid: '23'
+  changed: '1794840555'
+  url: null
+custom_fields:
+  field_bigger_text:
+    -
+      value: '<p>Users have access to various applications&nbsp;that allow them to model, develop, transform, migrate, analyze, visualize, store, publish, enrich, or process data with programming code.</p>'
+      format: basic_html
+      embed_entities: {  }
+  field_founding_logos:
+    -
+      alt: EU
+      title: ''
+      target_entity:
+        uuid: 99d280f4-e728-44ce-8bbe-d60f5ee01523
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: EU_Logo.png
+          uri: 'public://logos/EU_Logo.png'
+          url: 'http://default/sites/default/files/logos/EU_Logo.png'
+          status: '1'
+          created: 1794833882
+          changed: 1794840555
+          mimetype: image/png
+        custom_fields: {  }
+    -
+      alt: BMFTR
+      title: ''
+      target_entity:
+        uuid: 0526afbc-3048-482f-81af-7a7190ff5fb1
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: BMFTR_Logo.svg
+          uri: 'public://logos/BMFTR_Logo.svg'
+          url: 'http://default/sites/default/files/logos/BMFTR_Logo.svg'
+          status: '1'
+          created: 1794833882
+          changed: 1794840555
+          mimetype: image/svg+xml
+        custom_fields: {  }
+  field_headline:
+    -
+      value: 'The SODa Project'
+  field_partner_logos:
+    -
+      alt: FAU
+      title: ''
+      target_entity:
+        uuid: 5f6d39a5-1f1c-4503-aac5-713e6cf17fbc
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: FAU_Logo.svg
+          uri: 'public://logos/FAU_Logo.svg'
+          url: 'http://default/sites/default/files/logos/FAU_Logo.svg'
+          status: '1'
+          created: 1794833922
+          changed: 1794840555
+          mimetype: image/svg+xml
+        custom_fields: {  }
+    -
+      alt: GNM
+      title: ''
+      target_entity:
+        uuid: 9e43df55-0361-47ad-92cd-b0e1d00f896d
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: GNM_Logo.svg
+          uri: 'public://logos/GNM_Logo.svg'
+          url: 'http://default/sites/default/files/logos/GNM_Logo.svg'
+          status: '1'
+          created: 1794833922
+          changed: 1794840555
+          mimetype: image/svg+xml
+        custom_fields: {  }
+    -
+      alt: HU
+      title: ''
+      target_entity:
+        uuid: 76f13222-f86e-4f5e-8058-8319e1b7ba6b
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: HU_Logo.svg
+          uri: 'public://logos/HU_Logo.svg'
+          url: 'http://default/sites/default/files/logos/HU_Logo.svg'
+          status: '1'
+          created: 1794833922
+          changed: 1794840555
+          mimetype: image/svg+xml
+        custom_fields: {  }
+    -
+      alt: IGSD
+      title: ''
+      target_entity:
+        uuid: 7ec7bc81-9d97-471a-9312-d833a4ad527a
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: IGSD_Logo.png
+          uri: 'public://logos/IGSD_Logo.png'
+          url: 'http://default/sites/default/files/logos/IGSD_Logo.png'
+          status: '1'
+          created: 1794833922
+          changed: 1794840555
+          mimetype: image/png
+        custom_fields: {  }
+    -
+      alt: KUS
+      title: ''
+      target_entity:
+        uuid: 49866699-1694-44a3-b0b8-1971f8e8a63c
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: KUS_Logo.svg
+          uri: 'public://logos/KUS_Logo.svg'
+          url: 'http://default/sites/default/files/logos/KUS_Logo.svg'
+          status: '1'
+          created: 1794833922
+          changed: 1794840555
+          mimetype: image/svg+xml
+        custom_fields: {  }
+  field_soda_logo:
+    -
+      alt: SODa
+      title: ''
+      target_entity:
+        uuid: 4e370014-14b7-4978-b1d6-d1dd0f52f5e7
+        entity_type: file
+        bundle: file
+        base_fields:
+          name: SODa-Logo_Wort-Bild_transparent-mit-Rand.png
+          uri: 'public://logos/SODa-Logo_Wort-Bild_transparent-mit-Rand.png'
+          url: 'http://default/sites/default/files/logos/SODa-Logo_Wort-Bild_transparent-mit-Rand.png'
+          status: '1'
+          created: 1794833831
+          changed: 1794840555
+          mimetype: image/png
+        custom_fields: {  }
+  field_text:
+    -
+      value: '<p>It is designed for people&nbsp;who work with scientific university collections. To use the Semantic Co-Working Space, you need to&nbsp;<a href="https://scs.sammlungen.io/de/user/register">register</a>&nbsp;for a new account. Access to all applications and instances is managed for each user via&nbsp;Single-Sign-On (SSO)&nbsp;using a Keycloak account.&nbsp;</p>'
+      format: basic_html
+      embed_entities: {  }
