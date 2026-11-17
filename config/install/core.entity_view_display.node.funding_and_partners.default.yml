@@ -1,0 +1,76 @@
+uuid: 4a8134df-611d-4603-8899-a31e0ca9032b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.funding_and_partners.field_bigger_text
+    - field.field.node.funding_and_partners.field_founding_logos
+    - field.field.node.funding_and_partners.field_headline
+    - field.field.node.funding_and_partners.field_partner_logos
+    - field.field.node.funding_and_partners.field_soda_logo
+    - field.field.node.funding_and_partners.field_text
+    - node.type.funding_and_partners
+  module:
+    - image
+    - text
+    - user
+id: node.funding_and_partners.default
+targetEntityType: node
+bundle: funding_and_partners
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_bigger_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_soda_logo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_founding_logos:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_partner_logos:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  langcode: true

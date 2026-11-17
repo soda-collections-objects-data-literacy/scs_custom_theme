@@ -142,6 +142,125 @@
 }
 
 // Information Stairs
+.funding-partners {
+    @include grid-12;
+    position: relative;
+    margin: 24rem 0;
+    padding: 14rem 0;
+
+    &__copy {
+        grid-column: 3 / span 8;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: $spacing-s;
+        align-items: center;
+        row-gap: 0;
+    }
+        &__headline{
+            grid-column: 1 / span 8;
+        }
+
+    &__headline,
+    &__group-title {
+        margin-top: 0;
+    }
+
+    &__text {
+        grid-column: 1 / span 5;
+        > :last-child {
+            margin-bottom: 0;
+        }
+        .funding-partners__bigger-text p{
+            @include text-bigger;
+        }
+    }
+
+    &__logos {
+        grid-column: span 12;
+        @include grid-12;
+        gap: $spacing-s;
+        min-width: 0;
+    }
+
+    &__soda-logo {
+        grid-column: 6 / span 3;
+        .field--name-field-soda-logo,
+        .field__item {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            object-fit: contain;
+            max-height: unset!important;
+        }
+    }
+
+    &__group {
+        min-width: 0;
+        padding: $spacing-s;
+        background-color: $color-slate-100;
+        border-radius: $radius-large;
+        &--funding {
+            grid-column: 2 / span 2;
+                img {
+        max-height: unset!important;
+        }
+        }
+        &--partners {
+            grid-column: 5 / span 7;
+        }
+    }
+
+    &__group-title {
+        margin-bottom: $spacing-xs;
+    }
+
+    .field--name-field-founding-logos,
+    .field--name-field-partner-logos,
+    .field__items {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: $spacing-s;
+    }
+
+    .field__item {
+        display: flex;
+        flex: 0 1 14rem;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-height: 8rem;
+    }
+
+    img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        max-height: 8rem;
+        object-fit: contain;
+    }
+
+    @media screen and (max-width: $breakpoint-m-width) {
+        margin: 16rem 0;
+        padding: 10rem 0;
+
+        &__layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: $spacing-m;
+        }
+
+        &__copy,
+        &__logos {
+            grid-column: 1;
+        }
+    }
+}
+
 .information-stairs {
     @include grid-12;
 

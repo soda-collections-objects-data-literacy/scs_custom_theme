@@ -1,0 +1,45 @@
+uuid: 3f3cf363-46db-4a59-bb6a-66cad690b805
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_soda_logo
+    - node.type.funding_and_partners
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: node.funding_and_partners.field_soda_logo
+field_name: field_soda_logo
+entity_type: node
+bundle: funding_and_partners
+label: 'Soda Logo'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: logos
+  file_extensions: 'png jpg jpeg webp svg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

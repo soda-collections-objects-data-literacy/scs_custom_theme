@@ -1,0 +1,29 @@
+uuid: 95e88fe2-1e10-43cf-af6f-b6750d2b3811
+langcode: en
+status: true
+dependencies:
+  module:
+    - image
+    - node
+id: node.field_founding_logos
+field_name: field_founding_logos
+entity_type: node
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: true
+  uri_scheme: public
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: 0
+    height: 0
+module: image
+locked: false
+cardinality: 5
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

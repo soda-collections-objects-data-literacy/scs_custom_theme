@@ -1,0 +1,22 @@
+uuid: 55757b6c-ab21-4c45-a8e1-6e87062e32f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text
+    - node.type.funding_and_partners
+  module:
+    - text
+id: node.funding_and_partners.field_text
+field_name: field_text
+entity_type: node
+bundle: funding_and_partners
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

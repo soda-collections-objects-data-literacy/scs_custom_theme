@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.home_page.field_aspect_preview
     - field.field.node.home_page.field_cta_try
+    - field.field.node.home_page.field_funding_and_partners
     - field.field.node.home_page.field_home_hero_header
     - field.field.node.home_page.field_information_stairs
     - field.field.node.home_page.field_logo_banner
@@ -33,6 +34,15 @@ content:
       link: false
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_funding_and_partners:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_home_hero_header:
     type: entity_reference_entity_view

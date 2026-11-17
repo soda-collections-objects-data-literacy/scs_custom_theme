@@ -1,0 +1,11 @@
+uuid: 20162d8f-4694-4376-8e18-53986108c3f3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Funding and Partners'
+type: funding_and_partners
+description: 'Funding information and partner logos.'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: false

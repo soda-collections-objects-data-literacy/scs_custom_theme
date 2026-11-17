@@ -1,0 +1,41 @@
+{# Funding and Partners content type. #}
+<section{{ attributes.addClass('funding-partners') }}>
+    <div class="funding-partners__copy">
+        {% set headline = node.field_headline.value ?? '' %}
+        {% if headline %}
+            <h2 class="funding-partners__headline">{{ headline }}</h2>
+        {% endif %}
+        <div class="funding-partners__text">
+            <div class="funding-partners__bigger-text">
+                {{ content.field_bigger_text }}
+            </div>
+            <div class="funding-partners__body-text">
+                {{ content.field_text }}
+            </div>
+        </div>
+        {% if node.field_soda_logo.entity %}
+            <div class="funding-partners__soda-logo">
+                {{ content.field_soda_logo }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="funding-partners__logos">
+
+        {% if node.field_founding_logos|length %}
+            <section class="funding-partners__group funding-partners__group--funding">
+                <h3 class="funding-partners__group-title h5">{{ 'Funding partners'|t }}</h3>
+                <div class="funding-partners__founding-logos">
+                    {{ content.field_founding_logos }}
+                </div>
+            </section>
+        {% endif %}
+
+        {% if node.field_partner_logos|length %}
+            <section class="funding-partners__group funding-partners__group--partners">
+                <h3 class="funding-partners__group-title h5">{{ 'Partners'|t }}</h3>
+                {{ content.field_partner_logos }}
+            </section>
+        {% endif %}
+    </div>
+</section>

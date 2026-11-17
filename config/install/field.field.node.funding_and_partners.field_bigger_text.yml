@@ -1,0 +1,22 @@
+uuid: 3e783a52-bcf3-4b22-835a-528c9f857c12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bigger_text
+    - node.type.funding_and_partners
+  module:
+    - text
+id: node.funding_and_partners.field_bigger_text
+field_name: field_bigger_text
+entity_type: node
+bundle: funding_and_partners
+label: 'Bigger Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
