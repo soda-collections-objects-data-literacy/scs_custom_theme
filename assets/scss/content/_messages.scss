@@ -113,3 +113,112 @@
         text-align: right;
     }
 }
+/* Conversation threads and composer (visual theming). Structure lives in the module. */
+
+.scs-manager--messages-row--unread {
+  box-shadow: inset 0.25rem 0 0 $color-orange-600;
+}
+
+.scs-manager--messages-preview {
+  font-size: 0.875rem;
+  color: $color-slate-600;
+}
+
+.scs-manager--conversation-start__chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background-color: $color-slate-100;
+  color: $color-slate-900;
+  font-size: 0.875rem;
+}
+
+.scs-manager--conversation-start__chip-remove {
+  border-radius: 999px;
+  background-color: $color-slate-300;
+  color: $color-slate-900;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $color-slate-600;
+    color: $color-white;
+    outline: 2px solid $color-orange-600;
+    outline-offset: 2px;
+  }
+}
+
+.scs-manager--conversation-avatar {
+  border-radius: 999px;
+  background-color: $color-slate-300;
+  color: $color-slate-900;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.scs-manager--conversation-bubble {
+  padding: 0.5rem 1rem;
+  border-radius: $radius-large;
+  border-bottom-left-radius: $radius-small;
+  background-color: $color-slate-100;
+  color: $color-slate-900;
+}
+
+.scs-manager--conversation-message--own .scs-manager--conversation-bubble {
+  border-radius: $radius-large;
+  border-bottom-right-radius: $radius-small;
+  background-color: #FFEDD5;
+}
+
+.scs-manager--conversation-message--deleted .scs-manager--conversation-bubble {
+  background-color: transparent;
+  color: $color-slate-600;
+  box-shadow: inset 0 0 0 1px $color-slate-300;
+}
+
+.scs-manager--conversation-meta {
+  font-size: 0.75rem;
+  color: $color-slate-600;
+}
+
+.scs-manager--conversation-author {
+  font-weight: 700;
+  color: $color-slate-900;
+}
+
+.scs-manager--conversation-body {
+  h3,
+  h4,
+  h5 {
+    font-weight: 700;
+    color: $color-slate-900;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4,
+  h5 {
+    font-size: 0.875rem;
+  }
+
+  h5 {
+    font-weight: 500;
+  }
+
+  a {
+    color: $color-orange-600;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color-orange-500;
+    }
+  }
+}
+
+.scs-manager--conversation-actions {
+  font-size: 0.75rem;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list tbody td[colspan] {
+  color: $color-slate-600;
+}

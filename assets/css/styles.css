@@ -720,6 +720,117 @@ body.menu-open {
   }
 }
 
+.funding-partners {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 21px;
+  position: relative;
+  margin: 24rem 0;
+  padding: 14rem 0;
+}
+.funding-partners__copy {
+  grid-column: 3/span 8;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 21px;
+  align-items: center;
+  row-gap: 0;
+}
+.funding-partners__headline {
+  grid-column: 1/span 8;
+}
+.funding-partners__headline, .funding-partners__group-title {
+  margin-top: 0;
+}
+.funding-partners__text {
+  grid-column: 1/span 5;
+}
+.funding-partners__text > :last-child {
+  margin-bottom: 0;
+}
+.funding-partners__text .funding-partners__bigger-text p {
+  font-size: 3.2rem;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+.funding-partners__logos {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 21px;
+  gap: 21px;
+  min-width: 0;
+}
+.funding-partners__soda-logo {
+  grid-column: 6/span 3;
+}
+.funding-partners__soda-logo .field--name-field-soda-logo,
+.funding-partners__soda-logo .field__item {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.funding-partners__soda-logo img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  max-height: unset !important;
+}
+.funding-partners__group {
+  min-width: 0;
+  padding: 21px;
+  background-color: #F4F6F8;
+  border-radius: 16px;
+}
+.funding-partners__group--funding {
+  grid-column: 2/span 2;
+}
+.funding-partners__group--funding img {
+  max-height: unset !important;
+}
+.funding-partners__group--partners {
+  grid-column: 5/span 7;
+}
+.funding-partners__group-title {
+  margin-bottom: 10px;
+}
+.funding-partners .field--name-field-founding-logos,
+.funding-partners .field--name-field-partner-logos,
+.funding-partners .field__items {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 21px;
+}
+.funding-partners .field__item {
+  display: flex;
+  flex: 0 1 14rem;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 8rem;
+}
+.funding-partners img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 8rem;
+  object-fit: contain;
+}
+@media screen and (max-width: 768px) {
+  .funding-partners {
+    margin: 16rem 0;
+    padding: 10rem 0;
+  }
+  .funding-partners__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+  .funding-partners__copy, .funding-partners__logos {
+    grid-column: 1;
+  }
+}
+
 .information-stairs {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -2360,6 +2471,106 @@ body.menu-open {
   .scs-manager--messages-date {
     text-align: right;
   }
+}
+
+/* Conversation threads and composer (visual theming). Structure lives in the module. */
+.scs-manager--messages-row--unread {
+  box-shadow: inset 0.25rem 0 0 #E68500;
+}
+
+.scs-manager--messages-preview {
+  font-size: 0.875rem;
+  color: #4D5866;
+}
+
+.scs-manager--conversation-start__chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background-color: #F4F6F8;
+  color: #17212B;
+  font-size: 0.875rem;
+}
+
+.scs-manager--conversation-start__chip-remove {
+  border-radius: 999px;
+  background-color: #D5DCE4;
+  color: #17212B;
+}
+.scs-manager--conversation-start__chip-remove:hover, .scs-manager--conversation-start__chip-remove:focus-visible {
+  background-color: #4D5866;
+  color: #FFFFFF;
+  outline: 2px solid #E68500;
+  outline-offset: 2px;
+}
+
+.scs-manager--conversation-avatar {
+  border-radius: 999px;
+  background-color: #D5DCE4;
+  color: #17212B;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.scs-manager--conversation-bubble {
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  border-bottom-left-radius: 8px;
+  background-color: #F4F6F8;
+  color: #17212B;
+}
+
+.scs-manager--conversation-message--own .scs-manager--conversation-bubble {
+  border-radius: 16px;
+  border-bottom-right-radius: 8px;
+  background-color: #FFEDD5;
+}
+
+.scs-manager--conversation-message--deleted .scs-manager--conversation-bubble {
+  background-color: transparent;
+  color: #4D5866;
+  box-shadow: inset 0 0 0 1px #D5DCE4;
+}
+
+.scs-manager--conversation-meta {
+  font-size: 0.75rem;
+  color: #4D5866;
+}
+
+.scs-manager--conversation-author {
+  font-weight: 700;
+  color: #17212B;
+}
+
+.scs-manager--conversation-body h3,
+.scs-manager--conversation-body h4,
+.scs-manager--conversation-body h5 {
+  font-weight: 700;
+  color: #17212B;
+}
+.scs-manager--conversation-body h3 {
+  font-size: 1rem;
+}
+.scs-manager--conversation-body h4,
+.scs-manager--conversation-body h5 {
+  font-size: 0.875rem;
+}
+.scs-manager--conversation-body h5 {
+  font-weight: 500;
+}
+.scs-manager--conversation-body a {
+  color: #E68500;
+  text-decoration: underline;
+}
+.scs-manager--conversation-body a:hover {
+  color: #FFA933;
+}
+
+.scs-manager--conversation-actions {
+  font-size: 0.75rem;
+}
+
+.scs-manager--conversation-team .soda-scs-table-list tbody td[colspan] {
+  color: #4D5866;
 }
 
 .profile--header {
