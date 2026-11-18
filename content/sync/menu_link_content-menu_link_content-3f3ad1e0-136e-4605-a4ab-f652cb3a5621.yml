@@ -11,10 +11,10 @@ base_fields:
   description: null
   link:
     -
-      uri: 'https://docs.sammlungen.io'
+      uri: 'https://docs.scs.sammlungen.io'
       title: ''
       options: {  }
   weight: 0
   parent: ''
-  changed: '1788788699'
+  changed: '1794999205'
 custom_fields: {  }

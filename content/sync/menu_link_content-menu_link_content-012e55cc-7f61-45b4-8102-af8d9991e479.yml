@@ -11,10 +11,10 @@ base_fields:
   description: null
   link:
     -
-      uri: 'internal:/admin'
+      uri: 'internal:/soda-scs-manager/administration/'
       title: ''
       options: {  }
   weight: 0
   parent: ''
-  changed: '1788788670'
+  changed: '1794999146'
 custom_fields: {  }
