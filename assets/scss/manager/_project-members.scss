@@ -238,16 +238,10 @@ details.pending_invitations {
 }
 
 .project-member__roles-panel {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 4px);
-    z-index: 3;
-    width: min(320px, calc(100vw - 32px));
-    background: $color-white;
-    border: 1px solid $scs-members-menu-border;
-    border-radius: 4px;
-    box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.12);
-    padding: 12px;
+    margin-top: $spacing-xs;
+    padding-top: $spacing-xs;
+    border-top: 1px solid $color-slate-300;
+    min-width: 0;
 }
 
 .project-member__roles-title {
@@ -278,7 +272,14 @@ details.pending_invitations {
 }
 
 .project-member__role-select {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    max-width: 100%;
+    min-width: 0;
+    padding: $spacing-xs;
+    border: 1px solid $color-slate-600;
+    border-radius: $radius-small;
+    background-color: $color-white;
+    color: $color-slate-900;
 }
 
 .project-member__roles-status {

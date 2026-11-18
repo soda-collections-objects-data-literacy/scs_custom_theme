@@ -8,7 +8,7 @@ global-styling:
     theme:
       assets/css/styles.css: { preprocess: false }
 global-scripts:
-  version: 1.6
+  version: 1.7
   js:
     assets/js/navigation.js: {}
     assets/js/scripts.js: {}

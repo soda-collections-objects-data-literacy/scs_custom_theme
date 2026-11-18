@@ -374,12 +374,20 @@
             &--edit {
                 .project-member {
                     grid-template-columns: 6rem 1fr auto;
+                    padding: $spacing-xs;
+                    outline: 1px solid $color-slate-300;
+                    border-radius: $radius-small;
 
                     img,
                     .project-member__initials {
                         width: 6rem;
                         height: 6rem;
                         font-size: 1.5rem;
+                        align-self: start;
+                    }
+
+                    .project-member__actions {
+                        align-self: start;
                     }
                 }
             }
@@ -390,6 +398,21 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-xs;
+
+        .project-member__roles-trigger[aria-expanded="true"] {
+            background-color: $color-slate-900;
+            border-color: $color-slate-900;
+            color: $color-white;
+        }
+
+        .project-members-edit-overlay__save-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: $spacing-xs;
+            margin-top: $spacing-s;
+        }
 
         ul {
             margin: 0;

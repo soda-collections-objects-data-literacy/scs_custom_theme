@@ -17,6 +17,11 @@ html {
     scroll-behavior: smooth;
 }
 
+html.scs-pointer-focus :focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 body {
     overflow-x: hidden;
     position: relative;

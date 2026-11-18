@@ -3207,16 +3207,10 @@ details.pending_invitations > div {
 }
 
 .project-member__roles-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 4px);
-  z-index: 3;
-  width: min(320px, 100vw - 32px);
-  background: #FFFFFF;
-  border: 1px solid #cbd2d9;
-  border-radius: 4px;
-  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.12);
-  padding: 12px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #D5DCE4;
+  min-width: 0;
 }
 
 .project-member__roles-title {
@@ -3247,7 +3241,14 @@ details.pending_invitations > div {
 }
 
 .project-member__role-select {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #4D5866;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  color: #17212B;
 }
 
 .project-member__roles-status {
@@ -4865,6 +4866,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html.scs-pointer-focus :focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 body {
   overflow-x: hidden;
   position: relative;
@@ -5932,6 +5938,7 @@ body.menu-open {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  margin-top: 21px;
 }
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > * {
   order: 1;
@@ -5946,22 +5953,39 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .button--primary {
   order: 2;
 }
-.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
-  margin-top: 21px;
-}
 .project--right .project__members .project__members__list--edit .project-member {
   grid-template-columns: 6rem 1fr auto;
+  padding: 10px;
+  outline: 1px solid #D5DCE4;
+  border-radius: 8px;
 }
 .project--right .project__members .project__members__list--edit .project-member img,
 .project--right .project__members .project__members__list--edit .project-member .project-member__initials {
   width: 6rem;
   height: 6rem;
   font-size: 1.5rem;
+  align-self: start;
+}
+.project--right .project__members .project__members__list--edit .project-member .project-member__actions {
+  align-self: start;
 }
 .project--right .project-members-edit-overlay .overlay__dialog {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.project--right .project-members-edit-overlay .overlay__dialog .project-member__roles-trigger[aria-expanded=true] {
+  background-color: #17212B;
+  border-color: #17212B;
+  color: #FFFFFF;
+}
+.project--right .project-members-edit-overlay .overlay__dialog .project-members-edit-overlay__save-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 21px;
 }
 .project--right .project-members-edit-overlay .overlay__dialog ul {
   margin: 0;
@@ -8933,5 +8957,3 @@ footer.public-footer .public-footer__navs #footer-menu ul li:last-child {
     margin-bottom: 21px;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */

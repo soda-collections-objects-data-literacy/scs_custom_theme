@@ -3,6 +3,18 @@
 
   Drupal.behaviors.scsCustomThemeNavigation = {
     attach: function (context) {
+      once('scsFocusModality', 'html', context).forEach(function (root) {
+        root.classList.add('scs-pointer-focus');
+        document.addEventListener('pointerdown', function () {
+          root.classList.add('scs-pointer-focus');
+        }, true);
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Tab') {
+            root.classList.remove('scs-pointer-focus');
+          }
+        }, true);
+      });
+
       once('scsLanguageSwitcher', '.language-switcher', context).forEach(function (switcher) {
         var toggle = switcher.querySelector('.language-switcher__toggle');
         if (!toggle) {
