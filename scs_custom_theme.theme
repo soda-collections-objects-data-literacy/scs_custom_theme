@@ -38,6 +38,9 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
     || str_contains($request_path, '/soda-scs-manager')
     || scs_custom_theme_is_legal_page_for_member($request_path);
   $variables['is_manager_page'] = $is_manager_page;
+  $exception = \Drupal::requestStack()->getCurrentRequest()?->attributes->get('exception');
+  $variables['is_content_status'] = $exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
+    && $exception->getStatusCode() >= 400;
 
   $variables['user_picture'] = [];
   $variables['user_initials'] = '';

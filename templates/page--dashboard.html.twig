@@ -115,7 +115,11 @@
 		{% endif %}
 
 		<section class="dashboard-content dashboard-content--full">
-			{{ page.content }}
+			{% if is_content_status %}
+				<article class="content__status">{{ page.content }}</article>
+			{% else %}
+				{{ page.content }}
+			{% endif %}
 		</section>
 
 	</main>

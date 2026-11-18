@@ -1,6 +1,13 @@
 @use 'tokens' as *;
 
 @layer components {
+    .scs-manager--wisski-update-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+    }
+
     .soda-scs-manager__version-info {
         margin-bottom: 1.5rem;
         border-radius: 0.5rem;

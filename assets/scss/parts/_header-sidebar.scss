@@ -35,9 +35,11 @@ $bottom-nav-icon-size: 24px;
             align-items: center;
             height: 100%;
             padding: 2rem 6rem;
-            a{
+
+            a {
                 flex: 1 1 0;
             }
+
             img {
                 max-height: 100%;
                 height: auto;
@@ -311,14 +313,22 @@ $bottom-nav-icon-size: 24px;
         .dashboard-content {
             @include grid-9;
 
-            >article {
+            >article,
+            >form {
                 grid-column: 1 / span 6;
+            }
+
+            h1 {
+                grid-column: 1 / span 6;
+                margin-bottom: $spacing-m;
             }
 
             @media screen and (max-width: $breakpoint-l-width) {
 
                 >*,
-                >article {
+                >article,
+                h1,
+                >form {
                     grid-column: 1 / -1;
                 }
             }

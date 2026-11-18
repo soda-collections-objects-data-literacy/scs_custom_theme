@@ -4046,6 +4046,12 @@ details.pending_invitations > div {
   }
 }
 @layer components {
+  .scs-manager--wisski-update-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
   .soda-scs-manager__version-info {
     margin-bottom: 1.5rem;
     border-radius: 0.5rem;
@@ -5921,7 +5927,6 @@ body.menu-open {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin-top: 21px;
 }
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > * {
   order: 1;
@@ -5935,6 +5940,9 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .btn--primary,
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .button--primary {
   order: 2;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
+  margin-top: 21px;
 }
 .project--right .project__members .project__members__list--edit .project-member {
   grid-template-columns: 6rem 1fr auto;
@@ -7394,6 +7402,10 @@ input + .description {
   margin-bottom: 0.5em;
 }
 
+.soda-scs-wisski-update-confirm-form .btn {
+  margin-top: 21px;
+}
+
 .overlay {
   position: fixed;
   top: var(--scs-overlay-top, 0);
@@ -8582,12 +8594,19 @@ div#sliding-popup.sliding-popup-bottom .eu-cookie-compliance-categories-buttons 
   grid-template-columns: repeat(9, 1fr);
   gap: 21px;
 }
-.dashboard-layout .dashboard-main .dashboard-content > article {
+.dashboard-layout .dashboard-main .dashboard-content > article,
+.dashboard-layout .dashboard-main .dashboard-content > form {
   grid-column: 1/span 6;
+}
+.dashboard-layout .dashboard-main .dashboard-content h1 {
+  grid-column: 1/span 6;
+  margin-bottom: 30px;
 }
 @media screen and (max-width: 1200px) {
   .dashboard-layout .dashboard-main .dashboard-content > *,
-  .dashboard-layout .dashboard-main .dashboard-content > article {
+  .dashboard-layout .dashboard-main .dashboard-content > article,
+  .dashboard-layout .dashboard-main .dashboard-content h1,
+  .dashboard-layout .dashboard-main .dashboard-content > form {
     grid-column: 1/-1;
   }
 }
@@ -8912,3 +8931,5 @@ footer.public-footer .public-footer__navs #footer-menu ul li:last-child {
     margin-bottom: 21px;
   }
 }
+
+/*# sourceMappingURL=styles.css.map */
