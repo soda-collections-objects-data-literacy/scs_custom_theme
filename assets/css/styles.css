@@ -4277,6 +4277,11 @@ button.soda-scs-manager--health-action:focus:not(:focus-visible) {
   grid-column: 1/-1;
 }
 
+.scs-manager--details-confirm-content input[name=label] {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
 /*
  * Conversation start form and admin list: theme input rules are unlayered and
  * leave width to the size/cols attributes. Beat that here.
@@ -7348,6 +7353,7 @@ button--icon {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  margin-top: 21px;
 }
 .project-card__delete-confirmation__actions button,
 .project-card__delete-confirmation__actions a,
@@ -7400,10 +7406,6 @@ input + .description {
   font-size: 2rem;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-}
-
-.soda-scs-wisski-update-confirm-form .btn {
-  margin-top: 21px;
 }
 
 .overlay {
