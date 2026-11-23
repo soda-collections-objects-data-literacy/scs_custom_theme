@@ -1,0 +1,23 @@
+uuid: c0de4af8-63e5-4a88-9126-cd4713394aa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partner_3_link
+    - node.type.funding_and_partners
+  module:
+    - link
+id: node.funding_and_partners.field_partner_3_link
+field_name: field_partner_3_link
+entity_type: node
+bundle: funding_and_partners
+label: 'Partner 3 link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

@@ -1,12 +1,12 @@
-uuid: 95e88fe2-1e10-43cf-af6f-b6750d2b3811
+uuid: f498a6e4-1b6e-477b-8993-909df45ccdff
 langcode: en
 status: true
 dependencies:
   module:
     - image
     - node
-id: node.field_founding_logos
-field_name: field_founding_logos
+id: node.field_funding_1
+field_name: field_funding_1
 entity_type: node
 type: image
 settings:
@@ -22,7 +22,7 @@ settings:
     height: 0
 module: image
 locked: false
-cardinality: 5
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -240,7 +240,7 @@ custom_fields:
             value: '<p>Users have access to various applications&nbsp;that allow them to model, develop, transform, migrate, analyze, visualize, store, publish, enrich, or process data with programming code.</p>'
             format: basic_html
             embed_entities: {  }
-        field_founding_logos:
+        field_funding_1:
           -
             alt: EU
             title: ''
@@ -257,6 +257,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/png
               custom_fields: {  }
+        field_funding_2:
           -
             alt: BMFTR
             title: ''
@@ -276,7 +277,7 @@ custom_fields:
         field_headline:
           -
             value: 'The SODa Project'
-        field_partner_logos:
+        field_partner_1:
           -
             alt: FAU
             title: ''
@@ -293,6 +294,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_2:
           -
             alt: GNM
             title: ''
@@ -309,6 +311,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_3:
           -
             alt: HU
             title: ''
@@ -325,6 +328,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_4:
           -
             alt: IGSD
             title: ''
@@ -341,6 +345,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/png
               custom_fields: {  }
+        field_partner_5:
           -
             alt: KUS
             title: ''

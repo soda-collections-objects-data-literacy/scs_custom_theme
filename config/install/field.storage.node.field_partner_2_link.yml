@@ -1,0 +1,19 @@
+uuid: 3a216be7-c31d-44f5-ab5b-8e52ce8caff0
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_partner_2_link
+field_name: field_partner_2_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

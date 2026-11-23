@@ -4,13 +4,43 @@ status: true
 dependencies:
   config:
     - field.field.node.funding_and_partners.field_bigger_text
-    - field.field.node.funding_and_partners.field_founding_logos
     - field.field.node.funding_and_partners.field_headline
-    - field.field.node.funding_and_partners.field_partner_logos
     - field.field.node.funding_and_partners.field_soda_logo
     - field.field.node.funding_and_partners.field_text
+    - field.field.node.funding_and_partners.field_funding_1
+    - field.field.node.funding_and_partners.field_funding_1_link
+    - field.field.node.funding_and_partners.field_funding_2
+    - field.field.node.funding_and_partners.field_funding_2_link
+    - field.field.node.funding_and_partners.field_funding_3
+    - field.field.node.funding_and_partners.field_funding_3_link
+    - field.field.node.funding_and_partners.field_funding_4
+    - field.field.node.funding_and_partners.field_funding_4_link
+    - field.field.node.funding_and_partners.field_funding_5
+    - field.field.node.funding_and_partners.field_funding_5_link
+    - field.field.node.funding_and_partners.field_partner_1
+    - field.field.node.funding_and_partners.field_partner_1_link
+    - field.field.node.funding_and_partners.field_partner_2
+    - field.field.node.funding_and_partners.field_partner_2_link
+    - field.field.node.funding_and_partners.field_partner_3
+    - field.field.node.funding_and_partners.field_partner_3_link
+    - field.field.node.funding_and_partners.field_partner_4
+    - field.field.node.funding_and_partners.field_partner_4_link
+    - field.field.node.funding_and_partners.field_partner_5
+    - field.field.node.funding_and_partners.field_partner_5_link
+    - field.field.node.funding_and_partners.field_partner_6
+    - field.field.node.funding_and_partners.field_partner_6_link
+    - field.field.node.funding_and_partners.field_partner_7
+    - field.field.node.funding_and_partners.field_partner_7_link
+    - field.field.node.funding_and_partners.field_partner_8
+    - field.field.node.funding_and_partners.field_partner_8_link
+    - field.field.node.funding_and_partners.field_partner_9
+    - field.field.node.funding_and_partners.field_partner_9_link
+    - field.field.node.funding_and_partners.field_partner_10
+    - field.field.node.funding_and_partners.field_partner_10_link
+    - field.field.node.funding_and_partners.field_soda_logo_link
     - node.type.funding_and_partners
   module:
+    - link
     - image
     - path
     - text
@@ -21,7 +51,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 20
+    weight: 41
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -56,36 +86,22 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-  field_founding_logos:
-    type: image_image
-    weight: 5
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
-  field_partner_logos:
-    type: image_image
-    weight: 6
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 21
+    weight: 42
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   path:
     type: path
-    weight: 22
+    weight: 43
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 23
+    weight: 44
     region: content
     settings:
       display_label: true
@@ -100,13 +116,246 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 19
+    weight: 40
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_funding_1:
+    type: image_image
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_funding_1_link:
+    type: link_default
+    weight: 7
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_funding_2:
+    type: image_image
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_funding_2_link:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_funding_3:
+    type: image_image
+    weight: 10
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_funding_3_link:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_funding_4:
+    type: image_image
+    weight: 12
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_funding_4_link:
+    type: link_default
+    weight: 13
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_funding_5:
+    type: image_image
+    weight: 14
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_funding_5_link:
+    type: link_default
+    weight: 15
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_1:
+    type: image_image
+    weight: 16
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_1_link:
+    type: link_default
+    weight: 17
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_2:
+    type: image_image
+    weight: 18
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_2_link:
+    type: link_default
+    weight: 19
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_3:
+    type: image_image
+    weight: 20
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_3_link:
+    type: link_default
+    weight: 21
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_4:
+    type: image_image
+    weight: 22
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_4_link:
+    type: link_default
+    weight: 23
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_5:
+    type: image_image
+    weight: 24
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_5_link:
+    type: link_default
+    weight: 25
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_6:
+    type: image_image
+    weight: 26
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_6_link:
+    type: link_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_7:
+    type: image_image
+    weight: 28
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_7_link:
+    type: link_default
+    weight: 29
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_8:
+    type: image_image
+    weight: 30
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_8_link:
+    type: link_default
+    weight: 31
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_9:
+    type: image_image
+    weight: 32
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_9_link:
+    type: link_default
+    weight: 33
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_partner_10:
+    type: image_image
+    weight: 34
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_partner_10_link:
+    type: link_default
+    weight: 35
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_soda_logo_link:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
 hidden:
   promote: true

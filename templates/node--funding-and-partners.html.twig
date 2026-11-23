@@ -15,26 +15,63 @@
         </div>
         {% if node.field_soda_logo.entity %}
             <div class="funding-partners__soda-logo">
-                {{ content.field_soda_logo }}
+                {% if node.field_soda_logo_link.0.url|default(null) %}
+                    {{ link(content.field_soda_logo, node.field_soda_logo_link.0.url) }}
+                {% else %}
+                    {{ content.field_soda_logo }}
+                {% endif %}
             </div>
         {% endif %}
     </div>
 
     <div class="funding-partners__logos">
 
-        {% if node.field_founding_logos|length %}
+        {% set funding_logos %}
+            {% for index in 1..5 %}
+                {% set image_field = 'field_funding_' ~ index %}
+                {% set link_field = image_field ~ '_link' %}
+                {% if attribute(node, image_field).entity %}
+                    <div class="field__item">
+                        {% if attribute(node, link_field).0.url|default(null) %}
+                            {{ link(content[image_field], attribute(node, link_field).0.url) }}
+                        {% else %}
+                            {{ content[image_field] }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endset %}
+        {% set partner_logos %}
+            {% for index in 1..10 %}
+                {% set image_field = 'field_partner_' ~ index %}
+                {% set link_field = image_field ~ '_link' %}
+                {% if attribute(node, image_field).entity %}
+                    <div class="field__item">
+                        {% if attribute(node, link_field).0.url|default(null) %}
+                            {{ link(content[image_field], attribute(node, link_field).0.url) }}
+                        {% else %}
+                            {{ content[image_field] }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endset %}
+
+        {% if funding_logos|trim %}
             <section class="funding-partners__group funding-partners__group--funding">
                 <h3 class="funding-partners__group-title h5">{{ 'Funding partners'|t }}</h3>
                 <div class="funding-partners__founding-logos">
-                    {{ content.field_founding_logos }}
+                    {{ funding_logos }}
                 </div>
             </section>
         {% endif %}
 
-        {% if node.field_partner_logos|length %}
+        {% if partner_logos|trim %}
             <section class="funding-partners__group funding-partners__group--partners">
                 <h3 class="funding-partners__group-title h5">{{ 'Partners'|t }}</h3>
-                {{ content.field_partner_logos }}
+                <div class="funding-partners__partner-logos">
+                    {{ partner_logos }}
+                </div>
             </section>
         {% endif %}
     </div>

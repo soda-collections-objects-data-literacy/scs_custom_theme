@@ -1,9 +1,9 @@
-uuid: 46ff945f-101b-47d9-a7e6-e6888bbad950
+uuid: 54d831f4-96e7-4083-90d3-b6d8699aae77
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_founding_logos
+    - field.storage.node.field_partner_9
     - node.type.funding_and_partners
   module:
     - content_translation
@@ -14,11 +14,11 @@ third_party_settings:
       alt: alt
       title: title
       file: '0'
-id: node.funding_and_partners.field_founding_logos
-field_name: field_founding_logos
+id: node.funding_and_partners.field_partner_9
+field_name: field_partner_9
 entity_type: node
 bundle: funding_and_partners
-label: 'Founding Logos'
+label: 'Partner 9'
 description: ''
 required: false
 translatable: true

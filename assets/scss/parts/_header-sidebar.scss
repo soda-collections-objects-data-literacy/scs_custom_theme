@@ -175,6 +175,20 @@ $bottom-nav-icon-size: 24px;
         }
 
         .dashboard-sidebar__account-menu {
+            .dashboard-sidebar__account-menu-initials {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: $color-slate-300;
+                color: $color-slate-900;
+                flex-shrink: 0;
+                @include text-nav-link;
+                @include font-text-bold;
+            }
+
             button.dashboard-sidebar__account-menu-header {
                 display: flex;
                 gap: $spacing-s;
@@ -196,6 +210,10 @@ $bottom-nav-icon-size: 24px;
                     color: $color-white;
                 }
 
+                .dashboard-sidebar__account-menu-initials {
+                    color: $color-slate-900;
+                }
+
                 .dashboard-sidebar__account-menu-picture {
                     width: 7rem;
                     height: 7rem;
@@ -208,15 +226,6 @@ $bottom-nav-icon-size: 24px;
                     }
                 }
 
-                .dashboard-sidebar__account-menu-initials {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 50%;
-                    background-color: $color-slate-300;
-                    color: $color-slate-900;
-                    flex-shrink: 0;
-                }
             }
 
             .dashboard-sidebar__account-menu-content {

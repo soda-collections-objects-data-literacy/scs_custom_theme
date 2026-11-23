@@ -1,0 +1,19 @@
+uuid: 539e4601-787b-4336-9215-7f7e5bbf3e96
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_funding_1_link
+field_name: field_funding_1_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

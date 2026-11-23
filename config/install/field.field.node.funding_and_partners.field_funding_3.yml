@@ -1,9 +1,9 @@
-uuid: f1720c00-1458-4a24-841c-5cf459f33dc5
+uuid: d84f037d-4de7-4419-a3c9-58627e2287ea
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_partner_logos
+    - field.storage.node.field_funding_3
     - node.type.funding_and_partners
   module:
     - content_translation
@@ -14,11 +14,11 @@ third_party_settings:
       alt: alt
       title: title
       file: '0'
-id: node.funding_and_partners.field_partner_logos
-field_name: field_partner_logos
+id: node.funding_and_partners.field_funding_3
+field_name: field_funding_3
 entity_type: node
 bundle: funding_and_partners
-label: 'Partner Logos'
+label: 'Funding 3'
 description: ''
 required: false
 translatable: true
