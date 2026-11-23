@@ -54,21 +54,12 @@ function scs_custom_theme_post_update_logo_pairs(&$sandbox): void {
         ->forUpdate()
         ->execute()->fetchField();
       $node = $storage->loadUnchanged($id);
-      if ($node) {
-        $needs_migration = FALSE;
-        foreach (array_keys($node->getTranslationLanguages()) as $language) {
-          if (!(bool) $node->getTranslation($language)->get('field_logos_migrated')->value) {
-            $needs_migration = TRUE;
-            break;
-          }
+      if ($node && scs_custom_theme_migrate_node_logo_fields($node)) {
+        if ((int) $storage->getLatestRevisionId($id) !== (int) $node->getRevisionId()) {
+          throw new \RuntimeException("Node {$id} has a pending revision; resolve it before migrating logos.");
         }
-        if ($needs_migration) {
-          if ((int) $storage->getLatestRevisionId($id) !== (int) $node->getRevisionId()) {
-            throw new \RuntimeException("Node {$id} has a pending revision; resolve it before migrating logos.");
-          }
-          $node->setNewRevision(TRUE);
-          $node->save();
-        }
+        $node->setNewRevision(TRUE);
+        $node->save();
       }
       unset($transaction);
     }
@@ -82,6 +73,52 @@ function scs_custom_theme_post_update_logo_pairs(&$sandbox): void {
   $sandbox['#finished'] = $ids === [] || $sandbox['last_id'] >= $sandbox['max_id']
     ? 1
     : $sandbox['last_id'] / max(1, $sandbox['max_id']);
+}
+
+/**
+ * Copies legacy multivalue logos into paired fields and marks the translation.
+ *
+ * Existing paired values are left alone. Returns TRUE when the node changed
+ * and still needs saving.
+ */
+function scs_custom_theme_migrate_node_logo_fields(\Drupal\node\NodeInterface $node): bool {
+  if (!$node->hasField('field_logos_migrated')) {
+    return FALSE;
+  }
+
+  $changed = FALSE;
+  $map = [
+    'field_founding_logos' => ['prefix' => 'field_funding_', 'max' => 5],
+    'field_partner_logos' => ['prefix' => 'field_partner_', 'max' => 10],
+  ];
+
+  foreach (array_keys($node->getTranslationLanguages()) as $langcode) {
+    $translation = $node->getTranslation($langcode);
+    if ((bool) $translation->get('field_logos_migrated')->value) {
+      continue;
+    }
+
+    foreach ($map as $legacy_field => $target) {
+      if (!$translation->hasField($legacy_field)) {
+        continue;
+      }
+      foreach ($translation->get($legacy_field)->getValue() as $delta => $value) {
+        if ($delta >= $target['max']) {
+          break;
+        }
+        $field_name = $target['prefix'] . ($delta + 1);
+        if ($translation->hasField($field_name) && $translation->get($field_name)->isEmpty()) {
+          $translation->set($field_name, [$value]);
+          $changed = TRUE;
+        }
+      }
+    }
+
+    $translation->set('field_logos_migrated', TRUE);
+    $changed = TRUE;
+  }
+
+  return $changed;
 }
 
 /**
@@ -195,15 +232,43 @@ function scs_custom_theme_update_logo_displays(array $created_fields = []): void
 }
 
 /**
- * Permanently removes the superseded multivalue funding and partner fields.
+ * Migrates any remaining logos, then removes the superseded multivalue fields.
  */
 function scs_custom_theme_post_update_remove_legacy_logo_fields(): void {
+  // logo_pairs may already have run without the helper module; finish migration
+  // here before the legacy fields disappear.
+  scs_custom_theme_install_logo_fields();
+
   $manager = \Drupal::entityTypeManager();
   $node_storage = $manager->getStorage('node');
   $ids = $node_storage->getQuery()
     ->accessCheck(FALSE)
     ->condition('type', 'funding_and_partners')
     ->execute();
+  foreach ($ids as $id) {
+    $transaction = \Drupal::database()->startTransaction();
+    try {
+      \Drupal::database()->select('node', 'n')
+        ->fields('n', ['nid'])
+        ->condition('nid', $id)
+        ->forUpdate()
+        ->execute()->fetchField();
+      $node = $node_storage->loadUnchanged($id);
+      if ($node && scs_custom_theme_migrate_node_logo_fields($node)) {
+        if ((int) $node_storage->getLatestRevisionId($id) !== (int) $node->getRevisionId()) {
+          throw new \RuntimeException("Node {$id} has a pending revision; resolve it before migrating logos.");
+        }
+        $node->setNewRevision(TRUE);
+        $node->save();
+      }
+      unset($transaction);
+    }
+    catch (\Throwable $exception) {
+      $transaction->rollBack();
+      throw $exception;
+    }
+  }
+
   foreach ($ids as $id) {
     $node = $node_storage->load($id);
     foreach (array_keys($node->getTranslationLanguages()) as $language) {
@@ -241,8 +306,5 @@ function scs_custom_theme_post_update_remove_legacy_logo_fields(): void {
     }
   }
 
-  if (\Drupal::moduleHandler()->moduleExists('scs_theme_content')) {
-    \Drupal::service('module_installer')->uninstall(['scs_theme_content']);
-  }
   \Drupal::service('entity_field.manager')->clearCachedFieldDefinitions();
 }
