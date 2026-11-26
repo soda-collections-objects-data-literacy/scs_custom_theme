@@ -1,5 +1,7 @@
 @use 'tokens' as *;
 
+// Rendered in: the Keycloak user-registration form and its validation state.
+
 @layer components {
     .keycloak-user-registration-form {
         margin-inline: auto;

@@ -1,6 +1,8 @@
 @use '../base/vars' as *;
 @use 'tokens' as *;
 
+// Rendered in: component filters, list tables, and pagination controls.
+
 .soda-scs-component-filters {
     margin-bottom: 1.5rem;
     .soda-scs-filters-form {

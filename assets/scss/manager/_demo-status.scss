@@ -2,6 +2,7 @@
 
 // Demo project status panel on the project page; the rows are rebuilt by the
 // module's js/demoProjectStatus.js while the demo job runs.
+// Rendered in: the demo-project status panel on a project page.
 @layer components {
     .scs-manager--demo-status-job-line {
         margin: 0;

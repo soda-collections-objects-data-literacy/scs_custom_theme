@@ -1,5 +1,11 @@
+@use '../base/vars'as *;
+@use '../base/mixins'as *;
+
 .template--404 {
     .grid--50-50 {
         margin-top: 10vh;
+    }
+    .btn {
+        margin-top: $spacing-s;
     }
 }

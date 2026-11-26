@@ -1,6 +1,8 @@
 @use '../base/vars' as *;
 @use 'tokens' as *;
 
+// Rendered in: the floating WissKI-ready notification after an update.
+
 .wisski-ready-notification {
     position: fixed;
     top: calc(1 / 2 * 100%);

@@ -37,8 +37,11 @@ function scs_custom_theme_preprocess_page(array &$variables): void {
   $is_manager_page = str_contains($path, 'soda-scs-manager')
     || str_contains($request_path, '/soda-scs-manager')
     || scs_custom_theme_is_legal_page_for_member($request_path);
-  $variables['is_manager_page'] = $is_manager_page;
   $exception = \Drupal::requestStack()->getCurrentRequest()?->attributes->get('exception');
+  if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface && $exception->getStatusCode() === 404) {
+    $is_manager_page = \Drupal::currentUser()->isAuthenticated();
+  }
+  $variables['is_manager_page'] = $is_manager_page;
   $variables['is_content_status'] = $exception instanceof \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface
     && $exception->getStatusCode() >= 400;
 
@@ -147,6 +150,10 @@ function scs_custom_theme_theme_suggestions_page_alter(array &$suggestions, arra
   if (str_contains($path, 'soda-scs-manager') || str_contains($request_path, '/soda-scs-manager') || scs_custom_theme_is_legal_page_for_member($request_path)) {
     $suggestions = array_values(array_diff($suggestions, ['page__public']));
     $suggestions[] = 'page__dashboard';
+    if (in_array('page__404', $suggestions, TRUE)) {
+      $suggestions = array_values(array_diff($suggestions, ['page__404']));
+      $suggestions[] = 'page__404';
+    }
   }
 }
 

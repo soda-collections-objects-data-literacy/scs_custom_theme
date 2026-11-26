@@ -1,6 +1,8 @@
 @use '../base/vars' as *;
 @use 'tokens' as *;
 
+// Rendered in: the first-use co-working-space onboarding overlay.
+
 @layer components {
     .scs-manager--coworking-intro {
         position: fixed;

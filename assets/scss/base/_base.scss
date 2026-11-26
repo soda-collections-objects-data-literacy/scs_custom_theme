@@ -35,6 +35,15 @@ body {
 
 .public-layout {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.public-main {
+    width: 100%;
+    flex: 1 0 auto;
 }
 
 #main-content {

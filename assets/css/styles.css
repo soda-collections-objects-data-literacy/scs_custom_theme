@@ -4,6 +4,7 @@
  * The module's markup is sized with border-box everywhere (the old theme
  * bundle applied Tailwind's reset site-wide, also under Gin). Scoped to the
  * module's own elements; :where() keeps the specificity at 0.
+ * Rendered in: all SCS Manager pages and module-owned sections.
  */
 @layer base {
   :where([class*=soda-scs-], [class*=scs-manager--]),
@@ -21,335 +22,6 @@
 @layer components {
   section {
     margin-top: 2rem;
-  }
-}
-.soda-scs-manager--administration-page {
-  margin-inline: auto;
-  max-width: 80rem;
-  padding-inline: 1rem;
-  padding-block: 2rem;
-}
-
-.soda-scs-manager--administration-header {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.soda-scs-manager--administration-title {
-  margin-bottom: 1rem;
-  font-size: 2.25rem;
-  line-height: 1.1111;
-  font-weight: 700;
-  color: #000;
-}
-
-.soda-scs-manager--administration-intro {
-  font-size: 1.25rem;
-  line-height: 1.4;
-  color: oklch(70.9% 0.01 56.259deg);
-}
-
-.soda-scs-manager--administration-empty {
-  border-radius: 0.5rem;
-  border-style: solid;
-  border-width: 2px;
-  border-color: oklch(92.3% 0.003 48.717deg);
-  background-color: oklch(12.9% 0.042 264.695deg);
-  padding: 1rem;
-  text-align: center;
-  opacity: 20%;
-}
-
-.soda-scs-manager--administration-empty-text {
-  font-size: 1.25rem;
-  line-height: 1.4;
-  color: oklch(92.3% 0.003 48.717deg);
-}
-
-.soda-scs-manager--administration-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: stretch;
-  width: 100%;
-  margin-inline: auto;
-}
-@media (min-width: 40rem) {
-  .soda-scs-manager--administration-grid {
-    max-width: 40rem;
-  }
-}
-@media (min-width: 48rem) {
-  .soda-scs-manager--administration-grid {
-    max-width: 48rem;
-  }
-}
-@media (min-width: 64rem) {
-  .soda-scs-manager--administration-grid {
-    max-width: 64rem;
-  }
-}
-@media (min-width: 80rem) {
-  .soda-scs-manager--administration-grid {
-    max-width: 80rem;
-  }
-}
-@media (min-width: 96rem) {
-  .soda-scs-manager--administration-grid {
-    max-width: 96rem;
-  }
-}
-
-.soda-scs-manager--admin-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  background-color: #fff;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  border: 2px solid transparent;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card:hover {
-    scale: 105% 105%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-}
-
-.soda-scs-manager--admin-card-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  color: oklch(21% 0.034 264.665deg);
-  text-decoration-line: none;
-  text-decoration: none;
-  flex: 1;
-  min-height: 200px;
-}
-
-.soda-scs-manager--admin-card-icon {
-  display: flex;
-  height: 4rem;
-  width: 4rem;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-}
-
-.soda-scs-manager--admin-card-icon svg,
-.soda-scs-manager--admin-card-icon-svg {
-  height: 2.5rem;
-  width: 2.5rem;
-}
-
-.soda-scs-manager--admin-card-icon-svg {
-  filter: brightness(0) saturate(100%);
-  opacity: 0.8;
-}
-
-.soda-scs-manager--admin-card-content {
-  flex: 1;
-}
-
-.soda-scs-manager--admin-card-title {
-  margin: 0px;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  font-weight: 700;
-  color: oklch(21% 0.034 264.665deg);
-}
-
-.soda-scs-manager--admin-card-description {
-  font-size: 0.875rem;
-  line-height: 1.625;
-  color: oklch(44.6% 0.03 256.802deg);
-}
-
-.soda-scs-manager--admin-card-arrow {
-  height: 1.5rem;
-  width: 1.5rem;
-  flex-shrink: 0;
-  opacity: 50%;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-.soda-scs-manager--admin-card-arrow svg {
-  height: 100%;
-  width: 100%;
-}
-
-.soda-scs-manager--admin-card:hover .soda-scs-manager--admin-card-arrow {
-  translate: 0.25rem 0;
-  opacity: 100%;
-}
-
-.soda-scs-manager--admin-card-emerald {
-  border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-emerald {
-    border-color: color-mix(in oklab, oklch(69.6% 0.17 162.48deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-emerald:hover {
-    border-color: oklch(69.6% 0.17 162.48deg);
-  }
-}
-
-.soda-scs-manager--admin-card-emerald .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48deg) 20%, transparent);
-  color: oklch(50.8% 0.118 165.612deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-emerald .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(69.6% 0.17 162.48deg) 20%, transparent);
-  }
-}
-
-.soda-scs-manager--admin-card-blue {
-  border-color: color-mix(in srgb, oklch(62.3% 0.214 259.815deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-blue {
-    border-color: color-mix(in oklab, oklch(62.3% 0.214 259.815deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-blue:hover {
-    border-color: oklch(62.3% 0.214 259.815deg);
-  }
-}
-
-.soda-scs-manager--admin-card-blue .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815deg) 20%, transparent);
-  color: oklch(48.8% 0.243 264.376deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-blue .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(62.3% 0.214 259.815deg) 20%, transparent);
-  }
-}
-
-.soda-scs-manager--admin-card-amber {
-  border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-amber {
-    border-color: color-mix(in oklab, oklch(76.9% 0.188 70.08deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-amber:hover {
-    border-color: oklch(76.9% 0.188 70.08deg);
-  }
-}
-
-.soda-scs-manager--admin-card-amber .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08deg) 20%, transparent);
-  color: oklch(55.5% 0.163 48.998deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-amber .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(76.9% 0.188 70.08deg) 20%, transparent);
-  }
-}
-
-.soda-scs-manager--admin-card-purple {
-  border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-purple {
-    border-color: color-mix(in oklab, oklch(62.7% 0.265 303.9deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-purple:hover {
-    border-color: oklch(62.7% 0.265 303.9deg);
-  }
-}
-
-.soda-scs-manager--admin-card-purple .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9deg) 20%, transparent);
-  color: oklch(49.6% 0.265 301.924deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-purple .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(62.7% 0.265 303.9deg) 20%, transparent);
-  }
-}
-
-.soda-scs-manager--admin-card-rose {
-  border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-rose {
-    border-color: color-mix(in oklab, oklch(64.5% 0.246 16.439deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-rose:hover {
-    border-color: oklch(64.5% 0.246 16.439deg);
-  }
-}
-
-.soda-scs-manager--admin-card-rose .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439deg) 20%, transparent);
-  color: oklch(50.5% 0.213 27.518deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-rose .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(64.5% 0.246 16.439deg) 20%, transparent);
-  }
-}
-
-.soda-scs-manager--admin-card-slate {
-  border-color: color-mix(in srgb, oklch(55.4% 0.046 257.417deg) 30%, transparent);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-slate {
-    border-color: color-mix(in oklab, oklch(55.4% 0.046 257.417deg) 30%, transparent);
-  }
-}
-@media (hover: hover) {
-  .soda-scs-manager--admin-card-slate:hover {
-    border-color: oklch(55.4% 0.046 257.417deg);
-  }
-}
-
-.soda-scs-manager--admin-card-slate .soda-scs-manager--admin-card-icon {
-  background-color: color-mix(in srgb, oklch(55.4% 0.046 257.417deg) 20%, transparent);
-  color: oklch(27.9% 0.041 260.031deg);
-}
-@supports (color: color-mix(in lab, red, red)) {
-  .soda-scs-manager--admin-card-slate .soda-scs-manager--admin-card-icon {
-    background-color: color-mix(in oklab, oklch(55.4% 0.046 257.417deg) 20%, transparent);
-  }
-}
-
-@media (max-width: 768px) {
-  .soda-scs-manager--administration-grid {
-    grid-template-columns: 1fr;
-  }
-  .soda-scs-manager--admin-card-link {
-    padding: 1rem;
-  }
-  .soda-scs-manager--admin-card-icon {
-    height: 3rem;
-    width: 3rem;
-  }
-  .soda-scs-manager--admin-card-icon svg {
-    height: 2rem;
-    width: 2rem;
   }
 }
 @layer components {
@@ -4081,6 +3753,7 @@ details.pending_invitations > div {
 /*
  * Unlayered manager overrides: must beat Claro/Gin and theme link rules,
  * so they sit outside @layer. Moved from soda_scs_manager_theme (site-overrides).
+ * Rendered in: manager forms, cards, links, and Claro/Gin admin surfaces.
  */
 :root {
   --scs-manager--card-dot-size: 20px;
@@ -4884,6 +4557,15 @@ body.no-scroll {
 
 .public-layout {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.public-main {
+  width: 100%;
+  flex: 1 0 auto;
 }
 
 #main-content {
@@ -5458,6 +5140,9 @@ body.menu-open {
 .template--404 .grid--50-50 {
   margin-top: 10vh;
 }
+.template--404 .btn {
+  margin-top: 21px;
+}
 
 .template--search .search-form-wrapper {
   margin-bottom: 50px;
@@ -5946,7 +5631,6 @@ body.menu-open {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin-top: 21px;
 }
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > * {
   order: 1;
@@ -5960,6 +5644,9 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .btn--primary,
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .button--primary {
   order: 2;
+}
+.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
+  margin-top: 21px;
 }
 .project--right .project__members .project__members__list--edit .project-member {
   grid-template-columns: 6rem 1fr auto;
@@ -8976,3 +8663,5 @@ footer.public-footer .public-footer__navs #footer-menu ul li:last-child {
     margin-bottom: 21px;
   }
 }
+
+/*# sourceMappingURL=styles.css.map */

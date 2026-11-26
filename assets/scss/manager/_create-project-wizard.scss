@@ -2,6 +2,7 @@
 
 // Create-project wizard: the invite step and the error lines. The wizard's
 // layout itself lives in content/_application.scss.
+// Rendered in: the create-project dialog opened from the dashboard sidebar.
 @layer components {
     .create-project-wizard__invite-label {
         display: block;

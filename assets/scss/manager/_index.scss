@@ -1,8 +1,8 @@
 // SCS Manager UI: the module (soda_scs_manager) only sets these classes,
 // all of their styling lives here. One partial per module component.
+// Rendered in: the complete SCS Manager interface wherever the theme library loads.
 @forward 'layers';
 @forward 'base';
-@forward 'administration';
 @forward 'cards';
 @forward 'create-project-wizard';
 @forward 'demo-status';

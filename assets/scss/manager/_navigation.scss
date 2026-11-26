@@ -1,5 +1,6 @@
 // Set by the module's js/bookActivePage.js on the current documentation page.
 // !important: the book navigation's own link weight would win otherwise.
+// Rendered in: the documentation book navigation.
 @layer components {
     nav[role="navigation"] a.is-active-page {
         font-weight: bold !important;

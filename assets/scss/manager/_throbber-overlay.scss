@@ -1,5 +1,7 @@
 @use 'tokens' as *;
 
+// Rendered in: long-running operation overlays with progress and log output.
+
 @layer components {
     .soda-scs-manager__throbber-overlay__spinner--success {
         border-color: $scs-green-300;

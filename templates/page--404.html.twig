@@ -1,0 +1,17 @@
+{% set error_content %}
+  <div class="template--404">
+        <h1>404</h1>
+    {% if not logged_in %}
+      <h2>{{ 'Page not found'|t }}</h2>
+    {% endif %}
+    {{ page.content }}
+
+    {% if logged_in %}
+      <a class="btn btn--primary" href="{{ path('soda_scs_manager.dashboard') }}">{{ 'See your Projects'|t }}</a>
+    {% else %}
+      <a class="btn btn--primary" href="{{ path('<front>') }}">{{ 'Go to Home'|t }}</a>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% include 'page.html.twig' with { page: page|merge({ content: error_content }), is_manager_page: logged_in } %}

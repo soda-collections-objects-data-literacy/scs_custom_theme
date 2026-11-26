@@ -2,6 +2,7 @@
 @use 'tokens' as *;
 
 // Tick before the status once Nextcloud is connected with a bearer token.
+// Rendered in: the Nextcloud connection form and connected-state feedback.
 @layer components {
     .scs-manager--nextcloud-connect-status-inline[data-status="connected"][data-method="bearer"]::before,
     .scs-manager--nextcloud-connect-status[data-status="connected"][data-method="bearer"]::before,

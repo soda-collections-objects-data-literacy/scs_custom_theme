@@ -1,3 +1,4 @@
 // Layer order of the ported module styles. Component rules stay in a cascade
 // layer, as they were in the module, so the theme's unlayered rules still win.
+// Rendered in: every page that loads the manager stylesheet.
 @layer base, components, utilities;

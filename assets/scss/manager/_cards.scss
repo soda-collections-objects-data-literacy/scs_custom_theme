@@ -1,6 +1,8 @@
 @use '../base/vars' as *;
 @use 'tokens' as *;
 
+// Rendered in: dashboard project cards, application cards, and entity tiles.
+
 @layer components {
     a.soda-scs-manager--tile-card {
         box-sizing: border-box;

@@ -1,6 +1,8 @@
 @use '../base/vars' as *;
 @use 'tokens' as *;
 
+// Rendered in: the project members list, editor, invitations, and role menu.
+
 .project-members-table-wrapper {
     width: 100%;
     @media (max-width: 1000px) {

@@ -1,5 +1,7 @@
 @use 'tokens' as *;
 
+// Rendered in: component and project entity cards and their detail views.
+
 @layer components {
     .soda-scs-manager--card-tags {
         position: relative;

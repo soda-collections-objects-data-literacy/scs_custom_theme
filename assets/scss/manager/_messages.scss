@@ -2,6 +2,7 @@
 
 // Single message page (SodaScsMessageController::view). Layered so that the
 // theme's unlayered rules keep winning, as they did over the old utilities.
+// Rendered in: the single-message page and its back/reply actions.
 @layer components {
     .scs-manager--message {
         max-width: 48rem;
