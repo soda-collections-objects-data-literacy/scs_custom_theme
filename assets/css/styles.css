@@ -6248,6 +6248,14 @@ body.menu-open {
   cursor: pointer;
   border: 2px solid transparent;
 }
+.create-project-wizard__app-card .add-app-popup-card__doc-link:focus {
+  outline: 2px solid #17212B !important;
+  outline-offset: 2px;
+}
+.create-project-wizard__app-card:focus {
+  border-color: #17212B;
+  background-color: #F4F6F8;
+}
 .create-project-wizard__app-card[aria-pressed=true] {
   border-color: #17212B;
   background-color: #F4F6F8;

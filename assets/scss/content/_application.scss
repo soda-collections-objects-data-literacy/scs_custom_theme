@@ -584,6 +584,16 @@ $application-card-meta-height: max($application-card-meta-control-size,
         cursor: pointer;
         border: 2px solid transparent;
 
+        .add-app-popup-card__doc-link:focus {
+            outline: 2px solid $color-slate-900 !important;
+            outline-offset: 2px;
+        }
+
+        &:focus {
+            border-color: $color-slate-900;
+            background-color: $color-slate-100;
+        }
+
         &[aria-pressed="true"] {
             border-color: $color-slate-900;
             background-color: $color-slate-100;
