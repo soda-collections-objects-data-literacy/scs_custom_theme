@@ -53,6 +53,19 @@
           body: formData,
         }).then(function (response) {
           if (response.redirected) {
+            var responseUrl = new URL(response.url, window.location.origin);
+            if (/\/batch\/?$/.test(responseUrl.pathname) && responseUrl.searchParams.has('id')) {
+              return scsCustomThemeProcessDeleteBatch(response.url, destination).then(function (finishedUrl) {
+                if (onSettled) {
+                  onSettled(true);
+                }
+                window.location.href = finishedUrl || destination;
+              }).catch(function () {
+                if (onSettled) {
+                  onSettled(false, Drupal.t('The deletion could not be completed. Please try again.'));
+                }
+              });
+            }
             if (onSettled) {
               onSettled(true);
             }
@@ -79,28 +92,111 @@
       });
   }
 
+  async function scsCustomThemeProcessDeleteBatch(batchUrl, destination) {
+    var progressUrl = new URL(batchUrl, window.location.origin);
+    progressUrl.searchParams.set('op', 'do');
+    progressUrl.searchParams.set('_format', 'json');
+
+    while (true) {
+      var response = await fetch(progressUrl.toString(), {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: '',
+      });
+      if (!response.ok) {
+        throw new Error('Batch progress request failed with status ' + response.status);
+      }
+      var progress = await response.json();
+      if (progress.status === 0) {
+        throw new Error(progress.data || 'Batch processing failed.');
+      }
+      scsCustomThemeUpdateDeleteProgress(progress);
+      if (Number(progress.percentage) >= 100) {
+        break;
+      }
+      await new Promise(function (resolve) { window.setTimeout(resolve, 150); });
+    }
+
+    var finishUrl = new URL(batchUrl, window.location.origin);
+    finishUrl.searchParams.set('op', 'finished');
+    finishUrl.searchParams.delete('_format');
+    var finishResponse = await fetch(finishUrl.toString(), { credentials: 'same-origin' });
+    if (!finishResponse.ok) {
+      throw new Error('Batch completion failed with status ' + finishResponse.status);
+    }
+    return finishResponse.redirected ? finishResponse.url : destination;
+  }
+
+  function scsCustomThemeUpdateDeleteProgress(progress) {
+    var progressBar = document.querySelector('[data-delete-progress]');
+    if (!progressBar) {
+      return;
+    }
+    var percentage = Math.max(0, Math.min(100, Number(progress.percentage) || 0));
+    var fill = progressBar.querySelector('.soda-scs-manager__progress-bar__fill');
+    var value = progressBar.querySelector('.soda-scs-manager__progress-bar__text');
+    if (fill) {
+      fill.style.width = percentage + '%';
+    }
+    if (value) {
+      value.textContent = percentage + '%';
+    }
+    progressBar.setAttribute('aria-valuenow', String(percentage));
+    if (progress.message) {
+      progressBar.setAttribute('aria-valuetext', progress.message);
+    }
+  }
+
 
   /**
    * Shows the same progress overlay used while an application is created.
    * Confirm links carry a translated message in data-throbber-message.
    */
   function scsCustomThemeEnsureThrobberOverlay() {
-    if (document.querySelector('.soda-scs-manager__throbber-overlay')) {
-      return;
+    var overlay = document.querySelector('.soda-scs-manager__throbber-overlay');
+    if (!overlay) {
+      var container = document.querySelector('.dashboard-main') || document.body;
+      overlay = document.createElement('div');
+      overlay.className = 'soda-scs-manager__throbber-overlay';
+      overlay.innerHTML =
+        '<div class="soda-scs-manager__throbber-overlay__content">' +
+          '<div class="soda-scs-manager__throbber-overlay__spinner"></div>' +
+          '<div class="soda-scs-manager__throbber-overlay__message"></div>' +
+          '<div class="soda-scs-manager__throbber-overlay__info"></div>' +
+          '<div class="soda-scs-manager__throbber-overlay__steps-container">' +
+            '<ul class="soda-scs-manager__steps-list"></ul>' +
+          '</div>' +
+        '</div>';
+      container.appendChild(overlay);
     }
-    var container = document.querySelector('.dashboard-main') || document.body;
-    var overlay = document.createElement('div');
-    overlay.className = 'soda-scs-manager__throbber-overlay';
-    overlay.innerHTML =
-      '<div class="soda-scs-manager__throbber-overlay__content">' +
-        '<div class="soda-scs-manager__throbber-overlay__spinner"></div>' +
-        '<div class="soda-scs-manager__throbber-overlay__message"></div>' +
-        '<div class="soda-scs-manager__throbber-overlay__info"></div>' +
-        '<div class="soda-scs-manager__throbber-overlay__steps-container">' +
-          '<ul class="soda-scs-manager__steps-list"></ul>' +
-        '</div>' +
-      '</div>';
-    container.appendChild(overlay);
+    var content = overlay.querySelector('.soda-scs-manager__throbber-overlay__content');
+    if (content && !content.querySelector('[data-delete-progress]')) {
+      var progressGroup = document.createElement('div');
+      progressGroup.className = 'soda-scs-manager__delete-progress';
+      progressGroup.setAttribute('data-delete-progress-group', '');
+      progressGroup.hidden = true;
+
+      var progressLabel = document.createElement('p');
+      progressLabel.className = 'soda-scs-manager__delete-progress-label';
+      progressLabel.textContent = Drupal.t('Deleting WissKI Instances');
+
+      var progressBar = document.createElement('div');
+      progressBar.className = 'soda-scs-manager__progress-bar soda-scs-manager__progress-bar--delete';
+      progressBar.setAttribute('data-delete-progress', '');
+      progressBar.setAttribute('role', 'progressbar');
+      progressBar.setAttribute('aria-valuemin', '0');
+      progressBar.setAttribute('aria-valuemax', '100');
+      progressBar.setAttribute('aria-valuenow', '0');
+      progressBar.hidden = true;
+      progressBar.innerHTML =
+        '<div class="soda-scs-manager__progress-bar__track"><div class="soda-scs-manager__progress-bar__fill"></div></div>' +
+        '<div class="soda-scs-manager__progress-bar__text">0%</div>';
+      progressGroup.appendChild(progressLabel);
+      progressGroup.appendChild(progressBar);
+      var message = content.querySelector('.soda-scs-manager__throbber-overlay__message');
+      content.insertBefore(progressGroup, message ? message.nextSibling : content.firstChild);
+    }
   }
 
   function scsCustomThemeShowDeleteThrobber(confirmLink) {
@@ -112,11 +208,33 @@
     if (messageEl) {
       messageEl.textContent = message;
     }
+    var progressBar = document.querySelector('[data-delete-progress]');
+    if (progressBar) {
+      progressBar.setAttribute('aria-label', message);
+    }
+    var progressGroup = document.querySelector('[data-delete-progress-group]');
+    if (progressGroup) {
+      progressGroup.hidden = false;
+    }
     if (infoEl) {
       infoEl.textContent = '';
     }
     if (stepsEl) {
       stepsEl.replaceChildren();
+    }
+    var progressBar = document.querySelector('[data-delete-progress]');
+    if (progressBar) {
+      progressBar.hidden = false;
+      progressBar.setAttribute('aria-valuenow', '0');
+      progressBar.removeAttribute('aria-valuetext');
+      var fill = progressBar.querySelector('.soda-scs-manager__progress-bar__fill');
+      var value = progressBar.querySelector('.soda-scs-manager__progress-bar__text');
+      if (fill) {
+        fill.style.width = '0%';
+      }
+      if (value) {
+        value.textContent = '0%';
+      }
     }
     var overlay = document.querySelector('.soda-scs-manager__throbber-overlay');
     if (overlay) {
@@ -442,7 +560,7 @@
           dialog.hidden = true;
           dialog.setAttribute('aria-hidden', 'true');
           var destination = confirmLink.getAttribute('data-delete-destination') || trigger.getAttribute('data-delete-destination');
-          scsCustomThemeSubmitConfirmForm(href, destination, function (success) {
+          scsCustomThemeSubmitConfirmForm(href, destination, function (success, errorText) {
             if (!success) {
               isDeleting = false;
               dialog.hidden = false;
@@ -450,6 +568,16 @@
               scsCustomThemeHideDeleteThrobber();
               confirmLink.removeAttribute('aria-disabled');
               confirmLink.textContent = originalText;
+              if (errorText) {
+                var errorEl = dialog.querySelector('.project-card__delete-confirmation__error');
+                if (!errorEl) {
+                  errorEl = document.createElement('p');
+                  errorEl.className = 'project-card__delete-confirmation__error';
+                  errorEl.setAttribute('role', 'alert');
+                  dialog.querySelector('.project-card__delete-confirmation__actions').before(errorEl);
+                }
+                errorEl.textContent = errorText;
+              }
             }
           });
         });

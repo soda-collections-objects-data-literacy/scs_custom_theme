@@ -3523,6 +3523,29 @@ details.pending_invitations > div {
   .soda-scs-manager__progress-bar {
     width: 100%;
   }
+  .soda-scs-manager__delete-progress {
+    width: 100%;
+    margin: 21px 0;
+  }
+  .soda-scs-manager__delete-progress-label {
+    margin: 0 0 10px;
+    color: oklch(20.8% 0.042 265.755deg);
+    font-weight: 600;
+  }
+  .soda-scs-manager__progress-bar--delete {
+    width: 100%;
+  }
+  .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__track {
+    background-color: oklch(97% 0.001 106.424deg);
+  }
+  .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__fill {
+    background-color: oklch(20.8% 0.042 265.755deg);
+    background-image: none;
+  }
+  .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__text {
+    margin-top: 2rem;
+    color: oklch(20.8% 0.042 265.755deg);
+  }
   .soda-scs-manager__progress-bar__track {
     height: 0.75rem;
     overflow: hidden;
@@ -5631,6 +5654,7 @@ body.menu-open {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
+  margin-top: 21px;
 }
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > * {
   order: 1;
@@ -5644,9 +5668,6 @@ body.menu-open {
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .btn--primary,
 .project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions > .button--primary {
   order: 2;
-}
-.project--right .project__members .project__members__list .project-member .project-member__remove-confirm .form-actions {
-  margin-top: 21px;
 }
 .project--right .project__members .project__members__list--edit .project-member {
   grid-template-columns: 6rem 1fr auto;
@@ -8663,5 +8684,3 @@ footer.public-footer .public-footer__navs #footer-menu ul li:last-child {
     margin-bottom: 21px;
   }
 }
-
-/*# sourceMappingURL=styles.css.map */

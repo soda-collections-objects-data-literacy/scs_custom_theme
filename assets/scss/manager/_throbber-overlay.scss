@@ -1,3 +1,4 @@
+@use '../base/vars' as *;
 @use 'tokens' as *;
 
 // Rendered in: long-running operation overlays with progress and log output.
@@ -61,6 +62,35 @@
 
     .soda-scs-manager__progress-bar {
         width: 100%;
+    }
+
+    .soda-scs-manager__delete-progress {
+        width: 100%;
+        margin: $spacing-s 0;
+    }
+
+    .soda-scs-manager__delete-progress-label {
+        margin: 0 0 $spacing-xs;
+        color: $scs-slate-900;
+        font-weight: 600;
+    }
+
+    .soda-scs-manager__progress-bar--delete {
+        width: 100%;
+    }
+
+    .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__track {
+        background-color: $scs-stone-100;
+    }
+
+    .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__fill {
+        background-color: $scs-slate-900;
+        background-image: none;
+    }
+
+    .soda-scs-manager__progress-bar--delete .soda-scs-manager__progress-bar__text {
+        margin-top: 2rem;
+        color: $scs-slate-900;
     }
 
     .soda-scs-manager__progress-bar__track {
