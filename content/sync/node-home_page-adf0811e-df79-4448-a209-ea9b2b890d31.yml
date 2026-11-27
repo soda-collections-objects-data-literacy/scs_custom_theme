@@ -232,7 +232,7 @@ custom_fields:
         author: lea.stocker@sammlungen.io
         revision_log_message: null
         revision_uid: '23'
-        changed: '1794840555'
+        changed: '1795460969'
         url: null
       custom_fields:
         field_bigger_text:
@@ -257,6 +257,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/png
               custom_fields: {  }
+        field_funding_1_link: null
         field_funding_2:
           -
             alt: BMFTR
@@ -274,6 +275,13 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_funding_2_link: null
+        field_funding_3: null
+        field_funding_3_link: null
+        field_funding_4: null
+        field_funding_4_link: null
+        field_funding_5: null
+        field_funding_5_link: null
         field_headline:
           -
             value: 'The SODa Project'
@@ -294,6 +302,13 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_10: null
+        field_partner_10_link: null
+        field_partner_1_link:
+          -
+            uri: 'https://www.fau.de'
+            title: ''
+            options: {  }
         field_partner_2:
           -
             alt: GNM
@@ -311,6 +326,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_2_link: null
         field_partner_3:
           -
             alt: HU
@@ -328,6 +344,11 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_3_link:
+          -
+            uri: 'https://www.hu-berlin.de'
+            title: ''
+            options: {  }
         field_partner_4:
           -
             alt: IGSD
@@ -345,6 +366,11 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/png
               custom_fields: {  }
+        field_partner_4_link:
+          -
+            uri: 'https://igsd-ev.de/ziele.html'
+            title: ''
+            options: {  }
         field_partner_5:
           -
             alt: KUS
@@ -362,6 +388,15 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/svg+xml
               custom_fields: {  }
+        field_partner_5_link: null
+        field_partner_6: null
+        field_partner_6_link: null
+        field_partner_7: null
+        field_partner_7_link: null
+        field_partner_8: null
+        field_partner_8_link: null
+        field_partner_9: null
+        field_partner_9_link: null
         field_soda_logo:
           -
             alt: SODa
@@ -379,6 +414,7 @@ custom_fields:
                 changed: 1794840555
                 mimetype: image/png
               custom_fields: {  }
+        field_soda_logo_link: null
         field_text:
           -
             value: '<p>It is designed for people&nbsp;who work with scientific university collections. To use the Semantic Co-Working Space, you need to&nbsp;<a href="https://scs.sammlungen.io/de/user/register">register</a>&nbsp;for a new account. Access to all applications and instances is managed for each user via&nbsp;Single-Sign-On (SSO)&nbsp;using a Keycloak account.&nbsp;</p>'
