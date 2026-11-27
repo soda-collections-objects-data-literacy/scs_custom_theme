@@ -445,6 +445,13 @@
     }
 
     .project__files {
+        // Demo project still being set up: a note instead of the folder link.
+        .project__files__pending {
+            margin: 0;
+            @include text-meta;
+            color: $color-slate-600;
+        }
+
         .project__files__feed__files {
             list-style-type: none;
             padding-left: 0;

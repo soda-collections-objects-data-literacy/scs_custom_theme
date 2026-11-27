@@ -229,6 +229,23 @@ $application-card-meta-height: max($application-card-meta-control-size,
             }
         }
 
+        // Demo project still being set up: the card is shown without a link.
+        &--pending {
+            .application__core {
+                cursor: default;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+
+            .application__pending-note {
+                margin: 0;
+                @include text-meta;
+                color: $color-slate-600;
+            }
+        }
+
         @media screen and (max-width: $breakpoint-sm-width) {
             margin-top: $spacing-xs;
         }

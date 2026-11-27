@@ -5726,6 +5726,13 @@ body.menu-open {
   height: 45px;
   padding-block: 0;
 }
+.project--right .project__files .project__files__pending {
+  margin: 0;
+  font-size: 2rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: #4D5866;
+}
 .project--right .project__files .project__files__feed__files {
   list-style-type: none;
   padding-left: 0;
@@ -5953,6 +5960,19 @@ body.menu-open {
     margin-top: 10px;
     padding-top: 0;
   }
+}
+.application--card--pending .application__core {
+  cursor: default;
+}
+.application--card--pending .application__core:hover {
+  box-shadow: none;
+}
+.application--card--pending .application__pending-note {
+  margin: 0;
+  font-size: 2rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: #4D5866;
 }
 @media screen and (max-width: 560px) {
   .application--card {
